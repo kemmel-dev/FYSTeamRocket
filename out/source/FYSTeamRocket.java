@@ -19,6 +19,10 @@ public void setup()
     
     background(0);
 }
+
+public void draw() {
+    background(mouseX, mouseY, mouseY - mouseX);
+}
   public void settings() {  size(200, 200); }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "FYSTeamRocket" };
