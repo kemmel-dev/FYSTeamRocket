@@ -7,3 +7,4 @@ Project FYS Tower Defense for HvA
 5th Commit!
 6th Commit!
 7th Commit!
+8th Commit!
