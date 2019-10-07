@@ -1,7 +1,5 @@
 float x = 0;
 float y = 0;
-PImage grass;
-PImage sand;
 PImage bg;
 
 int gridX = 0;
@@ -12,8 +10,6 @@ int gridHeight = 100;
 
 void setup() {
   size(1602, 902);
-  grass = loadImage("grass.jpg");
-  sand = loadImage("sand.png");
   bg = loadImage("bg.PNG");
 }
 
