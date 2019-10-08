@@ -1,4 +1,4 @@
-
+class Upgrade_Menu{
 // tobias 
 boolean bool = false;
 
@@ -79,4 +79,5 @@ void keyPressed() {
   currY += 200;
   }
     
+}
 }
