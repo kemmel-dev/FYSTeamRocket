@@ -13,11 +13,6 @@ int gridHeight = 100;
 // tobias
 int currY = 100;
 
-void setup() {
-  size(1602, 902);
-  //bg = loadImage("bg.PNG");
-}
-
 //tobias
 void drawMenu() {
   // zolang bool true is 
