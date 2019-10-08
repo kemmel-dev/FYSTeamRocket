@@ -1,4 +1,4 @@
-class Upgrade_Menu{
+class UpgradeMenu{
 // tobias 
 boolean bool = false;
 
