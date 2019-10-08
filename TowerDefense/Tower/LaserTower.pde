@@ -1,18 +1,22 @@
 class LaserTower {
-  float laserTowerX;
-  float laserTowerY;
-  float laserTowerSize;
-  float laserTowerRadius;
-  
-  Tower(float x, float y) {
-    laserTowerX = x;
-    laserTowerY = y;
-    laserTowerSize = 50;
-    laserTowerRadius = laserTowerSize/2;
-  }
+ float laserTX;
+ float laserTY;
+ float laserTSize;
+ float laserTRadius;
+ float laserTCount;
+ 
+ LaserTower(float x, float y) {
+   laserTX = x;
+   laserTY = y;
+   laserTSize = 50;
+   laserTRadius =  laserTSize/2;
+   laserTCount = 30;
+ }
   
   void placement() {
-    fill(100);
-    circle(laserTowerX, laserTowerY, laserTowerSize);
-  }
+   for(int i = 0; i < laserTCount; i++) {
+     fill(100);
+     circle(laserTX, laserTY, laserTSize);
+   }
+ }
 }
