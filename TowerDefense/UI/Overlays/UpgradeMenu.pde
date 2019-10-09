@@ -1,8 +1,8 @@
 class UpgradeMenu{
-// tobias 
+
 boolean bool = false;
 
-// tobias
+
 int currY = 100;
 
 void setup() {
@@ -10,7 +10,7 @@ void setup() {
  
 }
 
-//tobias
+
 void drawMenu() {
   // zolang bool true is 
   while (bool) {
@@ -55,26 +55,26 @@ void draw() {
 }
 
 void keyPressed() {
- // tobias als je op enter klikt is bool true en runt ie de drawmenu fucntion en opent ie de menu
+ // als je op enter klikt is bool true en runt ie de drawmenu fucntion en opent ie de menu
   if (key == ENTER) {
     bool = true;
     drawMenu();
   }
- // tobias als je tab doet gaat de menu weg en is bool false.
+ //  als je tab doet gaat de menu weg en is bool false.
   if (key == TAB) {
     bool = false;
   }  
   
-  // tobias tijdelijk aanduideing dat ie herkent welke circle ie te pakken heeft.
+  //  tijdelijk aanduideing dat ie herkent welke circle ie te pakken heeft.
   if (key == TAB) {
     println("Torentje gekocht in oud zuid met de y waarde: " + currY);
   }
   
-  // tobias circle navigatie omhoog
+  // circle navigatie omhoog
   if (key == 'w') {
   currY -= 200;
   }
-  // tobias circle navigatie omlaag
+  // circle navigatie omlaag
   if (key == 's') {
   currY += 200;
   }
