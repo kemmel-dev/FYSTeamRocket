@@ -14,14 +14,16 @@ class Clicked {
 
 class LaserTower {
  int gold;
- float posX;
- float posY;
- float size;
- float radius;
- float count;
+ int posX;
+ int posY;
+ int size;
+ int radius;
+ int count;
  ArrayList laserTower = new ArrayList();
  
- LaserTower(float x, float y) {
+ Style style;
+ 
+ LaserTower(int x, int y) {
    gold = 100;
    posX = x;
    posY = y;
@@ -31,7 +33,7 @@ class LaserTower {
  
  void laserTower() {
    for(int i = 0; i < laserTower.size(); i++) {
-     fill(100);
+     fill(style.cTower);
      circle(posX, posY, size);
     }
  }
@@ -42,4 +44,8 @@ class LaserTower {
     laserTower();
    }
  }
+}
+
+class Style {
+  color cTower = color(100, 100, 100);
 }
