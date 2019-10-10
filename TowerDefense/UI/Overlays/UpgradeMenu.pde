@@ -1,26 +1,32 @@
-class UpgradeMenu{
+class UpgradeMenu
+{
 
 boolean bool = false;
 
 
 int currTower = 100;
 
-void setup() {
-  size(1602, 902);
+void setup() 
+{
+
  
 }
 
 
-void drawMenu() {
+void drawMenu() 
+{
   // zolang bool true is 
-  while (bool) {
+  while (bool) 
+  {
    
     // als de onderste circle selected is dan gaat ie naar de bovenste.
-    if (currTower > 700) {
+    if (currTower > 700) 
+    {
       currTower = 100;
     }
     // zelfde maar dan omgekeerd
-    if (currTower < 100) {
+    if (currTower < 100) 
+    {
       currTower = 700;
     }
 // tekent de rect 
@@ -47,35 +53,42 @@ void drawMenu() {
   }  
 }
 
-void draw() {
+void draw() 
+{
   background(255);
  
 
   drawMenu();
 }
 
-void keyPressed() {
+void keyPressed() 
+{
  // als je op enter klikt is bool true en runt ie de drawmenu fucntion en opent ie de menu
-  if (key == ENTER) { 
+  if (key == ENTER) 
+  { 
     bool = true;
     drawMenu();
   }
  //  als je tab doet gaat de menu weg en is bool false.
-  if (key == TAB) {
+  if (key == TAB) 
+  {
     bool = false;
   }  
   
   //  tijdelijk aanduideing dat ie herkent welke circle ie te pakken heeft.
-  if (key == TAB) {
+  if (key == TAB) 
+  {
     println("Torentje gekocht in oud zuid met de y waarde: " + currTower);
   }
   
   // circle navigatie omhoog
-  if (key == 'w') {
+  if (key == 'w')
+   {
   currTower -= 200;
   }
   // circle navigatie omlaag
-  if (key == 's') {
+  if (key == 's') 
+  {
   currTower += 200;
   }
     
