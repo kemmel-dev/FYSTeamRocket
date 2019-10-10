@@ -1,4 +1,5 @@
-class Clicked {
+class Clicked 
+{
   LaserTower laserT;
   
   void pressSB() 
@@ -15,7 +16,7 @@ class LaserTower
  int posX;
  int posY;
  int size;
- int radius;
+ float radius;
  int count;
  ArrayList laserTower = new ArrayList();
  
@@ -23,11 +24,10 @@ class LaserTower
  
  LaserTower(int x, int y) 
  {
-   gold = 100;
    posX = x;
    posY = y;
    size = 50;
-   radius =  size/2;
+   radius = size*2.5;
  }
  
  void laserTower() 
@@ -36,6 +36,8 @@ class LaserTower
    {
      fill(style.cTower);
      circle(posX, posY, size);
+     fill(style.transparent);
+     circle(posX, posY, radius);
     }
  }
   
@@ -43,8 +45,8 @@ class LaserTower
  {
    for(int i = 0; i < laserTower.size(); i++) 
    {
-    laserTower.get(i);
-    laserTower();
+     laserTower.get(i);
+     laserTower();
    }
  }
 }
@@ -52,4 +54,5 @@ class LaserTower
 class Style 
 {
   color cTower = color(100, 100, 100);
+  color transparent = color(0, 0, 0, 0);
 }
