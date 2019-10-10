@@ -11,6 +11,6 @@ class Map
 
   void init()
   {
-    bg = loadImage("bg.png");
+    bg = loadImage("bg.PNG");
   }
 }

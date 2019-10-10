@@ -23,6 +23,6 @@ class Tile
     class Style
     {
         color fillColor = color(255,255,255);
-        int opacity = 125;
+        int opacity = 20;
     }
 }
