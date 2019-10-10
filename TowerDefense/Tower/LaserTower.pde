@@ -1,19 +1,17 @@
 class Clicked {
   LaserTower laserT;
   
-  void pressSB() {
-    if(key == ' ') {
+  void pressSB() 
+  {
+    if(key == ' ') 
+    {
       laserT.laserTower.add(new LaserTower(mouseX, mouseY));
-      laserT.gold -= 100;
-    }
-     if(key == 'e') {
-       laserT.gold += 100;
     }
   }
 }
 
-class LaserTower {
- int gold;
+class LaserTower 
+{
  int posX;
  int posY;
  int size;
@@ -23,7 +21,8 @@ class LaserTower {
  
  Style style;
  
- LaserTower(int x, int y) {
+ LaserTower(int x, int y) 
+ {
    gold = 100;
    posX = x;
    posY = y;
@@ -31,21 +30,26 @@ class LaserTower {
    radius =  size/2;
  }
  
- void laserTower() {
-   for(int i = 0; i < laserTower.size(); i++) {
+ void laserTower() 
+ {
+   for(int i = 0; i < laserTower.size(); i++) 
+   {
      fill(style.cTower);
      circle(posX, posY, size);
     }
  }
   
- void placement() {
-   for(int i = 0; i < laserTower.size(); i++) {
+ void placement() 
+ {
+   for(int i = 0; i < laserTower.size(); i++) 
+   {
     laserTower.get(i);
     laserTower();
    }
  }
 }
 
-class Style {
+class Style 
+{
   color cTower = color(100, 100, 100);
 }
