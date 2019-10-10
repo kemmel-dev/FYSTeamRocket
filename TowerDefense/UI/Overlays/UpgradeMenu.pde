@@ -3,7 +3,7 @@ class UpgradeMenu{
 boolean bool = false;
 
 
-int currY = 100;
+int currTower = 100;
 
 void setup() {
   size(1602, 902);
@@ -16,12 +16,12 @@ void drawMenu() {
   while (bool) {
    
     // als de onderste circle selected is dan gaat ie naar de bovenste.
-    if (currY > 700) {
-      currY = 100;
+    if (currTower > 700) {
+      currTower = 100;
     }
     // zelfde maar dan omgekeerd
-    if (currY < 100) {
-      currY = 700;
+    if (currTower < 100) {
+      currTower = 700;
     }
 // tekent de rect 
     fill(#222222);
@@ -38,7 +38,7 @@ void drawMenu() {
     // tekent circle over andere circle met w en s bestuurbaar
     fill(#111111);
     stroke(#FF0000);
-    circle(1402, currY, 150); 
+    circle(1402, currTower, 150); 
     fill(#222222);
     stroke(0);
     
@@ -56,7 +56,7 @@ void draw() {
 
 void keyPressed() {
  // als je op enter klikt is bool true en runt ie de drawmenu fucntion en opent ie de menu
-  if (key == ENTER) {
+  if (key == ENTER) { 
     bool = true;
     drawMenu();
   }
@@ -67,16 +67,16 @@ void keyPressed() {
   
   //  tijdelijk aanduideing dat ie herkent welke circle ie te pakken heeft.
   if (key == TAB) {
-    println("Torentje gekocht in oud zuid met de y waarde: " + currY);
+    println("Torentje gekocht in oud zuid met de y waarde: " + currTower);
   }
   
   // circle navigatie omhoog
   if (key == 'w') {
-  currY -= 200;
+  currTower -= 200;
   }
   // circle navigatie omlaag
   if (key == 's') {
-  currY += 200;
+  currTower += 200;
   }
     
 }
