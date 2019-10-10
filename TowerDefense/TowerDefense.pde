@@ -27,6 +27,8 @@ void setup()
     grid.initGrid();
     map.init();
     initControls();
+
+    // create enemy
     enemies.add(new Enemy());
 }
 
