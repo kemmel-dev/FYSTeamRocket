@@ -6,6 +6,8 @@ class Tile
 
     Style style;
 
+    Boolean selected = false;
+
     Tile(int _x, int _y, int _w)
     {
         x = _x;
@@ -16,13 +18,22 @@ class Tile
 
     void display()
     {
-        fill(style.fillColor, style.opacity);
+        if (selected)
+        {
+            fill(style.selectedColor, style.selectedOpacity);
+        }
+        else 
+        {
+            fill(style.fillColor, style.opacity);
+        }
         rect(x, y, w, w);
     }
 
     class Style
     {
-        color fillColor = color(255,255,255);
+        color fillColor = 255;
+        color selectedColor = color(255,0,0);
         int opacity = 20;
+        int selectedOpacity = 125;
     }
 }
