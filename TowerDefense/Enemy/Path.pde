@@ -3,16 +3,22 @@
 class Path {
 
   //Chris: creating variables for horizontal part of the path
-  float path1X;
-  float path1Y;
-  float path1Width;
-  float path1Height;
+  int path1X;
+  int path1Y;
+  int path1Width;
+  int path1Height;
 
   //Chris: creating variables for vertical part of the path
-  float path2X;
-  float path2Y;
-  float path2Width;
-  float path2Height;
+  int path2X;
+  int path2Y;
+  int path2Width;
+  int path2Height;
+  
+  //Creating wayPoints
+  int wayPoint1X;
+  int wayPoint1Y;
+  
+  int wayPoint2Y;
 
   Path() {
 
@@ -27,6 +33,12 @@ class Path {
     path2Y = 0;
     path2Width = 100;
     path2Height = 500;
+    
+    //waypoints
+    wayPoint1X = 1025;
+    wayPoint1Y = 425;
+    
+    wayPoint2Y = 225;
   }
 
   void appear() {
