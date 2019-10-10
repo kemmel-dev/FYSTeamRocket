@@ -1,6 +1,8 @@
 ArrayList<LaserTower> tower;
 int gold;
 
+Grid grid;
+
 
 void setup() {
   size(1600, 900);
@@ -14,7 +16,7 @@ void draw() {
     gold += 100;
   }
   if(keyPressed && key == ' ' && gold >= 100) {
-    tower.add(new LaserTower(mouseX, mouseY));
+    tower.add(new LaserTower(grid.gridX, grid.gridY));
     gold -= 100;
   }
   for(int i = 0; i < tower.size(); i++) {
