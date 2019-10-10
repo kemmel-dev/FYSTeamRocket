@@ -1,25 +1,33 @@
 final static int SIZE_X = 1600;
 final static int SIZE_Y = 900;
+final int FRAME_RATE = 30;
+final static int MOVE_SPEED =int(SIZE_X / 1000) * 2;
 
 Grid grid = new Grid();
 Map map = new Map();
 Controls controls = new Controls();
+static Waypoints waypoints = new Waypoints();
+
+ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
 Tile selectedTile;
 
 void settings()
 {
     size(SIZE_X, SIZE_Y);
+
 }
 
 void setup()
 {
+    frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode
     rectMode(CENTER);
     // Initialize the grid and map and controls
     grid.initGrid();
     map.init();
     initControls();
+    enemies.add(new Enemy());
 }
 
 void initControls()
@@ -65,7 +73,11 @@ void drawTowers()
 
 void drawEnemies()
 {
-
+    for (Enemy enemy : enemies)
+    {
+        enemy.followPath();
+        enemy.display();
+    }
 }
 
 void drawUI()
