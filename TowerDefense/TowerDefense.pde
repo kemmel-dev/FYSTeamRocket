@@ -6,7 +6,7 @@ final static int MOVE_SPEED =int(SIZE_X / 1000) * 2;
 Grid grid = new Grid();
 Map map = new Map();
 Controls controls = new Controls();
-static Waypoints waypoints = new Waypoints();
+Waypoints waypoints = new Waypoints();
 
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 

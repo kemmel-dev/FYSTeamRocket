@@ -13,19 +13,19 @@ class Controls {
     grid.grid[selectionX][selectionY].selected = false;
     if (moveType == 1) 
     {
-      selectionY = constrain(selectionY - 1, 0, 9);
+      selectionY = constrain(selectionY - 1, 0, 8);
     }
     if (moveType == 2) 
     {
-      selectionY = constrain(selectionY + 1, 0, 9);
+      selectionY = constrain(selectionY + 1, 0, 8);
     }
     if (moveType == 3) 
     {
-      selectionX = constrain(selectionX - 1, 0, 16);
+      selectionX = constrain(selectionX - 1, 0, 15);
     }
     if (moveType == 4) 
     {
-      selectionX = constrain(selectionX + 1, 0, 16);
+      selectionX = constrain(selectionX + 1, 0, 15);
     }
     grid.grid[selectionX][selectionY].selected = true;
   }

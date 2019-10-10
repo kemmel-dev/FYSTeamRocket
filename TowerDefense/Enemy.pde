@@ -8,6 +8,8 @@ class Enemy
 
     Style style;
 
+    // This array stores whether we've passed
+    // checkpoints
     Boolean[] waypointsPassed = new Boolean[6];
 
     Enemy()
@@ -21,6 +23,8 @@ class Enemy
         initWaypoints();
     }
 
+    // Initialises the wayPointspassed by setting
+    // all bools to false
     void initWaypoints()
     {
         for (int i = 0; i < waypointsPassed.length; i++)
@@ -35,33 +39,10 @@ class Enemy
         rect(x, y, w, w);
     }
 
-    // Moves towards moveDir
-    void move()
-    {
-        // moveDir means:
-        // 1 = up
-        // 2 = down
-        // 3 = right
-        // 4 = left
-        switch(moveDir)
-        {
-            case 1:
-                y -= MOVE_SPEED;
-                return;
-            case 2:
-                y += MOVE_SPEED;
-                return;
-            case 3:
-                x += MOVE_SPEED;
-                return;
-            case 4:
-                x -= MOVE_SPEED;
-                return;
-            default:
-                return;
-        }
-    }
-
+    // Check which waypoints have been passed,
+    // then determine whether we have to change
+    // move directions, then move
+    // in that direction.
     void followPath()
     {
         if (! waypointsPassed[0])
@@ -113,6 +94,33 @@ class Enemy
             }
         }
         move();
+    }
+
+    // Moves towards moveDir
+    void move()
+    {
+        // moveDir means:
+        // 1 = up
+        // 2 = down
+        // 3 = right
+        // 4 = left
+        switch(moveDir)
+        {
+            case 1:
+                y -= MOVE_SPEED;
+                return;
+            case 2:
+                y += MOVE_SPEED;
+                return;
+            case 3:
+                x += MOVE_SPEED;
+                return;
+            case 4:
+                x -= MOVE_SPEED;
+                return;
+            default:
+                return;
+        }
     }
 
     class Style
