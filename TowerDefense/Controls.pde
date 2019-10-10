@@ -7,21 +7,31 @@ class Controls {
 
   int selectionX, selectionY;
 
-  void Move(int moveType) {
-    if (moveType == 1) {
-      selectionY = restrain(selectionY - 1, 0, 9);
+  // Moves the selected tile towards moveType
+  void Move(int moveType) 
+  {
+    grid.grid[selectionX][selectionY].selected = false;
+    if (moveType == 1) 
+    {
+      selectionY = constrain(selectionY - 1, 0, 9);
     }
-    if (moveType == 2) {
-      selectionY = restrain(selectionY + 1, 0, 9);
+    if (moveType == 2) 
+    {
+      selectionY = constrain(selectionY + 1, 0, 9);
     }
-    if (moveType == 3) {
-      selectionX = restrain(selectionY - 1, 0, 16);
+    if (moveType == 3) 
+    {
+      selectionX = constrain(selectionX - 1, 0, 16);
     }
-    if (moveType == 4) {
-      selectionX = restrain(selectionY + 1, 0, 16);
+    if (moveType == 4) 
+    {
+      selectionX = constrain(selectionX + 1, 0, 16);
     }
+    grid.grid[selectionX][selectionY].selected = true;
   }
 
+  // Called from TowerDefense's keyPressed function
+  // Handles key press events
   void keyPressed()
   {
     if (key == CODED) 
