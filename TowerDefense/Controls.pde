@@ -52,6 +52,10 @@ class Controls {
       {
         Move(4);
       }
+      if (keyCode == SHIFT)
+      {
+        gamePaused = true;
+      }
     }
   }
 }

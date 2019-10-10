@@ -7,8 +7,11 @@ Grid grid = new Grid();
 Map map = new Map();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
+PauseMenu pauseMenu = new PauseMenu();
 
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+
+Boolean gamePaused = false;
 
 Tile selectedTile;
 
@@ -23,6 +26,7 @@ void setup()
     frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode
     rectMode(CENTER);
+    textAlign(CENTER);
     // Initialize the grid and map and controls
     grid.initGrid();
     map.init();
@@ -48,17 +52,31 @@ Tile GetCurrentTile()
 
 void draw()
 {
-    selectedTile = GetCurrentTile();
+    if (gamePaused)
+    {
+        pauseMenu.display();
+    }
+    else 
+    {
+        selectedTile = GetCurrentTile();
+        drawBackground();
+        drawTowers();
+        drawEnemies();
+        drawUI();
+    }
 
-    drawBackground();
-    drawTowers();
-    drawEnemies();
-    drawUI();
 }
 
 void keyPressed() 
 {
-    controls.keyPressed();
+    if (gamePaused)
+    {
+        pauseMenu.keyPressed();
+    }
+    else 
+    {
+        controls.keyPressed();
+    }
 }
 
 void drawBackground()
