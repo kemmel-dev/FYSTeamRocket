@@ -1,53 +1,25 @@
-class Clicked 
-{
-  LaserTower laserT;
-  
-  void pressSB() 
-  {
-    if(key == ' ') 
-    {
-      laserT.laserTower.add(new LaserTower(mouseX, mouseY));
-    }
-  }
-}
-
 class LaserTower 
-{
- int posX;
- int posY;
+{ 
+ int x;
+ int y;
  int size;
  float radius;
- int count;
- ArrayList laserTower = new ArrayList();
  
  Style style;
  
- LaserTower(int x, int y) 
+ LaserTower() 
  {
-   posX = x;
-   posY = y;
    size = 50;
-   radius = size*2.5;
+   radius = size*3;
+   style = new Style();
  }
  
- void laserTower() 
+ void display()
  {
-   for(int i = 0; i < laserTower.size(); i++) 
-   {
-     fill(style.cTower);
-     circle(posX, posY, size);
-     fill(style.transparent);
-     circle(posX, posY, radius);
-    }
- }
-  
- void placement() 
- {
-   for(int i = 0; i < laserTower.size(); i++) 
-   {
-     laserTower.get(i);
-     laserTower();
-   }
+   fill(style.cTower);
+   circle(x, y, size);
+   fill(style.transparent);
+   circle(x, y, radius);
  }
 }
 
