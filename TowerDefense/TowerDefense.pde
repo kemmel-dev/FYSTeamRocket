@@ -60,11 +60,23 @@ void draw()
     {
         selectedTile = GetCurrentTile();
         drawBackground();
-        drawTowers();
         drawEnemies();
         drawUI();
+        drawTowers();
     }
 
+}
+
+void drawTowers()
+{
+    for (int y = 0; y < 9; y++)
+    {
+      for (int x = 0; x < 16; x++)
+      {
+        Tile tile = grid.grid[x][y];
+        tile.tower.display();
+      }
+    }
 }
 
 void keyPressed() 
@@ -81,14 +93,8 @@ void keyPressed()
 
 void drawBackground()
 {
-
     map.display();
     grid.display();
-}
-
-void drawTowers()
-{
-
 }
 
 void drawEnemies()
