@@ -21,6 +21,17 @@ class Enemy
         w = int(t.w / 2);
         style = new Style();
         initWaypoints();
+        hitpoints = 100;
+    }
+
+    Boolean takeDamage(int damage)
+    {
+        hitpoints -= damage;
+        if (hitpoints < 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     // Initialises the wayPointspassed by setting

@@ -7,6 +7,14 @@ class Controls {
 
   int selectionX, selectionY;
 
+  void initControls()
+  {
+      // Set selected tile to the approximate middle of the grid
+      selectionX = 7;
+      selectionY = 4;
+      grid.grid[controls.selectionX][controls.selectionY].selected = true;
+  }
+
   // Moves the selected tile towards moveType
   void Move(int moveType) 
   {
@@ -66,6 +74,7 @@ class Controls {
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 1);
         }
+        enemies.add(new Enemy());
       }
     }
   }
