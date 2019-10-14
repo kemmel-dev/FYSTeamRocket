@@ -67,9 +67,11 @@ class Controls {
       if (keyCode == CONTROL)
       {
         Tile currentTile = grid.grid[selectionX][selectionY]; 
-        if (currentTile.tower.towerType == 0 && gold.gold >= 50)
+        // If the tile has an 'empty' tower and we can afford a tower
+        if (currentTile.tower.towerType == 0 && gold.amount >= 50)
         {
-          gold.gold -= 50;
+          // remove goldcost from tower
+          gold.amount -= 50;
           int x = currentTile.x;
           int y = currentTile.y;
           int d = grid.grid[0][0].w / 2;

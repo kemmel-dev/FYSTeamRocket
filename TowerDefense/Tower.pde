@@ -96,6 +96,7 @@ class Tower
         // if enemy died because of this damage, stop shooting
         shooting = false;
       }
+      // draw a laser
       stroke(style.laserColor);
       strokeWeight(style.laserStrokeWeight);
       line(x, y, enemy.x, enemy.y);

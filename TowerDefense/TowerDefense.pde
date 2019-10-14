@@ -76,9 +76,6 @@ void draw()
 
         // Draw the UI
         drawUI();
-
-        // Draw the Gold
-        drawGold();
     }
 
 }
@@ -164,7 +161,7 @@ void removeDeadEnemies()
 
 void drawUI()
 {
-
+    drawGold();
 }
 
 void drawGold() 
