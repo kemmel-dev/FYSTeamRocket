@@ -15,7 +15,7 @@ class Gold
   {
     for(Enemy e : enemies) 
     {
-      if(e.hitpoints < 1) 
+      if(e.hitpoints <= 0) 
       {
         gold += 10;
       }
@@ -26,11 +26,11 @@ class Gold
   {
     fill(style.textFill);
     textSize(textSize);
-    text("Gold:  " + gold, width/5, height/5);
+    text("Gold:  " + gold, width/6, height/8);
   }
   
   class Style 
   {
-    color textFill = color(255);
+    color textFill = color(255, 255, 255, 175);
   }
 }

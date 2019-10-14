@@ -14,6 +14,7 @@ Map map = new Map();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
+Gold gold = new Gold();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -75,6 +76,9 @@ void draw()
 
         // Draw the UI
         drawUI();
+
+        // Draw the Gold
+        drawGold();
     }
 
 }
@@ -161,4 +165,10 @@ void removeDeadEnemies()
 void drawUI()
 {
 
+}
+
+void drawGold() 
+{
+    gold.giveGold();
+    gold.textGold();
 }
