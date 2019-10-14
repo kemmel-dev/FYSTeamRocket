@@ -4,7 +4,9 @@ class Enemy
     int y;
     int w;
     int hitpoints;
+    int enemyType = 2;
     int moveDir = 3;
+    int msMultiplier = 2;
 
     Style style;
 
@@ -27,6 +29,11 @@ class Enemy
     Boolean takeDamage(int damage)
     {
         hitpoints -= damage;
+        if (hitpoints <= 50)
+        {
+            enemyType = 1;
+            msMultiplier = 1;
+        }
         if (hitpoints < 0)
         {
             return true;
@@ -47,7 +54,14 @@ class Enemy
     void display()
     {
         fill(style.enemyColor);
-        rect(x, y, w, w);
+        if (enemyType == 2)
+        {
+            rect(x, y, w, w);
+        }
+        else 
+        {
+            triangle(x - w / 2, y - w / 2, x, y + w / 2, x + w / 2, y - w / 2);
+        }
     }
 
     // Check which waypoints have been passed,
@@ -115,19 +129,20 @@ class Enemy
         // 2 = down
         // 3 = right
         // 4 = left
+        int ms = MOVE_SPEED * msMultiplier;
         switch(moveDir)
         {
             case 1:
-                y -= MOVE_SPEED;
+                y -= ms;
                 return;
             case 2:
-                y += MOVE_SPEED;
+                y += ms;
                 return;
             case 3:
-                x += MOVE_SPEED;
+                x += ms;
                 return;
             case 4:
-                x -= MOVE_SPEED;
+                x -= ms;
                 return;
             default:
                 return;

@@ -1,6 +1,6 @@
 class Gold 
 {
-  int gold = 150;
+  int amount = 150;
   int textSize = 50;
   
   
@@ -17,7 +17,7 @@ class Gold
     {
       if(e.hitpoints <= 0) 
       {
-        gold += 5;
+        amount += 5;
       }
     }
     
@@ -27,7 +27,7 @@ class Gold
   {
     fill(style.textFill);
     textSize(textSize);
-    text("Gold:  " + gold, width/6, height/8);
+    text("Gold: " + amount, width/6, height/8);
   }
   
   class Style 
