@@ -17,9 +17,10 @@ class Gold
     {
       if(e.hitpoints <= 0) 
       {
-        gold += 10;
+        gold += 5;
       }
     }
+    
   }
   
   void textGold() 
