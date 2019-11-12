@@ -48,7 +48,7 @@ class Tower
     if (towerType != 0)
     {
       fill(style.fillColor, 255);
-      //imageMode(CENTER);
+      imageMode(CENTER);
       testTower.resize(100,100);
       image(testTower,x, y);
       fill(style.rangeFill, 0);
