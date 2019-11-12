@@ -182,4 +182,6 @@ void drawBase()
 void drawLives()
 {
     lives.setupLives();
+    lives.loseLive();
+    lives.gameOverCheck();
 }
