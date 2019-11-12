@@ -48,11 +48,23 @@ class Tower
     if (towerType != 0)
     {
       fill(style.fillColor, 255);
+<<<<<<< HEAD
       imageMode(CENTER);
       testTower.resize(100,100);
       image(testTower,x, y);
       //fill(style.rangeFill, 0);
       //ellipse(x, y, rangeD, rangeD);
+=======
+<<<<<<< HEAD
+      ellipse(x, y, d, d);
+=======
+      //imageMode(CENTER);
+      testTower.resize(100,100);
+      image(testTower,x, y);
+      fill(style.rangeFill, 0);
+      ellipse(x, y, rangeD, rangeD);
+>>>>>>> dafb7dfc28b593b26a609b5d040c1d69c260a411
+>>>>>>> 412dade4d46f02f0cd193e4fadf0f6a2a7e24bde
     }
   }
 
