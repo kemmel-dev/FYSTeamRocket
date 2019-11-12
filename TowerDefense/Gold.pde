@@ -1,7 +1,7 @@
 class Gold 
 {
   int amount = 150;
-  int textSize = 50;
+  int textSize = 30;
   
   
   Enemy enemy;
