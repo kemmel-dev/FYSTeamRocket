@@ -137,7 +137,6 @@ void drawBackground()
 void handleEnemies()
 {
     removeDeadEnemies();
-    outOfBoundsEnemies();
 
     // For each enemy that's still alive
     for (Enemy enemy : enemies)
@@ -161,17 +160,6 @@ void removeDeadEnemies()
             i.remove();
         }
     }    
-}
-
-void outOfBoundsEnemies()
-{
-    Iterator<Enemy> i = enemies.iterator();
-    Enemy e = i.next();
-    if(e.x > SIZE_X)
-    {
-        textSize(100);
-        text("WHY YOU DO DIS", 0, 0);
-    }
 }
 
 void drawUI()
