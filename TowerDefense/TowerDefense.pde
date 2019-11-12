@@ -15,6 +15,7 @@ Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
 Gold gold = new Gold();
+Base base = new Base();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -71,6 +72,7 @@ void draw()
 
         // Draw the background
         drawBackground();
+        drawBase();
         handleEnemies();
         handleTowers();
 
@@ -168,4 +170,9 @@ void drawGold()
 {
     gold.giveGold();
     gold.textGold();
+}
+
+void drawBase()
+{
+    base.buildBase();
 }
