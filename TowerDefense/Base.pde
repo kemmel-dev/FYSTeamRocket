@@ -26,6 +26,6 @@ class Base
 
     class Style
     {
-        color base = color(100);
+        color base = color(50, 50, 50, 205);
     }
 }
