@@ -51,8 +51,8 @@ class Tower
       imageMode(CENTER);
       testTower.resize(100,100);
       image(testTower,x, y);
-      fill(style.rangeFill, 0);
-      ellipse(x, y, rangeD, rangeD);
+      //fill(style.rangeFill, 0);
+      //ellipse(x, y, rangeD, rangeD);
     }
   }
 
