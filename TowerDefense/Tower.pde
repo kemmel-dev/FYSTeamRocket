@@ -47,6 +47,8 @@ class Tower
     {
       fill(style.fillColor, 255);
       ellipse(x, y, d, d);
+        fill(style.rangeFill, 0);
+        ellipse(x, y, rangeD, rangeD);
     }
   }
 
