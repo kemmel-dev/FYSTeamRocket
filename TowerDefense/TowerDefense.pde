@@ -16,6 +16,7 @@ Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
 Gold gold = new Gold();
 Base base = new Base();
+Lives lives = new Lives();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -72,9 +73,9 @@ void draw()
 
         // Draw the background
         drawBackground();
-        drawBase();
         handleEnemies();
         handleTowers();
+        drawBase();
 
         // Draw the UI
         drawUI();
@@ -136,6 +137,7 @@ void drawBackground()
 void handleEnemies()
 {
     removeDeadEnemies();
+    outOfBoundsEnemies();
 
     // For each enemy that's still alive
     for (Enemy enemy : enemies)
@@ -161,9 +163,21 @@ void removeDeadEnemies()
     }    
 }
 
+void outOfBoundsEnemies()
+{
+    Iterator<Enemy> i = enemies.iterator();
+    Enemy e = i.next();
+    if(e.x > SIZE_X)
+    {
+        textSize(100);
+        text("WHY YOU DO DIS", 0, 0);
+    }
+}
+
 void drawUI()
 {
     drawGold();
+    drawLives();
 }
 
 void drawGold() 
@@ -175,4 +189,9 @@ void drawGold()
 void drawBase()
 {
     base.buildBase();
+}
+
+void drawLives()
+{
+    lives.setupLives();
 }

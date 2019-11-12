@@ -2,12 +2,18 @@ class Gold
 {
   int amount = 150;
   int textSize = 30;
+  int xPos;
+  int yPos;
   
   
   Enemy enemy;
   Style style;
   
   Gold() {
+    xPos = 125;
+    yPos = 50;
+
+
     style = new Style();
   }
   
@@ -27,11 +33,11 @@ class Gold
   {
     fill(style.textFill);
     textSize(textSize);
-    text("Gold: " + amount, width/6, height/8);
+    text("Gold: " + amount, xPos, yPos);
   }
   
   class Style 
   {
-    color textFill = color(255, 255, 255, 175);
+    color textFill = color(255);
   }
 }
