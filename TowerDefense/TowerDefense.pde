@@ -66,6 +66,11 @@ void draw()
     {
         pauseMenu.display();
     }
+    //if user is gameOver, Game over menu
+    else if (lives.gameOver == true)
+    {
+        gameOverMenu.display
+    }
     // else play the game
     else 
     {

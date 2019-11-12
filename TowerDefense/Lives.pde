@@ -23,6 +23,7 @@ class Lives
         text("Lives  " + lives, xPos, yPos);
     }
 
+    //if enemy passed base, you lose 1 life
     void loseLive()
     {
         Iterator<Enemy> i = enemies.iterator();
