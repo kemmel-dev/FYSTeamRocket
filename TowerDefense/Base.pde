@@ -8,7 +8,7 @@ class Base
     Base()
     {
        xPos = 1550;
-       yPos = 350;
+       yPos = 250;
        sizeX = 50;
        sizeY = 200;
 
@@ -21,10 +21,11 @@ class Base
         rectMode(CORNER);
         fill(style.base);
         rect(xPos, yPos, sizeX, sizeY);
+        rectMode(CENTER);
     }
 
     class Style
     {
         color base = color(100);
     }
-}1
+}
