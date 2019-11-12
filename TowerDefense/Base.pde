@@ -8,7 +8,7 @@ class Base
     Base()
     {
        xPos = 1550;
-       yPos = 350;
+       yPos = 250;
        sizeX = 50;
        sizeY = 200;
 
@@ -26,6 +26,6 @@ class Base
 
     class Style
     {
-        color base = color(100);
+        color base = color(100, 100, 100, 255);
     }
 }
