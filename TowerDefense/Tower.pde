@@ -41,14 +41,18 @@ class Tower
 
   // Show this tower
   void display()
-  {
+  { 
+    PImage testTower;
+    testTower = loadImage("testTower.png");
     // if type is not non-existent
     if (towerType != 0)
     {
       fill(style.fillColor, 255);
-      ellipse(x, y, d, d);
-        fill(style.rangeFill, 0);
-        ellipse(x, y, rangeD, rangeD);
+      //imageMode(CENTER);
+      testTower.resize(100,100);
+      image(testTower,x, y);
+      fill(style.rangeFill, 0);
+      ellipse(x, y, rangeD, rangeD);
     }
   }
 

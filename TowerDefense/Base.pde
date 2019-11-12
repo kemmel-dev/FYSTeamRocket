@@ -27,4 +27,4 @@ class Base
     {
         color base = color(100);
     }
-}1
+}
