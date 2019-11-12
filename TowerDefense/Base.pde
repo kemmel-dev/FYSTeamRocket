@@ -21,10 +21,11 @@ class Base
         rectMode(CORNER);
         fill(style.base);
         rect(xPos, yPos, sizeX, sizeY);
+        rectMode(CENTER);
     }
 
     class Style
     {
         color base = color(100);
     }
-}1
+}
