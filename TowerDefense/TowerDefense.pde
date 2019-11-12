@@ -17,6 +17,7 @@ PauseMenu pauseMenu = new PauseMenu();
 Gold gold = new Gold();
 Base base = new Base();
 Lives lives = new Lives();
+Wave wave = new Wave();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -79,6 +80,8 @@ void draw()
 
         // Draw the UI
         drawUI();
+
+        wave.display();
     }
 
 }
