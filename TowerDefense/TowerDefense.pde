@@ -14,6 +14,7 @@ Map map = new Map();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
+GameOverMenu gameOver = new GameOverMenu();
 Gold gold = new Gold();
 Base base = new Base();
 Lives lives = new Lives();
@@ -69,7 +70,7 @@ void draw()
     //if user is gameOver, Game over menu
     else if (lives.gameOver == true)
     {
-        gameOverMenu.display
+        gameOver.display();
     }
     // else play the game
     else 
@@ -166,6 +167,7 @@ void removeDeadEnemies()
         if (e.hitpoints < 0)
         {
             i.remove();
+            gold.amount += 2;
         }
     }    
 }
@@ -178,7 +180,6 @@ void drawUI()
 
 void drawGold() 
 {
-    gold.giveGold();
     gold.textGold();
 }
 
