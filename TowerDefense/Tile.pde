@@ -22,6 +22,8 @@ class Tile
     {
         if (selected)
         {
+            fill(tower.style.rangeFill, 0);
+            ellipse(x, y, tower.rangeD, tower.rangeD);
             fill(style.selectedColor, style.selectedOpacity);
         }
         else 
