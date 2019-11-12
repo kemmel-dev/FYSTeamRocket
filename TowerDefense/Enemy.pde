@@ -10,6 +10,9 @@ class Enemy
 
     Style style;
 
+    PImage testEnemy;
+    PImage testEnemy2;
+
     // This array stores whether we've passed
     // checkpoints
     Boolean[] waypointsPassed = new Boolean[6];
@@ -53,14 +56,20 @@ class Enemy
 
     void display()
     {
+        testEnemy = loadImage("testEnemy.png");
         fill(style.enemyColor);
         if (enemyType == 2)
-        {
-            rect(x, y, w, w);
+        {   
+            imageMode(CENTER);
+            testEnemy.resize(50,50);
+            image(testEnemy,x, y);
         }
         else 
         {
-            triangle(x - w / 2, y - w / 2, x, y + w / 2, x + w / 2, y - w / 2);
+            testEnemy2 = loadImage("testEnemy2.png");
+            imageMode(CENTER);
+            testEnemy2.resize(50,50);
+            image(testEnemy2,x, y);
         }
     }
 
