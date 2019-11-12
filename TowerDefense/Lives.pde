@@ -43,11 +43,6 @@ class Lives
         if(lives == 0)
         {
             gameOver = true;
-            textAlign(CENTER);
-            fill(style.textRed);
-            textSize(style.textSizeGO);
-            text("Game over you noob", width/2, height/2);
-            textAlign(CORNER);
         }
     }
 

@@ -68,10 +68,7 @@ void draw()
         pauseMenu.display();
     }
     //if user is gameOver, Game over menu
-    else if (lives.gameOver == true)
-    {
-        gameOver.display();
-    }
+    
     // else play the game
     else 
     {
@@ -88,6 +85,10 @@ void draw()
         drawUI();
 
         wave.display();
+        if(lives.gameOver == true)
+        {
+            gameOver.display();
+        }
     }
 
 }

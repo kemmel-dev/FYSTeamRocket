@@ -11,9 +11,9 @@ class GameOverMenu
         y = 0;
         sizeX = SIZE_X;
         sizeY = SIZE_Y;
-        xPos = width/2;
-        yPos1 = height/2;
-        yPos2 = (height/3)*2;
+        xPos = SIZE_X/2;
+        yPos1 = SIZE_Y/3;
+        yPos2 = SIZE_Y/2;
     }
 
     void display()
@@ -22,13 +22,19 @@ class GameOverMenu
         fill(style.black);
         rect(x, y, sizeX, sizeY);
         rectMode(CENTER);
+        fill(style.red);
         textAlign(CENTER);
+        textSize(style.textSize);
         text("Game over", xPos, yPos1);
+        textSize(style.textSize2);
         text("You are too noob to play any further", xPos, yPos2);
     }
 
     class Style
     {
-        color black = color(0);
+        color black = color(0, 0, 0, 150);
+        color red = color(255, 50, 50);
+        int textSize = 100;
+        int textSize2 = 70;
     }
 }
