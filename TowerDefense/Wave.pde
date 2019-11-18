@@ -45,7 +45,7 @@ class Wave
     //when the wave ends the player will gain 200 score
     if(kills == nWave * multiplier && waveSpawned == true)
     {
-      score += 200;
+      score += 100;
       nWave++;
       kills = 0;
       spawns = 0;
@@ -59,7 +59,7 @@ class Wave
       if (e.hitpoints < 0) 
       {
         kills++;
-        score += 50;
+        score += 5;
       }
     }
   }

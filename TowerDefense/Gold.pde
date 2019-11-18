@@ -21,7 +21,7 @@ class Gold
   {
     for(Enemy e : enemies) 
     {
-      if(e.hitpoints <= 0) 
+      if(e.hitpoints < 0) 
       {
         amount += 5;
       }
