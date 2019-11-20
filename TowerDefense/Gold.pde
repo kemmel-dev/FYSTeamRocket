@@ -1,6 +1,6 @@
 class Gold 
 {
-  int amount = 150;
+  int amount = 80;
   int textSize = 30;
   int xPos;
   int yPos;
