@@ -17,18 +17,6 @@ class Gold
     style = new Style();
   }
   
-  void giveGold() 
-  {
-    for(Enemy e : enemies) 
-    {
-      if(e.hitpoints < 0) 
-      {
-        amount += 5;
-      }
-    }
-    
-  }
-  
   void textGold() 
   {
     fill(style.textFill);

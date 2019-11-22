@@ -44,8 +44,8 @@ class Tower
   { 
     PImage testTower;
     testTower = loadImage("testTower.png");
-    // if type is not non-existent
-    if (towerType != 0)
+    // if type is the Lasertower
+    if (towerType == 1)
     {
       fill(style.fillColor, 255);
       imageMode(CENTER);
@@ -58,6 +58,12 @@ class Tower
       testTower.resize(100,100);
       image(testTower,x, y);
       
+    }
+    //if type is the freeze tower
+    else if (towerType == 2)
+    {
+      fill(255);
+      ellipse(x, y, 50, 50);
     }
   }
 
@@ -81,7 +87,7 @@ class Tower
   {
     // distance from the tower to the enemy
     float distance = dist(x, y, e.x, e.y);
-    // if the enemy is in range
+    // if the enemy is in range from the Lasertower
     if (distance < range)
     {
       // we're now shooting
@@ -97,7 +103,7 @@ class Tower
   void shootEnemy()
   {
     // if target is still in range
-    if (isInRange(enemy))
+    if (towerType == 1 && isInRange(enemy))
     {
       // Let target take damage
       if (enemy.takeDamage(2))
@@ -116,6 +122,22 @@ class Tower
     else 
     {
       shooting = false;
+    }
+  }
+
+  void freezeEnemy()
+  {
+    if(towerType == 2 && isInRange(enemy))
+    {
+      enemy.msMultiplier = 1;
+    }
+    else if(enemy.enemyType == 1)
+    {
+      enemy.msMultiplier = 1;
+    }
+    else if(enemy.enemyType == 2)
+    {
+      enemy.msMultiplier = 2;
     }
   }
 
