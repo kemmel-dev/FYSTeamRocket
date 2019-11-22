@@ -93,14 +93,10 @@ class GameOverMenu
 
     class Style
     {
-<<<<<<< HEAD
         color black = color(0, 0, 0, 150);
-=======
         color blackTransparent = color(0, 0, 0, 200);
         color white = color(255);
-        color black = color(0);
         color transparent = color(255, 255, 255, 0);
->>>>>>> GameOverMenu + Begin FreezeTower
         color red = color(255, 50, 50);
         int textSize = 100;
         int textSize2 = 70;

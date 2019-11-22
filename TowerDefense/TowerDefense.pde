@@ -92,9 +92,9 @@ void draw()
         drawUI();
 
         wave.display();
-        if(lives.gameOver == true)
+        if(gameOverMenu.gameOver == true)
         {
-            gameOver.display();
+            drawGameOver();
         }
     }
 
