@@ -5,6 +5,7 @@ class Wave
   int timer;
   int spawns;
   int multiplier;
+  int enemiesLeft;
 
   Enemy enemy;
 
@@ -22,8 +23,9 @@ class Wave
 
   void display()
   {
+    enemiesLeft = nWave*10 - kills;
     text("Wave: " + nWave, 125, 100);
-    text("Kills: " + kills + " / " + nWave * 10, 125, 150);
+    text("Enemies left: " + enemiesLeft, 125, 150);
     text("Score: " + score, 125, 200);
     timer++;
 
