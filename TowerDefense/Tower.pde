@@ -129,9 +129,9 @@ class Tower
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
   }
-  void 
-  {
-    
-  }
+ // void 
+ // {
+ //   
+ // }
 }
 
