@@ -21,7 +21,7 @@ class Enemy
     {
         Tile t = grid.grid[0][5];
 
-        x = - t.w;
+        x = - t.w/4;
         y = t.y;
         w = int(t.w / 2);
         style = new Style();
