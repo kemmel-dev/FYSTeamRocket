@@ -9,10 +9,12 @@ class PauseMenu
 
     void display()
     {
-        background(0);
+        background(0,0,0,100);
         fill(style.textColor);
         textSize(style.fontSize);
-        text("paused yo", SIZE_X / 2, SIZE_Y / 2);
+        text("Game Paused", SIZE_X / 2, SIZE_Y / 2);
+        textSize(style.fontSize / 2);
+        text("Press 'a' to resume", SIZE_X / 2, SIZE_Y / 2);
     }
 
     class Style
