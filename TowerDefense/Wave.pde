@@ -76,11 +76,11 @@ if(waveEnded == false)
     //Ready next wave button
     if(waveEnded && allEnemiesSpawned && allEnemiesKilled)
     {
-      text("Press 'R' to start next wave", width/2, height/2);
+      text("Press 'S' to start next wave", width/2, height/2);
     }
 
     //If the 'r' key is pressed after a wave ended, the next one will start
-    if(waveEnded && allEnemiesKilled && allEnemiesSpawned && keyPressed && key == 'r')
+    if(waveEnded && allEnemiesKilled && allEnemiesSpawned && keyPressed && key == 's')
     {
       allEnemiesSpawned = false;
       allEnemiesKilled = false;
