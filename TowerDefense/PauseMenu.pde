@@ -14,7 +14,7 @@ class PauseMenu
         textSize(style.fontSize);
         text("Game Paused", SIZE_X / 2, SIZE_Y / 2);
         textSize(style.fontSize / 2);
-        text("Press 'a' to resume", SIZE_X / 2, SIZE_Y / 2);
+        text("Press 'a' to resume", SIZE_X / 2, SIZE_Y / 1.5);
     }
 
     class Style

@@ -42,6 +42,10 @@ class Controls {
   // Handles key press events
   void keyPressed()
   {
+    if (key == 'a')
+      {
+        gamePaused = true;
+      }
     if (key == CODED)
     {
       if (keyCode == UP) 
@@ -60,26 +64,8 @@ class Controls {
       {
         Move(4);
       }
-      if (keyCode == SHIFT)
-      {
-        gamePaused = true;
-      }
-      if (keyCode == CONTROL)
-      {
-        Tile currentTile = grid.grid[selectionX][selectionY]; 
-        // If the tile has an 'empty' tower and we can afford a tower
-        if (currentTile.tower.towerType == 0 && gold.amount >= 50)
-        {
-          // remove goldcost from tower
-          gold.amount -= 50;
-          int x = currentTile.x;
-          int y = currentTile.y;
-          int d = grid.grid[0][0].w / 2;
-          currentTile.tower = new Tower(x, y, d, 1);
-        }
-      }
     }
-    if (key == 'q')
+    if (key == 'x')
       {
         Tile currentTile = grid.grid[selectionX][selectionY]; 
         // If the tile has an 'empty' tower and we can afford a tower
@@ -93,5 +79,20 @@ class Controls {
           currentTile.tower = new Tower(x, y, d, 2);
         }
       }
+      if (key == 'z')
+      {
+        Tile currentTile = grid.grid[selectionX][selectionY]; 
+        // If the tile has an 'empty' tower and we can afford a tower
+        if (currentTile.tower.towerType == 0 && gold.amount >= 50)
+        {
+          // remove goldcost from tower
+          gold.amount -= 50;
+          int x = currentTile.x;
+          int y = currentTile.y;
+          int d = grid.grid[0][0].w / 2;
+          currentTile.tower = new Tower(x, y, d, 1);
+        }
+      }
+      
   }
 }
