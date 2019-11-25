@@ -26,8 +26,10 @@ class Tile
             ellipse(x, y, tower.rangeD, tower.rangeD);
             fill(style.selectedColor, style.selectedOpacity);
             if (keyPressed)
-            {
-                
+            { if (key == 'u')
+                {
+                    upgradeMenu();   
+                }
             }
         }
         else 

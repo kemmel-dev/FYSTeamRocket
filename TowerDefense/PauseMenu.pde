@@ -9,7 +9,7 @@ class PauseMenu
 
     void display()
     {
-        background(0,0,0,100);
+        background(0);
         fill(style.textColor);
         textSize(style.fontSize);
         text("Game Paused", SIZE_X / 2, SIZE_Y / 2);
