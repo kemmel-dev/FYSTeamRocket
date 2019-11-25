@@ -7,6 +7,9 @@ class Tower
   // diameter and radius for the tower itself
   int d;
   int r;
+  int aura, auraMultiplier;
+  float auraWeight, auraWeightMultiplier;
+  int towerSize;
 
   // The enemy the tower is targetting
   Enemy enemy;
@@ -35,6 +38,11 @@ class Tower
     r = d / 2;
     range = r * 10;
     rangeD = range + range;
+    towerSize = 50;
+    aura = 0;
+    auraMultiplier = 5;
+    auraWeight = 1;
+    auraWeightMultiplier = 0.05;
     style = new Style();
     towerType = _towerType;
   }
@@ -44,8 +52,8 @@ class Tower
   { 
     PImage testTower;
     testTower = loadImage("testTower.png");
-    // if type is not non-existent
-    if (towerType != 0)
+    // if type is the Lasertower
+    if (towerType == 1)
     {
       fill(style.fillColor, 255);
       imageMode(CENTER);
@@ -58,6 +66,27 @@ class Tower
       testTower.resize(100,100);
       image(testTower,x, y);
       
+    }
+    //if type is the freeze tower
+    else if (towerType == 2)
+    {
+      fill(style.hidden);
+      stroke(style.white);
+      strokeWeight(style.towerStrokeWeight);
+      ellipse(x, y, 50, 50);
+      strokeWeight(auraWeight);
+      
+      ellipse(x, y, aura, aura);
+      strokeWeight(style.defaultStrokeWeight);
+      stroke(style.black);
+      
+      auraWeight += auraWeightMultiplier;
+      aura += auraMultiplier;
+      if(aura >= 350)
+      {
+        aura = 0;
+        auraWeight = 1;
+      }
     }
   }
 
@@ -81,7 +110,7 @@ class Tower
   {
     // distance from the tower to the enemy
     float distance = dist(x, y, e.x, e.y);
-    // if the enemy is in range
+    // if the enemy is in range from the Lasertower
     if (distance < range)
     {
       // we're now shooting
@@ -97,7 +126,7 @@ class Tower
   void shootEnemy()
   {
     // if target is still in range
-    if (isInRange(enemy))
+    if (towerType == 1 && isInRange(enemy))
     {
       // Let target take damage
       if (enemy.takeDamage(2))
@@ -119,19 +148,44 @@ class Tower
     }
   }
 
+  void freezeEnemy()
+  {
+
+    if(towerType == 2 && isInRange(enemy))
+    {
+      enemy.msMultiplier = 1;
+    }
+    else if(enemy.enemyType == 1)
+    {
+      enemy.msMultiplier = 1;
+    }
+    else if(enemy.enemyType == 2)
+    {
+      enemy.msMultiplier = 2;
+    }
+  }
+
+  // void showRange()
+  // {
+  //   if(???)
+  //   {
+  //     fill(style.rangeFill, 0);
+  //     circle(x, y, rangeD);
+  //   }
+  // }
+
   // holds styling options for tower-related options
   class Style 
   {
     color fillColor = color(100, 100, 100);
     color rangeFill = color(0, 0, 0);
     color laserColor = color(235, 20, 20);
-    color black = 0;
+    color black = color(0, 0, 0);
+    color hidden = color(255, 255, 255, 0);
+    color white = color(255, 255, 255);
     int laserStrokeWeight = SIZE_X / 100;
+    int towerStrokeWeight = 5;
     int defaultStrokeWeight = 1;
   }
- // void 
- // {
- //   
- // }
 }
 

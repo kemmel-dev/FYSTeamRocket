@@ -1,6 +1,6 @@
 class Gold 
 {
-  int amount = 150;
+  int amount = 80;
   int textSize = 30;
   int xPos;
   int yPos;
@@ -15,18 +15,6 @@ class Gold
 
 
     style = new Style();
-  }
-  
-  void giveGold() 
-  {
-    for(Enemy e : enemies) 
-    {
-      if(e.hitpoints < 0) 
-      {
-        amount += 5;
-      }
-    }
-    
   }
   
   void textGold() 

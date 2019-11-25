@@ -14,6 +14,7 @@ Map map = new Map();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
+GameOverMenu gameOverMenu = new GameOverMenu();
 Gold gold = new Gold();
 Base base = new Base();
 Lives lives = new Lives();
@@ -66,6 +67,15 @@ void draw()
     {
         pauseMenu.display();
     }
+    //if user is gameOver, Game over menu
+    else if(gameOverMenu.gameOver == true)
+    {
+        drawBackground();
+        drawBase();
+        handleTowers();
+        drawGameOver();
+    }
+    
     // else play the game
     else 
     {
@@ -82,6 +92,10 @@ void draw()
         drawUI();
 
         wave.display();
+        if(gameOverMenu.gameOver == true)
+        {
+            drawGameOver();
+        }
     }
 
 }
@@ -106,6 +120,7 @@ void handleTowers()
             if (t.shooting)
             {
                 t.shootEnemy();
+                t.freezeEnemy();
             }
             else
             {
@@ -161,6 +176,7 @@ void removeDeadEnemies()
         if (e.hitpoints < 0)
         {
             i.remove();
+            gold.amount += 2;
         }
     }    
 }
@@ -169,11 +185,11 @@ void drawUI()
 {
     drawGold();
     drawLives();
+    checkGameOver();
 }
 
 void drawGold() 
 {
-    gold.giveGold();
     gold.textGold();
 }
 
@@ -186,5 +202,16 @@ void drawLives()
 {
     lives.setupLives();
     lives.loseLive();
-    lives.gameOverCheck();
+}
+
+void checkGameOver()
+{
+    gameOverMenu.gameOverCheck();
+}
+
+void drawGameOver()
+{
+    gameOverMenu.display();
+    gameOverMenu.buttons();
+    gameOverMenu.buttonText();
 }

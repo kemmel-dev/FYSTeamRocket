@@ -6,7 +6,7 @@ class Enemy
     int hitpoints;
     int enemyType = 2;
     int moveDir = 3;
-    int msMultiplier = 2;
+    float msMultiplier = 2;
 
     Style style;
 
@@ -138,7 +138,7 @@ class Enemy
         // 2 = down
         // 3 = right
         // 4 = left
-        int ms = MOVE_SPEED * msMultiplier;
+        float ms = MOVE_SPEED * msMultiplier;
         switch(moveDir)
         {
             case 1:

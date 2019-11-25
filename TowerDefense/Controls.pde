@@ -79,5 +79,19 @@ class Controls {
         }
       }
     }
+    if (key == 'q')
+      {
+        Tile currentTile = grid.grid[selectionX][selectionY]; 
+        // If the tile has an 'empty' tower and we can afford a tower
+        if (currentTile.tower.towerType == 0 && gold.amount >= 20)
+        {
+          // remove goldcost from tower
+          gold.amount -= 20;
+          int x = currentTile.x;
+          int y = currentTile.y;
+          int d = grid.grid[0][0].w / 2;
+          currentTile.tower = new Tower(x, y, d, 2);
+        }
+      }
   }
 }
