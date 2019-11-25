@@ -65,7 +65,7 @@ class GameOverMenu
         textSize(style.textSize);
         text("Game over", xPos, yPos1);
         textSize(style.textSize2);
-        text("You are too noob to play any further", xPos, yPos2);
+        text("The enemy destroyed your base!", xPos, yPos2);
     }
 
     void buttons()
@@ -73,8 +73,10 @@ class GameOverMenu
         fill(style.transparent);
         stroke(style.white);
         strokeWeight(bold);
-        rect(statisticsX, statisticsY, statisticsSizeX, statisticsSizeY);
-        rect(leaderboardsX, leaderboardsY, leaderboardsSizeX, leaderboardsSizeY);
+       //Statistics en Leaderboards komen later
+       //--------- 
+       // rect(statisticsX, statisticsY, statisticsSizeX, statisticsSizeY);
+       // rect(leaderboardsX, leaderboardsY, leaderboardsSizeX, leaderboardsSizeY);
         rect(exitX, exitY, exitSizeX, exitSizeY);
         strokeWeight(defaultStrokeWeight);
         stroke(style.black);
@@ -85,8 +87,11 @@ class GameOverMenu
         fill(style.white);
         textSize(style.buttonTextSize);
         textAlign(CENTER);
-        text("Statistics", statisticsX, statisticsY + textExtraY);
-        text("Leaderboards", leaderboardsX, leaderboardsY + textExtraY);
+
+      //Statistics en Leaderboards komen later 
+      //---------  
+      //  text("Statistics", statisticsX, statisticsY + textExtraY);
+      //  text("Leaderboards", leaderboardsX, leaderboardsY + textExtraY);
         text("Exit", exitX, exitY + textExtraY);
         fill(style.black);
     }
