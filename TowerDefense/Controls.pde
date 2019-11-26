@@ -89,5 +89,24 @@ class Controls {
           statistics.amount -= 50;
         }
     }
+    if(key == 'e')
+    {
+      Tile currentTile = grid.grid[selectionX][selectionY];
+        int x = currentTile.x;
+        int y = currentTile.y;
+        int d = grid.grid[0][0].w / 2;
+        switch(currentTile.tower.towerType)
+        { 
+          case 1:
+            currentTile.tower = new Tower(x, y, d, 0);
+            statistics.amount += 25;
+            return;
+          case 2:
+            currentTile.tower = new Tower(x, y, d, 0);
+            statistics.amount += 50;
+            return;
+        }
+
+    }
   }
 }
