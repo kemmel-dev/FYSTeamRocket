@@ -20,7 +20,7 @@ class UI
         textX = SIZE_X/2;
         textSize = 30;
         lineXY = waypoints.tileSize/2;
-        lineX = (waypoints/2)*6;
+        lineX = (waypoints.tileSize/2)*7;
         lineY = waypoints.tileSize/2;
     }
 
@@ -32,7 +32,7 @@ class UI
         strokeWeight(style.thickStrokeWeight);
 
         rect(0, 0, sizeX, sizeY);
-        line();
+        line(lineXY, lineXY, lineX, lineY);
 
         strokeWeight(style.defaultStrokeWeight);
         stroke(style.black);
@@ -44,7 +44,7 @@ class UI
         fill(style.white);
         textSize(textSize);
         textAlign(CORNER);
-        text("Gold:  " + statistics.amount, 100, 50);
+        text("Gold:  " + statistics.amount, waypoints.tileSize/2, 50);
     }
 
     void lives()
@@ -52,7 +52,7 @@ class UI
         fill(style.white);
         textSize(textSize);
         textAlign(CORNER);
-        text("Lives:  " + statistics.lives, 200, 50);
+        text("Lives:  " + statistics.lives, (waypoint.tileSize/2)*3, 50);
     }
 
     void waves()
