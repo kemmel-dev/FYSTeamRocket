@@ -188,7 +188,7 @@ void handleDeadEnemies()
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
         }
-        if(e.x - e.w > SIZE_X - waypoints.tileSize)
+        if(e.x - e.w > SIZE_X-SIZE_X/grid.sizeX)
         {
             i.remove();
             statistics.lives--;

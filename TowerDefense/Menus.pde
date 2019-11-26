@@ -13,7 +13,7 @@ class Menus
         background(0);
         fill(style.textColor);
         textSize(style.fontSize);
-        text("paused yo", SIZE_X / 2, SIZE_Y / 2);
+        text("Paused yo", SIZE_X / 2, SIZE_Y / 2);
     }
 
     void display()
@@ -39,7 +39,7 @@ class Menus
 
         float buttonWidth = SIZE_X / grid.sizeX;
         float buttonHeight = buttonWidth;
-        int numberOfButtons = 9;
+        int numberOfButtons = 1;
 
         UpgradeMenu(PVector _pos)
         {
@@ -48,11 +48,7 @@ class Menus
 
         void display()
         {
-            fill(255);
-            for (float y = pos.y; y < pos.y + buttonHeight * numberOfButtons; y += buttonHeight)
-            {
-                rect(pos.x, y, buttonWidth, buttonHeight);
-            }
+            fill(255); 
         }
     
     }
