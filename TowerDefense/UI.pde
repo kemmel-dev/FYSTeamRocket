@@ -18,9 +18,10 @@ class UI
         // {
         //     textY[i] = 400;
         // }
-        // sizeX = 400;
-        // sizeY = 80;
-        // textX = SIZE_X/2;
+        sizeX = 400;
+        sizeY = 80;
+        textX = SIZE_X/2;
+        textSize = 30;
     }
 
 
@@ -52,7 +53,8 @@ class UI
 
     void lives()
     {
-
+        textSize(textSize);
+        text("Lives:  " + statistics.lives, 100, 50);
     }
 
     void waves()

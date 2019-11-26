@@ -16,6 +16,7 @@ Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
 Statistics statistics =  new Statistics();
 UI ui = new UI();
+Base base = new Base();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -75,6 +76,7 @@ void draw()
         drawBackground();
         handleEnemies();
         handleTowers();
+        drawBase();
 
         // Draw the UI
         drawUI();
@@ -150,6 +152,7 @@ void handleEnemies()
 // Removes dead enemies from our list and give gold.
 void handleDeadEnemies()
 {
+    println(statistics.lives);
     Iterator<Enemy> i = enemies.iterator();
     while (i.hasNext())
     {
@@ -158,6 +161,11 @@ void handleDeadEnemies()
         {
             i.remove();
             statistics.amount += 2;
+        }
+        if(e.x - e.w > SIZE_X)
+        {
+            i.remove();
+            statistics.lives--;
         }
     }    
 }
@@ -170,4 +178,10 @@ void drawUI()
 void uiSetup()
 {
     ui.drawTextBoxes();
+    ui.lives();
+}
+
+void drawBase()
+{
+    base.baseStructure();
 }

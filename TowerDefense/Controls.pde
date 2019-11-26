@@ -74,7 +74,6 @@ class Controls {
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 2);
         }
-        print("TEST");
         enemies.add(new Enemy());
       }
     }

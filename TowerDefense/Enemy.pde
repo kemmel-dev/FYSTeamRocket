@@ -125,7 +125,6 @@ class Enemy
                 y += MOVE_SPEED * msMultiplier;
                 return;
             case 3:
-                print(MOVE_SPEED);
                 x += MOVE_SPEED * msMultiplier;
                 return;
             case 4:
