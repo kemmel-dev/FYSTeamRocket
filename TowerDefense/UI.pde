@@ -52,14 +52,14 @@ class UI
         fill(style.white);
         textSize(textSize);
         textAlign(CORNER);
-        text("Lives:  " + statistics.lives, (waypoint.tileSize/2)*3, 50);
+        text("Lives:  " + statistics.lives, (waypoints.tileSize/2)*3, 50);
     }
 
     void waves()
     {
         fill(style.white);
         textAlign(CORNER);
-        text("Wave: " + wave.waveNumber, 100, 100);
+        text("Wave: " + wave.waveNumber, waypoints.tileSize/2, 100);
     }
 
     class Style
