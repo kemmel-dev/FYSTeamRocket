@@ -102,7 +102,6 @@ void draw()
 
             //Start the waves
             wave.spawn();
-            wave.kills();
             wave.end();
             menus.display();
         }
@@ -187,11 +186,13 @@ void handleDeadEnemies()
         {
             i.remove();
             statistics.amount += 2;
+            wave.enemiesLeft--;
         }
         if(e.x - e.w > SIZE_X)
         {
             i.remove();
             statistics.lives--;
+            wave.enemiesLeft--;
         }
     }    
 }
