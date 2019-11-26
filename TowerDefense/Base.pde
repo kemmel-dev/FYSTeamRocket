@@ -1,7 +1,7 @@
 class Base
 {
     float x, y;
-    int dX, dY;
+    float dX, dY;
 
 
     Style style = new Style();
@@ -11,8 +11,8 @@ class Base
     {
         x = SIZE_X - waypoints.tileSize;
         y = waypoints.wayPoint6;
-        dX = 100;
-        dY = 200;
+        dX = waypoints.tileSize*2;
+        dY = waypoints.tileSize*4;
     }
 
     void baseStructure()

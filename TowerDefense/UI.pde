@@ -1,10 +1,11 @@
 class UI
 {
     int textSize;
+    float lineXY, lineX, lineY;
 
     int textX;
     int textCount = 4;
-    int sizeX, sizeY;
+    float sizeX, sizeY;
     int currentY = 100;
 
     float[] textY = new float[textCount];
@@ -14,58 +15,59 @@ class UI
 
     UI()
     {
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     textY[i] = 400;
-        // }
-        sizeX = 400;
-        sizeY = 80;
+        sizeX = waypoints.tileSize*4;
+        sizeY = waypoints.tileSize;
         textX = SIZE_X/2;
-        textSize = 20;
+        textSize = 30;
+        lineXY = waypoints.tileSize/2;
+        lineX = (waypoints/2)*6;
+        lineY = waypoints.tileSize/2;
     }
 
-
-    void setupTextBoxes()
+    void drawTextBox()
     {
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     textY[i] += currentY;
-        // }
-    }
+        rectMode(CORNER);
+        fill(style.black, style.highOpacity);
+        stroke(style.white);
+        strokeWeight(style.thickStrokeWeight);
 
-    void drawTextBoxes()
-    {
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     rect(textX, textY[i], sizeX, sizeY);
+        rect(0, 0, sizeX, sizeY);
+        line();
 
-        // }
+        strokeWeight(style.defaultStrokeWeight);
+        stroke(style.black);
+        rectMode(CENTER);
     }
 
     void gold()
     {
+        fill(style.white);
         textSize(textSize);
+        textAlign(CORNER);
         text("Gold:  " + statistics.amount, 100, 50);
-        // fill(style.white);
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     text("Gold  " + statistics.amount, textX, textY[0]);
-        // }
     }
 
     void lives()
     {
+        fill(style.white);
         textSize(textSize);
+        textAlign(CORNER);
         text("Lives:  " + statistics.lives, 200, 50);
     }
 
     void waves()
     {
+        fill(style.white);
+        textAlign(CORNER);
         text("Wave: " + wave.waveNumber, 100, 100);
     }
 
     class Style
     {
         color white = color(255, 255, 255);
+        color black = color(0, 0, 0);
+        int highOpacity = 200;
+        int defaultStrokeWeight = 1;
+        int thickStrokeWeight = 5;
     }
 }

@@ -3,8 +3,8 @@
 import java.util.Iterator;
 
 // Constants
-final static int SIZE_X = 1920 / 2;
-final static int SIZE_Y = 1080 / 2;
+final static int SIZE_X = 1920;
+final static int SIZE_Y = 1080;
 final int FRAME_RATE = 30;
 final static float MOVE_SPEED = (SIZE_X / 500) * 2;
 
@@ -47,7 +47,6 @@ void setup()
     grid.initGrid();
     map.init();
     controls.initControls();
-    ui.setupTextBoxes();
 
     // create enemy
     //enemies.add(new Enemy());
@@ -183,7 +182,7 @@ void drawUI()
 
 void uiSetup()
 {
-    ui.drawTextBoxes();
+    ui.drawTextBox();
     ui.lives();
     ui.gold();
     ui.waves();
