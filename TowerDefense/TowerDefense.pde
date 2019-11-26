@@ -13,10 +13,11 @@ Grid grid = new Grid();
 Map map = new Map();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
-PauseMenu pauseMenu = new PauseMenu();
+Menus menus = new Menus();
 Statistics statistics =  new Statistics();
 UI ui = new UI();
 Base base = new Base();
+Wave wave = new Wave();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -49,7 +50,7 @@ void setup()
     ui.setupTextBoxes();
 
     // create enemy
-    enemies.add(new Enemy());
+    //enemies.add(new Enemy());
 }
 
 // Gets the currently selected tile
@@ -64,7 +65,7 @@ void draw()
     // if paused display the pause menu
     if (gamePaused)
     {
-        pauseMenu.display();
+        menus.displayPauseMenu();
     }
     // else play the game
     else 
@@ -81,6 +82,10 @@ void draw()
         // Draw the UI
         drawUI();
     }
+
+        wave.spawn();
+        wave.kills();
+        wave.end();
 
 }
 
@@ -119,7 +124,7 @@ void keyPressed()
 {
     if (gamePaused)
     {
-        pauseMenu.keyPressed();
+        menus.keyPressed();
     }
     else 
     {

@@ -1,13 +1,13 @@
-class PauseMenu
+class Menus
 {
     Style style;
 
-    PauseMenu()
+    Menus()
     {
         style = new Style();
     }
 
-    void display()
+    void displayPauseMenu()
     {
         background(0);
         fill(style.textColor);
@@ -25,4 +25,16 @@ class PauseMenu
     {
         gamePaused = false;
     }
+
+    void displayUpgrademenu(){
+        
+    rect((rectX+rectW), rectY, rectW, rectH);
+    rect((rectX-rectW), rectY, rectW, rectH);  
+    rect(rectX, (rectY+rectH), rectW, rectH);
+    rect(rectX, (rectY-rectH), rectW, rectH);
+
+
+    }
+
 }
+
