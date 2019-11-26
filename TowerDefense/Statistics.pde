@@ -27,6 +27,14 @@ class Statistics
         {
             lives = 0;
             gameOver = true;
+            if (gameOver)
+            {
+                if (keypressed)
+                {
+                    if (key == ' ')
+                    stage = 1;
+                }
+            }
         }
     }
 
