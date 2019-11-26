@@ -6,6 +6,7 @@ class Controls {
   // 4 = right
 
   int selectionX, selectionY;
+  PVector towerLocation = new PVector(0,0);
 
   void initControls()
   {
@@ -19,22 +20,39 @@ class Controls {
   void Move(int moveType) 
   {
     grid.grid[selectionX][selectionY].selected = false;
-    if (moveType == 1) 
-    {
-      selectionY = constrain(selectionY - 1, 0, 8);
+
+    //  Selector can't move horizontally while in upgrade menu @Twab
+    if (selectionX == 15) {
+      if (moveType == 1) 
+      {
+        selectionY = constrain(selectionY - 1, 0, 8);
+      }
+      if (moveType == 2) 
+      {
+        selectionY = constrain(selectionY + 1, 0, 8);
+      }
+
+    } else {
+        if (moveType == 1) 
+        {
+          selectionY = constrain(selectionY - 1, 0, 8);
+        }
+        if (moveType == 2) 
+        {
+          selectionY = constrain(selectionY + 1, 0, 8);
+        }
+        if (moveType == 3) 
+        {
+          selectionX = constrain(selectionX - 1, 0, 14);
+        }
+        if (moveType == 4) 
+        {
+          selectionX = constrain(selectionX + 1, 0, 14);
+        }
+        grid.grid[selectionX][selectionY].selected = true;
+
     }
-    if (moveType == 2) 
-    {
-      selectionY = constrain(selectionY + 1, 0, 8);
-    }
-    if (moveType == 3) 
-    {
-      selectionX = constrain(selectionX - 1, 0, 14);
-    }
-    if (moveType == 4) 
-    {
-      selectionX = constrain(selectionX + 1, 0, 14);
-    }
+
     grid.grid[selectionX][selectionY].selected = true;
   }
 
@@ -66,8 +84,11 @@ class Controls {
       }
       if (keyCode == CONTROL)
       {
+        //
         Tile currentTile = grid.grid[selectionX][selectionY]; 
-        if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
+         
+         // Building towers in the menu is not allowed @Twab
+        if (currentTile.tower.towerType == 0 && statistics.amount >= 100 && selectionX != 15)
         {
           int x = currentTile.x;
           int y = currentTile.y;
@@ -80,14 +101,32 @@ class Controls {
     if (key == 'x')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
-        if (currentTile.tower.towerType == 0 && statistics.amount >= 50)
+        
+        // Building towers in the menu is not allowed @Twab
+        if (currentTile.tower.towerType == 0 && statistics.amount >= 50 && selectionX != 15)
         {
           int x = currentTile.x;
           int y = currentTile.y;
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 1);
           statistics.amount -= 50;
-        }
+        } else {
+
+            // If selector is in upgrade menu, x press exits the menu @Twab
+            if (selectionX == 15) {
+              selectionX = int(towerLocation.x);
+              selectionY = int(towerLocation.y);
+            } else {
+
+                // If selector is on a tower inhabited tile, move selector to upgrade menu @Twab
+                if (currentTile.tower.towerType > 0) {
+                  towerLocation.x = float(selectionX);
+                  towerLocation.y = float(selectionY); 
+                  selectionX = 15;
+                  selectionY = 0;
+                }
+              }        
+          }       
     }
   }
 }

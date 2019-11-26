@@ -178,7 +178,6 @@ void handleEnemies()
 // Removes dead enemies from our list and give gold.
 void handleDeadEnemies()
 {
-    println(statistics.lives);
     Iterator<Enemy> i = enemies.iterator();
     while (i.hasNext())
     {
@@ -188,7 +187,7 @@ void handleDeadEnemies()
             i.remove();
             statistics.amount += 2;
         }
-        if(e.x - e.w > SIZE_X)
+        if(e.x - e.w > SIZE_X-SIZE_X/grid.sizeX)
         {
             i.remove();
             statistics.lives--;
