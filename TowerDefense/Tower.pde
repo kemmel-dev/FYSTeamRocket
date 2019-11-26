@@ -45,9 +45,14 @@ class Tower
   void display()
   {
     // if type is not non-existent
-    if (towerType != 0)
+    if (towerType == 1)
     {
       fill(style.fillColor, 255);
+      ellipse(x, y, d, d);
+    }
+    if (towerType == 2)
+    {
+      fill(style.iceBlue, 255);
       ellipse(x, y, d, d);
     }
   }
@@ -161,6 +166,7 @@ class Tower
     color rangeFill = color(0, 0, 0);
     color laserColor = color(235, 20, 20, 210);
     color black = 0;
+    color iceBlue = color(186, 242, 239);
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
   }
