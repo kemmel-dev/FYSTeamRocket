@@ -61,7 +61,7 @@ class UI
 
     void waves()
     {
-
+        text("Wave: " + wave.waveNumber, 100, 100);
     }
 
     class Style

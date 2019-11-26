@@ -81,11 +81,12 @@ void draw()
 
         // Draw the UI
         drawUI();
-    }
 
+        //Start the waves
         wave.spawn();
         wave.kills();
         wave.end();
+    }
 
 }
 
@@ -185,6 +186,7 @@ void uiSetup()
     ui.drawTextBoxes();
     ui.lives();
     ui.gold();
+    ui.waves();
 }
 
 void drawBase()
