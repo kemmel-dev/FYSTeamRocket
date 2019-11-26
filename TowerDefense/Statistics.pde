@@ -6,7 +6,7 @@ class Statistics
 
     int wave;
 
-    int gameOver;
+    boolean gameOver;
 
     Statistics()
     {
