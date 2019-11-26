@@ -3,10 +3,10 @@
 import java.util.Iterator;
 
 // Constants
-final static int SIZE_X = 1600;
-final static int SIZE_Y = 900;
+final static int SIZE_X = 1920 / 2;
+final static int SIZE_Y = 1080 / 2;
 final int FRAME_RATE = 30;
-final static int MOVE_SPEED =int(SIZE_X / 1000) * 2;
+final static float MOVE_SPEED = (SIZE_X / 500) * 2;
 
 // Create our objects
 Grid grid = new Grid();
