@@ -21,6 +21,7 @@ class Tower
 
   // radius for the towers shooting range
   int range;
+  int rangeFreezeTower;
   // and it's shooting range diameter
   int rangeD;
 
@@ -34,6 +35,7 @@ class Tower
     d = _d;
     r = d / 2;
     range = r * 10;
+    rangeFreezeTower = range/2;
     rangeD = range + range;
     style = new Style();
     towerType = _towerType;
@@ -47,8 +49,6 @@ class Tower
     {
       fill(style.fillColor, 255);
       ellipse(x, y, d, d);
-      fill(style.rangeFill, 0);
-      ellipse(x, y, rangeD, rangeD);
     }
   }
 
@@ -159,7 +159,7 @@ class Tower
   {
     color fillColor = color(100, 100, 100);
     color rangeFill = color(0, 0, 0);
-    color laserColor = color(235, 20, 20);
+    color laserColor = color(235, 20, 20, 210);
     color black = 0;
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;

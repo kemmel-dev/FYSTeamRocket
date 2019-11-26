@@ -1,10 +1,11 @@
 class UI
 {
     int textSize;
+    float lineXY, lineX, lineY;
 
     int textX;
     int textCount = 4;
-    int sizeX, sizeY;
+    float sizeX, sizeY;
     int currentY = 100;
 
     float[] textY = new float[textCount];
@@ -14,56 +15,59 @@ class UI
 
     UI()
     {
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     textY[i] = 400;
-        // }
-        sizeX = 400;
-        sizeY = 80;
+        sizeX = waypoints.tileSize*4;
+        sizeY = waypoints.tileSize;
         textX = SIZE_X/2;
         textSize = 30;
+        lineXY = waypoints.tileSize/2;
+        lineX = (waypoints.tileSize/2)*7;
+        lineY = waypoints.tileSize/2;
     }
 
-
-    void setupTextBoxes()
+    void drawTextBox()
     {
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     textY[i] += currentY;
-        // }
-    }
+        rectMode(CORNER);
+        fill(style.black, style.highOpacity);
+        stroke(style.white);
+        strokeWeight(style.thickStrokeWeight);
 
-    void drawTextBoxes()
-    {
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     rect(textX, textY[i], sizeX, sizeY);
+        rect(0, 0, sizeX, sizeY);
+        line(lineXY, lineXY, lineX, lineY);
 
-        // }
+        strokeWeight(style.defaultStrokeWeight);
+        stroke(style.black);
+        rectMode(CENTER);
     }
 
     void gold()
     {
-        // fill(style.white);
-        // for (int i = 0; i < textCount; i++)
-        // {
-        //     text("Gold  " + statistics.amount, textX, textY[0]);
-        // }
+        fill(style.white);
+        textSize(textSize);
+        textAlign(CORNER);
+        text("Gold:  " + statistics.amount, waypoints.tileSize/2, 50);
     }
 
     void lives()
     {
+        fill(style.white);
         textSize(textSize);
-        text("Lives:  " + statistics.lives, 100, 50);
+        textAlign(CORNER);
+        text("Lives:  " + statistics.lives, (waypoints.tileSize/2)*5, 50);
     }
 
     void waves()
     {
-        text("Wave: " + wave.waveNumber, 100, 100);
+        fill(style.white);
+        textAlign(CORNER);
+        text("Wave: " + wave.waveNumber, waypoints.tileSize/2, 100);
     }
 
     class Style
     {
         color white = color(255, 255, 255);
+        color black = color(0, 0, 0);
+        int highOpacity = 200;
+        int defaultStrokeWeight = 1;
+        int thickStrokeWeight = 5;
     }
 }
