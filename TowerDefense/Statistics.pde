@@ -15,7 +15,7 @@ class Statistics
 
     void gold()
     {
-
+        
     }
 
     void lives()

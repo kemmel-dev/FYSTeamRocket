@@ -14,6 +14,8 @@ Map map = new Map();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
+Statistics statistics =  new Statistics();
+UI ui = new UI();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -43,6 +45,7 @@ void setup()
     grid.initGrid();
     map.init();
     controls.initControls();
+    ui.setupTextBoxes();
 
     // create enemy
     enemies.add(new Enemy());
@@ -132,7 +135,7 @@ void drawBackground()
 // Performs all actions for each enemy each frame
 void handleEnemies()
 {
-    removeDeadEnemies();
+    handleDeadEnemies();
 
     // For each enemy that's still alive
     for (Enemy enemy : enemies)
@@ -144,8 +147,8 @@ void handleEnemies()
     }
 }
 
-// Removes dead enemies from our list.
-void removeDeadEnemies()
+// Removes dead enemies from our list and give gold.
+void handleDeadEnemies()
 {
     Iterator<Enemy> i = enemies.iterator();
     while (i.hasNext())
@@ -154,11 +157,17 @@ void removeDeadEnemies()
         if (e.hitpoints < 0)
         {
             i.remove();
+            statistics.amount += 2;
         }
     }    
 }
 
 void drawUI()
 {
+    uiSetup();
+}
 
+void uiSetup()
+{
+    ui.drawTextBoxes();
 }
