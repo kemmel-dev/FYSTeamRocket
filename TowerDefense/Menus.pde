@@ -25,16 +25,7 @@ class Menus
     {
         gamePaused = false;
     }
-
-    /*void displayUpgrademenu(){
-        
-    rect((rectX+rectW), rectY, rectW, rectH);
-    rect((rectX-rectW), rectY, rectW, rectH);  
-    rect(rectX, (rectY+rectH), rectW, rectH);
-    rect(rectX, (rectY-rectH), rectW, rectH);
-
-
-    }*/
-
 }
+
+   
 
