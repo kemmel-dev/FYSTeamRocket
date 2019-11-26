@@ -12,5 +12,6 @@ class Map
   void init()
   {
     bg = loadImage("bg.PNG");
+    bg.resize(SIZE_X, SIZE_Y);
   }
 }
