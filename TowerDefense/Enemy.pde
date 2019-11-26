@@ -5,11 +5,12 @@ class Enemy
     int w;
     int hitpoints;
     int moveDir = 3;
+    float msMultiplier = 1;
 
     Style style;
 
     // This array stores whether we've passed
-    // checkpoints
+    // checkpoint
     Boolean[] waypointsPassed = new Boolean[6];
 
     Enemy()
@@ -118,16 +119,17 @@ class Enemy
         switch(moveDir)
         {
             case 1:
-                y -= MOVE_SPEED;
+                y -= MOVE_SPEED * msMultiplier;
                 return;
             case 2:
-                y += MOVE_SPEED;
+                y += MOVE_SPEED * msMultiplier;
                 return;
             case 3:
-                x += MOVE_SPEED;
+                print(MOVE_SPEED);
+                x += MOVE_SPEED * msMultiplier;
                 return;
             case 4:
-                x -= MOVE_SPEED;
+                x -= MOVE_SPEED * msMultiplier;
                 return;
             default:
                 return;

@@ -57,7 +57,7 @@ class Tower
   {
     for (Enemy e : enemies)
     {
-      if (isInRange(e))
+      if (ifEnemyIsInRange(e))
       {
         // Enemy found and assigned to enemy
         return true;
@@ -68,7 +68,7 @@ class Tower
 
   // Checks whether a specific enemy is in range of the tower.
   // Returns true and assigns enemy to the enemy if the enemy is in range.
-  Boolean isInRange(Enemy e)
+  Boolean ifEnemyIsInRange(Enemy e)
   {
     // distance from the tower to the enemy
     float distance = dist(x, y, e.x, e.y);
@@ -87,8 +87,23 @@ class Tower
   // Shoot an enemy
   void shootEnemy()
   {
+    switch(towerType)
+    {
+      case 1:
+        shootLaser();
+        return;
+      case 2:
+        freezeEnemies();
+        return;
+      default:
+        return;
+    }
+  }
+
+  void shootLaser()
+  {
     // if target is still in range
-    if (isInRange(enemy))
+    if (ifEnemyIsInRange(enemy))
     {
       // Let target take damage
       if (enemy.takeDamage(2))
@@ -108,6 +123,36 @@ class Tower
       shooting = false;
     }
   }
+
+  void freezeEnemies()
+  {
+    ArrayList<Enemy> targets = enemiesInRange();  
+    for (Enemy e : targets)
+    {
+      e.msMultiplier = .5f;
+    }
+  }
+
+  ArrayList<Enemy> enemiesInRange()
+  {
+    ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
+    for (Enemy e : enemies)
+    {
+      // distance from the tower to the enemy
+      float distance = dist(x, y, e.x, e.y);
+      // if the enemy is in range
+      if (distance < range)
+      {
+        enemiesInRange.add(e);
+      }
+      else 
+      {
+        e.msMultiplier = 1;
+      }
+    }
+    return enemiesInRange;
+  }
+  
 
   // holds styling options for tower-related options
   class Style 
