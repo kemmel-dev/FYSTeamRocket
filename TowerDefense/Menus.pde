@@ -1,6 +1,7 @@
 class Menus
 {
     Style style;
+    UpgradeMenu upgradeMenu = new UpgradeMenu(new PVector(1860, 60));
 
     Menus()
     {
@@ -15,9 +16,9 @@ class Menus
         text("paused yo", SIZE_X / 2, SIZE_Y / 2);
     }
 
-    void dispalyGameOverMenu()
+    void display()
     {
-
+        upgradeMenu.display();
     }
 
     class Style
@@ -29,6 +30,31 @@ class Menus
     void keyPressed()
     {
         gamePaused = false;
+    }
+
+    class UpgradeMenu
+    {
+
+        PVector pos;
+
+        float buttonWidth = SIZE_X / grid.sizeX;
+        float buttonHeight = buttonWidth;
+        int numberOfButtons = 9;
+
+        UpgradeMenu(PVector _pos)
+        {
+            pos = _pos;
+        }
+
+        void display()
+        {
+            fill(255);
+            for (float y = pos.y; y < pos.y + buttonHeight * numberOfButtons; y += buttonHeight)
+            {
+                rect(pos.x, y, buttonWidth, buttonHeight);
+            }
+        }
+    
     }
 }
 

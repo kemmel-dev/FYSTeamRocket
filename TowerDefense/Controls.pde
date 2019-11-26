@@ -29,11 +29,11 @@ class Controls {
     }
     if (moveType == 3) 
     {
-      selectionX = constrain(selectionX - 1, 0, 15);
+      selectionX = constrain(selectionX - 1, 0, 14);
     }
     if (moveType == 4) 
     {
-      selectionX = constrain(selectionX + 1, 0, 15);
+      selectionX = constrain(selectionX + 1, 0, 14);
     }
     grid.grid[selectionX][selectionY].selected = true;
   }

@@ -87,22 +87,24 @@ void draw()
             }
         }
         if (stage == 2)
-        {// Set currently selected tile
-        selectedTile = GetCurrentTile();
+        {
+            // Set currently selected tile
+            selectedTile = GetCurrentTile();
 
-        // Draw the background
-        drawBackground();
-        handleEnemies();
-        handleTowers();
-        drawBase();
+            // Draw the background
+            drawBackground();
+            handleEnemies();
+            handleTowers();
+            drawBase();
 
-        // Draw the UI
-        drawUI();
+            // Draw the UI
+            drawUI();
 
-        //Start the waves
-        wave.spawn();
-        wave.kills();
-        wave.end();
+            //Start the waves
+            wave.spawn();
+            wave.kills();
+            wave.end();
+            menus.display();
         }
     }
 
