@@ -4,7 +4,7 @@ class Wave
   int spawns;
   float spawnTimer;
   int limit;
-  int enemiesLeft;
+  float enemiesLeft, enemiesRemoved;
 
   boolean allEnemiesSpawned;
 
@@ -52,6 +52,7 @@ class Wave
       limit += 5;
       enemiesLeft = limit;
       spawns = 0;
+      enemiesRemoved = 0;
     }
   }
 

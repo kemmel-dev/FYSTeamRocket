@@ -4,15 +4,12 @@ class Statistics
     
     int lives;
 
-    int wave;
-
     boolean gameOver;
 
     Statistics()
     {
         amount = 80;
         lives = 5;
-        wave = 0;
         gameOver = false;
     }
 
