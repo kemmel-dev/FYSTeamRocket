@@ -15,6 +15,11 @@ class Menus
         text("paused yo", SIZE_X / 2, SIZE_Y / 2);
     }
 
+    void dispalyGameOverMenu()
+    {
+
+    }
+
     class Style
     {
         color textColor = 255;

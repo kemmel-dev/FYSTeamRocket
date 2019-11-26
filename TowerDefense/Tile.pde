@@ -23,6 +23,16 @@ class Tile
         if (selected)
         {
             fill(style.selectedColor, style.selectedOpacity);
+            if(tower.towerType == 1)
+            {
+                fill(style.hidden);
+                ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
+            }
+            if(tower.towerType == 2)
+            {
+                fill(style.hidden);
+                ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
+            }
         }
         else 
         {
@@ -35,6 +45,9 @@ class Tile
     {
         color fillColor = 255;
         color selectedColor = color(255,0,0);
+        color hidden = color(255, 255, 255, 0);
+        color white = color(255, 255, 255);
+        color black = color(0, 0, 0);
         int opacity = 20;
         int selectedOpacity = 125;
     }
