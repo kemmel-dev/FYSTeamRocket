@@ -77,5 +77,16 @@ class Controls {
         enemies.add(new Enemy());
       }
     }
+    if (key == 'x')
+    {
+      Tile currentTile = grid.grid[selectionX][selectionY]; 
+        if (currentTile.tower.towerType == 0)
+        {
+          int x = currentTile.x;
+          int y = currentTile.y;
+          int d = grid.grid[0][0].w / 2;
+          currentTile.tower = new Tower(x, y, d, 1);
+        }
+    }
   }
 }
