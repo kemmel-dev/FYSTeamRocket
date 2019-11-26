@@ -19,6 +19,11 @@ UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
 
+PImage startmenu;
+
+// The game stages >> stage 1 = Start Menu, stage 2 = The Game itself, stage 3 = Game Over Screen.
+int stage;
+
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 
@@ -38,7 +43,10 @@ void settings()
 // Runs after settings()
 // Initialize a bunch of other settings and objects.
 void setup()
-{
+{   
+    // Stage 1 = Start Menu
+    stage =  1;
+    startmenu = loadImage("startimage.png");
     frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode
     rectMode(CENTER);
@@ -69,7 +77,17 @@ void draw()
     // else play the game
     else 
     {
-        // Set currently selected tile
+        if (stage == 1)
+        {
+            image(startmenu,0,0,width,height);
+            if (keyPressed)
+            {
+                if (key == ' ')
+                stage = 2;
+            }
+        }
+        if (stage == 2)
+        {// Set currently selected tile
         selectedTile = GetCurrentTile();
 
         // Draw the background
@@ -85,6 +103,7 @@ void draw()
         wave.spawn();
         wave.kills();
         wave.end();
+        }
     }
 
 }
