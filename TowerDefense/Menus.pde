@@ -17,7 +17,7 @@ class Menus
 
     void dispalyGameOverMenu()
     {
-        
+
     }
 
     class Style
@@ -31,7 +31,7 @@ class Menus
         gamePaused = false;
     }
 
-    // void displayUpgrademenu(){
+    /*void displayUpgrademenu(){
         
     // rect((rectX+rectW), rectY, rectW, rectH);
     // rect((rectX-rectW), rectY, rectW, rectH);  
@@ -39,7 +39,7 @@ class Menus
     // rect(rectX, (rectY-rectH), rectW, rectH);
 
 
-    // }
+    }*/
 
 }
 
