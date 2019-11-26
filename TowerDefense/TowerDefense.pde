@@ -16,6 +16,7 @@ Waypoints waypoints = new Waypoints();
 PauseMenu pauseMenu = new PauseMenu();
 Statistics statistics =  new Statistics();
 UI ui = new UI();
+Wave wave = new Wave();
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -48,7 +49,7 @@ void setup()
     ui.setupTextBoxes();
 
     // create enemy
-    enemies.add(new Enemy());
+    //enemies.add(new Enemy());
 }
 
 // Gets the currently selected tile
@@ -79,6 +80,10 @@ void draw()
         // Draw the UI
         drawUI();
     }
+
+        wave.spawn();
+        wave.kills();
+        wave.end();
 
 }
 

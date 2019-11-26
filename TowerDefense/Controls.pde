@@ -75,7 +75,7 @@ class Controls {
           currentTile.tower = new Tower(x, y, d, 2);
         }
         print("TEST");
-        enemies.add(new Enemy());
+        //enemies.add(new Enemy());
       }
     }
     if (key == 'x')
