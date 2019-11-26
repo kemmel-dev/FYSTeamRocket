@@ -13,7 +13,7 @@ Grid grid = new Grid();
 Map map = new Map();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
-PauseMenu pauseMenu = new PauseMenu();
+Menus menus = new Menus();
 Statistics statistics =  new Statistics();
 UI ui = new UI();
 Wave wave = new Wave();
@@ -64,7 +64,7 @@ void draw()
     // if paused display the pause menu
     if (gamePaused)
     {
-        pauseMenu.display();
+        menus.displayPauseMenu();
     }
     // else play the game
     else 
@@ -122,7 +122,7 @@ void keyPressed()
 {
     if (gamePaused)
     {
-        pauseMenu.keyPressed();
+        menus.keyPressed();
     }
     else 
     {
