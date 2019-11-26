@@ -20,7 +20,11 @@ class Wave
   void spawn()
   {
     //Timer that determimes how quick enemies spawn after each other
-    spawnTimer++;
+
+    //if (spawning)
+    //amount spawns bijhouden
+    //checken of spawning door moet gaan
+
 
     //As long as the amount of spawns is less than the spawn limit for that wave, spawn a new enemy
     if (spawnTimer > 50 && spawns < limit)
@@ -35,6 +39,7 @@ class Wave
     {
       allEnemiesSpawned = true;
     }
+    spawnTimer++;
   }
 
   void kills()
@@ -67,4 +72,15 @@ class Wave
       kills = 0;
     }
   }
+
+    // Boolean isEvenGetal(int getal)
+    // {
+    //   if (getal % 2 == 0)
+    //   {
+    //     return true;
+    //   }
+    //   return false;
+
+    // }
+
 }
