@@ -37,11 +37,13 @@ class Tile
                 {
                     fill(style.hidden);
                     ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
+                    fill(style.selectedColor, style.selectedOpacity);
                 }
                 if(tower.towerType == 2)
                 {
                     fill(style.hidden);
                     ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
+                    fill(style.selectedColor, style.selectedOpacity);
                 }
             }
             else 
