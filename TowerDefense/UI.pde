@@ -52,7 +52,7 @@ class UI
         fill(style.white);
         textSize(textSize);
         textAlign(CORNER);
-        text("Lives:  " + statistics.lives, (waypoints.tileSize/2)*3, 50);
+        text("Lives:  " + statistics.lives, (waypoints.tileSize/2)*5, 50);
     }
 
     void waves()
