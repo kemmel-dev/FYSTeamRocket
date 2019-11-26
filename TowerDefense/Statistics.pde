@@ -6,11 +6,14 @@ class Statistics
 
     int wave;
 
+    int gameOver;
+
     Statistics()
     {
         amount = 80;
         lives = 5;
         wave = 0;
+        gameOver = false;
     }
 
     void gold()
@@ -18,9 +21,13 @@ class Statistics
         
     }
 
-    void lives()
+    void handleLives()
     {
-
+        if(lives <= 0)
+        {
+            lives = 0;
+            gameOver = true;
+        }
     }
 
     void waves()

@@ -21,7 +21,7 @@ class UI
         sizeX = 400;
         sizeY = 80;
         textX = SIZE_X/2;
-        textSize = 30;
+        textSize = 20;
     }
 
 
@@ -44,6 +44,8 @@ class UI
 
     void gold()
     {
+        textSize(textSize);
+        text("Gold:  " + statistics.amount, 100, 50);
         // fill(style.white);
         // for (int i = 0; i < textCount; i++)
         // {
@@ -54,7 +56,7 @@ class UI
     void lives()
     {
         textSize(textSize);
-        text("Lives:  " + statistics.lives, 100, 50);
+        text("Lives:  " + statistics.lives, 200, 50);
     }
 
     void waves()

@@ -183,7 +183,8 @@ void drawUI()
 void uiSetup()
 {
     ui.drawTextBoxes();
-    ui.lives();
+    ui.handleLives();
+    ui.gold();
 }
 
 void drawBase()

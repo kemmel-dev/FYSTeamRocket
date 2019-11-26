@@ -15,6 +15,11 @@ class Menus
         text("paused yo", SIZE_X / 2, SIZE_Y / 2);
     }
 
+    void dispalyGameOverMenu()
+    {
+        
+    }
+
     class Style
     {
         color textColor = 255;
@@ -26,15 +31,15 @@ class Menus
         gamePaused = false;
     }
 
-    void displayUpgrademenu(){
+    // void displayUpgrademenu(){
         
-    rect((rectX+rectW), rectY, rectW, rectH);
-    rect((rectX-rectW), rectY, rectW, rectH);  
-    rect(rectX, (rectY+rectH), rectW, rectH);
-    rect(rectX, (rectY-rectH), rectW, rectH);
+    // rect((rectX+rectW), rectY, rectW, rectH);
+    // rect((rectX-rectW), rectY, rectW, rectH);  
+    // rect(rectX, (rectY+rectH), rectW, rectH);
+    // rect(rectX, (rectY-rectH), rectW, rectH);
 
 
-    }
+    // }
 
 }
 
