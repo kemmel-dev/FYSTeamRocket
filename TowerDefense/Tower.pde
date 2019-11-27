@@ -157,7 +157,6 @@ class Tower
     }
     return enemiesInRange;
   }
-  
 
   // holds styling options for tower-related options
   class Style 
@@ -171,4 +170,3 @@ class Tower
     int defaultStrokeWeight = 1;
   }
 }
-
