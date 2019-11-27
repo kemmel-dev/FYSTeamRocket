@@ -29,6 +29,7 @@ class Wave
     //As long as the amount of spawns is less than the spawn limit for that wave, spawn a new enemy
     if (spawnTimer > 50 && spawns < limit)
     {
+      statistics.gereset = false;
       enemies.add(new Enemy());
       spawnTimer = 0;;
       spawns++;

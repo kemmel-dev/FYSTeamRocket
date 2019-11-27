@@ -200,6 +200,10 @@ void handleDeadEnemies()
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
         }
+        if(statistics.gereset)
+        {
+            i.remove();
+        }
     }    
 }
 
