@@ -13,7 +13,7 @@ class Menus
         background(0);
         fill(style.textColor);
         textSize(style.fontSize);
-        text("Paused yo", SIZE_X / 2, SIZE_Y / 2);
+        text("Game Paused", SIZE_X / 2, SIZE_Y / 2);
     }
 
     void display()

@@ -80,10 +80,26 @@ void draw()
         if (stage == 1)
         {
             image(startmenu,0,0,width,height);
+            rectMode(CENTER);
+            noFill();
+            stroke(255,0,0);
+            strokeWeight(10);
+            rect(width/2,height/2,width/7,height/15);
+            //rect(width/2,height/2,width/7,height/30);
             if (keyPressed)
-            {
+            {   
+                if (key == CODED)
+                    {
+                        if (keyCode == DOWN)
+                        {
+                            stage = 3;
+                            rect(width/2,height/2,width/7,height/30);
+                        }
+                    }
                 if (key == ' ')
-                stage = 2;
+                {
+                    stage = 2;
+                }
             }
         }
         if (stage == 2)

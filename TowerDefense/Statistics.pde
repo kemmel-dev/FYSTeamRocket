@@ -25,7 +25,7 @@ class Statistics
             gameOver = true;
             if (gameOver)
             {
-                if (keypressed)
+                if (keyPressed)
                 {
                     if (key == ' ')
                     stage = 1;
