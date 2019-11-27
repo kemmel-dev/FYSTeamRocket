@@ -80,7 +80,20 @@ class Menus
 
     void startMenu()
     {
-        
+        image(startmenu,0,0,width,height);
+        rectMode(CENTER);
+        noFill();
+        stroke(255,0,0);
+        strokeWeight(10);
+        rect(width/2,height/2,width/7,height/15);
+        stroke(0);
+        strokeWeight(1);
+        textAlign(CENTER);
+        text("Press any key to begin",width/2,height/1.8);
+        if (keyPressed)
+        {   
+            stage = 5;
+        }
     }
 
     class UpgradeMenu
