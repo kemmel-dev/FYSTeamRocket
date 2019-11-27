@@ -84,16 +84,18 @@ class Controls {
       }
       if (keyCode == CONTROL)
       {
-        //
+        // Gets the data where the currentTile is
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
-         // Building towers in the menu is not allowed @Twab
+        // Building towers in the menu is not allowed @Twab
         if (currentTile.tower.towerType == 0 && statistics.amount >= 100 && selectionX != 15)
         {
+          //Variables from the currentTile converted to the variable values from Tower
           int x = currentTile.x;
           int y = currentTile.y;
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 2);
+          //Substracts an amount of gold
           statistics.amount -= 100;
         }
       }
