@@ -105,6 +105,7 @@ void draw()
             return;
         case 3:
             menus.gameOverMenu();
+            statistics.reset();
             return;
         case 4:
             menus.displayPauseMenu();
@@ -204,15 +205,15 @@ void handleDeadEnemies()
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
         }
+        if(statistics.gereset)
+        {
+            i.remove();
+        }
     }    
 }
 
-void drawUI()
-{
-    uiSetup();
-}
 
-void uiSetup()
+void drawUI()
 {
     ui.drawTextBox();
     ui.lives();
