@@ -3,8 +3,8 @@
 import java.util.Iterator;
 
 // Constants
-final static int SIZE_X = 1600;
-final static int SIZE_Y = 900;
+final static int SIZE_X = 1920;
+final static int SIZE_Y = 1080;
 final int FRAME_RATE = 30;
 final static float MOVE_SPEED = (SIZE_X / 500) * 2;
 
@@ -76,18 +76,7 @@ void draw()
     switch(stage)
     {
         case 1:
-            image(startmenu,0,0,width,height);
-            rectMode(CENTER);
-            noFill();
-            stroke(255,0,0);
-            strokeWeight(10);
-            rect(width/2,height/2,width/7,height/15);
-            textAlign(CENTER);
-            text("Press any key to begin",width/2,height/1.8);
-            if (keyPressed)
-            {   
-                stage = 5;
-            }
+            menus.startMenu();
             return;
         case 2:
             // Set currently selected tile
