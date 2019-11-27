@@ -2,12 +2,11 @@ class Wave
 {
   int waveNumber;
   int spawns;
-  int kills;
   float spawnTimer;
   int limit;
+  float enemiesLeft, enemiesRemoved;
 
   boolean allEnemiesSpawned;
-  boolean allEnemiesKilled;
 
   Enemy enemy;
 
@@ -15,6 +14,7 @@ class Wave
   {
     waveNumber = 1;
     limit = 10;
+    enemiesLeft = limit;
   }
 
   void spawn()
@@ -30,7 +30,7 @@ class Wave
     if (spawnTimer > 50 && spawns < limit)
     {
       enemies.add(new Enemy());
-      spawnTimer = 0;
+      spawnTimer = 0;;
       spawns++;
     } 
     
@@ -42,34 +42,17 @@ class Wave
     spawnTimer++;
   }
 
-  void kills()
-  {    
-    //When an enemy is killed, the kill counter will increase by one
-    for (Enemy e : enemies) 
-    {
-      if (e.hitpoints < 0 && kills < limit) 
-      {
-        kills++;
-      }
-      //When all enemies that spawned that wave are killed, this boolean will become true
-      if (kills == limit)
-      {
-        allEnemiesKilled = true;
-      }
-    }
-  }
-
   void end()
   {
-    //when all enemies have spawned, and all enemies are killed the next wave will start
-    if (allEnemiesSpawned && allEnemiesKilled)
+    //when all enemies have spawned, and all enemies are killed, the next wave will start
+    if (enemiesLeft == 0)
     {
       waveNumber++;
       allEnemiesSpawned = false;
-      allEnemiesKilled = false;
       limit += 5;
+      enemiesLeft = limit;
       spawns = 0;
-      kills = 0;
+      enemiesRemoved = 0;
     }
   }
 

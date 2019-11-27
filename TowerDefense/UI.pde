@@ -7,8 +7,7 @@ class UI
     int textCount = 4;
     float sizeX, sizeY;
     int currentY = 100;
-
-    float[] textY = new float[textCount];
+    float percentageLine, test;
 
 
     Style style = new Style();
@@ -30,9 +29,18 @@ class UI
         fill(style.black, style.highOpacity);
         stroke(style.white);
         strokeWeight(style.thickStrokeWeight);
-
+        
+        if(wave.enemiesRemoved == 0)
+        {
+            test = (waypoints.tileSize*3)/wave.enemiesLeft;
+        }
+        percentageLine = (waypoints.tileSize/2) + (test*wave.enemiesRemoved);
+        
+        //Right top statistics
         rect(0, 0, sizeX, sizeY);
         line(lineXY, lineXY, lineX, lineY);
+        stroke(style.green);
+        line(lineXY, lineXY, percentageLine, lineY);
 
         strokeWeight(style.defaultStrokeWeight);
         stroke(style.black);
@@ -66,6 +74,7 @@ class UI
     {
         color white = color(255, 255, 255);
         color black = color(0, 0, 0);
+        color green = color(0, 255, 0);
         int highOpacity = 200;
         int defaultStrokeWeight = 1;
         int thickStrokeWeight = 5;

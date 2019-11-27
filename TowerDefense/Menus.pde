@@ -1,6 +1,7 @@
 class Menus
 {
     Style style;
+    UpgradeMenu upgradeMenu = new UpgradeMenu(new PVector(1860, 60));
 
     Menus()
     {
@@ -12,12 +13,12 @@ class Menus
         background(0);
         fill(style.textColor);
         textSize(style.fontSize);
-        text("paused yo", SIZE_X / 2, SIZE_Y / 2);
+        text("Paused yo", SIZE_X / 2, SIZE_Y / 2);
     }
 
-    void dispalyGameOverMenu()
+    void display()
     {
-
+        upgradeMenu.display();
     }
 
     class Style
@@ -31,15 +32,27 @@ class Menus
         gamePaused = false;
     }
 
-    /*void displayUpgrademenu(){
-        
-    // rect((rectX+rectW), rectY, rectW, rectH);
-    // rect((rectX-rectW), rectY, rectW, rectH);  
-    // rect(rectX, (rectY+rectH), rectW, rectH);
-    // rect(rectX, (rectY-rectH), rectW, rectH);
+    class UpgradeMenu
+    {
 
+        PVector pos;
 
-    }*/
+        float buttonWidth = SIZE_X / grid.sizeX;
+        float buttonHeight = buttonWidth;
+        int numberOfButtons = 1;
 
+        UpgradeMenu(PVector _pos)
+        {
+            pos = _pos;
+        }
+
+        void display()
+        {
+            fill(255); 
+        }
+    
+    }
 }
+
+   
 
