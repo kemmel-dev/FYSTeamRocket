@@ -63,19 +63,36 @@ class Menus
     }
 
     void gameOverMenu()
-    {
-        fill(50);
-        rect(SIZE_X/2, SIZE_Y/2, SIZE_X, SIZE_Y);
-        fill(100);
-        for(int i = 0; i < buttonCount; i++)
-        {
-            rect(xPos, yPos[i], sizeX, sizeY);
-        }
+    {   
+        fill(125,200);
+        rectMode(CORNER);
+        rect(0,0,width,height);
+        rectMode(CENTER);
+        noFill();
+        fill(0,50,50);
+        textAlign(CENTER);
+        text("GAME OVER",width/2,height/2.1);
+        text("Press START to play again",width/2, height,2);
+        noFill();
+        if (keyPressed)
+                {   
+                    if (key == 'j')
+                    {
+                        stage = 1;
+                    }
+                }
     }
 
     void controlsMenu()
     {
         image(controlsimage,0,0,width,height);
+        if (keyPressed)
+                {   
+                    if (key == 'j')
+                    {
+                        stage = 2;
+                    }
+                }
     }
 
     void startMenu()
