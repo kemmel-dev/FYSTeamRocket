@@ -3,8 +3,8 @@
 import java.util.Iterator;
 
 // Constants
-final static int SIZE_X = 1920;
-final static int SIZE_Y = 1080;
+final static int SIZE_X = 1600;
+final static int SIZE_Y = 900;
 final int FRAME_RATE = 30;
 final static float MOVE_SPEED = (SIZE_X / 500) * 2;
 
@@ -20,6 +20,7 @@ Base base = new Base();
 Wave wave = new Wave();
 
 PImage startmenu;
+PImage controlsimage;
 
 // The game stages >> stage 1 = Start Menu, stage 2 = The Game itself, stage 3 = Game Over Screen.
 int stage;
@@ -47,6 +48,7 @@ void setup()
     // Stage 1 = Start Menu
     stage =  1;
     startmenu = loadImage("startimage.png");
+    controlsimage = loadImage("controls.png");
     frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode
     rectMode(CENTER);
@@ -80,21 +82,11 @@ void draw()
             stroke(255,0,0);
             strokeWeight(10);
             rect(width/2,height/2,width/7,height/15);
-            //rect(width/2,height/2,width/7,height/30);
+            textAlign(CENTER);
+            text("Press any key to begin",width/2,height/1.8);
             if (keyPressed)
             {   
-                if (key == CODED)
-                    {
-                        if (keyCode == DOWN)
-                        {
-                            stage = 3;
-                            rect(width/2,height/2,width/7,height/30);
-                        }
-                    }
-                if (key == ' ')
-                {
-                    stage = 2;
-                }
+                stage = 5;
             }
             return;
         case 2:
@@ -124,7 +116,16 @@ void draw()
         case 4:
             menus.displayPauseMenu();
             return;
-
+        case 5:
+            menus.controlsMenu();
+            if (keyPressed)
+                {   
+                    if (key == 'j')
+                    {
+                        stage = 2;
+                    }
+                }
+            return;
     }
     
 

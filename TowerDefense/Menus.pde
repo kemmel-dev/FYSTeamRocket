@@ -7,9 +7,10 @@ class Menus
     float buttonGap = 100;
     int buttonCount = 4;
     float[] yPos = new float[buttonCount];
+    PFont menuFont;
 
     Menus()
-    {
+    {   
         xPos = SIZE_X/2;
         sizeX = 400;
         sizeY = 80;
@@ -24,10 +25,16 @@ class Menus
 
     void displayPauseMenu()
     {
+
         background(0);
+        menuFont = createFont("Onyx",style.fontSize);
+        textFont(menuFont);
         fill(style.textColor);
-        textSize(style.fontSize);
+        textAlign(CENTER);
+        fill(125,125,0);
         text("Game Paused", SIZE_X / 2, SIZE_Y / 2);
+        textSize(style.fontSize/2);
+        text("Press 'START' to resume", SIZE_X / 2, SIZE_Y / 1.5);
     }
 
     void display()
@@ -64,6 +71,16 @@ class Menus
         {
             rect(xPos, yPos[i], sizeX, sizeY);
         }
+    }
+
+    void controlsMenu()
+    {
+        image(controlsimage,0,0,width,height);
+    }
+
+    void startMenu()
+    {
+        
     }
 
     class UpgradeMenu
