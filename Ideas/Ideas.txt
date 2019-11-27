@@ -1,4 +1,4 @@
-Ideeen:
+Ideeën:
 >>>>>>>>>>>>
 - Start menu; Het highlighten van de opties in het startscherm. [POLISH]
 - In game; Een tweede pad die ergens random tevoorschijn komt. [POLISH]
@@ -8,7 +8,7 @@ Ideeen:
     - Slow; grotere range en / of sterkere slows. [POLISH]
     - Buff; zelfde principe als Slow. [POLISH]
     - Bomb; cooldown reduction op aanval. [POLISH]
-- 
+- Iets met tower xp, dat een tower pas geupgrade kan worden als die 100 XP heeft ofzo
 
 Items;
 - Extra Health
