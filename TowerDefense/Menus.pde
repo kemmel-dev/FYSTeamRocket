@@ -64,15 +64,14 @@ class Menus
 
     void gameOverMenu()
     {   
-        fill(125,200);
+        fill(0);
         rectMode(CORNER);
         rect(0,0,width,height);
         rectMode(CENTER);
-        noFill();
-        fill(0,50,50);
+        fill(0,200,50);
         textAlign(CENTER);
-        text("GAME OVER",width/2,height/2.1);
-        text("Press START to play again",width/2, height,2);
+        text("Press START to play again",width/2,height/2.1);
+        text("GAME OVER",width/2, height/3);
         noFill();
         if (keyPressed)
                 {   
@@ -99,14 +98,10 @@ class Menus
     {
         image(startmenu,0,0,width,height);
         rectMode(CENTER);
-        noFill();
-        stroke(255,0,0);
-        strokeWeight(10);
-        rect(width/2,height/2,width/7,height/15);
-        stroke(0);
-        strokeWeight(1);
+        fill(0);
         textAlign(CENTER);
-        text("Press any key to begin",width/2,height/1.8);
+        text("Press any key to begin",width/1.89,height/1.7);
+        noFill();
         if (keyPressed)
         {   
             stage = 5;

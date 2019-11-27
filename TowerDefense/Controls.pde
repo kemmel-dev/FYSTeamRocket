@@ -100,7 +100,7 @@ class Controls {
         }
       }
     }
-    if (key == 'x')
+    if (key == 'z' || key == 'a')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
@@ -130,7 +130,7 @@ class Controls {
               }        
           }       
     }
-    if(key == 'e')
+    if(key == 'x' || key == 's')
     {
       Tile currentTile = grid.grid[selectionX][selectionY];
         int x = currentTile.x;

@@ -21,6 +21,9 @@ Wave wave = new Wave();
 
 PImage startmenu;
 PImage controlsimage;
+PImage gameoverimage;
+
+PFont font;
 
 // The game stages >> stage 1 = Start Menu, stage 2 = The Game itself, stage 3 = Game Over Screen.
 int stage;
@@ -49,6 +52,7 @@ void setup()
     stage =  1;
     startmenu = loadImage("startimage.png");
     controlsimage = loadImage("controls.png");
+    font = createFont("Impact",36);
     frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode
     rectMode(CENTER);
@@ -72,6 +76,7 @@ Tile GetCurrentTile()
 // Main method. Draws every frame of our game
 void draw()
 {
+    textFont(font);
     // if paused display the pause menu
     switch(stage)
     {
