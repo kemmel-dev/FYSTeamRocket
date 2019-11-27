@@ -55,15 +55,12 @@ class Wave
       enemiesRemoved = 0;
     }
   }
-
-    // Boolean isEvenGetal(int getal)
+}
+       // Boolean isEvenGetal(int getal)
     // {
     //   if (getal % 2 == 0)
     //   {
     //     return true;
     //   }
     //   return false;
-
     // }
-
-}

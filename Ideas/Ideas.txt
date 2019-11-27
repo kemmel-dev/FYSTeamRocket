@@ -1,1 +1,34 @@
-Een tweede pad die ergens random tevoorschijn komt.
+Ideeën:
+>>>>>>>>>>>>
+- Start menu; Het highlighten van de opties in het startscherm. [POLISH]
+- In game; Een tweede pad die ergens random tevoorschijn komt. [POLISH]
+- Skins; Map, Enemies, Towers [POLISH]
+- Tower upgrades;
+    - Laser; meerdere enemies tegelijkertijd schieten. (Max 2 keer upgraden bv.) [POLISH]
+    - Slow; grotere range en / of sterkere slows. [POLISH]
+    - Buff; zelfde principe als Slow. [POLISH]
+    - Bomb; cooldown reduction op aanval. [POLISH]
+- Iets met tower xp, dat een tower pas geupgrade kan worden als die 100 XP heeft ofzo
+
+Items;
+- Extra Health
+- Slower Enemies
+- Double Damage
+- Double Income
+- 
+
+
+Obstacles;
+Depends on the map skin theme choosen;
+- Rocks, Tree trunks, Trees, Bushes, Water pools, Swamps,
+- Cactus, Mud, 
+- Error fields,
+- Lava, Lava Rocks,
+
+Music;
+-
+
+
+Sound Effects;
+-
+
