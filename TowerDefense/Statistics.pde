@@ -4,13 +4,10 @@ class Statistics
     
     int lives;
 
-    boolean gameOver;
-
     Statistics()
     {
         amount = 80;
         lives = 5;
-        gameOver = false;
     }
 
     void gold()
@@ -22,9 +19,10 @@ class Statistics
     {
         if(lives <= 0)
         {
-            gameOver = true;
+            stage = 3;
             lives = 0;
         }
+        println(stage);
     }
 
     void waves()

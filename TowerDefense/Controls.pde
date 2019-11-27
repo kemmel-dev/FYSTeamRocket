@@ -80,7 +80,7 @@ class Controls {
       }
       if (keyCode == SHIFT)
       {
-        gamePaused = true;
+        stage = 4;
       }
       if (keyCode == CONTROL)
       {

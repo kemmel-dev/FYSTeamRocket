@@ -2,9 +2,23 @@ class Menus
 {
     Style style;
     UpgradeMenu upgradeMenu = new UpgradeMenu(new PVector(1860, 60));
+    int sizeX, sizeY;
+    int xPos;
+    float buttonGap = 100;
+    int buttonCount = 4;
+    float[] yPos = new float[buttonCount];
 
     Menus()
     {
+        xPos = SIZE_X/2;
+        sizeX = 400;
+        sizeY = 80;
+
+        for(int i = 0; i < buttonCount; i++)
+        {
+            yPos[i] = 400;
+        }
+
         style = new Style();
     }
 
@@ -30,6 +44,26 @@ class Menus
     void keyPressed()
     {
         gamePaused = false;
+    }
+
+
+    void setupGameOverMenu()
+    {
+        for(int i = 0; i < buttonCount; i++)
+        {
+            yPos[i] += buttonGap;
+        }
+    }
+
+    void gameOverMenu()
+    {
+        fill(50);
+        rect(SIZE_X/2, SIZE_Y/2, SIZE_X, SIZE_Y);
+        fill(100);
+        for(int i = 0; i < buttonCount; i++)
+        {
+            rect(xPos, yPos[i], sizeX, sizeY);
+        }
     }
 
     class UpgradeMenu

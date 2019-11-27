@@ -55,6 +55,7 @@ void setup()
     grid.initGrid();
     map.init();
     controls.initControls();
+    menus.setupGameOverMenu();
 
     // create enemy
     //enemies.add(new Enemy());
@@ -70,24 +71,17 @@ Tile GetCurrentTile()
 void draw()
 {
     // if paused display the pause menu
-    if (gamePaused)
+    switch(stage)
     {
-        menus.displayPauseMenu();
-    }
-    // else play the game
-    else 
-    {
-        if (stage == 1)
-        {
+        case 1:
             image(startmenu,0,0,width,height);
             if (keyPressed)
             {
                 if (key == ' ')
                 stage = 2;
             }
-        }
-        if (stage == 2)
-        {
+            return;
+        case 2:
             // Set currently selected tile
             selectedTile = GetCurrentTile();
 
@@ -100,12 +94,23 @@ void draw()
             // Draw the UI
             drawUI();
 
+            // Keep up with all the data
+            statisticsData();
+
             //Start the waves
             wave.spawn();
             wave.end();
             menus.display();
-        }
+            return;
+        case 3:
+            menus.gameOverMenu();
+            return;
+        case 4:
+            menus.displayPauseMenu();
+            return;
+
     }
+    
 
 }
 
@@ -209,6 +214,11 @@ void uiSetup()
     ui.lives();
     ui.gold();
     ui.waves();
+}
+
+void statisticsData()
+{
+    statistics.handleLives();
 }
 
 void drawBase()
