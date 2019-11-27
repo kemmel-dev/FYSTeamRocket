@@ -107,13 +107,6 @@ void draw()
             return;
         case 5:
             menus.controlsMenu();
-            if (keyPressed)
-                {   
-                    if (key == 'j')
-                    {
-                        stage = 2;
-                    }
-                }
             return;
     }
     
