@@ -193,7 +193,7 @@ void handleDeadEnemies()
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
         }
-        if(e.x - e.w > SIZE_X-SIZE_X/grid.sizeX)
+        if(e.x - e.w > SIZE_X-SIZE_X/grid.sizeX || statistics.beingReset)
         {
             i.remove();
             statistics.lives--;
@@ -203,12 +203,8 @@ void handleDeadEnemies()
     }    
 }
 
-void drawUI()
-{
-    uiSetup();
-}
 
-void uiSetup()
+void drawUI()
 {
     ui.drawTextBox();
     ui.lives();
