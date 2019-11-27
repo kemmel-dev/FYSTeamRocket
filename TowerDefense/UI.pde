@@ -59,7 +59,7 @@ class UI
     {
         fill(style.white);
         textAlign(CORNER);
-        text("Wave: " + wave.waveNumber, waypoints.tileSize/2, 100);
+        text("Wave:  " + wave.waveNumber, waypoints.tileSize/2, 100);
     }
 
     class Style

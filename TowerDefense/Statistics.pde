@@ -25,7 +25,6 @@ class Statistics
     {
         if(lives <= 0)
         {
-            lives = 0;
             gameOver = true;
             if (gameOver)
             {
