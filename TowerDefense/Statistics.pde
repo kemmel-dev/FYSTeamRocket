@@ -10,9 +10,16 @@ class Statistics
         lives = 5;
     }
 
-    void gold()
+    void reset()
     {
-        
+        {
+            lives = 5;
+            amount = 80;
+            wave.waveNumber = 1;
+            wave.limit = 10;
+            wave.spawns = 0;
+            wave.enemiesRemoved = 0;
+        }
     }
 
     void handleLives()
@@ -23,10 +30,5 @@ class Statistics
             lives = 0;
         }
         println(stage);
-    }
-
-    void waves()
-    {
-
     }
 }

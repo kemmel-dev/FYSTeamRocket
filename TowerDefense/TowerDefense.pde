@@ -100,6 +100,7 @@ void draw()
             return;
         case 3:
             menus.gameOverMenu();
+            statistics.reset();
             return;
         case 4:
             menus.displayPauseMenu();
