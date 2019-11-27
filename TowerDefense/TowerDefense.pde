@@ -97,7 +97,6 @@ void draw()
             drawBackground();
             handleEnemies();
             handleTowers();
-            drawBase();
 
             // Draw the UI
             drawUI();
@@ -178,6 +177,7 @@ void keyPressed()
 void drawBackground()
 {
     map.display();
+    drawBase();
     grid.display();
 }
 
