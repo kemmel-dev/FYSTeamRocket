@@ -197,6 +197,7 @@ void handleDeadEnemies()
             statistics.amount += 2;
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
+            statistics.scorePoints += 10;
         }
         if(e.x - e.w > SIZE_X-SIZE_X/grid.sizeX)
         {
@@ -219,6 +220,7 @@ void drawUI()
     ui.lives();
     ui.gold();
     ui.waves();
+    ui.score();
 }
 
 void statisticsData()
