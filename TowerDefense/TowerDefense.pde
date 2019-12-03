@@ -149,7 +149,7 @@ void draw()
             drawUI();
 
             // Play music
-            sounds.backgroundMusic();
+            assetsLoader.backgroundMusic();
 
             // Keep up with all the data
             statisticsData();

@@ -122,7 +122,7 @@ class Tower
         shooting = false;
       }
       
-      sounds.laserSoundEffect();
+      assetsLoader.laserSoundEffect();
       stroke(style.laserColor);
       strokeWeight(style.laserStrokeWeight);
       line(x, y, enemy.x, enemy.y);
@@ -132,7 +132,7 @@ class Tower
     // if target is no longer in range, stop shooting
     else 
     {
-      sounds.laserSound.stop();
+      assetsLoader.laserSound.stop();
       shooting = false;
     }
   }
@@ -156,8 +156,8 @@ class Tower
       // if the enemy is in range
       if (distance < range)
       {
-        sounds.laserSound.stop();
-        sounds.freezeSoundEffect();
+        assetsLoader.laserSound.stop();
+        assetsLoader.freezeSoundEffect();
         enemiesInRange.add(e);
       }
       else 
