@@ -21,7 +21,7 @@ Statistics statistics =  new Statistics();
 UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
-Sounds sounds = new Sounds();
+Assetsloader assetsLoader = new Assetsloader();
 
 PImage startmenu;
 PImage controlsimage;
@@ -68,7 +68,10 @@ void setup()
 {   
     // Stage 1 = Start Menu
     stage =  1;
-    sounds.loadSounds();
+    
+    // Load all sounds
+    assetsLoader.loadSounds();
+
     startmenu = loadImage("startimage.png");
     controlsimage = loadImage("controls.png");
     font = createFont("Impact",36);
@@ -145,6 +148,9 @@ void draw()
             // Draw the UI
             drawUI();
 
+            // Play music
+            sounds.backgroundMusic();
+
             // Keep up with all the data
             statisticsData();
 
@@ -152,6 +158,8 @@ void draw()
             wave.spawn();
             wave.end();
             menus.display();
+
+            //Ingame music starts playing and loops
             return;
         case 3:
             menus.gameOverMenu();
