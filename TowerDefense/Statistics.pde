@@ -10,14 +10,14 @@ class Statistics
 
     Statistics()
     {
-        amount = 20000;
+        amount = 100;
         lives = 5;
     }
 
     void reset()
     { 
             lives = 5;
-            amount = 80;
+            amount = 100;
             wave.waveNumber = 1;
             wave.limit = 10;
             wave.spawns = 0;

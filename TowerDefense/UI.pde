@@ -29,6 +29,19 @@ class UI
         fill(style.black, style.highOpacity);
         stroke(style.white);
         strokeWeight(style.thickStrokeWeight);
+
+        rect(sizeX*3, 0, sizeX, sizeY);
+        imageMode(CORNER);
+        image(lasertowerhud,sizeX*3+20,0);
+        image(freezetowerhud,sizeX*3+137,0);
+        image(bombtowerhud,sizeX*3+260,0);
+        image(bufftowerhud,sizeX*3+380,0);
+
+        image(goldcoin,sizeX*3+20,80);
+        image(goldcoin,sizeX*3+137,80);
+        image(goldcoin,sizeX*3+260,80);
+        image(goldcoin,sizeX*3+380,80);
+        
         
         if(wave.enemiesRemoved == 0)
         {
@@ -45,6 +58,13 @@ class UI
         strokeWeight(style.defaultStrokeWeight);
         stroke(style.black);
         rectMode(CENTER);
+        fill(style.white);
+        textSize(30);
+        text("50",sizeX*3+50,105);
+        text("100",sizeX*3+167,105);
+        text("150",sizeX*3+290,105);
+        text("150",sizeX*3+410,105);
+        noFill();
     }
 
     void gold()
@@ -52,7 +72,8 @@ class UI
         fill(style.white);
         textSize(textSize);
         textAlign(CORNER);
-        text("Gold:  " + statistics.amount, waypoints.tileSize/2, 50);
+        text("      " + statistics.amount, waypoints.tileSize/2, 50);
+        image(goldcoin,waypoints.tileSize/2, 25);
     }
 
     void lives()
@@ -60,7 +81,8 @@ class UI
         fill(style.white);
         textSize(textSize);
         textAlign(CORNER);
-        text("Lives:  " + statistics.lives, (waypoints.tileSize/2)*5, 50);
+        text("      " + statistics.lives, (waypoints.tileSize/2)*5, 50);
+        image(lives,(waypoints.tileSize/2)*5-7, 18);
     }
 
     void waves()

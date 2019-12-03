@@ -27,7 +27,7 @@ class Menus
     {
 
         background(0);
-        menuFont = createFont("Onyx",style.fontSize);
+        menuFont = createFont("Impact",style.fontSize);
         textFont(menuFont);
         fill(style.textColor);
         textAlign(CENTER);
@@ -35,6 +35,13 @@ class Menus
         text("Game Paused", SIZE_X / 2, SIZE_Y / 2);
         textSize(style.fontSize/2);
         text("Press 'START' to resume", SIZE_X / 2, SIZE_Y / 1.5);
+        if (keyPressed)
+                {   
+                    if (key == 'j')
+                    {
+                        stage = 2;
+                    }
+                }
     }
 
     void display()
