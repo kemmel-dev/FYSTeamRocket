@@ -47,13 +47,17 @@ class Tower
     // if type is not non-existent
     if (towerType == 1)
     {
-      fill(style.fillColor, 255);
-      ellipse(x, y, d, d);
+      //fill(style.fillColor, 255)
+      imageMode(CENTER);
+      lasertower.resize(100,100);
+      image(lasertower, x, y);
     }
     if (towerType == 2)
     {
-      fill(style.iceBlue, 255);
-      ellipse(x, y, d, d);
+      //fill(style.iceBlue, 255);
+      imageMode(CENTER);
+      freezetower.resize(100,100);
+      image(freezetower, x, y);
     }
   }
 

@@ -25,7 +25,21 @@ Sounds sounds = new Sounds();
 
 PImage startmenu;
 PImage controlsimage;
-PImage gameoverimage;
+
+PImage lasertower;
+PImage freezetower;
+PImage bombtower;
+PImage bufftower;
+
+PImage lasertowerhud;
+PImage freezetowerhud;
+PImage bombtowerhud;
+PImage bufftowerhud;
+
+PImage goldcoin;
+PImage lives;
+
+PImage goldcoinhud;
 
 PFont font;
 
@@ -56,7 +70,7 @@ void setup()
     stage =  1;
     sounds.loadSounds();
     startmenu = loadImage("startimage.png");
-    controlsimage = loadImage("controls.png");
+    controlsimage = loadImage("controls.PNG");
     font = createFont("Impact",36);
     frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode
@@ -67,6 +81,37 @@ void setup()
     map.init();
     controls.initControls();
     menus.setupGameOverMenu();
+
+    // Towers
+    lasertower = loadImage("laser.png");
+    freezetower = loadImage("freeze.png");
+    bombtower = loadImage("bomb.png");
+    bufftower = loadImage("buff.png");
+
+    lasertowerhud = loadImage("laserhd.png");
+    freezetowerhud = loadImage("freezehd.png");
+    bombtowerhud = loadImage("bombhd.png");
+    bufftowerhud = loadImage("buffhd.png");
+
+    goldcoin = loadImage("gold.png");
+    lives = loadImage("lives.png");
+
+    goldcoinhud = loadImage("goldhd.png");
+
+    lasertower.resize(100,100);
+    freezetower.resize(100,100);
+    bombtower.resize(100,100);
+    bufftower.resize(100,100);
+
+    lasertowerhud.resize(80,80);
+    freezetowerhud.resize(80,75);
+    bombtowerhud.resize(75,70);
+    bufftowerhud.resize(80,75);
+
+    goldcoin.resize(25,25);
+    lives.resize(40,40);
+
+    goldcoinhud.resize(20,20);
 
     // create enemy
     //enemies.add(new Enemy());

@@ -60,36 +60,18 @@ class Controls {
   // Handles key press events
   void keyPressed()
   {
-    if (key == CODED)
-    {
-      if (keyCode == UP) 
-      {
-        Move(1);
-      } 
-      else if (keyCode == DOWN) 
-      {
-        Move(2);
-      }
-      if (keyCode == LEFT) 
-      {
-        Move(3);
-      } 
-      else if (keyCode == RIGHT) 
-      {
-        Move(4);
-      }
-      if (keyCode == SHIFT)
+    if (key == 'f')
       {
         stage = 4;
       }
-      if (keyCode == CONTROL)
-      {
+    if (key == 's')
+        {
         // Gets the data where the currentTile is
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
         // Building towers in the menu is not allowed @Twab
         if (currentTile.tower.towerType == 0 && statistics.amount >= 100 && selectionX != 15)
-        {
+          {
           //Variables from the currentTile converted to the variable values from Tower
           int x = currentTile.x;
           int y = currentTile.y;
@@ -97,10 +79,9 @@ class Controls {
           currentTile.tower = new Tower(x, y, d, 2);
           //Substracts an amount of gold
           statistics.amount -= 100;
+         }
         }
-      }
-    }
-    if (key == 'z' || key == 'a')
+    if (key == 'a')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
@@ -128,10 +109,10 @@ class Controls {
                   selectionY = 0;
                 }
               }        
-          }       
+          }     
     }
-    if(key == 'x' || key == 's')
-    {
+      if(key == 'q')
+      {
       Tile currentTile = grid.grid[selectionX][selectionY];
         int x = currentTile.x;
         int y = currentTile.y;
@@ -148,6 +129,25 @@ class Controls {
             return;
         }
 
+      }
+    if (key == CODED)
+    {
+      if (keyCode == UP) 
+      {
+        Move(1);
+      } 
+      else if (keyCode == DOWN) 
+      {
+        Move(2);
+      }
+      if (keyCode == LEFT) 
+      {
+        Move(3);
+      } 
+      else if (keyCode == RIGHT) 
+      {
+        Move(4);
+      }
     }
   }
 }

@@ -14,6 +14,8 @@ class Wave
 
   Enemy enemy;
 
+  boolean finished;
+
   Wave()
   {
     time = millis() + 1000;
@@ -45,8 +47,15 @@ class Wave
 
   void end()
   {
-    //when all enemies have spawned, and all enemies are killed, the next wave will start
-    if (enemiesLeft == 0)
+    //When all enemies are gone, this text will be displayed on screen.
+    if(enemiesLeft == 0)
+    {
+      textAlign(CENTER);
+      text("Press Q or P to start next wave", SIZE_X / 2, SIZE_Y / 5);
+    }
+
+    //When all enemies are gone, and one of these keys is pressed, the next wave will start
+    if (enemiesLeft == 0 && keyPressed && ( key == 'q' || key == 'p') )
     {
       waveNumber++;
       allEnemiesSpawned = false;
