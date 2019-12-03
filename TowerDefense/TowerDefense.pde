@@ -70,7 +70,7 @@ void setup()
     stage =  1;
     sounds.loadSounds();
     startmenu = loadImage("startimage.png");
-    controlsimage = loadImage("controls.PNG");
+    controlsimage = loadImage("controls.png");
     font = createFont("Impact",36);
     frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode

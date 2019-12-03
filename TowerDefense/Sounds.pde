@@ -19,7 +19,7 @@ class Sounds
     {
         if(!laserSound.isPlaying())
         {
-            laserSound.amp(0.5);
+            laserSound.amp(0.2);
             laserSound.play();
         }
     }
@@ -28,7 +28,7 @@ class Sounds
     {
         if(!freezeSound.isPlaying())
         {
-            freezeSound.amp(0.5);
+            freezeSound.amp(0.2);
             freezeSound.play();
         }
     }
