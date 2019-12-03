@@ -1,6 +1,9 @@
 // import the Iterator method to remove enemies from our
+// import the sounds method
 // arraylist in realtime.
 import java.util.Iterator;
+import processing.sound.*;
+
 
 // Constants
 final static int SIZE_X = 1920;
@@ -18,6 +21,7 @@ Statistics statistics =  new Statistics();
 UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
+Sounds sounds = new Sounds();
 
 PImage startmenu;
 PImage controlsimage;
@@ -50,6 +54,7 @@ void setup()
 {   
     // Stage 1 = Start Menu
     stage =  1;
+    sounds.loadSounds();
     startmenu = loadImage("startimage.png");
     controlsimage = loadImage("controls.png");
     font = createFont("Impact",36);
