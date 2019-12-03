@@ -4,6 +4,8 @@ class Statistics
     
     int lives;
 
+    int scorePoints;
+
     boolean gereset;
 
     Statistics()
@@ -20,6 +22,7 @@ class Statistics
             wave.limit = 10;
             wave.spawns = 0;
             wave.enemiesRemoved = 0;
+            scorePoints = 0;
             gereset = true;
     }
 

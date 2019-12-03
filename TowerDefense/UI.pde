@@ -70,6 +70,11 @@ class UI
         text("Wave:  " + wave.waveNumber, waypoints.tileSize/2, 100);
     }
 
+    void score()
+    {
+        text("Score:  " + statistics.scorePoints, waypoints.tileSize/2 * 5, 100);
+    }
+
     class Style
     {
         color white = color(255, 255, 255);

@@ -54,6 +54,7 @@ class Wave
       enemiesLeft = limit;
       spawns = 0;
       enemiesRemoved = 0;
+      statistics.scorePoints += 100;
     }
   }
 }
