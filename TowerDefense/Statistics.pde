@@ -24,6 +24,7 @@ class Statistics
             wave.enemiesRemoved = 0;
             scorePoints = 0;
             gereset = true;
+            wave.enemiesLeft = wave.limit;
     }
 
     void handleLives()
