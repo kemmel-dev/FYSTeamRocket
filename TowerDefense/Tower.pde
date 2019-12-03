@@ -117,7 +117,7 @@ class Tower
       // Let target take damage
       if (enemy.takeDamage(2))
       {
-        sounds.laserSound.stop();
+        assetsLoader.laserSound.stop();
         // if enemy died because of this damage, stop shooting
         shooting = false;
       }

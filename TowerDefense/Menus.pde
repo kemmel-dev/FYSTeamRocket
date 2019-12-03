@@ -113,7 +113,6 @@ class Menus
         {   
             stage = 5;
         }
-        sounds.backgroundMusic();
 
     }
 
