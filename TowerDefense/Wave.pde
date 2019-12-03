@@ -52,6 +52,7 @@ class Wave
     {
       textAlign(CENTER);
       text("Press Q or P to start next wave", SIZE_X / 2, SIZE_Y / 5);
+      textAlign(CORNER);
     }
 
     //When all enemies are gone, and one of these keys is pressed, the next wave will start
@@ -64,6 +65,8 @@ class Wave
       spawns = 0;
       enemiesRemoved = 0;
       statistics.scorePoints += 100;
+
+            //enemy.hitpoints += 10;
 
       //The spawntime between enemies cannot go lower than 0,6 seconds aka 600 millis.
         if(timerLimit > 600)
