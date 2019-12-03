@@ -1,4 +1,4 @@
-class Sounds
+class AssetsLoader
 {
 
     SoundFile laserSound;
@@ -6,7 +6,7 @@ class Sounds
     SoundFile backGround;
     SoundFile inGameBackground;
 
-    Sounds()
+    AssetsLoader()
     {
 
     }
