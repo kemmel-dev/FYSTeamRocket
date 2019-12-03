@@ -10,7 +10,7 @@ class Statistics
 
     Statistics()
     {
-        amount = 80;
+        amount = 20000;
         lives = 5;
     }
 
