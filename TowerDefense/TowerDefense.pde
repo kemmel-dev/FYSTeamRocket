@@ -130,11 +130,13 @@ Tile GetCurrentTile()
 void draw()
 {
     textFont(font);
+
     // if paused display the pause menu
     switch(stage)
     {
         case 1:
             menus.startMenu();
+            assetsLoader.startMenuMusic();
             return;
         case 2:
             // Set currently selected tile
@@ -148,9 +150,6 @@ void draw()
             // Draw the UI
             drawUI();
 
-            // Play music
-            assetsLoader.backgroundMusic();
-
             // Keep up with all the data
             statisticsData();
 
@@ -160,6 +159,7 @@ void draw()
             menus.display();
 
             //Ingame music starts playing and loops
+            assetsLoader.inGameMusic();
             return;
         case 3:
             menus.gameOverMenu();

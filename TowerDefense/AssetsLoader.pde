@@ -37,32 +37,24 @@ class AssetsLoader
         }
     }
 
-    void backgroundMusic()
+    void startMenuMusic()
     {
-        switch(stage)
-        {
-            case 1:
-                if(!backGround.isPlaying())
-                {
-                    backGround.play();
-                    backGround.amp(1);
-                }
-                else
-                {
-                    backGround.stop();
-                }
-                return;
-            case 2:
-                if(!inGameBackground.isPlaying())
-                {
-                    inGameBackground.play();
-                    inGameBackground.amp(1);
-                }
-                else
-                {
-                    backGround.stop();
-                }
-                return;
-        }
+        if(!backGround.isPlaying())
+            {
+                backGround.play();
+                backGround.amp(1);
+            }
+        inGameBackground.stop();
     }
+
+    void inGameMusic()
+    {
+        if(!inGameBackground.isPlaying())
+            {
+                inGameBackground.play();
+                inGameBackground.amp(1);
+            }
+        backGround.stop();
+    }
+
 }
