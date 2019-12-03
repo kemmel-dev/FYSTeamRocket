@@ -21,7 +21,7 @@ Statistics statistics =  new Statistics();
 UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
-Assetsloader assetsLoader = new Assetsloader();
+AssetsLoader assetsLoader = new Assetsloader();
 
 PImage startmenu;
 PImage controlsimage;
