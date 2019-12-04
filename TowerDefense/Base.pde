@@ -9,7 +9,7 @@ class Base
 
     Base()
     {
-        x = SIZE_X - waypoints.tileSize;
+        x = SIZE_X ;
         y = waypoints.wayPoint6;
         dX = waypoints.tileSize*2;
         dY = waypoints.tileSize*4;
