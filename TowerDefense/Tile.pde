@@ -20,36 +20,25 @@ class Tile
 
     void display()
     {
-        // If this tile is a menu tile, color it white @Twab
-        if (this.x == (this.w * 16 - w/2)) {
-            fill(style.white, style.menuOpacity);            
-            
-            // If this menu tile is selected, color it red @Twab
-            if (selected) {
+        if (selected)
+        {
+            fill(style.selectedColor, style.selectedOpacity);
+            if(tower.towerType == 1)
+            {
+                fill(style.hidden);
+                ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
                 fill(style.selectedColor, style.selectedOpacity);
             }
-
-        } else {
-            if (selected)
+            if(tower.towerType == 2)
             {
+                fill(style.hidden);
+                ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
                 fill(style.selectedColor, style.selectedOpacity);
-                if(tower.towerType == 1)
-                {
-                    fill(style.hidden);
-                    ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
-                    fill(style.selectedColor, style.selectedOpacity);
-                }
-                if(tower.towerType == 2)
-                {
-                    fill(style.hidden);
-                    ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
-                    fill(style.selectedColor, style.selectedOpacity);
-                }
             }
-            else 
-            {
-                fill(style.fillColor, style.opacity);
-            }
+        }
+        else 
+        {
+            fill(style.fillColor, style.opacity);
         }
         
         rect(x, y, w, w);
@@ -63,7 +52,6 @@ class Tile
         color white = color(255, 255, 255);
         color black = color(0, 0, 0);
         int opacity = 20;
-        int menuOpacity = 500;
         int selectedOpacity = 125;
     }
 }

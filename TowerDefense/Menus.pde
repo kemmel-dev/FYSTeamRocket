@@ -1,7 +1,6 @@
 class Menus
 {
     Style style;
-    UpgradeMenu upgradeMenu = new UpgradeMenu(new PVector(1860, 60));
     int sizeX, sizeY;
     int xPos;
     float buttonGap = 100;
@@ -46,7 +45,7 @@ class Menus
 
     void display()
     {
-        upgradeMenu.display();
+        
     }
 
     class Style
@@ -114,27 +113,6 @@ class Menus
             stage = 5;
         }
 
-    }
-
-    class UpgradeMenu
-    {
-
-        PVector pos;
-
-        float buttonWidth = SIZE_X / grid.sizeX;
-        float buttonHeight = buttonWidth;
-        int numberOfButtons = 1;
-
-        UpgradeMenu(PVector _pos)
-        {
-            pos = _pos;
-        }
-
-        void display()
-        {
-            fill(255); 
-        }
-    
     }
 }
 

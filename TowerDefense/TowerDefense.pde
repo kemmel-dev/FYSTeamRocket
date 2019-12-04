@@ -257,7 +257,7 @@ void handleDeadEnemies()
             wave.enemiesRemoved++;
             statistics.scorePoints += 10;
         }
-        if(e.x - e.w > SIZE_X-SIZE_X/grid.sizeX)
+        if(e.x - e.w > SIZE_X)
         {
             i.remove();
             statistics.lives--;
