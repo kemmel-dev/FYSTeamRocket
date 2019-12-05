@@ -51,7 +51,7 @@ class Wave
     if(enemiesLeft == 0)
     {
       textAlign(CENTER);
-      text("Press P to start next wave", SIZE_X / 2, SIZE_Y / 5);
+      text("Press R-Bumper to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }
 
