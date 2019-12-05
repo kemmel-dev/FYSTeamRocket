@@ -3,7 +3,7 @@ class Enemy
     int x;
     int y;
     int w;
-    int hitpoints;
+    float hitpoints;
     int moveDir = 3;
     float msMultiplier = 1;
 
