@@ -32,3 +32,9 @@ Music;
 Sound Effects;
 -
 
+Enemies;
+Meer HP
+Snellere enemies
+Flying enemies
+langzaam sneller wordende enemies
+
