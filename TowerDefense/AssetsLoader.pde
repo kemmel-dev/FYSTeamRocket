@@ -42,7 +42,7 @@ class AssetsLoader
         if(!backGround.isPlaying())
             {
                 backGround.play();
-                backGround.amp(1);
+                backGround.amp(0.5);
             }
         inGameBackground.stop();
     }
@@ -52,7 +52,7 @@ class AssetsLoader
         if(!inGameBackground.isPlaying())
             {
                 inGameBackground.play();
-                inGameBackground.amp(1);
+                inGameBackground.amp(0.5);
             }
         backGround.stop();
     }
