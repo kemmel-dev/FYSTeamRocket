@@ -1,3 +1,8 @@
+//importing the bezier library
+import de.bezier.data.sql.*;
+
+MySQL msql;
+
 // import the Iterator method to remove enemies from our
 // import the sounds method
 // arraylist in realtime.

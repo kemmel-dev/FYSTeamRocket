@@ -64,7 +64,7 @@ class Wave
       statistics.scorePoints += 100;
       statistics.amount += 20;
 
-      //The spawntime between enemies cannot go lower than 0,6 seconds aka 600 millis.
+      //The spawntime between enemies cannot go lower than 0,6 seconds (600 millis).
         if(timerLimit > 600)
       {
         timerLimit -= 100;
