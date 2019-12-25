@@ -22,11 +22,10 @@ class Enemy
         w = int(t.w / 2);
         style = new Style();
         initWaypoints();
-        hitpoints = 80 + (wave.waveNumber * 20);
-        print(hitpoints);
+        hitpoints = 30 + (wave.waveNumber * 20);
     }
 
-    Boolean takeDamage(int damage)
+    Boolean takeDamage(float damage)
     {
         hitpoints -= damage;
         if (hitpoints < 0)

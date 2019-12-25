@@ -15,7 +15,7 @@ class Tile
         y = _y;
         w = _w;
         style = new Style();
-        tower = new Tower(0, 0, 0, 0);
+        tower = new Tower(0, 0, 0, 0, 0);
     }
 
     void display()

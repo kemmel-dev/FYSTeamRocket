@@ -3,6 +3,9 @@
 // arraylist in realtime.
 import java.util.Iterator;
 import processing.sound.*;
+import de.bezier.data.sql.*;
+
+MySQL msql;
 
 
 // Constants
@@ -22,6 +25,7 @@ UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
+ConnectDB connectDB = new ConnectDB();
 
 PImage startmenu;
 PImage controlsimage;
@@ -66,6 +70,9 @@ void settings()
 // Initialize a bunch of other settings and objects.
 void setup()
 {   
+    // Connect Database to the game
+    connectDB.createDatabaseConnection();
+
     // Stage 1 = Start Menu
     stage =  1;
     
@@ -137,6 +144,14 @@ void draw()
         case 1:
             menus.startMenu();
             assetsLoader.startMenuMusic();
+            if(msql.connect())
+            {
+                text("connected", width/2, height/2);
+            }
+            else
+            {
+                text("Error, not connected", width/2, height/2);
+            }
             return;
         case 2:
             // Set currently selected tile
@@ -173,7 +188,6 @@ void draw()
             return;
     }
     
-
 }
 
 // Handles all actions for each tower each frame.

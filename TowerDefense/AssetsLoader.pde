@@ -23,7 +23,7 @@ class AssetsLoader
     {
         if(!laserSound.isPlaying())
         {
-            laserSound.amp(0.2);
+            laserSound.amp(0.1);
             laserSound.play();
         }
     }
@@ -32,7 +32,7 @@ class AssetsLoader
     {
         if(!freezeSound.isPlaying())
         {
-            freezeSound.amp(0.2);
+            freezeSound.amp(0.1);
             freezeSound.play();
         }
     }
@@ -42,7 +42,7 @@ class AssetsLoader
         if(!backGround.isPlaying())
             {
                 backGround.play();
-                backGround.amp(0.5);
+                backGround.amp(0.03);
             }
         inGameBackground.stop();
     }
@@ -52,7 +52,7 @@ class AssetsLoader
         if(!inGameBackground.isPlaying())
             {
                 inGameBackground.play();
-                inGameBackground.amp(0.5);
+                inGameBackground.amp(0.3);
             }
         backGround.stop();
     }
