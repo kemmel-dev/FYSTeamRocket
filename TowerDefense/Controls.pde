@@ -124,7 +124,7 @@ class Controls {
           int x = currentTile.x;
           int y = currentTile.y;
           int d = grid.grid[0][0].w / 2;
-          currentTile.tower = new Tower(x, y, d, 3);
+          currentTile.tower = new Tower(x, y, d, 3, 1);
           statistics.amount -= 15;
          }
         }
@@ -147,7 +147,7 @@ class Controls {
             statistics.amount += statistics.freezeTowerCost/2;
             return;
           case 3:
-            currentTile.tower = new Tower(x, y, d, 0);
+            currentTile.tower = new Tower(x, y, d, 0, 1);
             statistics.amount += 75;
         }
       }
