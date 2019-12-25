@@ -1,6 +1,7 @@
 class Statistics
 {
     int amount;
+    float laserTowerCost, freezeTowerCost;
     
     int lives;
 
@@ -10,7 +11,10 @@ class Statistics
 
     Statistics()
     {
-        amount = 8000;
+        amount = 400;
+        laserTowerCost = 50;
+        freezeTowerCost = 100;
+
         lives = 5;
     }
 
@@ -31,7 +35,7 @@ class Statistics
     {
         if(lives <= 0)
         {
-            stage = 3;
+            stage = 8;
             lives = 0;
         }
     }

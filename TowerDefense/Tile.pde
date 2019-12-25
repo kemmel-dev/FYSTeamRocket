@@ -15,7 +15,7 @@ class Tile
         y = _y;
         w = _w;
         style = new Style();
-        tower = new Tower(0, 0, 0, 0);
+        tower = new Tower(0, 0, 0, 0, 0);
     }
 
     void display()
@@ -36,6 +36,12 @@ class Tile
                 fill(style.selectedColor, style.selectedOpacity);
             }
             if(tower.towerType == 3)
+            {
+                fill(style.hidden);
+                ellipse(tower.x, tower.y, tower.rangeBombTower, tower.rangeBombTower);
+                fill(style.selectedColor, style.selectedOpacity);
+            }
+              if(tower.towerType == 4)
             {
                 fill(style.hidden);
                 ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);

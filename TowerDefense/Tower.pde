@@ -8,6 +8,9 @@ class Tower
   int d;
   int r;
 
+  // Damage dealt to the enemy
+  float laserDamage, freezePower;
+
   // The enemy the tower is targetting
   Enemy enemy;
 
@@ -16,19 +19,24 @@ class Tower
 
   // What type of tower is this tower?
   // 0 = Tower "doesn't exist"
-  // 1 = Default tower (Laser)
+  // 1 = Lasertower
+  // 2 = Freezetower
   int towerType;
+
+  // The level of the Tower
+  int towerLevel;
 
   // radius for the towers shooting range
   int range;
   int rangeFreezeTower;
+  int rangeBombTower;
   // and it's shooting range diameter
   int rangeD;
 
   Style style;
 
   // Constructor function for a tower
-  Tower(int _x, int _y, int _d, int _towerType)
+  Tower(int _x, int _y, int _d, int _towerType, int _towerLevel)
   {
     x = _x;
     y = _y;
@@ -36,9 +44,12 @@ class Tower
     r = d / 2;
     range = r * 10;
     rangeFreezeTower = range/2;
+    rangeBombTower = range*2;
     rangeD = range + range;
     style = new Style();
     towerType = _towerType;
+    towerLevel = _towerLevel;
+    freezePower = 0.5;
   }
 
   // Show this tower
@@ -59,13 +70,19 @@ class Tower
       freezetower.resize(100,100);
       image(freezetower, x, y);
     }
-     if (towerType == 3)
+    if (towerType == 3)
+    {
+      imageMode(CENTER);
+      bombtower.resize(100, 100);
+      image(bombtower, x, y);
+    }
+
+     if (towerType == 4)
     {
       //fill(style.iceBlue, 255);
       imageMode(CENTER);
       farmTower.resize(100,100);
       image(farmTower, x, y);
-    }
   }
 
   // Look for enemies in range of this tower
@@ -111,6 +128,9 @@ class Tower
       case 2:
         freezeEnemies();
         return;
+      case 3:
+        throwBombs();
+        return;
       default:
         return;
     }
@@ -122,7 +142,7 @@ class Tower
     if (ifEnemyIsInRange(enemy))
     {
       // Let target take damage
-      if (enemy.takeDamage(2))
+      if (enemy.takeDamage(laserDamage))
       {
         assetsLoader.laserSound.stop();
         // if enemy died because of this damage, stop shooting
@@ -135,6 +155,7 @@ class Tower
       line(x, y, enemy.x, enemy.y);
       stroke(style.black);
       strokeWeight(style.defaultStrokeWeight);
+      println(laserDamage);
     }
     // if target is no longer in range, stop shooting
     else 
@@ -149,7 +170,27 @@ class Tower
     ArrayList<Enemy> targets = enemiesInRange();  
     for (Enemy e : targets)
     {
-      e.msMultiplier = .5f;
+      e.msMultiplier = freezePower;
+    }
+  }
+
+  void throwBombs()
+  {
+    float bombX = x;
+    float bombY = y;
+    float bombSize = 50;
+    float targetX, targetY;
+    if (ifEnemyIsInRange(enemy))
+    {
+      targetX = enemy.x;
+      targetY = enemy.y;
+      bombX = lerp (bombX, targetX, 0.5);
+      bombY = lerp (bombY, targetY, 0.5);
+      ellipse(bombX, bombY, bombSize, bombSize);
+    }
+    else
+    {
+      shooting = false;
     }
   }
 

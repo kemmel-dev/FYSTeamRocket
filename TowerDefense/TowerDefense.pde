@@ -1,8 +1,16 @@
+//importing the bezier library
+import de.bezier.data.sql.*;
+
+MySQL msql;
+
 // import the Iterator method to remove enemies from our
 // import the sounds method
 // arraylist in realtime.
 import java.util.Iterator;
 import processing.sound.*;
+import de.bezier.data.sql.*;
+
+MySQL msql;
 
 
 // Constants
@@ -22,6 +30,7 @@ UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
+ConnectDB connectDB = new ConnectDB();
 
 PImage startmenu;
 PImage controlsimage;
@@ -42,6 +51,7 @@ PImage lives;
 PImage goldcoinhud;
 
 PFont font;
+
 
 // The game stages >> stage 1 = Start Menu, stage 2 = The Game itself, stage 3 = Game Over Screen.
 int stage;
@@ -66,15 +76,16 @@ void settings()
 // Initialize a bunch of other settings and objects.
 void setup()
 {   
+    // Connect Database to the game
+    connectDB.createDatabaseConnection();
+
     // Stage 1 = Start Menu
     stage =  1;
-    
+    // Load all Pictures
+    assetsLoader.createImages();
     // Load all sounds
     assetsLoader.loadSounds();
-
-    startmenu = loadImage("startimage.png");
-    controlsimage = loadImage("controls.png");
-    font = createFont("Impact",36);
+    // FrameRate
     frameRate(FRAME_RATE);
     // Ensure we draw rectangles in CENTER mode
     rectMode(CENTER);
@@ -134,11 +145,42 @@ void draw()
     // if paused display the pause menu
     switch(stage)
     {
+        // Start Menu + New Game HIGHLIGHTED
         case 1:
-            menus.startMenu();
+            menus.startMenu1();
             assetsLoader.startMenuMusic();
+            if(msql.connect())
+            {
+                text("connected", width/2, height/2);
+            }
+            else
+            {
+                text("Error, not connected", width/2, height/2);
+            }
             return;
+        // Start Menu + Controls HIGHLIGHTED
         case 2:
+            menus.startMenu2();
+            return;
+        // Start Menu + Leaderboards HIGHLIGHTED
+        case 3:
+            menus.startMenu3();
+            return;
+        // Start Menu + Settings HIGHLIGHTED
+        case 4:
+            menus.startMenu4();
+            return;
+        // Start Menu + Credits HIGHLIGHTED
+        case 5:
+            menus.startMenu5();
+            return;
+        // Start Menu + Exit Game HIGHLIGHTED
+        case 6:
+            menus.startMenu6();
+            return;
+
+        // In Game Screen from Start Menu
+        case 7:
             // Set currently selected tile
             selectedTile = GetCurrentTile();
 
@@ -161,19 +203,34 @@ void draw()
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
             return;
-        case 3:
+        
+        // Game Over Menu from InGame Screen
+        case 8:
             menus.gameOverMenu();
             statistics.reset();
             return;
-        case 4:
+        // Pause Menu from InGame Screen
+        case 9:
             menus.displayPauseMenu();
             return;
-        case 5:
+        // Controls from Menu Screen
+        case 10:
             menus.controlsMenu();
+            return;
+        // LeaderBoards Menu from Start Menu
+        case 11:
+            menus.leaderBoardsMenu();
+            return;
+        // Settings Menu from Start Menu
+        case 12:
+            menus.settingsMenu();
+            return;
+        // Credits Menu from Start Menu
+        case 13:
+            menus.creditsMenu();
             return;
     }
     
-
 }
 
 // Handles all actions for each tower each frame.
