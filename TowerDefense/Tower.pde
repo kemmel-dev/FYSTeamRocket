@@ -59,6 +59,13 @@ class Tower
       freezetower.resize(100,100);
       image(freezetower, x, y);
     }
+     if (towerType == 3)
+    {
+      //fill(style.iceBlue, 255);
+      imageMode(CENTER);
+      farmTower.resize(100,100);
+      image(farmTower, x, y);
+    }
   }
 
   // Look for enemies in range of this tower

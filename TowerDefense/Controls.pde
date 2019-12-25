@@ -58,7 +58,7 @@ class Controls {
         // Gets the data where the currentTile is
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
-        // Building towers in the menu is not allowed @Twab
+        
         if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
           {
           //Variables from the currentTile converted to the variable values from Tower
@@ -84,6 +84,19 @@ class Controls {
       }                 
     }
 
+ if (key == 'p')
+    {
+      Tile currentTile = grid.grid[selectionX][selectionY]; 
+        
+      if (currentTile.tower.towerType == 0 && statistics.amount >= 150)
+      {
+        int x = currentTile.x;
+        int y = currentTile.y;
+        int d = grid.grid[0][0].w / 2;
+        currentTile.tower = new Tower(x, y, d, 3);
+        statistics.amount -= 150;
+      }                 
+    }
     
       if(key == 'q')
       {

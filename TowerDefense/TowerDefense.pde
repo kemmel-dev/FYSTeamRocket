@@ -29,12 +29,12 @@ PImage controlsimage;
 PImage lasertower;
 PImage freezetower;
 PImage bombtower;
-PImage bufftower;
+PImage farmTower;
 
 PImage lasertowerhud;
 PImage freezetowerhud;
 PImage bombtowerhud;
-PImage bufftowerhud;
+PImage farmTowerhud;
 
 PImage goldcoin;
 PImage lives;
@@ -89,12 +89,12 @@ void setup()
     lasertower = loadImage("laser.png");
     freezetower = loadImage("freeze.png");
     bombtower = loadImage("bomb.png");
-    bufftower = loadImage("buff.png");
+    farmTower = loadImage("farm.png");
 
     lasertowerhud = loadImage("laserhd.png");
     freezetowerhud = loadImage("freezehd.png");
     bombtowerhud = loadImage("bombhd.png");
-    bufftowerhud = loadImage("buffhd.png");
+    farmTowerhud = loadImage("farmhd.png");
 
     goldcoin = loadImage("gold.png");
     lives = loadImage("lives.png");
@@ -104,12 +104,12 @@ void setup()
     lasertower.resize(100,100);
     freezetower.resize(100,100);
     bombtower.resize(100,100);
-    bufftower.resize(100,100);
+    farmTower.resize(100,100);
 
     lasertowerhud.resize(80,80);
     freezetowerhud.resize(80,75);
     bombtowerhud.resize(75,70);
-    bufftowerhud.resize(80,75);
+    farmTowerhud.resize(80,75);
 
     goldcoin.resize(25,25);
     lives.resize(40,40);

@@ -35,7 +35,7 @@ class UI
         image(lasertowerhud,sizeX*3+20,0);
         image(freezetowerhud,sizeX*3+137,0);
         image(bombtowerhud,sizeX*3+260,0);
-        image(bufftowerhud,sizeX*3+380,0);
+        image(farmTowerhud,sizeX*3+380,0);
 
         image(goldcoin,sizeX*3+20,80);
         image(goldcoin,sizeX*3+137,80);
