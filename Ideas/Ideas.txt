@@ -32,6 +32,7 @@ Music;
 Sound Effects;
 -
 
+Ice tower maar maximaal 3 enemies freezen.
 Enemies;
 Meer HP
 Snellere enemies

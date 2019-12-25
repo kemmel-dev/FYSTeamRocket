@@ -21,24 +21,377 @@ class Menus
 
         style = new Style();
     }
+    // New Game HIGHLIGHTED
+    void startMenu1()
+    {
+        image(startmenu,0,0,width,height);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,385,300,50);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
+        rect(width/2,885,300,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,385,300,50);
+
+        noStroke();
+        fill(220);
+        text("New Game",width/2,400);
+        text("Controls",width/2,500);
+        text("Leaderboards",width/2,600);
+        text("Settings",width/2,700);
+        text("Credits",width/2,800);
+        text("Exit Game",width/2,900);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+        
+        textAlign(CENTER);
+        fill(0);
+        text("My Dear Smooth Sphere",width/2,100);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == DOWN)
+                {
+                    stage = 2;
+                }
+            }
+            if (key == 'p')
+                {
+                    stage = 7;
+                }
+        }
+
+    }
+    // Controls HIGHLIGHTED
+    void startMenu2()
+    {
+        image(startmenu,0,0,width,height);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,385,300,50);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
+        rect(width/2,885,300,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,485,300,50);
+        
+        noStroke();
+        fill(220);
+        text("New Game",width/2,400);
+        text("Controls",width/2,500);
+        text("Leaderboards",width/2,600);
+        text("Settings",width/2,700);
+        text("Credits",width/2,800);
+        text("Exit Game",width/2,900);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        textAlign(CENTER);
+        fill(0);
+        text("My Dear Smooth Sphere",width/2,100);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == UP)
+                {
+                    stage = 1;
+                }
+                if (keyCode == DOWN)
+                {
+                    stage = 3;
+                }
+            }
+            if (key == 'p')
+                {
+                    stage = 10;
+                }
+        }
+
+    }
+    // Leaderboards HIGHLIGHTED
+    void startMenu3()
+    {
+        image(startmenu,0,0,width,height);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,385,300,50);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
+        rect(width/2,885,300,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,585,300,50);
+        
+        noStroke();
+        fill(220);
+        text("New Game",width/2,400);
+        text("Controls",width/2,500);
+        text("Leaderboards",width/2,600);
+        text("Settings",width/2,700);
+        text("Credits",width/2,800);
+        text("Exit Game",width/2,900);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        textAlign(CENTER);
+        fill(0);
+        text("My Dear Smooth Sphere",width/2,100);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == UP)
+                {
+                    stage = 2;
+                }
+                if (keyCode == DOWN)
+                {
+                    stage = 4;
+                }
+            }
+            if (key == 'p')
+                {
+                    stage = 11;
+                }
+        }
+
+    }
+    // Settings HIGHLIGHTED
+    void startMenu4()
+    {
+        image(startmenu,0,0,width,height);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,385,300,50);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
+        rect(width/2,885,300,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,685,300,50);
+        
+        noStroke();
+        fill(220);
+        text("New Game",width/2,400);
+        text("Controls",width/2,500);
+        text("Leaderboards",width/2,600);
+        text("Settings",width/2,700);
+        text("Credits",width/2,800);
+        text("Exit Game",width/2,900);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        textAlign(CENTER);
+        fill(0);
+        text("My Dear Smooth Sphere",width/2,100);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == UP)
+                {
+                    stage = 3;
+                }
+                if (keyCode == DOWN)
+                {
+                    stage = 5;
+                }
+            }
+            if (key == 'p')
+                {
+                    stage = 12;
+                }
+        }
+
+    }
+    // Credits HIGHLIGHTED
+    void startMenu5()
+    {
+        image(startmenu,0,0,width,height);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,385,300,50);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
+        rect(width/2,885,300,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,785,300,50);
+        
+        noStroke();
+        fill(220);
+        text("New Game",width/2,400);
+        text("Controls",width/2,500);
+        text("Leaderboards",width/2,600);
+        text("Settings",width/2,700);
+        text("Credits",width/2,800);
+        text("Exit Game",width/2,900);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        textAlign(CENTER);
+        fill(0);
+        text("My Dear Smooth Sphere",width/2,100);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == UP)
+                {
+                    stage = 4;
+                }
+                if (keyCode == DOWN)
+                {
+                    stage = 6;
+                }
+            }
+            if (key == 'p')
+                {
+                    stage = 13;
+                }
+        }
+    }
+    // Exit Game HIGHLIGHTED
+    void startMenu6()
+    {
+        image(startmenu,0,0,width,height);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,385,300,50);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
+        rect(width/2,885,300,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,885,300,50);
+        
+        noStroke();
+        fill(220);
+        text("New Game",width/2,400);
+        text("Controls",width/2,500);
+        text("Leaderboards",width/2,600);
+        text("Settings",width/2,700);
+        text("Credits",width/2,800);
+        text("Exit Game",width/2,900);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        textAlign(CENTER);
+        fill(0);
+        text("My Dear Smooth Sphere",width/2,100);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == UP)
+                {
+                    stage = 5;
+                }
+            }
+            if (key == 'p')
+                {
+                    exit();
+                }
+        }
+
+    }
 
     void displayPauseMenu()
     {
-
-        background(0);
-        menuFont = createFont("Impact",style.fontSize);
-        textFont(menuFont);
-        fill(style.textColor);
+        fill(0,2);
+        rect(0,0,width*2,height*2);
+        rectMode(CENTER);
         textAlign(CENTER);
-        fill(125,125,0);
-        text("Game Paused", SIZE_X / 2, SIZE_Y / 2);
-        textSize(style.fontSize/2);
-        text("Press 'START' to resume", SIZE_X / 2, SIZE_Y / 1.5);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,135,300,50);
+
+        rect(width/1.15,950,430,120);
+
+        noStroke();
+        fill(220);
+        text("Game Paused",width/2,150);
+
+        textAlign(CORNER);
+        text("L Bump  =  Exit Game",width/1.3,940);
+        text("R Bump  =  Resume Game",width/1.3,990);
         if (keyPressed)
                 {   
                     if (key == 'j')
                     {
-                        stage = 2;
+                        stage = 7;
                     }
                 }
     }
@@ -70,11 +423,11 @@ class Menus
 
     void gameOverMenu()
     {   
-        fill(0);
+        fill(0,8);
         rectMode(CORNER);
         rect(0,0,width,height);
         rectMode(CENTER);
-        fill(0,200,50);
+        fill(255,10,10);
         textAlign(CENTER);
         text("Press START to play again",width/2,height/2.1);
         text("GAME OVER",width/2, height/3);
@@ -93,26 +446,50 @@ class Menus
         image(controlsimage,0,0,width,height);
         if (keyPressed)
                 {   
-                    if (key == 'j')
+                    if (key == 'q')
                     {
                         stage = 2;
                     }
                 }
     }
 
-    void startMenu()
+    void leaderBoardsMenu()
     {
-        image(startmenu,0,0,width,height);
-        rectMode(CENTER);
-        fill(0);
-        textAlign(CENTER);
-        text("Press any key to begin",width/1.89,height/1.7);
-        noFill();
+        background(0);
+        text("Leaderboards",width/2,height/2);
         if (keyPressed)
-        {   
-            stage = 5;
-        }
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 3;
+                    }
+                }
+    } 
 
+    void settingsMenu()
+    {
+        background(0);
+        text("settings",width/2,height/2);
+        if (keyPressed)
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 4;
+                    }
+                }
+    } 
+
+    void creditsMenu()
+    {
+        background(0);
+        text("credits",width/2,height/2);
+        if (keyPressed)
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 5;
+                    }
+                }
     }
 }
 

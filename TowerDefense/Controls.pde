@@ -56,7 +56,7 @@ class Controls {
   {
     if (key == 'f')
       {
-        stage = 4;
+        stage = 9;
       }
     if (key == 's')
         {
@@ -99,6 +99,22 @@ class Controls {
 
     // Sell towers
     
+    //Controls for placing the bomb tower
+        if (key == 'd')
+        {
+        Tile currentTile = grid.grid[selectionX][selectionY]; 
+         
+        if (currentTile.tower.towerType == 0 && statistics.amount >= 15)
+          {
+          int x = currentTile.x;
+          int y = currentTile.y;
+          int d = grid.grid[0][0].w / 2;
+          currentTile.tower = new Tower(x, y, d, 3);
+          statistics.amount -= 15;
+         }
+        }
+
+      //Controls for selling a tower
       if(key == 'q')
       {
       Tile currentTile = grid.grid[selectionX][selectionY];
@@ -115,6 +131,9 @@ class Controls {
             currentTile.tower = new Tower(x, y, d, 0, 1);
             statistics.amount += statistics.freezeTowerCost/2;
             return;
+          case 3:
+            currentTile.tower = new Tower(x, y, d, 0);
+            statistics.amount += 75;
         }
       }
 
