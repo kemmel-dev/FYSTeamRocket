@@ -22,6 +22,7 @@ class Tower
   // radius for the towers shooting range
   int range;
   int rangeFreezeTower;
+  int rangeBombTower;
   // and it's shooting range diameter
   int rangeD;
 
@@ -36,6 +37,7 @@ class Tower
     r = d / 2;
     range = r * 10;
     rangeFreezeTower = range/2;
+    rangeBombTower = range*2;
     rangeD = range + range;
     style = new Style();
     towerType = _towerType;
@@ -58,6 +60,12 @@ class Tower
       imageMode(CENTER);
       freezetower.resize(100,100);
       image(freezetower, x, y);
+    }
+    if (towerType == 3)
+    {
+      imageMode(CENTER);
+      bombtower.resize(100, 100);
+      image(bombtower, x, y);
     }
   }
 
@@ -104,6 +112,9 @@ class Tower
       case 2:
         freezeEnemies();
         return;
+      case 3:
+        throwBombs();
+        return;
       default:
         return;
     }
@@ -143,6 +154,26 @@ class Tower
     for (Enemy e : targets)
     {
       e.msMultiplier = .5f;
+    }
+  }
+
+  void throwBombs()
+  {
+    float bombX = x;
+    float bombY = y;
+    float bombSize = 50;
+    float targetX, targetY;
+    if (ifEnemyIsInRange(enemy))
+    {
+      targetX = enemy.x;
+      targetY = enemy.y;
+      bombX = lerp (bombX, targetX, 0.5);
+      bombY = lerp (bombY, targetY, 0.5);
+      ellipse(bombX, bombY, bombSize, bombSize);
+    }
+    else
+    {
+      shooting = false;
     }
   }
 
