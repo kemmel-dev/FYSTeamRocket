@@ -51,7 +51,7 @@ class Controls {
   {
     if (key == 'f')
       {
-        stage = 4;
+        stage = 9;
       }
     if (key == 's')
         {

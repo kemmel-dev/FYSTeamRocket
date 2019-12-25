@@ -31,7 +31,7 @@ class Statistics
     {
         if(lives <= 0)
         {
-            stage = 3;
+            stage = 8;
             lives = 0;
         }
     }
