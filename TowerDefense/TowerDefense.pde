@@ -75,7 +75,7 @@ void setup()
     connectDB.createDatabaseConnection();
 
     // Stage 1 = Start Menu
-    stage =  1;
+    stage = 1;
     // Load all Pictures
     assetsLoader.createImages();
     // Load all sounds
@@ -144,14 +144,6 @@ void draw()
         case 1:
             menus.startMenu1();
             assetsLoader.startMenuMusic();
-            if(msql.connect())
-            {
-                text("connected", width/2, height/2);
-            }
-            else
-            {
-                text("Error, not connected", width/2, height/2);
-            }
             return;
         // Start Menu + Controls HIGHLIGHTED
         case 2:

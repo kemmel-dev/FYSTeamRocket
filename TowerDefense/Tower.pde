@@ -9,7 +9,7 @@ class Tower
   int r;
 
   // Damage dealt to the enemy
-  float laserDamage, freezePower;
+  float laserDamage = 1, freezePower;
 
   // The enemy the tower is targetting
   Enemy enemy;
