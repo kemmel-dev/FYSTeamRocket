@@ -8,8 +8,6 @@ class Controls {
   int selectionX, selectionY;
   PVector towerLocation = new PVector(0,0);
 
-  boolean keyReleased = true;
-
   // Sets the grid selector at 7th tile from at the x and the 4th tile of the y
   void initControls()
   {
@@ -139,7 +137,7 @@ class Controls {
 
 
         // Upgrade towers
-        if(key == 'g' && keyReleased == true)
+        if(key == 'g')
         {
           Tile currentTile = grid.grid[selectionX][selectionY];
           if(currentTile.tower.towerType == 1 && statistics.amount >= statistics.laserTowerCost * currentTile.tower.towerLevel)
@@ -155,8 +153,6 @@ class Controls {
             currentTile.tower.towerLevel += 1;
             println(currentTile.tower.freezePower);
           }
-          keyReleased = false;
-          println(keyReleased);
         }
 
 

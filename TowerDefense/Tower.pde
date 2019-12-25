@@ -49,6 +49,7 @@ class Tower
     style = new Style();
     towerType = _towerType;
     towerLevel = _towerLevel;
+    laserDamage = towerLevel;
     freezePower = 0.5;
   }
 
@@ -73,7 +74,6 @@ class Tower
     if (towerType == 3)
     {
       imageMode(CENTER);
-      bombtower.resize(100, 100);
       image(bombtower, x, y);
     }
   }
@@ -134,6 +134,7 @@ class Tower
     // if target is still in range
     if (ifEnemyIsInRange(enemy))
     {
+      println(laserDamage);
       // Let target take damage
       if (enemy.takeDamage(laserDamage))
       {
