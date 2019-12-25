@@ -1,7 +1,7 @@
 class ConnectDB
 {
 
-    String dbHostID = "ie.oege.hva.nl:3306";
+    String dbHostID = "oege.ie.hva.nl:3306";
     String dbUsername = "goossej1";
     String dbUserPass = "3EUXYZ#9tdZ7Vb0k";
     String dbSchema = "zgoossej1";
