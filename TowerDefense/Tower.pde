@@ -50,7 +50,7 @@ class Tower
     towerType = _towerType;
     towerLevel = _towerLevel;
     laserDamage = towerLevel;
-    freezePower = 0.5;
+    freezePower = 0.9;
   }
 
   // Show this tower
@@ -165,6 +165,7 @@ class Tower
     for (Enemy e : targets)
     {
       e.msMultiplier = freezePower;
+      e.frozenEnemy = true;
     }
   }
 
@@ -205,6 +206,7 @@ class Tower
       else 
       {
         e.msMultiplier = 1;
+        e.frozenEnemy = false;
       }
     }
     return enemiesInRange;
