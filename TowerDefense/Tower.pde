@@ -49,7 +49,8 @@ class Tower
     style = new Style();
     towerType = _towerType;
     towerLevel = _towerLevel;
-    freezePower = 0.5;
+    laserDamage = towerLevel;
+    freezePower = 0.9;
   }
 
   // Show this tower
@@ -73,7 +74,6 @@ class Tower
     if (towerType == 3)
     {
       imageMode(CENTER);
-      bombtower.resize(100, 100);
       image(bombtower, x, y);
     }
 
@@ -141,6 +141,7 @@ class Tower
     // if target is still in range
     if (ifEnemyIsInRange(enemy))
     {
+      println(laserDamage);
       // Let target take damage
       if (enemy.takeDamage(laserDamage))
       {
@@ -171,6 +172,7 @@ class Tower
     for (Enemy e : targets)
     {
       e.msMultiplier = freezePower;
+      e.frozenEnemy = true;
     }
   }
 
@@ -211,6 +213,7 @@ class Tower
       else 
       {
         e.msMultiplier = 1;
+        e.frozenEnemy = false;
       }
     }
     return enemiesInRange;

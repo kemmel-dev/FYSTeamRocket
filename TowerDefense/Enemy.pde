@@ -6,6 +6,7 @@ class Enemy
     float hitpoints;
     int moveDir = 3;
     float msMultiplier = 1;
+    boolean frozenEnemy = false;
 
     Style style;
 
@@ -47,7 +48,14 @@ class Enemy
 
     void display()
     {
-        fill(style.enemyColor);
+        if(frozenEnemy)
+        {
+            fill(style.frozenColor);
+        }
+        else
+        {
+            fill(style.enemyColor);
+        }
         rect(x, y, w, w);
     }
 
@@ -138,5 +146,6 @@ class Enemy
     class Style
     {
         color enemyColor = color(255, 20, 20);
+        color frozenColor = color(186, 242, 239);
     }
 }
