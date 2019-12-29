@@ -147,7 +147,7 @@ void draw()
 
             // Draw the UI
             drawUI();
-            particles.freezeParticle();
+            //particles.freezeParticle();
 
             // Keep up with all the data
             statisticsData();
