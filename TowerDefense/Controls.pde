@@ -66,6 +66,8 @@ class Controls {
         // Gets the data where the currentTile is
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
+        
+        if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
         // Building towers in the menu is not allowed @Twab
         if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost)
           {
@@ -102,6 +104,19 @@ class Controls {
       }                 
     }
 
+ if (key == 'l')
+    {
+      Tile currentTile = grid.grid[selectionX][selectionY]; 
+        
+      if (currentTile.tower.towerType == 0 && statistics.amount >= 150)
+      {
+        int x = currentTile.x;
+        int y = currentTile.y;
+        int d = grid.grid[0][0].w / 2;
+        currentTile.tower = new Tower(x, y, d, 4, 1);
+        statistics.amount -= 150;
+      }                 
+    }
 
     //Controls for placing the bomb tower
         if (key == 'd')
@@ -138,6 +153,10 @@ class Controls {
             return;
           case 3:
             statistics.amount += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
+            currentTile.tower = new Tower(x, y, d, 0, 1);
+            return;
+          case 4:
+           statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             return;
         }

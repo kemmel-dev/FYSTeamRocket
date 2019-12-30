@@ -33,6 +33,8 @@ class Tower
   // and it's shooting range diameter
   int rangeD;
 
+  int timer = 0;
+  int goldPerFarm = 100;
   Style style;
 
   // Constructor function for a tower
@@ -76,8 +78,15 @@ class Tower
       imageMode(CENTER);
       image(bombtower, x, y);
     }
-  }
 
+     if (towerType == 4)
+    {
+      //fill(style.iceBlue, 255);
+      imageMode(CENTER);
+      farmtower.resize(100,100);
+      image(farmtower, x, y);
+   }
+  }
   // Look for enemies in range of this tower
   Boolean checkForEnemies()
   {
@@ -126,8 +135,15 @@ class Tower
         return;
       default:
         return;
+        case 4:
+        farmGold();
+        return;
     }
   }
+
+
+ 
+
 
   void shootLaser()
   {
@@ -168,6 +184,16 @@ class Tower
       e.frozenEnemy = true;
     }
   }
+
+  void farmGold()
+    {   timer++;
+
+        if (timer == FRAME_RATE * 10)
+        {
+            statistics.amount+= goldPerFarm;
+            timer = 0;
+        }
+    }
 
   void throwBombs()
   {
