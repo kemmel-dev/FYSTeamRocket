@@ -104,7 +104,7 @@ class Controls {
       }                 
     }
 
- if (key == 'p')
+ if (key == 'l')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
@@ -113,7 +113,7 @@ class Controls {
         int x = currentTile.x;
         int y = currentTile.y;
         int d = grid.grid[0][0].w / 2;
-        currentTile.tower = new Tower(x, y, d, 3);
+        currentTile.tower = new Tower(x, y, d, 4, 1);
         statistics.amount -= 150;
       }                 
     }
@@ -153,6 +153,10 @@ class Controls {
             return;
           case 3:
             statistics.amount += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
+            currentTile.tower = new Tower(x, y, d, 0, 1);
+            return;
+          case 4:
+           statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             return;
         }

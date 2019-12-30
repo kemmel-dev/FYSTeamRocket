@@ -24,13 +24,13 @@ class AssetsLoader
     lasertower = loadImage("laser.png");
     freezetower = loadImage("freeze.png");
     bombtower = loadImage("bomb.png");
-    bufftower = loadImage("buff.png");
+    farmtower = loadImage("farm.png");
 
     // Pictures for the in game hud (Towers Related)
     lasertowerhud = loadImage("laserhd.png");
     freezetowerhud = loadImage("freezehd.png");
     bombtowerhud = loadImage("bombhd.png");
-    bufftowerhud = loadImage("buffhd.png");
+    farmtowerhud = loadImage("farmhd.png");
     goldcoinhud = loadImage("goldhd.png");
 
     // Pictures for the in game hud (Currency/Lives)
@@ -41,12 +41,12 @@ class AssetsLoader
     lasertower.resize(100,100);
     freezetower.resize(100,100);
     bombtower.resize(100,100);
-    bufftower.resize(100,100);
+    farmtower.resize(100,100);
 
     lasertowerhud.resize(80,80);
     freezetowerhud.resize(80,75);
     bombtowerhud.resize(75,70);
-    bufftowerhud.resize(80,75);
+    farmtowerhud.resize(80,75);
     goldcoinhud.resize(20,20);
 
     goldcoin.resize(25,25);

@@ -2,7 +2,7 @@ class Statistics
 {
 
     int amount;
-    float laserTowerCost, freezeTowerCost, bombTowerCost;
+    float laserTowerCost, freezeTowerCost, bombTowerCost, farmTowerCost;
     
     int lives;
 
@@ -10,15 +10,25 @@ class Statistics
 
     boolean gereset;
 
+   
+   
+
     Statistics()
     {
         amount = 1000;
         laserTowerCost = 50;
         freezeTowerCost = 100;
         bombTowerCost = 75;
+        farmTowerCost = 250;
 
         lives = 5;
+
     }
+
+
+    
+
+    
 
     void reset()
     { 

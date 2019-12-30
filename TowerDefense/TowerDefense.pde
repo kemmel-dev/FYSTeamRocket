@@ -34,12 +34,12 @@ PImage controlsimage;
 PImage lasertower;
 PImage freezetower;
 PImage bombtower;
-PImage farmTower;
+PImage farmtower;
 
 PImage lasertowerhud;
 PImage freezetowerhud;
 PImage bombtowerhud;
-PImage farmTowerhud;
+PImage farmtowerhud;
 
 PImage goldcoin;
 PImage lives;
@@ -96,12 +96,12 @@ void setup()
     lasertower = loadImage("laser.png");
     freezetower = loadImage("freeze.png");
     bombtower = loadImage("bomb.png");
-    farmTower = loadImage("farm.png");
+    farmtower = loadImage("farm.png");
 
     lasertowerhud = loadImage("laserhd.png");
     freezetowerhud = loadImage("freezehd.png");
     bombtowerhud = loadImage("bombhd.png");
-    farmTowerhud = loadImage("farmhd.png");
+    farmtowerhud = loadImage("farmhd.png");
 
     goldcoin = loadImage("gold.png");
     lives = loadImage("lives.png");
@@ -111,12 +111,12 @@ void setup()
     lasertower.resize(100,100);
     freezetower.resize(100,100);
     bombtower.resize(100,100);
-    farmTower.resize(100,100);
+    farmtower.resize(100,100);
 
     lasertowerhud.resize(80,80);
     freezetowerhud.resize(80,75);
     bombtowerhud.resize(75,70);
-    farmTowerhud.resize(80,75);
+    farmtowerhud.resize(80,75);
 
     goldcoin.resize(25,25);
     lives.resize(40,40);
@@ -179,7 +179,7 @@ void draw()
 
             // Draw the UI
             drawUI();
-            particles.freezeParticle();
+            // particles.freezeParticle();
 
             // Keep up with all the data
             statisticsData();
