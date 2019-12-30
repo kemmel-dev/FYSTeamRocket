@@ -169,17 +169,28 @@ class Tower
 
   void throwBombs()
   {
+    //Creating the variables for the target and the bomb
+    float targetX;
+    float targetY;
     float bombX = x;
     float bombY = y;
-    float bombSize = 50;
-    float targetX, targetY;
+
     if (ifEnemyIsInRange(enemy))
     {
-      targetX = enemy.x;
-      targetY = enemy.y;
-      bombX = lerp (bombX, targetX, 0.5);
-      bombY = lerp (bombY, targetY, 0.5);
-      ellipse(bombX, bombY, bombSize, bombSize);
+      //the target is the coordinate the bomb needs to move to
+      targetX = enemy.x - x;
+      targetY = enemy.y - y;
+
+      //the bomb moves to the target
+      bombX += targetX;
+      bombY += targetY;
+
+      //Every 2 seconds a bomb is displayed on the enemy
+      if(frameCount % 60 == 0)
+      {
+        fill(style.bombColor);
+      ellipse(bombX, bombY, 50, 50);
+      }
     }
     else
     {
@@ -219,5 +230,6 @@ class Tower
     color iceBlue = color(186, 242, 239);
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
+    color bombColor = color(200, 255, 0);
   }
 }
