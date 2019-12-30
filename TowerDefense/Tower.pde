@@ -174,17 +174,39 @@ class Tower
 
   void throwBombs()
   {
-    float bombX = x;
-    float bombY = y;
-    float bombSize = 50;
-    float targetX, targetY;
+    PVector tower, projectile, target;
+
     if (ifEnemyIsInRange(enemy))
     {
-      targetX = enemy.x;
-      targetY = enemy.y;
-      bombX = lerp (bombX, targetX, 0.5);
-      bombY = lerp (bombY, targetY, 0.5);
-      ellipse(bombX, bombY, bombSize, bombSize);
+
+          tower = new PVector(x, y);
+          projectile = new PVector(tower.x, tower.y);
+          target = new PVector(enemy.x, enemy.y);
+        if (frameCount%60 == 0)
+        {
+
+ // Make the starting position of the projectile be where the tower is
+    projectile.x = tower.x;
+    projectile.y = tower.y;
+    
+    // Aim at wherever the enemy currently is
+    target.x = enemy.x - tower.x;
+    target.y = enemy.y - tower.y;
+    
+    // Normalize the direction vector
+    target.normalize();
+    
+    // Multiply by whatever speed you want the projectile to move
+    target.x *= 15;
+    target.y *= 15;
+        }
+// Update the projectile
+  projectile.x += target.x;
+  projectile.y += target.y;
+  
+  fill(255, 255, 0);
+  ellipse(projectile.x, projectile.y, 10, 10);
+      
     }
     else
     {
@@ -225,5 +247,6 @@ class Tower
     color iceBlue = color(186, 242, 239);
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
+    color bombColor = color(200, 255, 0);
   }
 }
