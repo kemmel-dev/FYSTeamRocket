@@ -10,20 +10,64 @@ class Enemy
 
     Style style;
 
+    //This int determines what enemy type is going to spawn
+    //type 1 = regular enemy
+    //type 2 = enemy with more hp, but is also slower
+    //type 3 = enemy with less hp, but is faster
+    int enemyType = 1;
+
     // This array stores whether we've passed
     // checkpoint
     Boolean[] waypointsPassed = new Boolean[6];
 
     Enemy()
     {
-        Tile t = grid.grid[0][5];
+        //Every 4th enemy is a type 2 (slow with more hp)
+        if(wave.spawns % 3 == 0 && wave.spawns != 0)
+        {
+            enemyType = 2;
+        }
 
+        //Every 6th enemy is a type 3 (fast with less hp)
+        if(wave.spawns % 5 == 0 && wave.spawns != 0)
+        {
+            enemyType = 3;
+        }
+
+        //If it is not a 4th enemy or a 6th enemy it will be a type 1 (regular enemy)
+        if(wave.spawns % 3 != 0 && wave.spawns % 5 != 0)
+        {
+            enemyType = 1;
+        }
+
+        Tile t = grid.grid[0][5];
+        style = new Style();
         x = - t.w;
         y = t.y;
-        w = int(t.w / 2);
-        style = new Style();
         initWaypoints();
-        hitpoints = 30 + (wave.waveNumber * 20);
+
+        //Regular enemy size, speed and hp
+        if(enemyType == 1)
+        {
+            w = int(t.w / 2);
+            hitpoints = 30 + (wave.waveNumber * 20);
+        }
+
+        //Type 2 enemy size, speed and hp
+        if(enemyType == 2)
+        {
+            msMultiplier = 0.5;
+            w = int(t.w - 40);
+            hitpoints = 60 + (wave.waveNumber * 30);
+        }
+
+        //Type 3 enemy size, speed and hp
+        if(enemyType == 3)
+        {
+            msMultiplier = 1.5;
+            w = int(t.w / 3);
+            hitpoints = 20 + (wave.waveNumber * 15);
+        }
     }
 
     Boolean takeDamage(float damage)
