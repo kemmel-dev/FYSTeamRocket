@@ -171,28 +171,39 @@ class Tower
 
   void throwBombs()
   {
-    //Creating the variables for the target and the bomb
-    float targetX;
-    float targetY;
-    float bombX = x;
-    float bombY = y;
+    PVector tower, projectile, target;
 
     if (ifEnemyIsInRange(enemy))
     {
-      //the target is the coordinate the bomb needs to move to
-      targetX = enemy.x - x;
-      targetY = enemy.y - y;
 
-      //the bomb moves to the target
-      bombX += targetX;
-      bombY += targetY;
+          tower = new PVector(x, y);
+          projectile = new PVector(tower.x, tower.y);
+          target = new PVector(enemy.x, enemy.y);
+        if (frameCount%60 == 0)
+        {
 
-      //Every 2 seconds a bomb is displayed on the enemy
-      if(frameCount % 60 == 0)
-      {
-        fill(style.bombColor);
-      ellipse(bombX, bombY, 50, 50);
-      }
+ // Make the starting position of the projectile be where the tower is
+    projectile.x = tower.x;
+    projectile.y = tower.y;
+    
+    // Aim at wherever the enemy currently is
+    target.x = enemy.x - tower.x;
+    target.y = enemy.y - tower.y;
+    
+    // Normalize the direction vector
+    target.normalize();
+    
+    // Multiply by whatever speed you want the projectile to move
+    target.x *= 15;
+    target.y *= 15;
+        }
+// Update the projectile
+  projectile.x += target.x;
+  projectile.y += target.y;
+  
+  fill(255, 255, 0);
+  ellipse(projectile.x, projectile.y, 10, 10);
+      
     }
     else
     {
