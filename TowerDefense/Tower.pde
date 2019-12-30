@@ -9,7 +9,7 @@ class Tower
   int r;
 
   // Damage dealt to the enemy
-  float laserDamage = 1, freezePower;
+  float laserDamage, freezePower, freezeDamage;
 
   // The enemy the tower is targetting
   Enemy enemy;
@@ -134,7 +134,6 @@ class Tower
     // if target is still in range
     if (ifEnemyIsInRange(enemy))
     {
-      println(laserDamage);
       // Let target take damage
       if (enemy.takeDamage(laserDamage))
       {
@@ -166,6 +165,10 @@ class Tower
     {
       e.msMultiplier = freezePower;
       e.frozenEnemy = true;
+      if (towerLevel >= 4)
+      {
+        e.takeDamage(freezeDamage);
+      }
     }
   }
 
