@@ -34,12 +34,12 @@ PImage controlsimage;
 PImage lasertower;
 PImage freezetower;
 PImage bombtower;
-PImage bufftower;
+PImage farmtower;
 
 PImage lasertowerhud;
 PImage freezetowerhud;
 PImage bombtowerhud;
-PImage bufftowerhud;
+PImage farmtowerhud;
 
 PImage goldcoin;
 PImage lives;
@@ -91,6 +91,38 @@ void setup()
     map.init();
     controls.initControls();
     menus.setupGameOverMenu();
+
+    // Towers
+    lasertower = loadImage("laser.png");
+    freezetower = loadImage("freeze.png");
+    bombtower = loadImage("bomb.png");
+    farmtower = loadImage("farm.png");
+
+    lasertowerhud = loadImage("laserhd.png");
+    freezetowerhud = loadImage("freezehd.png");
+    bombtowerhud = loadImage("bombhd.png");
+    farmtowerhud = loadImage("farmhd.png");
+
+    goldcoin = loadImage("gold.png");
+    lives = loadImage("lives.png");
+
+    goldcoinhud = loadImage("goldhd.png");
+
+    lasertower.resize(100,100);
+    freezetower.resize(100,100);
+    bombtower.resize(100,100);
+    farmtower.resize(100,100);
+
+    lasertowerhud.resize(80,80);
+    freezetowerhud.resize(80,75);
+    bombtowerhud.resize(75,70);
+    farmtowerhud.resize(80,75);
+
+    goldcoin.resize(25,25);
+    lives.resize(40,40);
+
+    goldcoinhud.resize(20,20);
+
     // create enemy
     //enemies.add(new Enemy());
 }
