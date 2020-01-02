@@ -248,6 +248,11 @@ void handleTowers()
                 t.checkForEnemies();
             }
         }
+            if (t.towerType == 4 && wave.enemiesLeft != 0)
+            {
+                t.farmGold();
+            }
+
       }
     }
 }
