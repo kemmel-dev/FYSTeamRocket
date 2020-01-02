@@ -37,6 +37,9 @@ class Tower
   int goldPerFarm = 100;
   Style style;
 
+  //A boolean that determines whether or not the bomb is aimed at the target
+  boolean aimed = false;
+
   // Constructor function for a tower
   Tower(int _x, int _y, int _d, int _towerType, int _towerLevel)
   {
@@ -201,35 +204,43 @@ class Tower
 
     if (ifEnemyIsInRange(enemy))
     {
-
           tower = new PVector(x, y);
           projectile = new PVector(tower.x, tower.y);
           target = new PVector(enemy.x, enemy.y);
-        if (frameCount%60 == 0)
-        {
 
- // Make the starting position of the projectile be where the tower is
+        // if (frameCount%60 == 0)
+        // {
+
+  if(aimed == false)
+  {
+
+    // Make the starting position of the projectile be where the tower is
     projectile.x = tower.x;
     projectile.y = tower.y;
     
     // Aim at wherever the enemy currently is
     target.x = enemy.x - tower.x;
     target.y = enemy.y - tower.y;
+ 
+    aimed = true;
+  }
     
     // Normalize the direction vector
     target.normalize();
-    
-    // Multiply by whatever speed you want the projectile to move
-    target.x *= 15;
-    target.y *= 15;
-        }
+
+    // // Multiply by whatever speed you want the projectile to move
+    target.x *= 100;
+    target.y *= 100;
+
 // Update the projectile
   projectile.x += target.x;
   projectile.y += target.y;
-  
+
+  //Display the bomb
   fill(255, 255, 0);
-  ellipse(projectile.x, projectile.y, 10, 10);
-      
+  ellipse(projectile.x, projectile.y, 30, 30);
+
+  aimed = false;
     }
     else
     {
