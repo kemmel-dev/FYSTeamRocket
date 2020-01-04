@@ -1,4 +1,5 @@
 # Makes git ignore the following files and folders
 out
 .history
+TowerDefense/.vscode
 .vscode
