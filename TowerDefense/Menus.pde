@@ -389,7 +389,7 @@ class Menus
         text("R Bump  =  Resume Game",width/1.3,990);
         if (keyPressed)
                 {   
-                    if (key == 'j')
+                    if (key == 'p')
                     {
                         stage = 7;
                     }

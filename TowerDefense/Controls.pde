@@ -167,19 +167,25 @@ class Controls {
         if(key == 'g')
         {
           Tile currentTile = grid.grid[selectionX][selectionY];
+
+          //LaserTower upgrade
           if(currentTile.tower.towerType == 1 && statistics.amount >= statistics.laserTowerCost * currentTile.tower.towerLevel)
           {
             statistics.amount -= statistics.laserTowerCost * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
             currentTile.tower.laserDamage = currentTile.tower.towerLevel;
           }
-          if(currentTile.tower.towerType == 2 && statistics.amount >= statistics.freezeTowerCost * currentTile.tower.towerLevel)
+
+          //FreezeTower upgrade
+          else if(currentTile.tower.towerType == 2 && statistics.amount >= statistics.freezeTowerCost * currentTile.tower.towerLevel)
           {
-            println(currentTile.tower.freezePower);
             statistics.amount -= statistics.freezeTowerCost * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
-            currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.1);
-            println(currentTile.tower.freezePower);
+            currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
+            if(currentTile.tower.towerLevel <= 4)
+            {
+              currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.2);
+            }
           }
         }
 

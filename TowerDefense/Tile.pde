@@ -32,7 +32,7 @@ class Tile
             if(tower.towerType == 2)
             {
                 fill(style.hidden);
-                ellipse(tower.x, tower.y, tower.rangeD, tower.rangeD);
+                ellipse(tower.x, tower.y, tower.rangeDFT, tower.rangeDFT);
                 fill(style.selectedColor, style.selectedOpacity);
             }
             if(tower.towerType == 3)
@@ -60,7 +60,7 @@ class Tile
     {
         color fillColor = 255;
         color selectedColor = color(255,0,0);
-        color hidden = color(255, 255, 255, 0);
+        color hidden = color(255, 255, 255, 50);
         color white = color(255, 255, 255);
         color black = color(0, 0, 0);
         int opacity = 20;

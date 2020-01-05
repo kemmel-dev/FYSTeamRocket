@@ -26,7 +26,7 @@ Base base = new Base();
 Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
 ConnectDB connectDB = new ConnectDB();
-Particles particles = new Particles();
+ParticleSystem particleSystem = new ParticleSystem();
 
 PImage startmenu;
 PImage controlsimage;
@@ -179,7 +179,9 @@ void draw()
 
             // Draw the UI
             drawUI();
-            //particles.freezeParticle();
+
+            // Draw Particles
+            drawParticles();
 
             // Keep up with all the data
             statisticsData();
@@ -248,6 +250,11 @@ void handleTowers()
                 t.checkForEnemies();
             }
         }
+            if (t.towerType == 4 && wave.enemiesLeft != 0)
+            {
+                t.farmGold();
+            }
+
       }
     }
 }
@@ -335,4 +342,9 @@ void statisticsData()
 void drawBase()
 {
     base.baseStructure();
+}
+
+void drawParticles()
+{
+    
 }
