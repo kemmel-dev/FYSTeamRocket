@@ -9,7 +9,7 @@ class Tower
   int r;
 
   // Damage dealt to the enemy
-  float laserDamage = 1, freezePower;
+  float laserDamage, freezePower, freezeDamage;
 
   // The enemy the tower is targetting
   Enemy enemy;
@@ -28,7 +28,7 @@ class Tower
 
   // radius for the towers shooting range
   int range;
-  int rangeFreezeTower;
+  float rangeFreezeTower, rangeDFT;
   int rangeBombTower;
   // and it's shooting range diameter
   int rangeD;
@@ -39,8 +39,9 @@ class Tower
 
   Style style;
 
-  //A boolean that determines whether or not the bomb is aimed at the target
   boolean aimed = false;
+  boolean right = false;
+  boolean up = false;
 
   // Constructor function for a tower
   Tower(int _x, int _y, int _d, int _towerType, int _towerLevel)
@@ -50,14 +51,15 @@ class Tower
     d = _d;
     r = d / 2;
     range = r * 10;
-    rangeFreezeTower = range/2;
+    rangeFreezeTower = range/1.5;
+    rangeDFT = rangeFreezeTower + rangeFreezeTower;
     rangeBombTower = range*2;
     rangeD = range + range;
     style = new Style();
     towerType = _towerType;
     towerLevel = _towerLevel;
     laserDamage = towerLevel;
-    freezePower = 0.9;
+    freezePower = 0.8;
   }
 
 
@@ -151,23 +153,20 @@ class Tower
     }
   }
 
-
- 
-
-
   void shootLaser()
   {
     // if target is still in range
     if (ifEnemyIsInRange(enemy))
     {
-      println(laserDamage);
       // Let target take damage
       if (enemy.takeDamage(laserDamage))
       {
         assetsLoader.laserSound.stop();
         // if enemy died because of this damage, stop shooting
         shooting = false;
+       
       }
+
       
       assetsLoader.laserSoundEffect();
       stroke(style.laserColor);
@@ -175,7 +174,6 @@ class Tower
       line(x, y, enemy.x, enemy.y);
       stroke(style.black);
       strokeWeight(style.defaultStrokeWeight);
-      println(laserDamage);
     }
     // if target is no longer in range, stop shooting
     else 
@@ -190,8 +188,15 @@ class Tower
     ArrayList<Enemy> targets = enemiesInRange();  
     for (Enemy e : targets)
     {
-      e.msMultiplier = freezePower;
-      e.frozenEnemy = true;
+      if(e.msMultiplier > freezePower)
+      {
+        e.msMultiplier = freezePower;
+        e.frozenEnemy = true;
+        if (towerLevel >= 4)
+        {
+          e.takeDamage(freezeDamage);
+        }
+      }
     }
   }
 
@@ -205,7 +210,8 @@ class Tower
 
 // }
   void farmGold()
-    {   timer++;
+    {   
+      timer++;
 
         if (timer == FRAME_RATE * 10)
         {
@@ -215,49 +221,86 @@ class Tower
         }
     }
 
-  void throwBombs()
+   void throwBombs()
   {
-    PVector tower, projectile, target;
-
     if (ifEnemyIsInRange(enemy))
     {
-          tower = new PVector(x, y);
-          projectile = new PVector(tower.x, tower.y);
-          target = new PVector(enemy.x, enemy.y);
+      PVector tower, projectile, target;
+      PVector tegenstander;
+      tower = new PVector(x, y);
+      projectile = new PVector(tower.x, tower.y);
+      tegenstander = new PVector(enemy.x, enemy.y);
+      target = new PVector(tegenstander.x, tegenstander.y);
 
-        // if (frameCount%60 == 0)
-        // {
+        if (aimed == false)
+        {
+          // Make the starting position of the projectile be where the tower is
+          projectile.x = tower.x;
+          projectile.y = tower.y;
+          
+          // Aim at wherever the enemy currently is
+          target.x = tegenstander.x - tower.x;
+          target.y = tegenstander.y - tower.y;
 
-  if(aimed == false)
-  {
+          // Determines if bomb should go right or not
+          if(target.x > 0) 
+          {
+            right = true;
+          }
+          else
+          {
+            right = false;
+          }
 
-    // Make the starting position of the projectile be where the tower is
-    projectile.x = tower.x;
-    projectile.y = tower.y;
-    
-    // Aim at wherever the enemy currently is
-    target.x = enemy.x - tower.x;
-    target.y = enemy.y - tower.y;
- 
-    aimed = true;
-  }
-    
-    // Normalize the direction vector
-    target.normalize();
+          // Determines if bomb should go up or not
+          if(target.y < 0)
+          {
+            up = true;
+          }
+          else
+          {
+            up = false;
+          }
 
-    // // Multiply by whatever speed you want the projectile to move
-    target.x *= 100;
-    target.y *= 100;
+          aimed = true;
+        }
 
-// Update the projectile
-  projectile.x += target.x;
-  projectile.y += target.y;
+if(aimed = true)
+{
+ if (projectile.x != tegenstander.x)
+ {
+   if(right == true)
+   {
+     projectile.x += 1;
+   }
+   else
+   {
+     projectile.x -= 1;
+   }
+ }
+
+ if (projectile.y != tegenstander.y)
+ {
+   if (up == true)
+   {
+     projectile.y -= 1;
+   }
+   else
+   {
+     projectile.y +=1;
+   }
+ }
+}
+
+if(projectile.x == tegenstander.x && projectile.y == tegenstander.y)
+{
+  //explode and deal damage
+  aimed = false;
+}
 
   //Display the bomb
   fill(255, 255, 0);
   ellipse(projectile.x, projectile.y, 30, 30);
-
-  aimed = false;
     }
     else
     {
@@ -273,7 +316,7 @@ class Tower
       // distance from the tower to the enemy
       float distance = dist(x, y, e.x, e.y);
       // if the enemy is in range
-      if (distance < range)
+      if (distance < rangeFreezeTower)
       {
         assetsLoader.laserSound.stop();
         assetsLoader.freezeSoundEffect();

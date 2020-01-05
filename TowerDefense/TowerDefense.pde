@@ -26,10 +26,14 @@ Base base = new Base();
 Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
 ConnectDB connectDB = new ConnectDB();
-Particles particles = new Particles();
+ParticleSystem particleSystem = new ParticleSystem();
+DatabaseProcess databaseProcess = new DatabaseProcess();
 
 PImage startmenu;
 PImage controlsimage;
+PImage controlsmenu;
+PImage altsmenu;
+PImage gameoverscreen;
 
 PImage lasertower;
 PImage freezetower;
@@ -179,7 +183,9 @@ void draw()
 
             // Draw the UI
             drawUI();
-            //particles.freezeParticle();
+
+            // Draw Particles
+            drawParticles();
 
             // Keep up with all the data
             statisticsData();
@@ -191,6 +197,11 @@ void draw()
 
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
+            if(msql.connect())
+            {
+                text("Connected", width/2, height/2);
+            }
+            
             return;
         
         // Game Over Menu from InGame Screen
@@ -308,6 +319,7 @@ void handleDeadEnemies()
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
             statistics.scorePoints += 10;
+            wave.enemiesKilledTotal++;
         }
         if(e.x - e.w > SIZE_X)
         {
@@ -341,4 +353,14 @@ void statisticsData()
 void drawBase()
 {
     base.baseStructure();
+}
+
+void drawParticles()
+{
+    
+}
+
+void databaseProcesses()
+{
+    databaseProcess.hi();
 }

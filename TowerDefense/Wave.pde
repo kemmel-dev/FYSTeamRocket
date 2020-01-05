@@ -3,7 +3,7 @@ class Wave
   int waveNumber;
   int spawns;
   int limit;
-  float enemiesLeft, enemiesRemoved;
+  float enemiesLeft, enemiesRemoved, enemiesKilledTotal;
 
   boolean allEnemiesSpawned;
 
