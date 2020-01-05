@@ -35,6 +35,8 @@ class Tower
 
   int timer = 0;
   int goldPerFarm = 100;
+  
+
   Style style;
 
   //A boolean that determines whether or not the bomb is aimed at the target
@@ -58,36 +60,43 @@ class Tower
     freezePower = 0.9;
   }
 
+
+
+
   // Show this tower
   void display()
   {
     // if type is not non-existent
     if (towerType == 1)
     {
-      //fill(style.fillColor, 255)
+    
       imageMode(CENTER);
       lasertower.resize(100,100);
       image(lasertower, x, y);
+    
     }
     if (towerType == 2)
     {
-      //fill(style.iceBlue, 255);
+      
       imageMode(CENTER);
       freezetower.resize(100,100);
       image(freezetower, x, y);
+      
     }
     if (towerType == 3)
     {
       imageMode(CENTER);
       image(bombtower, x, y);
+     
     }
 
      if (towerType == 4)
     {
-      //fill(style.iceBlue, 255);
+      
       imageMode(CENTER);
       farmtower.resize(100,100);
       image(farmtower, x, y);
+     
    }
   }
   // Look for enemies in range of this tower
@@ -138,9 +147,7 @@ class Tower
         return;
       default:
         return;
-        // case 4:
-        // farmGold();
-        // return;
+      
     }
   }
 
@@ -188,6 +195,15 @@ class Tower
     }
   }
 
+
+// void goldPopUp()
+// {
+  
+//     textSize(30);
+//     fill(250,0,0);
+//     text(goldPerFarm, tower.x,  tower.y);
+
+// }
   void farmGold()
     {   timer++;
 
@@ -195,6 +211,7 @@ class Tower
         {
             statistics.amount+= goldPerFarm;
             timer = 0;
+            // goldPopUp();
         }
     }
 
