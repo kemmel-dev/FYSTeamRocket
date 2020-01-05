@@ -27,6 +27,7 @@ Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
 ConnectDB connectDB = new ConnectDB();
 ParticleSystem particleSystem = new ParticleSystem();
+DatabaseProcess databaseProcess = new DatabaseProcess();
 
 PImage startmenu;
 PImage controlsimage;
@@ -193,6 +194,11 @@ void draw()
 
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
+            if(msql.connect())
+            {
+                text("Connected", width/2, height/2);
+            }
+            
             return;
         
         // Game Over Menu from InGame Screen
@@ -309,6 +315,7 @@ void handleDeadEnemies()
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
             statistics.scorePoints += 10;
+            wave.enemiesKilledTotal++;
         }
         if(e.x - e.w > SIZE_X)
         {
@@ -347,4 +354,9 @@ void drawBase()
 void drawParticles()
 {
     
+}
+
+void databaseProcesses()
+{
+    databaseProcess.hi();
 }
