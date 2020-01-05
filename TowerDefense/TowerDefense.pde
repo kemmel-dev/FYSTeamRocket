@@ -62,6 +62,7 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 // Is the game paused?
 Boolean gamePaused = false;
 
+
 // Holds the currently selected tile
 Tile selectedTile;
 
@@ -196,11 +197,11 @@ void draw()
             menus.display();
 
             //Ingame music starts playing and loops
-            assetsLoader.inGameMusic();
-            if(msql.connect())
-            {
-                text("Connected", width/2, height/2);
-            }
+            // assetsLoader.inGameMusic();
+            // if(msql.connect())
+            // {
+            //     text("Connected", width/2, height/2);
+            // }
             
             return;
         
