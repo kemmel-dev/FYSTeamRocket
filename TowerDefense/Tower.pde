@@ -139,9 +139,9 @@ class Tower
         return;
       default:
         return;
-        case 4:
-        farmGold();
-        return;
+        // case 4:
+        // farmGold();
+        // return;
     }
   }
 
