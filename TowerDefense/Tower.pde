@@ -156,18 +156,9 @@ class Tower
         assetsLoader.laserSound.stop();
         // if enemy died because of this damage, stop shooting
         shooting = false;
-        for(Enemy e : enemies)
-        {
-          e.takeDamage = false;
-        }
+       
       }
-      else 
-      {
-        for(Enemy e : enemies)
-        {
-          e.takeDamage = true;
-        }
-      }
+
       
       assetsLoader.laserSoundEffect();
       stroke(style.laserColor);

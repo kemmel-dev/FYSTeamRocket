@@ -346,5 +346,5 @@ void drawBase()
 
 void drawParticles()
 {
-    particleSystem.upgradingTower();
+    
 }
