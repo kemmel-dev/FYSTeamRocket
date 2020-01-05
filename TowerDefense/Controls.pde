@@ -48,6 +48,8 @@ class Controls {
     grid.grid[selectionX][selectionY].selected = true;
   }
 
+
+
   // Called from TowerDefense's keyPressed function
   // Handles key press events
   void keyPressed()
@@ -72,7 +74,7 @@ class Controls {
          
         
         if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
-        // Building towers in the menu is not allowed @Twab
+        
         if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost)
           {
           //Variables from the currentTile converted to the variable values from Tower
@@ -107,18 +109,18 @@ class Controls {
         statistics.amount -= statistics.laserTowerCost;
       }                 
     }
-
+// controls for placing a farm tower
  if (key == 'l')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
-      if (currentTile.tower.towerType == 0 && statistics.amount >= 150)
+      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.farmTowerCost)
       {
         int x = currentTile.x;
         int y = currentTile.y;
         int d = grid.grid[0][0].w / 2;
         currentTile.tower = new Tower(x, y, d, 4, 1);
-        statistics.amount -= 150;
+        statistics.amount -= statistics.farmTowerCost;
       }                 
     }
 
@@ -141,10 +143,12 @@ class Controls {
       //Controls for selling a tower
       if(key == 'q')
       {
+        //selects your currentTile
       Tile currentTile = grid.grid[selectionX][selectionY];
         int x = currentTile.x;
         int y = currentTile.y;
         int d = grid.grid[0][0].w / 2;
+        // a different case for each tower. If it's located on the currentTile get some money back,removes tower.
         switch(currentTile.tower.towerType)
         { 
           case 1:
@@ -160,12 +164,14 @@ class Controls {
             currentTile.tower = new Tower(x, y, d, 0, 1);
             return;
           case 4:
-           statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
+           statistics.amount += (statistics.farmTowerCost/2.5) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             return;
         }
       }
 
+
+      
 
         // Upgrade towers
         if(key == 'g')
@@ -190,6 +196,12 @@ class Controls {
             {
               currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.2);
             }
+          }
+          if(currentTile.tower.towerType == 4 && statistics.amount >= statistics.farmTowerCost * currentTile.tower.towerLevel)
+          {
+            statistics.amount -= statistics.farmTowerCost * currentTile.tower.towerLevel;
+            currentTile.tower.towerLevel += 1;
+            currentTile.tower.goldPerFarm += 50;
           }
         }
 
