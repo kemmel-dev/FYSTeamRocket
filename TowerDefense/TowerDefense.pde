@@ -197,10 +197,10 @@ void draw()
 
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
-            if(msql.connect())
-            {
-                text("Connected", width/2, height/2);
-            }
+            // if(msql.connect())
+            // {
+            //     //text("Connected", width/2, height/2);
+            // }
             
             return;
         
@@ -363,4 +363,7 @@ void drawParticles()
 void databaseProcesses()
 {
     databaseProcess.hi();
+    databaseProcess.enemiesKilled();
+    databaseProcess.towersPlaced();
+    databaseProcess.towersSold();
 }
