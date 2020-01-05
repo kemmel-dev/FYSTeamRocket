@@ -147,6 +147,7 @@ void draw()
     {
         // Start Menu + New Game HIGHLIGHTED
         case 1:
+            statistics.reset();
             menus.startMenu1();
             assetsLoader.startMenuMusic();
             return;
