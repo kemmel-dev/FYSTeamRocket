@@ -14,8 +14,11 @@ class AssetsLoader
     void createImages()
     {
     // Background pictures
-    startmenu = loadImage("startimage.jpg");
+    startmenu = loadImage("background3.png");
     controlsimage = loadImage("controls.png");
+    controlsmenu = loadImage(".png");
+    altsmenu = loadImage("background1.png");
+    gameoverscreen = loadImage("background2.png");
 
     // Font
     font = createFont("Impact",36);

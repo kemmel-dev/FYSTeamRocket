@@ -30,6 +30,9 @@ AssetsLoader assetsLoader = new AssetsLoader();
 
 PImage startmenu;
 PImage controlsimage;
+PImage controlsmenu;
+PImage altsmenu;
+PImage gameoverscreen;
 
 PImage lasertower;
 PImage freezetower;

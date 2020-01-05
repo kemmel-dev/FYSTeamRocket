@@ -423,14 +423,16 @@ class Menus
 
     void gameOverMenu()
     {   
-        fill(0,8);
-        rectMode(CORNER);
-        rect(0,0,width,height);
+        image(gameoverscreen,0,0);
         rectMode(CENTER);
-        fill(255,10,10);
+        fill(50);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/2,100,200,50);
+        fill(220);
         textAlign(CENTER);
-        text("Press START to play again",width/2,height/2.1);
-        text("GAME OVER",width/2, height/3);
+        text("GAME OVER",width/2, 115);
+        text("Play again?",width/2,400);
         noFill();
         if (keyPressed)
                 {   
@@ -444,6 +446,16 @@ class Menus
     void controlsMenu()
     {
         image(controlsimage,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
         if (keyPressed)
                 {   
                     if (key == 'q')
@@ -455,8 +467,19 @@ class Menus
 
     void leaderBoardsMenu()
     {
-        background(0);
+        image(altsmenu,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
         text("Leaderboards",width/2,height/2);
+
         if (keyPressed)
                 {   
                     if (key == 'q')
@@ -468,8 +491,19 @@ class Menus
 
     void settingsMenu()
     {
-        background(0);
+        image(altsmenu,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
         text("settings",width/2,height/2);
+
         if (keyPressed)
                 {   
                     if (key == 'q')
@@ -481,8 +515,21 @@ class Menus
 
     void creditsMenu()
     {
-        background(0);
+        image(altsmenu,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        noStroke();
+        fill(220);
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
         text("credits",width/2,height/2);
+
         if (keyPressed)
                 {   
                     if (key == 'q')
