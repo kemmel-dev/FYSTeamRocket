@@ -15,18 +15,33 @@ class DatabaseProcess
         println(achievementName);
     }
 
+    void enemiesKilled()
+    {
+        msql.query("UPDATE Statistics (EnemiesKilled) VALUES ("+ wave.enemiesKilledTotal +")");
+    }
+
+    void towersPlaced()
+    {
+        msql.query("UPDATE Statistics (TowersBought) VALUES ("+ controls.totalTowersPlaced +")");
+    }
+
+    void towersSold()
+    {
+        msql.query("UPDATE Statistics (TowersSold) VALUES ("+ controls.totalTowersSold +")");
+    }
+
     // void achievementGet()
     // {
     //     //Amount of killed enemies
-    //     //Uitzoeken of de hasAchievementKilled specifieker kan dan de integer
-    //     if(wave.enemiesKilledTotal >= 1 && hasAchievementKilled == 0)
-    //     {
-    //         msql.query("INSERT INTO UserToAchievement VALUES ("+ userID +", 1);");
-    //     }
-    //     else if(wave.enemiesKilledTotal >= 50 && hasAchievementKilled == 1)
-    //     {
-    //         msql.query("INSERT INTO UserToAchievement VALUES ("+ userID +", 2);");
-    //     }
+        // //Uitzoeken of de hasAchievementKilled specifieker kan dan de integer
+        // if(wave.enemiesKilledTotal >= 1 && hasAchievementKilled == 0)
+        // {
+        //     msql.query("INSERT INTO UserToAchievement VALUES ("+ userID +", 1);");
+        // }
+        // else if(wave.enemiesKilledTotal >= 50 && hasAchievementKilled == 1)
+        // {
+        //     msql.query("INSERT INTO UserToAchievement VALUES ("+ userID +", 2);");
+        // }
     //     else if(wave.enemiesKilledTotal >= 100 && hasAchievementKilled == 2)
     //     {
     //         msql.query("INSERT INTO UserToAchievement VALUES ("+ userID +", 3);");

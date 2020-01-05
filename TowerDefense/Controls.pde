@@ -8,6 +8,12 @@ class Controls {
   int selectionX, selectionY;
   PVector towerLocation = new PVector(0,0);
 
+  //Variable for the total amount of towers placed
+  int totalTowersPlaced = 0;
+
+  //Variable for the total amount of towers sold
+  int totalTowersSold = 0;
+
   // Sets the grid selector at 7th tile from at the x and the 4th tile of the y
   void initControls()
   {
@@ -84,6 +90,7 @@ class Controls {
           currentTile.tower = new Tower(x, y, d, 2, 1);
           //Substracts an amount of gold
           statistics.amount -= statistics.freezeTowerCost;
+          totalTowersPlaced++;
          }
         }
 
@@ -107,6 +114,7 @@ class Controls {
         int d = grid.grid[0][0].w / 2;
         currentTile.tower = new Tower(x, y, d, 1, 1);
         statistics.amount -= statistics.laserTowerCost;
+        totalTowersPlaced++;
       }                 
     }
 // controls for placing a farm tower
@@ -121,6 +129,7 @@ class Controls {
         int d = grid.grid[0][0].w / 2;
         currentTile.tower = new Tower(x, y, d, 4, 1);
         statistics.amount -= statistics.farmTowerCost;
+        totalTowersPlaced++;
       }                 
     }
 
@@ -136,6 +145,7 @@ class Controls {
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 3, 1);
           statistics.amount -= 15;
+          totalTowersPlaced++;
          }
         }
 
@@ -154,18 +164,22 @@ class Controls {
           case 1:
             statistics.amount += (statistics.laserTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
           case 2:
             statistics.amount += (statistics.freezeTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
           case 3:
             statistics.amount += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
           case 4:
-           statistics.amount += (statistics.farmTowerCost/2.5) * currentTile.tower.towerLevel;
+            statistics.amount += (statistics.farmTowerCost/2.5) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
         }
       }
