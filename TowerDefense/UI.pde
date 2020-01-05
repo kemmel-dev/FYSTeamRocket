@@ -60,10 +60,10 @@ class UI
         rectMode(CENTER);
         fill(style.white);
         textSize(30);
-        text("50",sizeX*3+50,105);
-        text("100",sizeX*3+167,105);
-        text("150",sizeX*3+290,105);
-        text("150",sizeX*3+410,105);
+        text(statistics.laserTowerCost,sizeX*3+50,105);
+        text(statistics.freezeTowerCost,sizeX*3+167,105);
+        text(statistics.bombTowerCost,sizeX*3+290,105);
+        text(statistics.farmTowerCost,sizeX*3+410,105);
         noFill();
     }
 
@@ -72,8 +72,8 @@ class UI
         fill(style.white);
         textSize(textSize);
         textAlign(CORNER);
-        text("      " + statistics.amount, waypoints.tileSize/2, 50);
-        image(goldcoin,waypoints.tileSize/2, 25);
+        text("      " +statistics.amount, waypoints.tileSize/2, 50);
+        image( goldcoin,waypoints.tileSize/2, 25);
     }
 
     void lives()

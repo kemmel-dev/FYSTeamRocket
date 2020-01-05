@@ -2,7 +2,7 @@ class Statistics
 {
 
     int amount;
-    float laserTowerCost, freezeTowerCost, bombTowerCost, farmTowerCost;
+    int laserTowerCost, freezeTowerCost, bombTowerCost, farmTowerCost;
     
     int lives;
 
@@ -18,10 +18,10 @@ class Statistics
         amount = 1000;
         laserTowerCost = 50;
         freezeTowerCost = 100;
-        bombTowerCost = 75;
+        bombTowerCost = 150;
         farmTowerCost = 250;
 
-        lives = 5;
+        lives = 500;
 
     }
 
