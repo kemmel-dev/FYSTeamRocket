@@ -26,7 +26,7 @@ Base base = new Base();
 Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
 ConnectDB connectDB = new ConnectDB();
-Particles particles = new Particles();
+ParticleSystem particleSystem = new ParticleSystem();
 
 PImage startmenu;
 PImage controlsimage;
@@ -179,7 +179,9 @@ void draw()
 
             // Draw the UI
             drawUI();
-            //particles.freezeParticle();
+
+            // Draw Particles
+            drawParticles();
 
             // Keep up with all the data
             statisticsData();
@@ -335,4 +337,9 @@ void statisticsData()
 void drawBase()
 {
     base.baseStructure();
+}
+
+void drawParticles()
+{
+    particleSystem.upgradingTower();
 }

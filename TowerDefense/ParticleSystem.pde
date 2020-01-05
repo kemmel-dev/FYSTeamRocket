@@ -1,16 +1,26 @@
 class ParticleSystem
 {
 
-
+    ArrayList<Particles> particle = new ArrayList<Particles>();
     ParticleSystem()
     {
         
     }
 
-    void enemyBleeding()
+    void upgradingTower()
     {
-        ArrayList<Enemy> e = new ArrayList();
-        particles.add(new Particle(e.x, e.y, 0, 1));
+        Tile currentTile = grid.grid[controls.selectionX][controls.selectionY];
+        if(controls.towerUpgrade)
+        {
+            int x = currentTile.x;
+            int y = currentTile.y;
+            float size = random(5, 10);
+
+            //currentTile = new Particle(x, y, size, 1);
+            println(x);
+            println(y);
+            println(size);
+        }
     }
 
     

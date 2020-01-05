@@ -28,7 +28,7 @@ class Tower
 
   // radius for the towers shooting range
   int range;
-  int rangeFreezeTower;
+  float rangeFreezeTower, rangeDFT;
   int rangeBombTower;
   // and it's shooting range diameter
   int rangeD;
@@ -48,14 +48,15 @@ class Tower
     d = _d;
     r = d / 2;
     range = r * 10;
-    rangeFreezeTower = range/2;
+    rangeFreezeTower = range/1.5;
+    rangeDFT = rangeFreezeTower + rangeFreezeTower;
     rangeBombTower = range*2;
     rangeD = range + range;
     style = new Style();
     towerType = _towerType;
     towerLevel = _towerLevel;
     laserDamage = towerLevel;
-    freezePower = 0.9;
+    freezePower = 0.8;
   }
 
   // Show this tower
@@ -144,10 +145,6 @@ class Tower
     }
   }
 
-
- 
-
-
   void shootLaser()
   {
     // if target is still in range
@@ -159,6 +156,17 @@ class Tower
         assetsLoader.laserSound.stop();
         // if enemy died because of this damage, stop shooting
         shooting = false;
+        for(Enemy e : enemies)
+        {
+          e.takeDamage = false;
+        }
+      }
+      else 
+      {
+        for(Enemy e : enemies)
+        {
+          e.takeDamage = true;
+        }
       }
       
       assetsLoader.laserSoundEffect();
@@ -167,7 +175,6 @@ class Tower
       line(x, y, enemy.x, enemy.y);
       stroke(style.black);
       strokeWeight(style.defaultStrokeWeight);
-      println(laserDamage);
     }
     // if target is no longer in range, stop shooting
     else 
@@ -182,17 +189,21 @@ class Tower
     ArrayList<Enemy> targets = enemiesInRange();  
     for (Enemy e : targets)
     {
-      e.msMultiplier = freezePower;
-      e.frozenEnemy = true;
-      if (towerLevel >= 4)
+      if(e.msMultiplier > freezePower)
       {
-        e.takeDamage(freezeDamage);
+        e.msMultiplier = freezePower;
+        e.frozenEnemy = true;
+        if (towerLevel >= 4)
+        {
+          e.takeDamage(freezeDamage);
+        }
       }
     }
   }
 
   void farmGold()
-    {   timer++;
+    {   
+      timer++;
 
         if (timer == FRAME_RATE * 10)
         {
@@ -259,7 +270,7 @@ class Tower
       // distance from the tower to the enemy
       float distance = dist(x, y, e.x, e.y);
       // if the enemy is in range
-      if (distance < range)
+      if (distance < rangeFreezeTower)
       {
         assetsLoader.laserSound.stop();
         assetsLoader.freezeSoundEffect();

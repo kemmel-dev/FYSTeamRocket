@@ -1,22 +1,31 @@
 class Particles
 {
-    int x, y, particleType, size;
-    float angle;
+    int x, y, particleType, greyToWhite;
+    float size, angle;
 
-    Particles(int _x, int _y, float _angle, int _particleType)
+
+    Style style = new Style();
+
+    Particles(int _x, int _y, float _size, int _particleType)
     {
         x = _x;
         y = _y;
-        size = 10;
+        size = _size;
         particleType = _particleType;
-        angle = _angle;
+        greyToWhite = 70;
     }
 
-    void enemyBlood()
+    void display()
     {
-        if(enemies.takeDamage())
+        if(particleType == 1)
         {
+            fill(style.upgradeTower);
             circle(x, y, size);
         }
+    }
+
+    class Style
+    {
+        color upgradeTower = color(greyToWhite, greyToWhite, greyToWhite);
     }
 }
