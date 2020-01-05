@@ -27,7 +27,7 @@ class Enemy
         {
             enemyType = 2;
         }
-
+        
         //Every 6th enemy is a type 3 (fast with less hp)
         if(wave.spawns % 5 == 0 && wave.spawns != 0)
         {

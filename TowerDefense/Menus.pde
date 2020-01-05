@@ -67,6 +67,7 @@ class Menus
                 if (keyCode == DOWN)
                 {
                     stage = 2;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
@@ -122,15 +123,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 1;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 3;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 10;
+                    keyPressed = false;
                 }
         }
 
@@ -181,15 +185,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 2;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 4;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 11;
+                    keyPressed = false;
                 }
         }
 
@@ -240,15 +247,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 3;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 5;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 12;
+                    keyPressed = false;
                 }
         }
 
@@ -299,15 +309,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 4;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 6;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 13;
+                    keyPressed = false;
                 }
         }
     }
@@ -357,6 +370,7 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 5;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
@@ -392,6 +406,10 @@ class Menus
             if (key == 'p')
             {
                 stage = 7;
+            }
+            if (key == 'q')
+            {
+                stage = 1;
             }
         }
     }
@@ -439,6 +457,7 @@ class Menus
                     if (key == 'j')
                     {
                         stage = 1;
+                        keyPressed = false;
                     }
                 }
     }
@@ -452,6 +471,8 @@ class Menus
         strokeWeight(10);
         rect(width/1.2,950,360,120);
 
+        noStroke();
+        fill(220);
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
@@ -461,6 +482,7 @@ class Menus
                     if (key == 'q')
                     {
                         stage = 2;
+                        keyPressed = false;
                     }
                 }
     }
@@ -474,6 +496,8 @@ class Menus
         strokeWeight(10);
         rect(width/1.2,950,360,120);
 
+        noStroke();
+        fill(220);
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
@@ -485,6 +509,7 @@ class Menus
                     if (key == 'q')
                     {
                         stage = 3;
+                        keyPressed = false;
                     }
                 }
     } 
@@ -498,6 +523,8 @@ class Menus
         strokeWeight(10);
         rect(width/1.2,950,360,120);
 
+        noStroke();
+        fill(220);
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
@@ -509,6 +536,7 @@ class Menus
                     if (key == 'q')
                     {
                         stage = 4;
+                        keyPressed = false;
                     }
                 }
     } 
@@ -535,6 +563,7 @@ class Menus
                     if (key == 'q')
                     {
                         stage = 5;
+                        keyPressed = false;
                     }
                 }
     }

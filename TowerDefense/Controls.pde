@@ -62,6 +62,10 @@ class Controls {
   {
 
     // Pausemenu
+    if (stage == 7)
+    {
+
+    
     if (key == 'f')
       {
         stage = 9;
@@ -236,5 +240,6 @@ class Controls {
         Move(4);
       }
     }
+   }
   }
 }
