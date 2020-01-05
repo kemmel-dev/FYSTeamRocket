@@ -3,7 +3,7 @@ class Wave
   int waveNumber;
   int spawns;
   int limit;
-  float enemiesLeft, enemiesRemoved;
+  float enemiesLeft, enemiesRemoved, enemiesKilledTotal;
 
   boolean allEnemiesSpawned;
 
@@ -48,7 +48,7 @@ class Wave
     if(enemiesLeft == 0)
     {
       textAlign(CENTER);
-      text("Press R to start next wave", SIZE_X / 2, SIZE_Y / 5);
+      text("Press R-Bumper to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }
 

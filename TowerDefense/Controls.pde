@@ -8,6 +8,7 @@ class Controls {
   int selectionX, selectionY;
   PVector towerLocation = new PVector(0,0);
 
+  // Sets the grid selector at 7th tile from at the x and the 4th tile of the y
   void initControls()
   {
       // Set selected tile to the approximate middle of the grid
@@ -15,6 +16,8 @@ class Controls {
       selectionY = 4;
       grid.grid[controls.selectionX][controls.selectionY].selected = true;
   }
+
+
 
   // Moves the selected tile towards moveType
   void Move(int moveType) 
@@ -49,42 +52,89 @@ class Controls {
   // Handles key press events
   void keyPressed()
   {
+
+    // Pausemenu
     if (key == 'f')
       {
         stage = 9;
       }
+
+
+    // Placing the Freeze tower
     if (key == 's')
         {
         // Gets the data where the currentTile is
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
-        // Building towers in the menu is not allowed @Twab
+        
         if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
+        // Building towers in the menu is not allowed @Twab
+        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost)
           {
           //Variables from the currentTile converted to the variable values from Tower
           int x = currentTile.x;
           int y = currentTile.y;
           int d = grid.grid[0][0].w / 2;
-          currentTile.tower = new Tower(x, y, d, 2);
+          currentTile.tower = new Tower(x, y, d, 2, 1);
           //Substracts an amount of gold
-          statistics.amount -= 100;
+          statistics.amount -= statistics.freezeTowerCost;
          }
         }
+
+
+    // Placing a Laser tower
     if (key == 'a')
+    {
+      // Getting the information of the current x & y from your selected tile
+      Tile currentTile = grid.grid[selectionX][selectionY]; 
+
+      // The tile must be empty (towerType = 0) and the player must atleast have 50 gold  
+      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.laserTowerCost)
+      {
+        // Variable x & y get the same values as the x & y of the selected tile
+
+        int x = currentTile.x;
+        int y = currentTile.y;
+
+        // Variable d gets the values of the height & width of one tile divided by 2
+
+        int d = grid.grid[0][0].w / 2;
+        currentTile.tower = new Tower(x, y, d, 1, 1);
+        statistics.amount -= statistics.laserTowerCost;
+      }                 
+    }
+
+ if (key == 'l')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
-      if (currentTile.tower.towerType == 0 && statistics.amount >= 50)
+      if (currentTile.tower.towerType == 0 && statistics.amount >= 150)
       {
         int x = currentTile.x;
         int y = currentTile.y;
         int d = grid.grid[0][0].w / 2;
-        currentTile.tower = new Tower(x, y, d, 1);
-        statistics.amount -= 50;
+        currentTile.tower = new Tower(x, y, d, 4, 1);
+        statistics.amount -= 150;
       }                 
     }
 
-    
+    //Controls for placing the bomb tower
+        if (key == 'd')
+        {
+        Tile currentTile = grid.grid[selectionX][selectionY]; 
+         
+        if (currentTile.tower.towerType == 0 && statistics.amount >= 15)
+          {
+          int x = currentTile.x;
+          int y = currentTile.y;
+          int d = grid.grid[0][0].w / 2;
+          currentTile.tower = new Tower(x, y, d, 3, 1);
+          statistics.amount -= 15;
+         }
+        }
+
+
+      //Controls for selling a tower
       if(key == 'q')
       {
       Tile currentTile = grid.grid[selectionX][selectionY];
@@ -94,16 +144,53 @@ class Controls {
         switch(currentTile.tower.towerType)
         { 
           case 1:
-            currentTile.tower = new Tower(x, y, d, 0);
-            statistics.amount += 25;
+            statistics.amount += (statistics.laserTowerCost/2) * currentTile.tower.towerLevel;
+            currentTile.tower = new Tower(x, y, d, 0, 1);
             return;
           case 2:
-            currentTile.tower = new Tower(x, y, d, 0);
-            statistics.amount += 50;
+            statistics.amount += (statistics.freezeTowerCost/2) * currentTile.tower.towerLevel;
+            currentTile.tower = new Tower(x, y, d, 0, 1);
+            return;
+          case 3:
+            statistics.amount += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
+            currentTile.tower = new Tower(x, y, d, 0, 1);
+            return;
+          case 4:
+           statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
+            currentTile.tower = new Tower(x, y, d, 0, 1);
             return;
         }
-
       }
+
+
+        // Upgrade towers
+        if(key == 'g')
+        {
+          Tile currentTile = grid.grid[selectionX][selectionY];
+
+          //LaserTower upgrade
+          if(currentTile.tower.towerType == 1 && statistics.amount >= statistics.laserTowerCost * currentTile.tower.towerLevel)
+          {
+            statistics.amount -= statistics.laserTowerCost * currentTile.tower.towerLevel;
+            currentTile.tower.towerLevel += 1;
+            currentTile.tower.laserDamage = currentTile.tower.towerLevel;
+          }
+
+          //FreezeTower upgrade
+          else if(currentTile.tower.towerType == 2 && statistics.amount >= statistics.freezeTowerCost * currentTile.tower.towerLevel)
+          {
+            statistics.amount -= statistics.freezeTowerCost * currentTile.tower.towerLevel;
+            currentTile.tower.towerLevel += 1;
+            currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
+            if(currentTile.tower.towerLevel <= 4)
+            {
+              currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.2);
+            }
+          }
+        }
+
+
+    // Movement through the grid
     if (key == CODED)
     {
       if (keyCode == UP) 

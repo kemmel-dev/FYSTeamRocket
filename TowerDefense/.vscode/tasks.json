@@ -17,14 +17,14 @@
       },
       "args": [
 		"--force",
-		"--sketch=${workspaceRoot}/TowerDefense",
+		"--sketch=${workspaceRoot}",
 		"--output=${workspaceRoot}/out",
 		"--run"
 	  ],
       "windows": {
         "args": [
           "--force",
-          "--sketch=${workspaceRoot}/TowerDefense",
+          "--sketch=${workspaceRoot}",
           "--output=${workspaceRoot}\\out",
           "--run"
         ]

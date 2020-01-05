@@ -1,13 +1,11 @@
-//importing the bezier library
-import de.bezier.data.sql.*;
-
-MySQL msql;
-
 // import the Iterator method to remove enemies from our
 // import the sounds method
 // arraylist in realtime.
 import java.util.Iterator;
 import processing.sound.*;
+import de.bezier.data.sql.*;
+
+MySQL msql;
 
 
 // Constants
@@ -27,6 +25,9 @@ UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
+ConnectDB connectDB = new ConnectDB();
+ParticleSystem particleSystem = new ParticleSystem();
+DatabaseProcess databaseProcess = new DatabaseProcess();
 
 PImage startmenu;
 PImage controlsimage;
@@ -37,12 +38,12 @@ PImage gameoverscreen;
 PImage lasertower;
 PImage freezetower;
 PImage bombtower;
-PImage bufftower;
+PImage farmtower;
 
 PImage lasertowerhud;
 PImage freezetowerhud;
 PImage bombtowerhud;
-PImage bufftowerhud;
+PImage farmtowerhud;
 
 PImage goldcoin;
 PImage lives;
@@ -75,8 +76,11 @@ void settings()
 // Initialize a bunch of other settings and objects.
 void setup()
 {   
+    // Connect Database to the game
+    connectDB.createDatabaseConnection();
+
     // Stage 1 = Start Menu
-    stage =  1;
+    stage = 1;
     // Load all Pictures
     assetsLoader.createImages();
     // Load all sounds
@@ -91,6 +95,38 @@ void setup()
     map.init();
     controls.initControls();
     menus.setupGameOverMenu();
+
+    // Towers
+    lasertower = loadImage("laser.png");
+    freezetower = loadImage("freeze.png");
+    bombtower = loadImage("bomb.png");
+    farmtower = loadImage("farm.png");
+
+    lasertowerhud = loadImage("laserhd.png");
+    freezetowerhud = loadImage("freezehd.png");
+    bombtowerhud = loadImage("bombhd.png");
+    farmtowerhud = loadImage("farmhd.png");
+
+    goldcoin = loadImage("gold.png");
+    lives = loadImage("lives.png");
+
+    goldcoinhud = loadImage("goldhd.png");
+
+    lasertower.resize(100,100);
+    freezetower.resize(100,100);
+    bombtower.resize(100,100);
+    farmtower.resize(100,100);
+
+    lasertowerhud.resize(80,80);
+    freezetowerhud.resize(80,75);
+    bombtowerhud.resize(75,70);
+    farmtowerhud.resize(80,75);
+
+    goldcoin.resize(25,25);
+    lives.resize(40,40);
+
+    goldcoinhud.resize(20,20);
+
     // create enemy
     //enemies.add(new Enemy());
 }
@@ -148,6 +184,9 @@ void draw()
             // Draw the UI
             drawUI();
 
+            // Draw Particles
+            drawParticles();
+
             // Keep up with all the data
             statisticsData();
 
@@ -158,6 +197,11 @@ void draw()
 
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
+            if(msql.connect())
+            {
+                text("Connected", width/2, height/2);
+            }
+            
             return;
         
         // Game Over Menu from InGame Screen
@@ -187,7 +231,6 @@ void draw()
             return;
     }
     
-
 }
 
 // Handles all actions for each tower each frame.
@@ -216,6 +259,11 @@ void handleTowers()
                 t.checkForEnemies();
             }
         }
+            if (t.towerType == 4 && wave.enemiesLeft != 0)
+            {
+                t.farmGold();
+            }
+
       }
     }
 }
@@ -270,6 +318,7 @@ void handleDeadEnemies()
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
             statistics.scorePoints += 10;
+            wave.enemiesKilledTotal++;
         }
         if(e.x - e.w > SIZE_X)
         {
@@ -303,4 +352,14 @@ void statisticsData()
 void drawBase()
 {
     base.baseStructure();
+}
+
+void drawParticles()
+{
+    
+}
+
+void databaseProcesses()
+{
+    databaseProcess.hi();
 }

@@ -1,6 +1,8 @@
 class Statistics
 {
+
     int amount;
+    float laserTowerCost, freezeTowerCost, bombTowerCost, farmTowerCost;
     
     int lives;
 
@@ -8,11 +10,25 @@ class Statistics
 
     boolean gereset;
 
+   
+   
+
     Statistics()
     {
-        amount = 80;
+        amount = 1000;
+        laserTowerCost = 50;
+        freezeTowerCost = 100;
+        bombTowerCost = 75;
+        farmTowerCost = 250;
+
         lives = 5;
+
     }
+
+
+    
+
+    
 
     void reset()
     { 
@@ -25,6 +41,16 @@ class Statistics
             scorePoints = 0;
             gereset = true;
             wave.enemiesLeft = wave.limit;
+
+            // Every tower will be reset on all tiles of the grid
+            for (int x = 0; x < 16; x++)
+            {
+                for (int y = 0; y < 9; y++)
+                {
+                    Tile currentTile = grid.grid[x][y];
+                    currentTile.tower = new Tower(x, y, 0, 0, 1);
+                }
+            }
     }
 
     void handleLives()

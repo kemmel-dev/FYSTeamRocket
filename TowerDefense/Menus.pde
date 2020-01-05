@@ -388,12 +388,12 @@ class Menus
         text("L Bump  =  Exit Game",width/1.3,940);
         text("R Bump  =  Resume Game",width/1.3,990);
         if (keyPressed)
-                {   
-                    if (key == 'j')
-                    {
-                        stage = 7;
-                    }
-                }
+        {   
+            if (key == 'p')
+            {
+                stage = 7;
+            }
+        }
     }
 
     void display()
