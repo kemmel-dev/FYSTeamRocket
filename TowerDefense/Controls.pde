@@ -118,7 +118,7 @@ class Controls {
       }                 
     }
 // controls for placing a farm tower
- if (key == 'l')
+ if (key == 'z')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
@@ -134,7 +134,7 @@ class Controls {
     }
 
     //Controls for placing the bomb tower
-        if (key == 'd')
+        if (key == 'x')
         {
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
@@ -188,7 +188,7 @@ class Controls {
       
 
         // Upgrade towers
-        if(key == 'g')
+        if(key == 'p')
         {
           Tile currentTile = grid.grid[selectionX][selectionY];
 

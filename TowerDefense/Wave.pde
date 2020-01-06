@@ -55,12 +55,12 @@ class Wave
     if(enemiesLeft == 0)
     {
       textAlign(CENTER);
-      text("Press R-Bumper to start next wave", SIZE_X / 2, SIZE_Y / 5);
+      text("Press START to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }
 
     //When all enemies are gone, and one of these keys is pressed, the next wave will start
-    if (enemiesLeft == 0 && keyPressed && key == 'p')
+    if (enemiesLeft == 0 && keyPressed && key == 'j')
     {
       waveNumber++;
       allEnemiesSpawned = false;
