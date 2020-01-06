@@ -40,6 +40,9 @@ class AssetsLoader
     goldcoin = loadImage("gold.png");
     lives = loadImage("lives.png");
 
+    // Pictures for the enemy
+    enemypic1 = loadImage("enemypic1.png");
+
     // Picture resizes
     lasertower.resize(100,100);
     freezetower.resize(100,100);
@@ -54,6 +57,8 @@ class AssetsLoader
 
     goldcoin.resize(25,25);
     lives.resize(40,40);
+
+    enemypic1.resize(100,100);
 
 
 

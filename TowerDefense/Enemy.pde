@@ -100,7 +100,9 @@ class Enemy
         {
             fill(style.enemyColor);
         }
-        rect(x, y, w, w);
+        imageMode(CENTER);
+        image(enemypic1, x, y, w, w);
+        imageMode(CORNER);
     }
 
     // Check which waypoints have been passed,
@@ -190,6 +192,6 @@ class Enemy
     class Style
     {
         color enemyColor = color(255, 20, 20);
-        color frozenColor = color(186, 242, 239);
+        color frozenColor = color(186, 242, 239,125);
     }
 }
