@@ -39,10 +39,6 @@ class Tower
 
   Style style;
 
-  boolean aimed = false;
-  boolean right = false;
-  boolean up = false;
-
   // Constructor function for a tower
   Tower(int _x, int _y, int _d, int _towerType, int _towerLevel)
   {
@@ -225,82 +221,28 @@ class Tower
   {
     if (ifEnemyIsInRange(enemy))
     {
-      PVector tower, projectile, target;
-      PVector tegenstander;
+      //Creating the vectors for the tower, projectile and enemy
+      PVector tower, projectile, tegenstander;
       tower = new PVector(x, y);
       projectile = new PVector(tower.x, tower.y);
       tegenstander = new PVector(enemy.x, enemy.y);
-      target = new PVector(tegenstander.x, tegenstander.y);
 
-        if (aimed == false)
-        {
-          // Make the starting position of the projectile be where the tower is
-          projectile.x = tower.x;
-          projectile.y = tower.y;
-          
-          // Aim at wherever the enemy currently is
-          target.x = tegenstander.x - tower.x;
-          target.y = tegenstander.y - tower.y;
+      //This will run for 10 frames long every 60 frames.
+      if (frameCount % 60 <= 10)
+      {
+        //Placing the bomb on the enemy
+        projectile.x = tegenstander.x;
+        projectile.y = tegenstander.y;
 
-          // Determines if bomb should go right or not
-          if(target.x > 0) 
-          {
-            right = true;
-          }
-          else
-          {
-            right = false;
-          }
+        //Display the bomb
+        fill(style.bombColor);
+        ellipse(projectile.x, projectile.y, style.bombSize, style.bombSize);
+      }
 
-          // Determines if bomb should go up or not
-          if(target.y < 0)
-          {
-            up = true;
-          }
-          else
-          {
-            up = false;
-          }
-
-          aimed = true;
-        }
-
-if(aimed = true)
-{
- if (projectile.x != tegenstander.x)
- {
-   if(right == true)
-   {
-     projectile.x += 1;
-   }
-   else
-   {
-     projectile.x -= 1;
-   }
- }
-
- if (projectile.y != tegenstander.y)
- {
-   if (up == true)
-   {
-     projectile.y -= 1;
-   }
-   else
-   {
-     projectile.y +=1;
-   }
- }
-}
-
-if(projectile.x == tegenstander.x && projectile.y == tegenstander.y)
-{
-  //explode and deal damage
-  aimed = false;
-}
-
-  //Display the bomb
-  fill(255, 255, 0);
-  ellipse(projectile.x, projectile.y, 30, 30);
+      if(projectile.x == tegenstander.x && projectile.y == tegenstander.y)
+      {
+        //explode and deal damage
+      }
     }
     else
     {
@@ -342,5 +284,6 @@ if(projectile.x == tegenstander.x && projectile.y == tegenstander.y)
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
     color bombColor = color(200, 255, 0);
+    int bombSize = 30;
   }
 }
