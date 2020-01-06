@@ -148,6 +148,7 @@ void draw()
     {
         // Start Menu + New Game HIGHLIGHTED
         case 1:
+            statistics.reset();
             menus.startMenu1();
             assetsLoader.startMenuMusic();
             return;
@@ -202,6 +203,12 @@ void draw()
         //     {
         //         text("Connected", width/2, height/2);
         //     }
+            //Ingame music starts playing and loops
+            assetsLoader.inGameMusic();
+            // if(msql.connect())
+            // {
+            //     //text("Connected", width/2, height/2);
+            // }
             
             return;
         
@@ -364,4 +371,7 @@ void drawParticles()
 void databaseProcesses()
 {
     databaseProcess.hi();
+    databaseProcess.enemiesKilled();
+    databaseProcess.towersPlaced();
+    databaseProcess.towersSold();
 }

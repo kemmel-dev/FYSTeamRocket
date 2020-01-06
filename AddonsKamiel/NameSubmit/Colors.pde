@@ -1,6 +1,6 @@
 class Colors
 {
-    color WHITE = 255;
-    color BLACK = 0;
-    color RED = color(255, 0, 0);
+    final public color WHITE = 255;
+    final public color BLACK = 0;
+    final public color RED = color(255, 0, 0);
 }
