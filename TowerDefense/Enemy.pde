@@ -3,10 +3,12 @@ class Enemy
     int x;
     int y;
     int w;
-    float hitpoints;
+    float hitpoints, hitpointsPercentage;
+    float hitpointsBeginWave;
     int moveDir = 3;
     float msMultiplier = 1;
     boolean frozenEnemy = false;
+    int hitpointsGap;
 
     Style style;
 
@@ -46,27 +48,45 @@ class Enemy
         y = t.y;
         initWaypoints();
 
+        //REGULAR
         //Regular enemy size, speed and hp
         if(enemyType == 1)
         {
             w = int(t.w / 2);
-            hitpoints = 25 + (wave.waveNumber * 20);
+            hitpoints = 30 + (wave.waveNumber * 20);
+            hitpointsGap = 40;
+            if(!wave.allEnemiesSpawned)
+            {
+                hitpointsBeginWave = hitpoints;
+            }
         }
 
+        //SLOW / STRONG
         //Type 2 enemy size, speed and hp
         if(enemyType == 2)
         {
             msMultiplier = 0.4;
             w = int(t.w - 40);
-            hitpoints = 65 + (wave.waveNumber * 30);
+            hitpoints = 60 + (wave.waveNumber * 30);
+            hitpointsGap = 50;
+            if(!wave.allEnemiesSpawned)
+            {
+                hitpointsBeginWave = hitpoints;
+            }
         }
 
+        //FAST / WEAK
         //Type 3 enemy size, speed and hp
         if(enemyType == 3)
         {
             msMultiplier = 1.3;
             w = int(t.w / 3);
-            hitpoints = 15 + (wave.waveNumber * 15);
+            hitpoints = 20 + (wave.waveNumber * 15);
+            hitpointsGap = 30;
+            if(!wave.allEnemiesSpawned)
+            {
+                hitpointsBeginWave = hitpoints;
+            }
         }
     }
 
@@ -101,6 +121,20 @@ class Enemy
             fill(style.enemyColor);
         }
         rect(x, y, w, w);
+        fill(20, 220, 20);
+        if(enemyType == 1)
+        {
+            hitpointsPercentage = (75 / hitpointsBeginWave) * hitpoints;
+        }
+        if(enemyType == 2)
+        {
+            hitpointsPercentage = (100 / hitpointsBeginWave) * hitpoints;
+        }
+        if(enemyType == 3)
+        {
+            hitpointsPercentage = (50 / hitpointsBeginWave) * hitpoints;
+        }
+        rect(x, y - hitpointsGap, hitpointsPercentage, 5);
     }
 
     // Check which waypoints have been passed,
