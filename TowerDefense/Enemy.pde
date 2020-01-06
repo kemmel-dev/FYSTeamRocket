@@ -29,7 +29,7 @@ class Enemy
         {
             enemyType = 2;
         }
-
+        
         //Every 6th enemy is a type 3 (fast with less hp)
         if(wave.spawns % 5 == 0 && wave.spawns != 0)
         {
@@ -65,7 +65,7 @@ class Enemy
         //Type 2 enemy size, speed and hp
         if(enemyType == 2)
         {
-            msMultiplier = 0.5;
+            msMultiplier = 0.4;
             w = int(t.w - 40);
             hitpoints = 60 + (wave.waveNumber * 30);
             hitpointsGap = 50;
@@ -79,7 +79,7 @@ class Enemy
         //Type 3 enemy size, speed and hp
         if(enemyType == 3)
         {
-            msMultiplier = 1.5;
+            msMultiplier = 1.3;
             w = int(t.w / 3);
             hitpoints = 20 + (wave.waveNumber * 15);
             hitpointsGap = 30;

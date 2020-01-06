@@ -8,6 +8,12 @@ class Controls {
   int selectionX, selectionY;
   PVector towerLocation = new PVector(0,0);
 
+  //Variable for the total amount of towers placed
+  int totalTowersPlaced = 0;
+
+  //Variable for the total amount of towers sold
+  int totalTowersSold = 0;
+
   // Sets the grid selector at 7th tile from at the x and the 4th tile of the y
   void initControls()
   {
@@ -48,12 +54,18 @@ class Controls {
     grid.grid[selectionX][selectionY].selected = true;
   }
 
+
+
   // Called from TowerDefense's keyPressed function
   // Handles key press events
   void keyPressed()
   {
 
     // Pausemenu
+    if (stage == 7)
+    {
+
+    
     if (key == 'f')
       {
         stage = 9;
@@ -68,7 +80,7 @@ class Controls {
          
         
         if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
-        // Building towers in the menu is not allowed @Twab
+        
         if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost)
           {
           //Variables from the currentTile converted to the variable values from Tower
@@ -78,6 +90,7 @@ class Controls {
           currentTile.tower = new Tower(x, y, d, 2, 1);
           //Substracts an amount of gold
           statistics.amount -= statistics.freezeTowerCost;
+          totalTowersPlaced++;
          }
         }
 
@@ -101,20 +114,22 @@ class Controls {
         int d = grid.grid[0][0].w / 2;
         currentTile.tower = new Tower(x, y, d, 1, 1);
         statistics.amount -= statistics.laserTowerCost;
+        totalTowersPlaced++;
       }                 
     }
-
+// controls for placing a farm tower
  if (key == 'l')
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
-      if (currentTile.tower.towerType == 0 && statistics.amount >= 150)
+      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.farmTowerCost)
       {
         int x = currentTile.x;
         int y = currentTile.y;
         int d = grid.grid[0][0].w / 2;
         currentTile.tower = new Tower(x, y, d, 4, 1);
-        statistics.amount -= 150;
+        statistics.amount -= statistics.farmTowerCost;
+        totalTowersPlaced++;
       }                 
     }
 
@@ -130,6 +145,7 @@ class Controls {
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 3, 1);
           statistics.amount -= 15;
+          totalTowersPlaced++;
          }
         }
 
@@ -137,31 +153,39 @@ class Controls {
       //Controls for selling a tower
       if(key == 'q')
       {
+        //selects your currentTile
       Tile currentTile = grid.grid[selectionX][selectionY];
         int x = currentTile.x;
         int y = currentTile.y;
         int d = grid.grid[0][0].w / 2;
+        // a different case for each tower. If it's located on the currentTile get some money back,removes tower.
         switch(currentTile.tower.towerType)
         { 
           case 1:
             statistics.amount += (statistics.laserTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
           case 2:
             statistics.amount += (statistics.freezeTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
           case 3:
             statistics.amount += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
           case 4:
-           statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
+            statistics.amount += (statistics.farmTowerCost/2.5) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
+            totalTowersSold++;
             return;
         }
       }
 
+
+      
 
         // Upgrade towers
         if(key == 'g')
@@ -187,6 +211,12 @@ class Controls {
               currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.2);
             }
           }
+          if(currentTile.tower.towerType == 4 && statistics.amount >= statistics.farmTowerCost * currentTile.tower.towerLevel)
+          {
+            statistics.amount -= statistics.farmTowerCost * currentTile.tower.towerLevel;
+            currentTile.tower.towerLevel += 1;
+            currentTile.tower.goldPerFarm += 50;
+          }
         }
 
 
@@ -210,5 +240,6 @@ class Controls {
         Move(4);
       }
     }
+   }
   }
 }

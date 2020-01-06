@@ -67,6 +67,7 @@ class Menus
                 if (keyCode == DOWN)
                 {
                     stage = 2;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
@@ -122,15 +123,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 1;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 3;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 10;
+                    keyPressed = false;
                 }
         }
 
@@ -181,15 +185,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 2;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 4;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 11;
+                    keyPressed = false;
                 }
         }
 
@@ -240,15 +247,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 3;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 5;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 12;
+                    keyPressed = false;
                 }
         }
 
@@ -299,15 +309,18 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 4;
+                    keyPressed = false;
                 }
                 if (keyCode == DOWN)
                 {
                     stage = 6;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
                 {
                     stage = 13;
+                    keyPressed = false;
                 }
         }
     }
@@ -357,6 +370,7 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 5;
+                    keyPressed = false;
                 }
             }
             if (key == 'p')
@@ -392,6 +406,10 @@ class Menus
             if (key == 'p')
             {
                 stage = 7;
+            }
+            if (key == 'q')
+            {
+                stage = 1;
             }
         }
     }
@@ -433,12 +451,14 @@ class Menus
         textAlign(CENTER);
         text("GAME OVER",width/2, 115);
         text("Play again?",width/2,400);
+        text("score:   " + statistics.scorePoints +"     Name",width/2,600);
         noFill();
         if (keyPressed)
                 {   
                     if (key == 'j')
                     {
                         stage = 1;
+                        keyPressed = false;
                     }
                 }
     }
@@ -452,6 +472,8 @@ class Menus
         strokeWeight(10);
         rect(width/1.2,950,360,120);
 
+        noStroke();
+        fill(220);
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
@@ -461,59 +483,12 @@ class Menus
                     if (key == 'q')
                     {
                         stage = 2;
+                        keyPressed = false;
                     }
                 }
     }
 
     void leaderBoardsMenu()
-    {
-        image(altsmenu,0,0,width,height);
-        rectMode(CENTER);
-        fill(30);
-        stroke(0);
-        strokeWeight(10);
-        rect(width/1.2,950,360,120);
-
-        textAlign(CORNER);
-        text("L Bump  =  Go Back",width/1.3,940);
-        text("R Bump  =  Select",width/1.3,990);
-
-        text("Leaderboards",width/2,height/2);
-
-        if (keyPressed)
-                {   
-                    if (key == 'q')
-                    {
-                        stage = 3;
-                    }
-                }
-    } 
-
-    void settingsMenu()
-    {
-        image(altsmenu,0,0,width,height);
-        rectMode(CENTER);
-        fill(30);
-        stroke(0);
-        strokeWeight(10);
-        rect(width/1.2,950,360,120);
-
-        textAlign(CORNER);
-        text("L Bump  =  Go Back",width/1.3,940);
-        text("R Bump  =  Select",width/1.3,990);
-
-        text("settings",width/2,height/2);
-
-        if (keyPressed)
-                {   
-                    if (key == 'q')
-                    {
-                        stage = 4;
-                    }
-                }
-    } 
-
-    void creditsMenu()
     {
         image(altsmenu,0,0,width,height);
         rectMode(CENTER);
@@ -528,13 +503,84 @@ class Menus
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
 
-        text("credits",width/2,height/2);
+        text("Leaderboards",width/2,height/2);
+
+        if (keyPressed)
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 3;
+                        keyPressed = false;
+                    }
+                }
+    } 
+
+    void settingsMenu()
+    {
+        image(altsmenu,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        noStroke();
+        fill(220);
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        text("settings",width/2,height/2);
+
+        if (keyPressed)
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 4;
+                        keyPressed = false;
+                    }
+                }
+    } 
+
+    void creditsMenu()
+    {
+        image(altsmenu,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        
+        fill(50);
+        text("Credits",width/2,150);
+        text("Made by Team Rocket",width/2,190);
+
+        text("Teamleader:",width/2,300);
+        text("Kamiel Visser",width/2,340);
+        text("The Team:",width/2,420);
+        text("Tobias van der Hoek",width/2,460);
+        text("Jorrit Goossens",width/2,500);
+        text("Alexandrosz Tarnoki",width/2,540);
+        text("Chris van Schagen",width/2,580);
+
+        noStroke();
+        fill(220);
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
 
         if (keyPressed)
                 {   
                     if (key == 'q')
                     {
                         stage = 5;
+                        keyPressed = false;
                     }
                 }
     }

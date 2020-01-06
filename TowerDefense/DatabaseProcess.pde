@@ -17,7 +17,6 @@ class DatabaseProcess
             println(achievementName);
         }
     }
-
     void achievementGet()
     {
         //Amount of killed enemies
@@ -76,5 +75,19 @@ class DatabaseProcess
         {
             msql.query("INSERT INTO UserToAchievement VALUES ("+ databaseSetup.userID +", 13)");
         }
+    }
+    void enemiesKilled()
+    {
+        msql.query("UPDATE Statistics (EnemiesKilled) VALUES ("+ wave.enemiesKilledTotal +")");
+    }
+
+    void towersPlaced()
+    {
+        msql.query("UPDATE Statistics (TowersBought) VALUES ("+ controls.totalTowersPlaced +")");
+    }
+
+    void towersSold()
+    {
+        msql.query("UPDATE Statistics (TowersSold) VALUES ("+ controls.totalTowersSold +")");
     }
 }

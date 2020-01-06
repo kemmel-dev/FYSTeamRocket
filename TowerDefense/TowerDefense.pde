@@ -63,6 +63,7 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 // Is the game paused?
 Boolean gamePaused = false;
 
+
 // Holds the currently selected tile
 Tile selectedTile;
 
@@ -146,6 +147,7 @@ void draw()
     {
         // Start Menu + New Game HIGHLIGHTED
         case 1:
+            statistics.reset();
             menus.startMenu1();
             assetsLoader.startMenuMusic();
             return;
@@ -194,6 +196,7 @@ void draw()
             wave.end();
             menus.display();
 
+        
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
             
@@ -257,6 +260,7 @@ void handleTowers()
             if (t.towerType == 4 && wave.enemiesLeft != 0)
             {
                 t.farmGold();
+                
             }
 
       }
@@ -357,4 +361,7 @@ void drawParticles()
 void databaseProcesses()
 {
     databaseProcess.hi();
+    databaseProcess.enemiesKilled();
+    databaseProcess.towersPlaced();
+    databaseProcess.towersSold();
 }
