@@ -252,6 +252,12 @@ class Tower
       if(projectile.x == tegenstander.x && projectile.y == tegenstander.y)
       {
         //explode and deal damage
+        enemy.takeDamage(3);
+
+      }
+      if(enemy.hitpoints <= 0)
+      {
+        shooting = false;
       }
     }
     else
@@ -294,6 +300,6 @@ class Tower
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
     color bombColor = color(200, 255, 0);
-    int bombSize = 30;
+    int bombSize = 100;
   }
 }
