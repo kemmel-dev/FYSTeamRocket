@@ -123,6 +123,21 @@ class Enemy
         imageMode(CENTER);
         image(enemypic1, x, y, w, w);
         imageMode(CORNER);
+        // rect(x, y, w, w);
+        fill(20, 220, 20);
+        if(enemyType == 1)
+        {
+            hitpointsPercentage = (75 / hitpointsBeginWave) * hitpoints;
+        }
+        if(enemyType == 2)
+        {
+            hitpointsPercentage = (100 / hitpointsBeginWave) * hitpoints;
+        }
+        if(enemyType == 3)
+        {
+            hitpointsPercentage = (50 / hitpointsBeginWave) * hitpoints;
+        }
+        rect(x, y - hitpointsGap, hitpointsPercentage, 5);
     }
 
     // Check which waypoints have been passed,
