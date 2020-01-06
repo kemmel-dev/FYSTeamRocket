@@ -7,7 +7,7 @@ class UI
     int textCount = 4;
     float sizeX, sizeY;
     int currentY = 100;
-    float percentageLine, test;
+    float percentageLine, wavePercentageBar;
 
 
     Style style = new Style();
@@ -45,9 +45,9 @@ class UI
         
         if(wave.enemiesRemoved == 0)
         {
-            test = (waypoints.tileSize*3)/wave.enemiesLeft;
+            wavePercentageBar = (waypoints.tileSize*3)/wave.enemiesLeft;
         }
-        percentageLine = (waypoints.tileSize/2) + (test*wave.enemiesRemoved);
+        percentageLine = (waypoints.tileSize/2) + (wavePercentageBar*wave.enemiesRemoved);
         
         //Right top statistics
         rect(0, 0, sizeX, sizeY);

@@ -33,7 +33,7 @@ class Wave
     }
 
     //Enemies spawn 1,5 seconds after each other, every wave this will get 0,1 seconds faster
-        if(millis() > time && spawns < limit)
+    if(millis() > time && spawns < limit)
     {
       statistics.gereset = false;
       enemies.add(new Enemy());
@@ -63,6 +63,7 @@ class Wave
       enemiesRemoved = 0;
       statistics.scorePoints += 100;
       statistics.amount += 20;
+      
 
       //The spawntime between enemies cannot go lower than 0,6 seconds (600 millis).
         if(timerLimit > 600)

@@ -178,18 +178,16 @@ class Tower
 
   void freezeEnemies()
   {
-    ArrayList<Enemy> targets = enemiesInRange();  
+    ArrayList<Enemy> targets = enemiesInRange();
+      
     for (Enemy e : targets)
     {
-      if(e.msMultiplier > freezePower)
-      {
         e.msMultiplier = freezePower;
         e.frozenEnemy = true;
         if (towerLevel >= 4)
         {
           e.takeDamage(freezeDamage);
         }
-      }
     }
   }
 
