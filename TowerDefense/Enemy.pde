@@ -120,12 +120,10 @@ class Enemy
         {
             fill(style.enemyColor);
         }
-<<<<<<< HEAD
         imageMode(CENTER);
         image(enemypic1, x, y, w, w);
         imageMode(CORNER);
-=======
-        rect(x, y, w, w);
+        // rect(x, y, w, w);
         fill(20, 220, 20);
         if(enemyType == 1)
         {
@@ -140,7 +138,6 @@ class Enemy
             hitpointsPercentage = (50 / hitpointsBeginWave) * hitpoints;
         }
         rect(x, y - hitpointsGap, hitpointsPercentage, 5);
->>>>>>> 5848fd48b179bfcf43fd405e2355398ed49b0b75
     }
 
     // Check which waypoints have been passed,
