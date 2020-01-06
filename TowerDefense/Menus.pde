@@ -451,6 +451,7 @@ class Menus
         textAlign(CENTER);
         text("GAME OVER",width/2, 115);
         text("Play again?",width/2,400);
+        text("score:   " + statistics.scorePoints +"     Name",width/2,600);
         noFill();
         if (keyPressed)
                 {   
