@@ -138,13 +138,13 @@ class Controls {
         {
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
-        if (currentTile.tower.towerType == 0 && statistics.amount >= 15)
+        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.bombTowerCost)
           {
           int x = currentTile.x;
           int y = currentTile.y;
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 3, 1);
-          statistics.amount -= 15;
+          statistics.amount -= statistics.bombTowerCost;
           totalTowersPlaced++;
          }
         }
