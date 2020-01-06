@@ -9,7 +9,7 @@ class Tower
   int r;
   int wTile = int(SIZE_X / 16);
   // Damage dealt to the enemy
-  float laserDamage, freezePower, freezeDamage;
+  float laserDamage, freezePower, freezeDamage, bombDamage;
 
   // The enemy the tower is targetting
   Enemy enemy;
@@ -56,6 +56,7 @@ class Tower
     towerLevel = _towerLevel;
     laserDamage = towerLevel;
     freezePower = 0.8;
+    bombDamage = 30;
   }
 
 
@@ -235,8 +236,8 @@ class Tower
       projectile = new PVector(tower.x, tower.y);
       tegenstander = new PVector(enemy.x, enemy.y);
 
-      //This will run for 10 frames long every 60 frames.
-      if (frameCount % 60 <= 10)
+      //This will run every 30 frames (1 second).
+      if (frameCount % 30 == 0)
       {
         //Placing the bomb on the enemy
         projectile.x = tegenstander.x;
@@ -244,15 +245,24 @@ class Tower
 
         //Display the bomb
         fill(style.bombColor, 75);
-        ellipse(projectile.x, projectile.y, style.bombSize, style.bombSize);
+        image(explosion, projectile.x, projectile.y);
+        //ellipse(projectile.x, projectile.y, style.bombSize, style.bombSize);
       }
 
-      if(projectile.x == tegenstander.x && projectile.y == tegenstander.y)
+      //Calculates the distance between the center of the bomb and the center of the enemy
+      float distance = dist(projectile.x, projectile.y, tegenstander.x, tegenstander.y);
+      
+      //If a bomb and an enemy overlap, the enemy takes damage
+      //---------------- only 1 enemy within the bomb radius gets damage, still need to fix that all enemies in radius take damage! -----------------
+      if(distance <= style.bombSize/2 + enemy.w/2)
       {
-        //explode and deal damage
-        enemy.takeDamage(3);
-
+        //Deal damage
+        enemy.takeDamage(bombDamage);
       }
+
+
+
+      //When an enemy is dead, stop shooting so that the next enemy can be targeted.
       if(enemy.hitpoints <= 0)
       {
         shooting = false;
@@ -298,6 +308,6 @@ class Tower
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
     color bombColor = color(255, 255, 0);
-    int bombSize = 100;
+    int bombSize = 150;
   }
 }

@@ -53,6 +53,8 @@ PImage goldcoinhud;
 
 PImage enemypic1;
 
+PImage explosion;
+
 
 PFont font;
 
@@ -118,6 +120,9 @@ void setup()
 
     goldcoinhud = loadImage("goldhd.png");
 
+    //explosion image
+    explosion = loadImage("explosion.png");
+
     lasertower.resize(100,100);
     freezetower.resize(100,100);
     bombtower.resize(100,100);
@@ -130,6 +135,8 @@ void setup()
 
     goldcoin.resize(25,25);
     lives.resize(40,40);
+
+    explosion.resize(150, 150);
 
     goldcoinhud.resize(20,20);
 }
