@@ -243,7 +243,7 @@ class Tower
         projectile.y = tegenstander.y;
 
         //Display the bomb
-        fill(style.bombColor);
+        fill(style.bombColor, 75);
         ellipse(projectile.x, projectile.y, style.bombSize, style.bombSize);
       }
 
@@ -297,7 +297,7 @@ class Tower
     color iceBlue = color(186, 242, 239);
     int laserStrokeWeight = SIZE_X / 100;
     int defaultStrokeWeight = 1;
-    color bombColor = color(200, 255, 0);
+    color bombColor = color(255, 255, 0);
     int bombSize = 100;
   }
 }
