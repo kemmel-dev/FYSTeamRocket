@@ -7,7 +7,7 @@ class Tower
   // diameter and radius for the tower itself
   int d;
   int r;
-
+  int wTile = int(SIZE_X / 16);
   // Damage dealt to the enemy
   float laserDamage, freezePower, freezeDamage;
 
@@ -34,7 +34,7 @@ class Tower
   int rangeD;
 
   int timer = 0;
-  int goldPerFarm = 100;
+  int goldPerFarm = 500;
   
 
   Style style;
@@ -71,6 +71,9 @@ class Tower
       imageMode(CENTER);
       lasertower.resize(100,100);
       image(lasertower, x, y);
+      textSize(15);
+      fill(0);
+      text(towerLevel,x+ wTile/3,y+ wTile/3);
     
     }
     if (towerType == 2)
@@ -79,13 +82,17 @@ class Tower
       imageMode(CENTER);
       freezetower.resize(100,100);
       image(freezetower, x, y);
-      
+       textSize(15);
+      fill(0);
+      text(towerLevel,x+ wTile/3,y+ wTile/4);  
     }
     if (towerType == 3)
     {
       imageMode(CENTER);
       image(bombtower, x, y);
-     
+       textSize(15);
+      fill(0);
+     text(towerLevel,x+ wTile/3,y+ wTile/4);
     }
 
      if (towerType == 4)
@@ -94,7 +101,9 @@ class Tower
       imageMode(CENTER);
       farmtower.resize(100,100);
       image(farmtower, x, y);
-     
+       textSize(15);
+      fill(0);
+      text(towerLevel,x+ wTile/3,y+ wTile/4);
    }
   }
   // Look for enemies in range of this tower
@@ -213,6 +222,7 @@ class Tower
         {
             statistics.amount+= goldPerFarm;
             timer = 0;
+            text(goldPerFarm,x,y);
             // goldPopUp();
         }
     }

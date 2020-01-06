@@ -62,6 +62,7 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 // Is the game paused?
 Boolean gamePaused = false;
 
+
 // Holds the currently selected tile
 Tile selectedTile;
 
@@ -196,6 +197,7 @@ void draw()
             wave.end();
             menus.display();
 
+        
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
             // if(msql.connect())
