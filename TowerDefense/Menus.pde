@@ -550,13 +550,29 @@ class Menus
         strokeWeight(10);
         rect(width/1.2,950,360,120);
 
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        
+        fill(50);
+        text("Credits",width/2,150);
+        text("Made by Team Rocket",width/2,190);
+
+        text("Teamleader:",width/2,300);
+        text("Kamiel Visser",width/2,340);
+        text("The Team:",width/2,420);
+        text("Tobias van der Hoek",width/2,460);
+        text("Jorrit Goossens",width/2,500);
+        text("Alexandrosz Tarnoki",width/2,540);
+        text("Chris van Schagen",width/2,580);
+
         noStroke();
         fill(220);
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
-
-        text("credits",width/2,height/2);
 
         if (keyPressed)
                 {   

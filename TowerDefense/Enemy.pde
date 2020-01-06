@@ -50,23 +50,23 @@ class Enemy
         if(enemyType == 1)
         {
             w = int(t.w / 2);
-            hitpoints = 30 + (wave.waveNumber * 20);
+            hitpoints = 25 + (wave.waveNumber * 20);
         }
 
         //Type 2 enemy size, speed and hp
         if(enemyType == 2)
         {
-            msMultiplier = 0.5;
+            msMultiplier = 0.4;
             w = int(t.w - 40);
-            hitpoints = 60 + (wave.waveNumber * 30);
+            hitpoints = 65 + (wave.waveNumber * 30);
         }
 
         //Type 3 enemy size, speed and hp
         if(enemyType == 3)
         {
-            msMultiplier = 1.5;
+            msMultiplier = 1.3;
             w = int(t.w / 3);
-            hitpoints = 20 + (wave.waveNumber * 15);
+            hitpoints = 15 + (wave.waveNumber * 15);
         }
     }
 
