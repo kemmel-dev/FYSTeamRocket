@@ -28,6 +28,7 @@ AssetsLoader assetsLoader = new AssetsLoader();
 ConnectDB connectDB = new ConnectDB();
 ParticleSystem particleSystem = new ParticleSystem();
 DatabaseProcess databaseProcess = new DatabaseProcess();
+DatabaseSetup databaseSetup = new DatabaseSetup();
 
 PImage startmenu;
 PImage controlsimage;
@@ -65,6 +66,7 @@ ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 // Is the game paused?
 Boolean gamePaused = false;
 
+
 // Holds the currently selected tile
 Tile selectedTile;
 
@@ -82,6 +84,7 @@ void setup()
     // Connect Database to the game
     connectDB.createDatabaseConnection();
 
+    databaseProcess.hi();
     // Stage 1 = Start Menu
     stage = 1;
     // Load all Pictures
@@ -129,9 +132,6 @@ void setup()
     lives.resize(40,40);
 
     goldcoinhud.resize(20,20);
-
-    // create enemy
-    //enemies.add(new Enemy());
 }
 
 // Gets the currently selected tile
@@ -199,12 +199,9 @@ void draw()
             wave.end();
             menus.display();
 
+        
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
-            // if(msql.connect())
-            // {
-            //     //text("Connected", width/2, height/2);
-            // }
             
             return;
         
