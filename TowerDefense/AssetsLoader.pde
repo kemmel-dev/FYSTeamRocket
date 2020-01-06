@@ -16,7 +16,7 @@ class AssetsLoader
     // Background pictures
     startmenu = loadImage("background3.png");
     controlsimage = loadImage("controls.png");
-    controlsmenu = loadImage(".png");
+    controlsmenu = loadImage("controls.png");
     altsmenu = loadImage("background1.png");
     gameoverscreen = loadImage("background2.png");
 

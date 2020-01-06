@@ -196,12 +196,12 @@ void draw()
             wave.end();
             menus.display();
 
-            //Ingame music starts playing and loops
-            // assetsLoader.inGameMusic();
-            // if(msql.connect())
-            // {
-            //     text("Connected", width/2, height/2);
-            // }
+        //    // Ingame music starts playing and loops
+        //     assetsLoader.inGameMusic();
+        //     if(msql.connect())
+        //     {
+        //         text("Connected", width/2, height/2);
+        //     }
             
             return;
         
