@@ -52,6 +52,8 @@ PImage lives;
 PImage goldcoinhud;
 
 PImage enemypic1;
+PImage enemypic2;
+PImage enemypic3;
 
 
 PFont font;

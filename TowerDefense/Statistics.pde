@@ -33,7 +33,7 @@ class Statistics
     void reset()
     { 
             lives = 5;
-            amount = 80;
+            amount = 800;
             wave.waveNumber = 1;
             wave.limit = 10;
             wave.spawns = 0;
