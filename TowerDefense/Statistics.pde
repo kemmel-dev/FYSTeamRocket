@@ -15,13 +15,13 @@ class Statistics
 
     Statistics()
     {
-        amount = 1000;
+        amount = 8000;
         laserTowerCost = 50;
         freezeTowerCost = 100;
         bombTowerCost = 150;
         farmTowerCost = 250;
 
-        lives = 500;
+        lives = 5;
 
     }
 
