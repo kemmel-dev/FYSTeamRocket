@@ -17,15 +17,21 @@
       },
       "args": [
 		"--force",
-		"--sketch=${workspaceRoot}/TowerDefense",
+		"--sketch=${workspaceRoot}",
 		"--output=${workspaceRoot}/out",
 		"--run"
 	  ],
       "windows": {
         "args": [
           "--force",
-          "--sketch=${workspaceRoot}/TowerDefense",
-          "--output=${workspaceRoot}\\out",
+          {
+            "value": "--sketch=${workspaceRoot}",
+            "quoting": "strong"
+          },
+          {
+            "value": "--output=${workspaceRoot}\\out",
+            "quoting": "strong"
+          },
           "--run"
         ]
       }
