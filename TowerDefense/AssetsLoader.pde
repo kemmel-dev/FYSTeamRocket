@@ -42,6 +42,8 @@ class AssetsLoader
 
     // Pictures for the enemy
     enemypic1 = loadImage("enemypic1.png");
+    enemypic2 = loadImage("enemypic2.png");
+    enemypic3 = loadImage("enemypic3.png");
 
     // Picture resizes
     lasertower.resize(100,100);
@@ -59,6 +61,9 @@ class AssetsLoader
     lives.resize(40,40);
 
     enemypic1.resize(100,100);
+    enemypic2.resize(100,100);
+    enemypic3.resize(100,100);
+
 
 
 
