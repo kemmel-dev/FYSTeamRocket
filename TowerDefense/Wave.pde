@@ -26,13 +26,14 @@ class Wave
 
   void spawn()
   { 
-      //Limit of enemies per wave can't go higher than 100
-      //So late game waves won't have more than 100 enemies
-      if(limit >= 100)
-      {
-        limit = 100;
-      }
+    //Limit of enemies per wave can't go higher than 100
+    //So late game waves won't have more than 100 enemies
+    if(limit >= 100)
+    {
+      limit = 100;
+    }
 
+      
     //When all enemies for the wave have spawned, this boolean becomes true
     if (spawns == limit)
     {
