@@ -127,16 +127,49 @@ class Enemy
 
         //If the DIRECTION of MOVEMENT changes, the enemy will turn
         if(moveDir == 3)
-        {
-            image(enemypic1, x, y, w, w);
+        {   
+            if (enemyType == 1)
+            {
+                image(enemypic1, x, y, w, w);
+            }
+            else if (enemyType == 2)
+            {
+                image(redenemypic1, x, y, w, w);
+            }
+            else if (enemyType == 3)
+            {
+                image(bluenemypic1, x, y, w, w);
+            }
         }
         else if(moveDir == 1)
         {
-            image(enemypic3, x, y, w, w);
+            if (enemyType == 1)
+            {
+                image(enemypic3, x, y, w, w);
+            }
+            else if (enemyType == 2)
+            {
+                image(redenemypic3, x, y, w, w);
+            }
+            else if (enemyType == 3)
+            {
+                image(bluenemypic3, x, y, w, w);
+            }
         }
         else if(moveDir == 2)
         {
-            image(enemypic2, x, y, w, w);
+            if (enemyType == 1)
+            {
+                image(enemypic2, x, y, w, w);
+            }
+            else if (enemyType == 2)
+            {
+                image(redenemypic2, x, y, w, w);
+            }
+            else if (enemyType == 3)
+            {
+                image(bluenemypic2, x, y, w, w);
+            }
         }
 
         imageMode(CORNER);
