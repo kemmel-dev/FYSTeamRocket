@@ -55,6 +55,14 @@ PImage enemypic1;
 PImage enemypic2;
 PImage enemypic3;
 
+PImage redenemypic1;
+PImage redenemypic2;
+PImage redenemypic3;
+
+PImage bluenemypic1;
+PImage bluenemypic2;
+PImage bluenemypic3;
+
 PImage explosion;
 
 
