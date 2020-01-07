@@ -24,6 +24,7 @@ class AssetsLoader
     font = createFont("Impact",36);
 
     // Towers
+    tower = loadImage("tower.png");
     lasertower = loadImage("laser.png");
     freezetower = loadImage("freeze.png");
     bombtower = loadImage("bomb.png");
@@ -54,6 +55,7 @@ class AssetsLoader
     bluenemypic3 = loadImage("bluenemypic3.png");
 
     // Picture resizes
+    tower.resize(100,100);
     lasertower.resize(100,100);
     freezetower.resize(100,100);
     bombtower.resize(100,100);

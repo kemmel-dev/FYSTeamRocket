@@ -302,10 +302,10 @@ class Tower
   {
     color fillColor = color(100, 100, 100);
     color rangeFill = color(0, 0, 0);
-    color laserColor = color(235, 20, 20, 210);
+    color laserColor = color(20, 235, 20, 100);
     color black = 0;
     color iceBlue = color(186, 242, 239);
-    int laserStrokeWeight = SIZE_X / 100;
+    int laserStrokeWeight = SIZE_X / 250;
     int defaultStrokeWeight = 1;
     color bombColor = color(255, 255, 0);
     int bombSize = 150;
