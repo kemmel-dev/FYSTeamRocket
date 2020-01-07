@@ -299,12 +299,13 @@ class Tower
         }
         else if(e.enemyType == 2)
         {
-          e.msMultiplier = 0.5;
+          e.msMultiplier = 0.4;
         }
         else
         {
-          e.msMultiplier = 1.5;
+          e.msMultiplier = 1.3;
         }
+        enemiesInRange.remove(e);
         e.frozenEnemy = false;
       }
     }

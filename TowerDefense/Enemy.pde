@@ -9,6 +9,7 @@ class Enemy
     float msMultiplier = 1;
     boolean frozenEnemy = false;
     int hitpointsGap;
+    int frozen = 0;
 
     Style style;
 
@@ -112,16 +113,19 @@ class Enemy
 
     void display()
     {
+        //If the enemy is FROZEN, it will turn a bit blue
         if(frozenEnemy)
         {
             tint(style.frozenColor);
-
         }
         else
         {
             tint(style.defaultColor);
         }
+
         imageMode(CENTER);
+
+        //If the DIRECTION of MOVEMENT changes, the enemy will turn
         if(moveDir == 3)
         {
             image(enemypic1, x, y, w, w);
@@ -134,9 +138,12 @@ class Enemy
         {
             image(enemypic2, x, y, w, w);
         }
+
         imageMode(CORNER);
         // rect(x, y, w, w);
         fill(20, 220, 20);
+
+        //The healthbar from different kind of enemies
         if(enemyType == 1)
         {
             hitpointsPercentage = (75 / hitpointsBeginWave) * hitpoints;
@@ -149,6 +156,7 @@ class Enemy
         {
             hitpointsPercentage = (50 / hitpointsBeginWave) * hitpoints;
         }
+
         rect(x, y - hitpointsGap, hitpointsPercentage, 5);
     }
 
