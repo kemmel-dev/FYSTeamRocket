@@ -211,11 +211,21 @@ class Controls {
               currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.2);
             }
           }
+
+          //FarmTower upgrade
           if(currentTile.tower.towerType == 4 && statistics.amount >= statistics.farmTowerCost * currentTile.tower.towerLevel)
           {
             statistics.amount -= statistics.farmTowerCost * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
             currentTile.tower.goldPerFarm += 50;
+          }
+
+          //Bombtower upgrade
+          if (currentTile.tower.towerType == 3 && statistics.amount >= statistics.bombTowerCost * currentTile.tower.towerLevel)
+          {
+            statistics.amount -= statistics.bombTowerCost * currentTile.tower.towerLevel;
+            currentTile.tower.towerLevel += 1;
+            currentTile.tower.bombDamage *= currentTile.tower.towerLevel;
           }
         }
 
