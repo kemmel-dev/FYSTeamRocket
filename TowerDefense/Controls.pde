@@ -193,7 +193,7 @@ class Controls {
           Tile currentTile = grid.grid[selectionX][selectionY];
 
           //LaserTower upgrade
-          if(currentTile.tower.towerType == 1 && statistics.amount >= statistics.laserTowerCost * currentTile.tower.towerLevel)
+          if(currentTile.tower.towerType == 1 && statistics.amount >= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel)
           {
             statistics.amount -= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
@@ -201,9 +201,9 @@ class Controls {
           }
 
           //FreezeTower upgrade
-          else if(currentTile.tower.towerType == 2 && statistics.amount >= statistics.freezeTowerCost * currentTile.tower.towerLevel)
+          else if(currentTile.tower.towerType == 2 && statistics.amount >= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel)
           {
-            statistics.amount -=(statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
+            statistics.amount -= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
             currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
             if(currentTile.tower.towerLevel <= 4)

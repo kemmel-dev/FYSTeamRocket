@@ -53,7 +53,7 @@ class Enemy
         if(enemyType == 1)
         {
             w = int(t.w / 2);
-            hitpoints = 30 + (wave.waveNumber * 20);
+            hitpoints = 20 + (wave.waveNumber * 25);
             hitpointsGap = 40;
             if(!wave.allEnemiesSpawned)
             {
@@ -81,7 +81,7 @@ class Enemy
         {
             msMultiplier = 1.3;
             w = int(t.w / 3);
-            hitpoints = 20 + (wave.waveNumber * 15);
+            hitpoints = 10 + (wave.waveNumber * 20);
             hitpointsGap = 30;
             if(!wave.allEnemiesSpawned)
             {
@@ -121,7 +121,51 @@ class Enemy
             fill(style.enemyColor);
         }
         imageMode(CENTER);
-        image(enemypic1, x, y, w, w);
+        if(moveDir == 3)
+        {   
+            if (enemyType == 1)
+            {
+                image(enemypic1, x, y, w, w);
+            }
+            else if (enemyType == 2)
+            {
+                image(redenemypic1, x, y, w, w);
+            }
+            else if (enemyType == 3)
+            {
+                image(bluenemypic1, x, y, w, w);
+            }
+        }
+        else if(moveDir == 1)
+        {
+            if (enemyType == 1)
+            {
+                image(enemypic3, x, y, w, w);
+            }
+            else if (enemyType == 2)
+            {
+                image(redenemypic3, x, y, w, w);
+            }
+            else if (enemyType == 3)
+            {
+                image(bluenemypic3, x, y, w, w);
+            }
+        }
+        else if(moveDir == 2)
+        {
+            if (enemyType == 1)
+            {
+                image(enemypic2, x, y, w, w);
+            }
+            else if (enemyType == 2)
+            {
+                image(redenemypic2, x, y, w, w);
+            }
+            else if (enemyType == 3)
+            {
+                image(bluenemypic2, x, y, w, w);
+            }
+        }
         imageMode(CORNER);
         // rect(x, y, w, w);
         fill(20, 220, 20);
