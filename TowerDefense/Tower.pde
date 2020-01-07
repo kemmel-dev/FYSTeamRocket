@@ -195,12 +195,15 @@ class Tower
       
     for (Enemy e : targets)
     {
+      if(e.msMultiplier >= freezePower)
+      {
         e.msMultiplier = freezePower;
         e.frozenEnemy = true;
         if (towerLevel >= 4)
         {
           e.takeDamage(freezeDamage);
         }
+      }
     }
   }
 
@@ -290,7 +293,18 @@ class Tower
       }
       else 
       {
-        e.msMultiplier = 1;
+        if(e.enemyType == 1)
+        {
+          e.msMultiplier = 1;
+        }
+        else if(e.enemyType == 2)
+        {
+          e.msMultiplier = 0.5;
+        }
+        else
+        {
+          e.msMultiplier = 1.5;
+        }
         e.frozenEnemy = false;
       }
     }

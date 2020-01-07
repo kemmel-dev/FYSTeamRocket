@@ -114,11 +114,12 @@ class Enemy
     {
         if(frozenEnemy)
         {
-            fill(style.frozenColor);
+            tint(style.frozenColor);
+
         }
         else
         {
-            fill(style.enemyColor);
+            tint(style.defaultColor);
         }
         imageMode(CENTER);
         image(enemypic1, x, y, w, w);
@@ -226,7 +227,7 @@ class Enemy
 
     class Style
     {
-        color enemyColor = color(255, 20, 20);
-        color frozenColor = color(186, 242, 239,125);
+        color defaultColor = color(255, 255, 255, 255);
+        color frozenColor = color(162, 210, 223, 255);
     }
 }
