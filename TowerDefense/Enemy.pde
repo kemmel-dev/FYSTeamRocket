@@ -54,7 +54,7 @@ class Enemy
         if(enemyType == 1)
         {
             w = int(t.w / 2);
-            hitpoints = 20 + (wave.waveNumber * 25);
+            hitpoints = 15 + (wave.waveNumber * 30);
             hitpointsGap = 40;
             if(!wave.allEnemiesSpawned)
             {
@@ -66,9 +66,9 @@ class Enemy
         //Type 2 enemy size, speed and hp
         if(enemyType == 2)
         {
-            msMultiplier = 0.4;
+            msMultiplier = 0.35;
             w = int(t.w - 40);
-            hitpoints = 60 + (wave.waveNumber * 30);
+            hitpoints = 70 + (wave.waveNumber * 35);
             hitpointsGap = 50;
             if(!wave.allEnemiesSpawned)
             {
@@ -80,9 +80,9 @@ class Enemy
         //Type 3 enemy size, speed and hp
         if(enemyType == 3)
         {
-            msMultiplier = 1.3;
+            msMultiplier = 1.6;
             w = int(t.w / 3);
-            hitpoints = 10 + (wave.waveNumber * 20);
+            hitpoints = 10 + (wave.waveNumber * 15);
             hitpointsGap = 30;
             if(!wave.allEnemiesSpawned)
             {

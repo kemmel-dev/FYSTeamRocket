@@ -36,6 +36,7 @@ PImage controlsmenu;
 PImage altsmenu;
 PImage gameoverscreen;
 
+PImage tower;
 PImage lasertower;
 PImage freezetower;
 PImage bombtower;
@@ -179,17 +180,13 @@ void draw()
         case 3:
             menus.startMenu3();
             return;
-        // Start Menu + Settings HIGHLIGHTED
+        // Start Menu + Credits HIGHLIGHTED
         case 4:
             menus.startMenu4();
             return;
-        // Start Menu + Credits HIGHLIGHTED
+        // Start Menu + Exit Game HIGHLIGHTED
         case 5:
             menus.startMenu5();
-            return;
-        // Start Menu + Exit Game HIGHLIGHTED
-        case 6:
-            menus.startMenu6();
             return;
 
         // In Game Screen from Start Menu
@@ -238,10 +235,6 @@ void draw()
         // LeaderBoards Menu from Start Menu
         case 11:
             menus.leaderBoardsMenu();
-            return;
-        // Settings Menu from Start Menu
-        case 12:
-            menus.settingsMenu();
             return;
         // Credits Menu from Start Menu
         case 13:

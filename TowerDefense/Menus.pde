@@ -30,27 +30,29 @@ class Menus
         fill(30);
         stroke(0);
         strokeWeight(10);
-        rect(width/2,385,300,50);
-        rect(width/2,485,300,50);
-        rect(width/2,585,300,50);
-        rect(width/2,685,300,50);
-        rect(width/2,785,300,50);
-        rect(width/2,885,300,50);
+        rect(width/2,335,300,50);
+        rect(width/2,435,300,50);
+        rect(width/2,535,300,50);
+        rect(width/2,635,300,50);
+        rect(width/2,735,300,50);
 
         rect(width/1.2,950,360,120);
 
         stroke(255,255,0);
         strokeWeight(5);
-        rect(width/2,385,300,50);
+        rect(width/2,335,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 335, 100, 100);
+        imageMode(CORNER);
 
         noStroke();
         fill(220);
-        text("New Game",width/2,400);
-        text("Controls",width/2,500);
-        text("Leaderboards",width/2,600);
-        text("Settings",width/2,700);
-        text("Credits",width/2,800);
-        text("Exit Game",width/2,900);
+        text("New Game",width/2,350);
+        text("Controls",width/2,450);
+        text("Leaderboards",width/2,550);
+        text("Credits",width/2,650);
+        text("Exit Game",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -86,27 +88,29 @@ class Menus
         fill(30);
         stroke(0);
         strokeWeight(10);
-        rect(width/2,385,300,50);
-        rect(width/2,485,300,50);
-        rect(width/2,585,300,50);
-        rect(width/2,685,300,50);
-        rect(width/2,785,300,50);
-        rect(width/2,885,300,50);
-
+        rect(width/2,335,300,50);
+        rect(width/2,435,300,50);
+        rect(width/2,535,300,50);
+        rect(width/2,635,300,50);
+        rect(width/2,735,300,50);
+        
         rect(width/1.2,950,360,120);
 
         stroke(255,255,0);
         strokeWeight(5);
-        rect(width/2,485,300,50);
+        rect(width/2,435,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 435, 100, 100);
+        imageMode(CORNER);
         
         noStroke();
         fill(220);
-        text("New Game",width/2,400);
-        text("Controls",width/2,500);
-        text("Leaderboards",width/2,600);
-        text("Settings",width/2,700);
-        text("Credits",width/2,800);
-        text("Exit Game",width/2,900);
+        text("New Game",width/2,350);
+        text("Controls",width/2,450);
+        text("Leaderboards",width/2,550);
+        text("Credits",width/2,650);
+        text("Exit Game",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -148,27 +152,29 @@ class Menus
         fill(30);
         stroke(0);
         strokeWeight(10);
-        rect(width/2,385,300,50);
-        rect(width/2,485,300,50);
-        rect(width/2,585,300,50);
-        rect(width/2,685,300,50);
-        rect(width/2,785,300,50);
-        rect(width/2,885,300,50);
+        rect(width/2,335,300,50);
+        rect(width/2,435,300,50);
+        rect(width/2,535,300,50);
+        rect(width/2,635,300,50);
+        rect(width/2,735,300,50);
 
         rect(width/1.2,950,360,120);
 
         stroke(255,255,0);
         strokeWeight(5);
-        rect(width/2,585,300,50);
+        rect(width/2,535,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 535, 100, 100);
+        imageMode(CORNER);
         
         noStroke();
         fill(220);
-        text("New Game",width/2,400);
-        text("Controls",width/2,500);
-        text("Leaderboards",width/2,600);
-        text("Settings",width/2,700);
-        text("Credits",width/2,800);
-        text("Exit Game",width/2,900);
+        text("New Game",width/2,350);
+        text("Controls",width/2,450);
+        text("Leaderboards",width/2,550);
+        text("Credits",width/2,650);
+        text("Exit Game",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -201,7 +207,8 @@ class Menus
         }
 
     }
-    // Settings HIGHLIGHTED
+    
+    // Credits HIGHLIGHTED
     void startMenu4()
     {
         image(startmenu,0,0,width,height);
@@ -210,27 +217,29 @@ class Menus
         fill(30);
         stroke(0);
         strokeWeight(10);
-        rect(width/2,385,300,50);
-        rect(width/2,485,300,50);
-        rect(width/2,585,300,50);
-        rect(width/2,685,300,50);
-        rect(width/2,785,300,50);
-        rect(width/2,885,300,50);
+        rect(width/2,335,300,50);
+        rect(width/2,435,300,50);
+        rect(width/2,535,300,50);
+        rect(width/2,635,300,50);
+        rect(width/2,735,300,50);
 
         rect(width/1.2,950,360,120);
 
         stroke(255,255,0);
         strokeWeight(5);
-        rect(width/2,685,300,50);
+        rect(width/2,635,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 635, 100, 100);
+        imageMode(CORNER);
         
         noStroke();
         fill(220);
-        text("New Game",width/2,400);
-        text("Controls",width/2,500);
-        text("Leaderboards",width/2,600);
-        text("Settings",width/2,700);
-        text("Credits",width/2,800);
-        text("Exit Game",width/2,900);
+        text("New Game",width/2,350);
+        text("Controls",width/2,450);
+        text("Leaderboards",width/2,550);
+        text("Credits",width/2,650);
+        text("Exit Game",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -257,13 +266,12 @@ class Menus
             }
             if (key == 'p')
                 {
-                    stage = 12;
+                    stage = 13;
                     keyPressed = false;
                 }
         }
-
     }
-    // Credits HIGHLIGHTED
+    // Exit Game HIGHLIGHTED
     void startMenu5()
     {
         image(startmenu,0,0,width,height);
@@ -272,27 +280,29 @@ class Menus
         fill(30);
         stroke(0);
         strokeWeight(10);
-        rect(width/2,385,300,50);
-        rect(width/2,485,300,50);
-        rect(width/2,585,300,50);
-        rect(width/2,685,300,50);
-        rect(width/2,785,300,50);
-        rect(width/2,885,300,50);
+        rect(width/2,335,300,50);
+        rect(width/2,435,300,50);
+        rect(width/2,535,300,50);
+        rect(width/2,635,300,50);
+        rect(width/2,735,300,50);
 
         rect(width/1.2,950,360,120);
 
         stroke(255,255,0);
         strokeWeight(5);
-        rect(width/2,785,300,50);
+        rect(width/2,735,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 735, 100, 100);
+        imageMode(CORNER);
         
         noStroke();
         fill(220);
-        text("New Game",width/2,400);
-        text("Controls",width/2,500);
-        text("Leaderboards",width/2,600);
-        text("Settings",width/2,700);
-        text("Credits",width/2,800);
-        text("Exit Game",width/2,900);
+        text("New Game",width/2,350);
+        text("Controls",width/2,450);
+        text("Leaderboards",width/2,550);
+        text("Credits",width/2,650);
+        text("Exit Game",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -309,67 +319,6 @@ class Menus
                 if (keyCode == UP)
                 {
                     stage = 4;
-                    keyPressed = false;
-                }
-                if (keyCode == DOWN)
-                {
-                    stage = 6;
-                    keyPressed = false;
-                }
-            }
-            if (key == 'p')
-                {
-                    stage = 13;
-                    keyPressed = false;
-                }
-        }
-    }
-    // Exit Game HIGHLIGHTED
-    void startMenu6()
-    {
-        image(startmenu,0,0,width,height);
-        rectMode(CENTER);
-        textAlign(CENTER);
-        fill(30);
-        stroke(0);
-        strokeWeight(10);
-        rect(width/2,385,300,50);
-        rect(width/2,485,300,50);
-        rect(width/2,585,300,50);
-        rect(width/2,685,300,50);
-        rect(width/2,785,300,50);
-        rect(width/2,885,300,50);
-
-        rect(width/1.2,950,360,120);
-
-        stroke(255,255,0);
-        strokeWeight(5);
-        rect(width/2,885,300,50);
-        
-        noStroke();
-        fill(220);
-        text("New Game",width/2,400);
-        text("Controls",width/2,500);
-        text("Leaderboards",width/2,600);
-        text("Settings",width/2,700);
-        text("Credits",width/2,800);
-        text("Exit Game",width/2,900);
-
-        textAlign(CORNER);
-        text("L Bump  =  Go Back",width/1.3,940);
-        text("R Bump  =  Select",width/1.3,990);
-
-        textAlign(CENTER);
-        fill(0);
-        text("My Dear Smooth Sphere",width/2,100);
-        noFill();
-        if (keyPressed)
-        {
-            if (key == CODED)
-            {
-                if (keyCode == UP)
-                {
-                    stage = 5;
                     keyPressed = false;
                 }
             }
@@ -515,32 +464,6 @@ class Menus
                 }
     } 
 
-    void settingsMenu()
-    {
-        image(altsmenu,0,0,width,height);
-        rectMode(CENTER);
-        fill(30);
-        stroke(0);
-        strokeWeight(10);
-        rect(width/1.2,950,360,120);
-
-        noStroke();
-        fill(220);
-        textAlign(CORNER);
-        text("L Bump  =  Go Back",width/1.3,940);
-        text("R Bump  =  Select",width/1.3,990);
-
-        text("settings",width/2,height/2);
-
-        if (keyPressed)
-                {   
-                    if (key == 'q')
-                    {
-                        stage = 4;
-                        keyPressed = false;
-                    }
-                }
-    } 
 
     void creditsMenu()
     {
@@ -579,7 +502,7 @@ class Menus
                 {   
                     if (key == 'q')
                     {
-                        stage = 5;
+                        stage = 4;
                         keyPressed = false;
                     }
                 }
