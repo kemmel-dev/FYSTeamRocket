@@ -56,7 +56,7 @@ class Tower
     towerLevel = _towerLevel;
     laserDamage = towerLevel;
     freezePower = 0.8;
-    bombDamage = 30;
+    bombDamage = 20;
   }
 
 
@@ -236,8 +236,8 @@ class Tower
       projectile = new PVector(tower.x, tower.y);
       tegenstander = new PVector(enemy.x, enemy.y);
 
-      //This will run every 30 frames (1 second).
-      if (frameCount % 30 == 0)
+      //This will run for 2 frames every 30 frames (1 second).
+      if (frameCount % 30 <= 1)
       {
         //Placing the bomb on the enemy
         projectile.x = tegenstander.x;
@@ -259,9 +259,6 @@ class Tower
         //Deal damage
         enemy.takeDamage(bombDamage);
       }
-
-
-
       //When an enemy is dead, stop shooting so that the next enemy can be targeted.
       if(enemy.hitpoints <= 0)
       {

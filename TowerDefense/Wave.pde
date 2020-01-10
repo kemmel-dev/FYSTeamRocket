@@ -7,7 +7,7 @@ class Wave
 
   boolean allEnemiesSpawned;
 
-//Timer that determimes how quick enemies spawn after each other
+  //Timer that determimes how quick enemies spawn after each other
   float time;
   float timerLimit;
 
@@ -32,8 +32,7 @@ class Wave
     {
       limit = 100;
     }
-
-      
+  
     //When all enemies for the wave have spawned, this boolean becomes true
     if (spawns == limit)
     {
@@ -72,7 +71,6 @@ class Wave
       statistics.scorePoints += 100;
       statistics.amount += 20;
       
-
       //The spawntime between enemies cannot go lower than 0,6 seconds (600 millis).
         if(timerLimit > 600)
       {
