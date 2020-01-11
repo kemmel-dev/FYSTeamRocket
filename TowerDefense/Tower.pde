@@ -244,6 +244,13 @@ class Tower
           //Display the bomb
           fill(style.bombColor, 75);
           image(explosion, bomb.x, bomb.y);
+
+          //This will play the bombsound once per explosion
+          //Without this if statement the sound would run twice because the bomb runs for 2 frames
+            if(frameCount % 30 < 1)
+            {
+              assetsLoader.bombSound();
+            }
         }
 
         //ArrayList for all enemies that are in range of the bombtower
