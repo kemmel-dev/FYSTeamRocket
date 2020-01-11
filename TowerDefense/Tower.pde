@@ -228,47 +228,72 @@ class Tower
 
    void throwBombs()
   {
-    if (ifEnemyIsInRange(enemy))
-    {
-      //Creating the vectors for the tower, projectile and enemy
-      PVector tower, projectile, tegenstander;
-      tower = new PVector(x, y);
-      projectile = new PVector(tower.x, tower.y);
-      tegenstander = new PVector(enemy.x, enemy.y);
-
-      //This will run for 2 frames every 30 frames (1 second).
-      if (frameCount % 30 <= 1)
+      if (ifEnemyIsInRange(enemy))
       {
-        //Placing the bomb on the enemy
-        projectile.x = tegenstander.x;
-        projectile.y = tegenstander.y;
+        //Creating the coordinates for the bomb
+        PVector bomb;
+        bomb = new PVector(x, y);
 
-        //Display the bomb
-        fill(style.bombColor, 75);
-        image(explosion, projectile.x, projectile.y);
-        //ellipse(projectile.x, projectile.y, style.bombSize, style.bombSize);
-      }
+        //This will run for 2 frames every 30 frames(1 second).
+        if (frameCount % 30 < 2)
+        {
+          //Placing the bomb on the enemy
+          bomb.x = enemy.x;
+          bomb.y = enemy.y;
 
-      //Calculates the distance between the center of the bomb and the center of the enemy
-      float distance = dist(projectile.x, projectile.y, tegenstander.x, tegenstander.y);
-      
-      //If a bomb and an enemy overlap, the enemy takes damage
-      //---------------- only 1 enemy within the bomb radius gets damage, still need to fix that all enemies in radius take damage! -----------------
-      if(distance <= style.bombSize/2 + enemy.w/2)
-      {
-        //Deal damage
-        enemy.takeDamage(bombDamage);
+          //Display the bomb
+          fill(style.bombColor, 75);
+          image(explosion, bomb.x, bomb.y);
+        }
+
+        //ArrayList for all enemies that are in range of the bombtower
+        ArrayList<Enemy> target = enemiesInBombtowerRange();
+
+        //For every target (enemy in range of bombtower)
+        for (Enemy enemy : target)
+        {
+          //Calculates the distance between the center of the bomb and the center of the enemy
+          float distance = dist(bomb.x, bomb.y, enemy.x, enemy.y); 
+
+          //If an enemy is in the radius of the explosion
+          if (distance <= style.bombSize/2 + enemy.w/2)
+          {
+            //Deal damage to that enemy
+            enemy.takeDamage(bombDamage);
+          }
+        }
+
+        //When an enemy is dead, stop shooting so that the next enemy can be targeted.
+        if(enemy.hitpoints <= 0)
+        {
+          shooting = false;
+        }
       }
-      //When an enemy is dead, stop shooting so that the next enemy can be targeted.
-      if(enemy.hitpoints <= 0)
+      else
       {
         shooting = false;
       }
-    }
-    else
-    {
-      shooting = false;
-    }
+  }
+
+  //ArrayList for enemies that are in range of the bombradius
+  ArrayList<Enemy> enemiesInBombtowerRange()
+  {
+    ArrayList<Enemy> enemiesInBombtowerRange = new ArrayList<Enemy>();
+
+      //Checks for every enemy if they are in range of the bomb radius
+      for(Enemy enemy : enemies)
+      {
+        //Calculates the distance between the bombtower and the enemy
+        float dist = dist(x, y, enemy.x, enemy.y);
+
+        //If the distance between the bombtower and the enemy is smaller than the bombtower range
+        if(dist <= rangeBombTower);
+        {
+          //Add an enemy to the ArrayList "enemiesInBombtowerRange"
+          enemiesInBombtowerRange.add(enemy);
+        }
+      }
+      return enemiesInBombtowerRange;
   }
 
   ArrayList<Enemy> enemiesInRange()
