@@ -1,11 +1,21 @@
-private NameSubmitScreen nameSubmitScreen = new NameSubmitScreen();
+
+private DatabaseManager databaseManager;
+
+private NameSubmitScreen nameSubmitScreen;
 
 void setup()
 {
     size(1920, 1080);
-    nameSubmitScreen.init();
     rectMode(CENTER);
     textAlign(CENTER, CENTER);
+    databaseManager = new DatabaseManager(this);
+    nameSubmitScreen = new NameSubmitScreen(databaseManager);
+    nameSubmitScreen.init();
+    if (!databaseManager.init())
+    {
+        print("Could not get a connection to the database :(\nQuitting game...");
+        exit();
+    }
 }
 
 void draw()
