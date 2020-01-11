@@ -16,6 +16,13 @@ class NameSubmitScreen
 
     private int boxSelected = 0;
 
+    private DatabaseManager databaseManager;
+
+    public NameSubmitScreen(DatabaseManager databaseManager)
+    {
+        this.databaseManager = databaseManager;
+    }
+
     // Load the alphabet in an array
     private void initAlphabet()
     {
@@ -53,7 +60,7 @@ class NameSubmitScreen
     private void initBoxes()
     {
         initLetterBoxes();
-        submitBox = new SubmitBox(new PVector(width / 2, height - height / 3), width / 4, height / 8);
+        submitBox = new SubmitBox(new PVector(width / 2, height - height / 3), width / 4, height / 8, databaseManager);
         boxes[0] = letterBoxes[0];
         boxes[1] = letterBoxes[1];
         boxes[2] = letterBoxes[2];
