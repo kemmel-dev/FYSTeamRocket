@@ -10,7 +10,28 @@ class ParticleSystem
         
     }
 
-    
+    void enemyTakingDamage()
+    {
+        for(Enemy e : enemies)
+        {
+            if(e.takingDamage)
+            {
+                particles.add(new Particles(e.x, e.y, 1));
+                for(int i = particles.size() - 1; i >= 0; i--)
+                {
+                    Particles p = particles.get(i);
+                    p.display();
+                    p.moveParticle();
+                    
+                    if(p.resetParticle())
+                    {
+                        text("Iam working", 900, 500);
+                        particles.remove(i);
+                    }
+                }
+            }
+        }
+    }
 
     // void enemyTakingDamage()
     // {
