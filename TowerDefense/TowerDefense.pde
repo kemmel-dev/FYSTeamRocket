@@ -36,7 +36,7 @@ NameSubmitScreen nameSubmitScreen = new NameSubmitScreen();
 
 PImage startmenu;
 PImage controlsimage;
-PImage controlsmenu;
+PImage helpimage;
 PImage altsmenu;
 PImage gameoverscreen;
 
