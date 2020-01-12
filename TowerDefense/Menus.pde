@@ -543,16 +543,25 @@ class Menus
         fill(50);
         stroke(0);
         strokeWeight(10);
-        rect(width/2,100,200,50);
+        rect(width/2,485,300,50);
+        rect(width/2,385,550,50);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,485,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 485, 100, 100);
+        imageMode(CORNER);
+
         fill(220);
         textAlign(CENTER);
-        text("GAME OVER",width/2, 115);
-        text("Press Start For Main Menu",width/2,400);
-        text("score:   " + statistics.scorePoints +"     " + scoreList.get(0).getSecond(), width/2,600);
+        text("Play Again!",width/2,500);
+        text("Your Score:   " + statistics.scorePoints +"     " + scoreList.get(0).getSecond(), width/2,400);
         noFill();
         if (keyPressed)
                 {   
-                    if (key == 'j')
+                    if (key == 'p')
                     {
                         stage = 1;
                         statistics.reset();
@@ -594,6 +603,8 @@ class Menus
 
     void controlsMenuPause()
     {
+        fill(200,20);
+        rect(0,0,width*2,height*2);
         imageMode(CENTER);
         image(controlsimage,width/2,height/3,1200,600);
         imageMode(CORNER);

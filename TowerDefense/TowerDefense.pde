@@ -259,6 +259,7 @@ void draw()
             return;
         case 16:
             menus.controlsMenuPause();
+            return;
         // Game Over Menu from InGame Screen  
         case 17:
             menus.gameOverMenu(scoreList);

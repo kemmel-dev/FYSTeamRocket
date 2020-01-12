@@ -48,14 +48,6 @@ class UI
             wavePercentageBar = (waypoints.tileSize*3)/wave.enemiesLeft;
         }
         percentageLine = (waypoints.tileSize/2) + (wavePercentageBar*wave.enemiesRemoved);
-        
-        //Right top statistics
-        fill(255);
-        textSize(20);
-        text("laser",SIZE_X*0.79,SIZE_Y/15);
-        text("bomb",SIZE_X*0.855,SIZE_Y/15);
-        text("freeze",SIZE_X*0.92,SIZE_Y/15);
-        text("farm",SIZE_X*0.978,SIZE_Y/15);
 
         rectMode(CORNER);
         fill(style.black, style.highOpacity);
