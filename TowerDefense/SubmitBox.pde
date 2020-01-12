@@ -13,7 +13,7 @@ class SubmitBox extends Box
         super.display();
         fill(style.textColor);
         textSize(style.textSize);
-        text(textToDisplay, position.x, position.y - h / 16);
+        text(textToDisplay, position.x - 135, position.y + 40 );
     }
 
     public void submitName(String name)

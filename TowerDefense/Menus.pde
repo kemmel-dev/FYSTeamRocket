@@ -400,7 +400,7 @@ class Menus
         fill(220);
         textAlign(CENTER);
         text("GAME OVER",width/2, 115);
-        text("Play again?",width/2,400);
+        text("Press Start For Main Menu",width/2,400);
         text("score:   " + statistics.scorePoints +"     " + scoreList.get(0).getSecond(), width/2,600);
         noFill();
         if (keyPressed)
@@ -457,7 +457,7 @@ class Menus
 
         int len = min(10, scoreList.size());
         for (int i = 0; i < len; ++i) {
-            text((i + 1) + ": " + scoreList.get(i).getSecond() + " " + scoreList.get(i).getFirst(), width/2, height/10 + i * 100);
+            text((i + 1) + ": " + scoreList.get(i).getSecond() + "   " + scoreList.get(i).getFirst(), width/2, height/10 + i * 100);
         }
 
 

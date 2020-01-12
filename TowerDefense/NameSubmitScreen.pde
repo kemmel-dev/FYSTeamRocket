@@ -70,7 +70,7 @@ class NameSubmitScreen
     // Draws the sketch
     private void display()
     {
-        background(color(#FF69B4));
+        image(gameoverscreen,0,0);
         drawBoxes();
     }
 
