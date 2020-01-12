@@ -17,7 +17,7 @@ class AssetsLoader
     // Background pictures
     startmenu = loadImage("background3.png");
     controlsimage = loadImage("controls.png");
-    controlsmenu = loadImage("controls.png");
+    helpimage = loadImage("help.png");
     altsmenu = loadImage("background1.png");
     gameoverscreen = loadImage("background2.png");
 
@@ -82,6 +82,8 @@ class AssetsLoader
     bluenemypic1.resize(100,100);
     bluenemypic2.resize(100,100);
     bluenemypic3.resize(100,100);
+
+    
 
 
 

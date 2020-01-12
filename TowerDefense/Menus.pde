@@ -559,7 +559,12 @@ class Menus
 
     void controlsMenu()
     {
-        image(controlsimage,0,0,width,height);
+        fill(200,10);
+        rect(0,0,width*2,height*2);
+        imageMode(CENTER);
+        image(controlsimage,width/2,height/3,1200,600);
+        imageMode(CORNER);
+        image(helpimage,100,height/1.7,1200,600);
         rectMode(CENTER);
         fill(30);
         stroke(0);
@@ -584,7 +589,12 @@ class Menus
 
     void controlsMenuPause()
     {
-        image(controlsimage,0,0,width,height);
+        fill(200,10);
+        rect(0,0,width*2,height*2);
+        imageMode(CENTER);
+        image(controlsimage,width/2,height/3,1200,600);
+        imageMode(CORNER);
+        image(helpimage,100,height/1.7,1200,600);
         rectMode(CENTER);
         fill(30);
         stroke(0);
@@ -607,11 +617,10 @@ class Menus
                 }
     }
 
-<<<<<<< HEAD
     void leaderBoardsMenu()
-=======
-    
->>>>>>> 94b46d1b39faa2064ef2ed482641004cd50e189d
+    {
+
+    }
     void leaderBoardsMenu(ArrayList<Pair<Integer,String>> scoreList)
     {
         image(altsmenu,0,0,width,height);
