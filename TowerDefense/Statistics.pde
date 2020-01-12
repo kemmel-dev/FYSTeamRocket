@@ -9,8 +9,6 @@ class Statistics
     int scorePoints;
 
     boolean gereset;
-
-   
    
 
     Statistics()
@@ -24,11 +22,6 @@ class Statistics
         lives = 5;
 
     }
-
-
-    
-
-    
 
     void reset()
     { 

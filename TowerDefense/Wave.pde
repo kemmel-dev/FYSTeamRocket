@@ -3,7 +3,7 @@ class Wave
   int waveNumber;
   int spawns;
   int limit;
-  float enemiesLeft, enemiesRemoved, enemiesKilledTotal;
+  int enemiesLeft, enemiesRemoved, enemiesKilledTotal;
 
   boolean allEnemiesSpawned;
 
@@ -58,7 +58,7 @@ class Wave
       text("Press START to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }
-
+    
     //When all enemies are gone, and one of these keys is pressed, the next wave will start
     if (enemiesLeft == 0 && keyPressed && key == 'j')
     {

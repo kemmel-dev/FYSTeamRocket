@@ -492,7 +492,7 @@ class Menus
         text("Made by Team Rocket",width/2,190);
 
         text("Teamleader:",width/2,300);
-        text("Kamiel Visser",width/2,340);
+        text("Kamiel de Visser",width/2,340);
         text("The Team:",width/2,420);
         text("Tobias van der Hoek",width/2,460);
         text("Jorrit Goossens",width/2,500);

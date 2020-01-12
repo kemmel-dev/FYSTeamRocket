@@ -5,6 +5,8 @@ class Controls {
   // 3 = left
   // 4 = right
 
+  boolean upgrading = false;
+  int upgradeX, upgradeY;
   int selectionX, selectionY;
   PVector towerLocation = new PVector(0,0);
 
@@ -103,7 +105,6 @@ class Controls {
 
     grid.grid[selectionX][selectionY].selected = true;
   }
-
 
 
   // Called from TowerDefense's keyPressed function
@@ -227,7 +228,7 @@ class Controls {
             totalTowersSold++;
             return;
           case 4:
-            statistics.amount += (statistics.farmTowerCost/2.5) * currentTile.tower.towerLevel;
+            statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
             return;
@@ -235,13 +236,13 @@ class Controls {
       }
 
 
-      
-
         // Upgrade towers
         if(key == 'p')
         {
           Tile currentTile = grid.grid[selectionX][selectionY];
 
+          upgradeX = (selectionX * grid.grid[0][0].w) + grid.grid[0][0].w/2;
+          upgradeY = (selectionY * grid.grid[0][0].w) + grid.grid[0][0].w;
           //LaserTower upgrade
           if(currentTile.tower.towerType == 1 && statistics.amount >= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel)
           {
@@ -258,7 +259,7 @@ class Controls {
             currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
             if(currentTile.tower.towerLevel <= 4)
             {
-              currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.2);
+              currentTile.tower.freezePower = 0.9 - (currentTile.tower.towerLevel * 0.1);
             }
           }
 
