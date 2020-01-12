@@ -52,7 +52,7 @@ class Menus
         text("Controls",width/2,450);
         text("Leaderboards",width/2,550);
         text("Credits",width/2,650);
-        text("Exit Game",width/2,750);
+        text("Exit",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -110,7 +110,7 @@ class Menus
         text("Controls",width/2,450);
         text("Leaderboards",width/2,550);
         text("Credits",width/2,650);
-        text("Exit Game",width/2,750);
+        text("Exit",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -174,7 +174,7 @@ class Menus
         text("Controls",width/2,450);
         text("Leaderboards",width/2,550);
         text("Credits",width/2,650);
-        text("Exit Game",width/2,750);
+        text("Exit",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -239,7 +239,7 @@ class Menus
         text("Controls",width/2,450);
         text("Leaderboards",width/2,550);
         text("Credits",width/2,650);
-        text("Exit Game",width/2,750);
+        text("Exit",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -302,7 +302,7 @@ class Menus
         text("Controls",width/2,450);
         text("Leaderboards",width/2,550);
         text("Credits",width/2,650);
-        text("Exit Game",width/2,750);
+        text("Exit",width/2,750);
 
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
@@ -332,33 +332,175 @@ class Menus
 
     void displayPauseMenu()
     {
-        fill(0,2);
+        fill(0,100);
         rect(0,0,width*2,height*2);
         rectMode(CENTER);
         textAlign(CENTER);
-        fill(30);
-        stroke(0);
+        fill(50);
+        stroke(180);
         strokeWeight(10);
-        rect(width/2,135,300,50);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
 
-        rect(width/1.15,950,430,120);
+        rect(width/2,135,300,50);
+        rect(width/2,205,400,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(8);
+        rect(width/2,485,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 485, 100, 100);
+        imageMode(CORNER);
 
         noStroke();
         fill(220);
+        text("Resume",width/2,500);
+        text("Controls",width/2,600);
+        text("Leave",width/2,700);
+
         text("Game Paused",width/2,150);
+        text("Current Score: " + statistics.scorePoints,width/2,220);
 
         textAlign(CORNER);
-        text("L Bump  =  Exit Game",width/1.3,940);
-        text("R Bump  =  Resume Game",width/1.3,990);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+        noFill();
         if (keyPressed)
-        {   
+        {
+            if (key == CODED)
+            {
+                if (keyCode == DOWN)
+                {
+                    stage = 14;
+                    keyPressed = false;
+                }
+            }
             if (key == 'p')
             {
                 stage = 7;
+                keyPressed = false;
             }
-            if (key == 'q')
+        }
+    }
+
+    void displayPauseMenu2()
+    {
+        fill(0,100);
+        rect(0,0,width*2,height*2);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(50);
+        stroke(180);
+        strokeWeight(10);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+
+        rect(width/2,135,300,50);
+        rect(width/2,205,400,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,585,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 585, 100, 100);
+        imageMode(CORNER);
+
+        noStroke();
+        fill(220);
+        text("Resume",width/2,500);
+        text("Controls",width/2,600);
+        text("Leave",width/2,700);
+
+        text("Game Paused",width/2,150);
+        text("Current Score: " + statistics.scorePoints,width/2,220);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == DOWN)
+                {
+                    stage = 15;
+                    keyPressed = false;
+                }
+                if (keyCode == UP)
+                {
+                    stage = 9;
+                    keyPressed = false;
+                }
+            }
+            if (key == 'p')
+            {
+                stage = 16;
+            }
+        }
+    }
+
+    void displayPauseMenu3()
+    {
+        fill(0,100);
+        rect(0,0,width*2,height*2);
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(50);
+        stroke(180);
+        strokeWeight(10);
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+
+        rect(width/2,135,300,50);
+        rect(width/2,205,400,50);
+
+        rect(width/1.2,950,360,120);
+
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,685,300,50);
+
+        imageMode(CENTER);
+        image(tower, width/2.5, 685, 100, 100);
+        imageMode(CORNER);
+
+        noStroke();
+        fill(220);
+        text("Resume",width/2,500);
+        text("Controls",width/2,600);
+        text("Leave",width/2,700);
+
+        text("Game Paused",width/2,150);
+        text("Current Score: " + statistics.scorePoints,width/2,220);
+
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+        noFill();
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == UP)
+                {
+                    stage = 14;
+                    keyPressed = false;
+                }
+            }
+            if (key == 'p')
             {
                 stage = 1;
+                keyPressed = false;
             }
         }
     }
@@ -432,6 +574,31 @@ class Menus
                     if (key == 'q')
                     {
                         stage = 2;
+                        keyPressed = false;
+                    }
+                }
+    }
+
+    void controlsMenuPause()
+    {
+        image(controlsimage,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        noStroke();
+        fill(220);
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        if (keyPressed)
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 14;
                         keyPressed = false;
                     }
                 }

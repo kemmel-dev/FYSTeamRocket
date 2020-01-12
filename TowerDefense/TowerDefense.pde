@@ -240,6 +240,15 @@ void draw()
         case 13:
             menus.creditsMenu();
             return;
+        case 14:
+            menus.displayPauseMenu2();
+            return;
+        case 15:
+            menus.displayPauseMenu3();
+            return;
+        case 16:
+            menus.controlsMenuPause();
+            return;
     }
     
 }
