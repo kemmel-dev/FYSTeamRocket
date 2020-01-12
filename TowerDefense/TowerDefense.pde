@@ -397,10 +397,10 @@ void drawBase()
 
 void drawParticles()
 {
-    particleSystem.enemyTakingDamage();
     particleSystem.upgradeTower();
     particleSystem.keyPressed();
     particleSystem.checkTimer();
+    particleSystem.enemyTakingDamage();
 }
 
 void databaseProcesses()
