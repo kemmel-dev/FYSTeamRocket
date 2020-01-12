@@ -21,6 +21,7 @@ class UI
         lineXY = waypoints.tileSize/2;
         lineX = (waypoints.tileSize/2)*7;
         lineY = waypoints.tileSize/2;
+        
     }
 
     void drawTextBox()
