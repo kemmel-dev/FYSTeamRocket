@@ -75,6 +75,7 @@ int stage;
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<Particles> particles = new ArrayList<Particles>();
 
 // Is the game paused?
 Boolean gamePaused = false;
@@ -368,7 +369,8 @@ void drawBase()
 
 void drawParticles()
 {
-    
+    particleSystem.enemyTakingDamage();
+    particleSystem.resetParticle();
 }
 
 void databaseProcesses()

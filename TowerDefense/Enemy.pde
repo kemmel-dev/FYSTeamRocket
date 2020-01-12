@@ -10,6 +10,15 @@ class Enemy
     boolean frozenEnemy = false;
     int hitpointsGap;
     int frozen = 0;
+    boolean takingDamage = false;
+    
+    int particleAmount = 40;
+    float[] msParticleX = new float[particleAmount];
+    float[] msParticleY = new float[particleAmount];
+    float[] extraX = new float[particleAmount];
+    float[] extraY = new float[particleAmount];
+    float[] transparency = new float[particleAmount];
+    color[] rgb = new color[particleAmount];
 
     Style style;
 
@@ -25,6 +34,12 @@ class Enemy
 
     Enemy()
     {
+        for(int i = 0; i < particleAmount; i++)
+         {
+            msParticleX[i] = random(-3, 3);
+            msParticleY[i] = random(-3, 3);
+            transparency[i] = 255;
+        }
         //Every 4th enemy is a type 2 (slow with more hp)
         if(wave.spawns % 3 == 0 && wave.spawns != 0)
         {
@@ -96,7 +111,20 @@ class Enemy
         hitpoints -= damage;
         if (hitpoints < 0)
         {
+            for(int i = 0; i < particleAmount; i++)
+            {
+                extraX[i] = 0;
+                extraY[i] = 0;
+                transparency[i] = 255;
+                rgb[i] = color(255, 0, 0);
+            }
             return true;
+        }
+        for(int i = 0; i < particleAmount; i++)
+        {
+            extraX[i] += msParticleX[i];
+            extraY[i] += msParticleY[i];
+            transparency[i] -= 15;
         }
         return false;
     }
@@ -171,7 +199,7 @@ class Enemy
                 image(bluenemypic2, x, y, w, w);
             }
         }
-
+        tint(style.defaultColor);
         imageMode(CORNER);
         // rect(x, y, w, w);
         fill(20, 220, 20);

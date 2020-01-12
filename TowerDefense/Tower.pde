@@ -21,6 +21,8 @@ class Tower
   // 0 = Tower "doesn't exist"
   // 1 = Lasertower
   // 2 = Freezetower
+  // 3 = Bombtower
+  // 4 = Farmtower
   int towerType;
 
   // The level of the Tower
@@ -172,6 +174,7 @@ class Tower
         shooting = false;
        
       }
+      enemy.takingDamage = true;
 
       
       assetsLoader.laserSoundEffect();
@@ -186,22 +189,43 @@ class Tower
     {
       assetsLoader.laserSound.stop();
       shooting = false;
+      enemy.takingDamage = false;
     }
   }
 
   void freezeEnemies()
   {
-    ArrayList<Enemy> targets = enemiesInRange();
-      
-    for (Enemy e : targets)
+    Iterator<Enemy> i = enemies.iterator();
+    while (i.hasNext())
     {
-      if(e.msMultiplier >= freezePower)
+      float distances[] = new float[wave.enemiesLeft];
+      Enemy e = i.next();
+      for(int j = 0; j < wave.enemiesLeft; j++)
       {
-        e.msMultiplier = freezePower;
-        e.frozenEnemy = true;
-        if (towerLevel >= 4)
+        distances[j] = dist(x, y, e.x, e.y);
+        if(distances[j] < rangeFreezeTower)
         {
-          e.takeDamage(freezeDamage);
+          if(e.msMultiplier > freezePower)
+          {
+            e.msMultiplier = freezePower;
+          }
+          e.frozenEnemy = true;
+        }
+        else 
+        {
+          if(e.enemyType == 1)
+          {
+            e.msMultiplier = 1;
+          }
+          else if(e.enemyType == 2)
+          {
+            e.msMultiplier = 0.35;
+          }
+          else 
+          {
+            e.msMultiplier = 1.6;
+          }
+          e.frozenEnemy = false;
         }
       }
     }
@@ -275,41 +299,6 @@ class Tower
     {
       shooting = false;
     }
-  }
-
-  ArrayList<Enemy> enemiesInRange()
-  {
-    ArrayList<Enemy> enemiesInRange = new ArrayList<Enemy>();
-    for (Enemy e : enemies)
-    {
-      // distance from the tower to the enemy
-      float distance = dist(x, y, e.x, e.y);
-      // if the enemy is in range
-      if (distance < rangeFreezeTower)
-      {
-        assetsLoader.laserSound.stop();
-        assetsLoader.freezeSoundEffect();
-        enemiesInRange.add(e);
-      }
-      else 
-      {
-        if(e.enemyType == 1)
-        {
-          e.msMultiplier = 1;
-        }
-        else if(e.enemyType == 2)
-        {
-          e.msMultiplier = 0.4;
-        }
-        else
-        {
-          e.msMultiplier = 1.3;
-        }
-        enemiesInRange.remove(e);
-        e.frozenEnemy = false;
-      }
-    }
-    return enemiesInRange;
   }
 
   // holds styling options for tower-related options
