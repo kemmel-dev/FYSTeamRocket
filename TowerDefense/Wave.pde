@@ -3,17 +3,19 @@ class Wave
   int waveNumber;
   int spawns;
   int limit;
-  float enemiesLeft, enemiesRemoved, enemiesKilledTotal;
+  int enemiesLeft, enemiesRemoved, enemiesKilledTotal;
 
   boolean allEnemiesSpawned;
 
-//Timer that determimes how quick enemies spawn after each other
+  //Timer that determimes how quick enemies spawn after each other
   float time;
   float timerLimit;
 
   Enemy enemy;
 
   boolean finished;
+
+  boolean gameStarted = false;
 
   Wave()
   {
@@ -26,27 +28,41 @@ class Wave
 
   void spawn()
   { 
-    //Limit of enemies per wave can't go higher than 100
-    //So late game waves won't have more than 100 enemies
-    if(limit >= 100)
+    //First wave starts when j is pressed (start button on controller)
+    if(keyPressed && key == 'j')
     {
-      limit = 100;
+      gameStarted = true;
     }
 
-      
-    //When all enemies for the wave have spawned, this boolean becomes true
-    if (spawns == limit)
+    if (gameStarted)
     {
-      allEnemiesSpawned = true;
-    }
+      //Limit of enemies per wave can't go higher than 100
+      //So late game waves won't have more than 100 enemies
+      if(limit >= 100)
+      {
+        limit = 100;
+      }
+    
+      //When all enemies for the wave have spawned, this boolean becomes true
+      if (spawns == limit)
+      {
+        allEnemiesSpawned = true;
+      }
 
-    //Enemies spawn 1,5 seconds after each other, every wave this will get 0,1 seconds faster
-    if(millis() > time && spawns < limit)
-    {
-      statistics.gereset = false;
-      enemies.add(new Enemy());
-      spawns++;
-      time = millis() + timerLimit;
+      //Enemies spawn 1,5 seconds after each other, every wave this will get 0,1 seconds faster
+      if(millis() > time && spawns < limit)
+      {
+        statistics.gereset = false;
+        enemies.add(new Enemy());
+        spawns++;
+        time = millis() + timerLimit;
+      }
+    }
+    else {
+      textAlign(CENTER);
+      fill(255);
+      text("Press start when you are ready", SIZE_X/2, SIZE_Y/2);
+      textAlign(CORNER);
     }
   }
 
@@ -56,10 +72,11 @@ class Wave
     if(enemiesLeft == 0)
     {
       textAlign(CENTER);
+      fill(255);
       text("Press START to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }
-
+    
     //When all enemies are gone, and one of these keys is pressed, the next wave will start
     if (enemiesLeft == 0 && keyPressed && key == 'j')
     {
@@ -70,9 +87,8 @@ class Wave
       spawns = 0;
       enemiesRemoved = 0;
       statistics.scorePoints += 100;
-      statistics.amount += 20;
+      statistics.amount += 10*waveNumber/2;
       
-
       //The spawntime between enemies cannot go lower than 0,6 seconds (600 millis).
         if(timerLimit > 600)
       {

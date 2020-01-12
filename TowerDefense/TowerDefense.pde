@@ -5,6 +5,7 @@ import java.util.Iterator;
 import processing.sound.*;
 import de.bezier.data.sql.*;
 
+
 MySQL msql;
 
 
@@ -17,6 +18,7 @@ final static float MOVE_SPEED = (SIZE_X / 500) * 2;
 // Create our objects
 Grid grid = new Grid();
 Map map = new Map();
+ArrayList<Pair<Integer,String>> scoreList = new ArrayList<Pair<Integer,String>>();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 Menus menus = new Menus();
@@ -29,6 +31,8 @@ ConnectDB connectDB = new ConnectDB();
 ParticleSystem particleSystem = new ParticleSystem();
 DatabaseProcess databaseProcess = new DatabaseProcess();
 DatabaseSetup databaseSetup = new DatabaseSetup();
+NameSubmitScreen nameSubmitScreen = new NameSubmitScreen();
+
 
 PImage startmenu;
 PImage controlsimage;
@@ -69,12 +73,15 @@ PImage explosion;
 
 PFont font;
 
+//Boolean for screenshake
+boolean shake = false;
 
 // The game stages >> stage 1 = Start Menu, stage 2 = The Game itself, stage 3 = Game Over Screen.
 int stage;
 
 // Create a dynamic list to hold our enemies
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+ArrayList<Particles> particles = new ArrayList<Particles>();
 
 // Is the game paused?
 Boolean gamePaused = false;
@@ -112,6 +119,7 @@ void setup()
     // Initialize the grid and map and controls
     grid.initGrid();
     map.init();
+    nameSubmitScreen.init();
     controls.initControls();
     menus.setupGameOverMenu();
 
@@ -194,6 +202,9 @@ void draw()
             // Set currently selected tile
             selectedTile = GetCurrentTile();
 
+            // Screenshake
+            screenShake();
+
             // Draw the background
             drawBackground();
             handleEnemies();
@@ -219,10 +230,9 @@ void draw()
             
             return;
         
-        // Game Over Menu from InGame Screen
+        // name submit screen from InGame Screen
         case 8:
-            menus.gameOverMenu();
-            statistics.reset();
+            nameSubmitScreen.draw();
             return;
         // Pause Menu from InGame Screen
         case 9:
@@ -231,15 +241,16 @@ void draw()
         // Controls from Menu Screen
         case 10:
             menus.controlsMenu();
-            return;
+            return; 
         // LeaderBoards Menu from Start Menu
         case 11:
-            menus.leaderBoardsMenu();
+            menus.leaderBoardsMenu(scoreList);
             return;
         // Credits Menu from Start Menu
         case 13:
             menus.creditsMenu();
             return;
+<<<<<<< HEAD
         case 14:
             menus.displayPauseMenu2();
             return;
@@ -248,14 +259,20 @@ void draw()
             return;
         case 16:
             menus.controlsMenuPause();
+=======
+        // Game Over Menu from InGame Screen  
+        case 14:
+            menus.gameOverMenu(scoreList);
+>>>>>>> f525135e8e61314596dc56cabb15b4bc68f69cf1
             return;
     }
-    
+
 }
 
 // Handles all actions for each tower each frame.
 void handleTowers()
 {
+    
     // Loop over all tiles
     for (int y = 0; y < 9; y++)
     {
@@ -265,7 +282,7 @@ void handleTowers()
         // Look at the tower on that tile
         Tower t = tile.tower;
         // if tower 'exists'
-        if (t.towerType != 0)
+        if (t.towerType != 0) 
         {
             // Show tower
             t.display();
@@ -287,11 +304,15 @@ void handleTowers()
 
       }
     }
+
 }
 
 // Called whenever a key is pressed
 void keyPressed() 
 {
+    if (stage == 8) {
+        nameSubmitScreen.keyPressed();
+    }
     if (gamePaused)
     {
         menus.keyPressed();
@@ -347,6 +368,8 @@ void handleDeadEnemies()
             statistics.lives--;
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
+            //Screenshake
+            shake = true;
         }
         if(statistics.gereset)
         {
@@ -377,7 +400,10 @@ void drawBase()
 
 void drawParticles()
 {
-    
+    particleSystem.enemyTakingDamage();
+    particleSystem.upgradeTower();
+    particleSystem.keyPressed();
+    particleSystem.checkTimer();
 }
 
 void databaseProcesses()
@@ -386,4 +412,32 @@ void databaseProcesses()
     databaseProcess.enemiesKilled();
     databaseProcess.towersPlaced();
     databaseProcess.towersSold();
+}
+
+void screenShake()
+{
+    if(shake)
+    {
+        float shakeX = random (-10, 10);
+        float shakeY = random (-10, 10);
+        translate(shakeX, shakeY);
+        shake = false;
+    }
+}
+
+// Sorts the scorelist in a descending order
+void sortScores(ArrayList<Pair<Integer, String>> list) {
+    Pair<Integer, String> max = new Pair<Integer, String>(Integer.MIN_VALUE, " ");
+    ArrayList<Pair<Integer, String>> sortedList = new ArrayList<Pair<Integer, String>>(); 
+    while(!list.isEmpty()) {
+        for (int i = 0; i < list.size(); ++i) {
+            if(list.get(i).getFirst() > max.getFirst()) {
+                max = list.get(i);
+            }
+        }
+        list.remove(max);
+        sortedList.add(max);
+        max = new Pair<Integer, String>(Integer.MIN_VALUE, "ZZZ");
+    }    
+    scoreList = sortedList;
 }

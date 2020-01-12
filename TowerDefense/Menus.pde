@@ -519,6 +519,7 @@ class Menus
     void keyPressed()
     {
         gamePaused = false;
+        
     }
 
 
@@ -530,7 +531,7 @@ class Menus
         }
     }
 
-    void gameOverMenu()
+    void gameOverMenu(ArrayList<Pair<Integer,String>> scoreList)
     {   
         image(gameoverscreen,0,0);
         rectMode(CENTER);
@@ -541,14 +542,16 @@ class Menus
         fill(220);
         textAlign(CENTER);
         text("GAME OVER",width/2, 115);
-        text("Play again?",width/2,400);
-        text("score:   " + statistics.scorePoints +"     Name",width/2,600);
+        text("Press Start For Main Menu",width/2,400);
+        text("score:   " + statistics.scorePoints +"     " + scoreList.get(0).getSecond(), width/2,600);
         noFill();
         if (keyPressed)
                 {   
                     if (key == 'j')
                     {
                         stage = 1;
+                        statistics.reset();
+                        sortScores(scoreList);
                         keyPressed = false;
                     }
                 }
@@ -579,6 +582,7 @@ class Menus
                 }
     }
 
+<<<<<<< HEAD
     void controlsMenuPause()
     {
         image(controlsimage,0,0,width,height);
@@ -605,6 +609,9 @@ class Menus
     }
 
     void leaderBoardsMenu()
+=======
+    void leaderBoardsMenu(ArrayList<Pair<Integer,String>> scoreList)
+>>>>>>> f525135e8e61314596dc56cabb15b4bc68f69cf1
     {
         image(altsmenu,0,0,width,height);
         rectMode(CENTER);
@@ -619,7 +626,11 @@ class Menus
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
 
-        text("Leaderboards",width/2,height/2);
+        int len = min(10, scoreList.size());
+        for (int i = 0; i < len; ++i) {
+            text((i + 1) + ": " + scoreList.get(i).getSecond() + "   " + scoreList.get(i).getFirst(), width/2, height/10 + i * 100);
+        }
+
 
         if (keyPressed)
                 {   
@@ -652,7 +663,7 @@ class Menus
         text("Made by Team Rocket",width/2,190);
 
         text("Teamleader:",width/2,300);
-        text("Kamiel Visser",width/2,340);
+        text("Kamiel de Visser",width/2,340);
         text("The Team:",width/2,420);
         text("Tobias van der Hoek",width/2,460);
         text("Jorrit Goossens",width/2,500);

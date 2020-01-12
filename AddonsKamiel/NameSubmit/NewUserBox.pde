@@ -1,10 +1,6 @@
-
-
-class SubmitBox extends Box
+class NewUserBox extends Box
 {
-
-    private static final String textToDisplay = "Submit";
-    private DatabaseManager databaseManager;
+    private static final String textToDisplay = "New User";
 
     public SubmitBox(PVector position, int w, int h, DatabaseManager databaseManager)
     {

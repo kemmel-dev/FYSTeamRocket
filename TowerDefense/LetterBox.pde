@@ -59,7 +59,7 @@ class LetterBox extends Box
         drawTriangles();
         fill(style.textColor);
         textSize(style.textSize);
-        text(getChar(), position.x, position.y - h / 16);
+        text(getChar(), position.x - 20, position.y + 40);
     }
 
     private void drawTriangles()

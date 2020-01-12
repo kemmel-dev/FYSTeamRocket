@@ -9,6 +9,8 @@ class Enemy
     float msMultiplier = 1;
     boolean frozenEnemy = false;
     int hitpointsGap;
+    int frozen = 0;
+    boolean takingDamage = false;
 
     Style style;
 
@@ -53,7 +55,7 @@ class Enemy
         if(enemyType == 1)
         {
             w = int(t.w / 2);
-            hitpoints = 15 + (wave.waveNumber * 30);
+            hitpoints = 15 + (wave.waveNumber * 15);
             hitpointsGap = 40;
             if(!wave.allEnemiesSpawned)
             {
@@ -65,9 +67,9 @@ class Enemy
         //Type 2 enemy size, speed and hp
         if(enemyType == 2)
         {
-            msMultiplier = 0.35;
+            msMultiplier = 0.75;
             w = int(t.w - 40);
-            hitpoints = 70 + (wave.waveNumber * 35);
+            hitpoints = 70 + (wave.waveNumber * 20);
             hitpointsGap = 50;
             if(!wave.allEnemiesSpawned)
             {
@@ -81,7 +83,7 @@ class Enemy
         {
             msMultiplier = 1.6;
             w = int(t.w / 3);
-            hitpoints = 10 + (wave.waveNumber * 15);
+            hitpoints = 10 + (wave.waveNumber * 10);
             hitpointsGap = 30;
             if(!wave.allEnemiesSpawned)
             {
@@ -112,15 +114,19 @@ class Enemy
 
     void display()
     {
+        //If the enemy is FROZEN, it will turn a bit blue
         if(frozenEnemy)
         {
-            fill(style.frozenColor);
+            tint(style.frozenColor);
         }
         else
         {
-            fill(style.enemyColor);
+            tint(style.defaultColor);
         }
+
         imageMode(CENTER);
+
+        //If the DIRECTION of MOVEMENT changes, the enemy will turn
         if(moveDir == 3)
         {   
             if (enemyType == 1)
@@ -166,9 +172,12 @@ class Enemy
                 image(bluenemypic2, x, y, w, w);
             }
         }
+        tint(style.defaultColor);
         imageMode(CORNER);
         // rect(x, y, w, w);
         fill(20, 220, 20);
+
+        //The healthbar from different kind of enemies
         if(enemyType == 1)
         {
             hitpointsPercentage = (75 / hitpointsBeginWave) * hitpoints;
@@ -181,6 +190,7 @@ class Enemy
         {
             hitpointsPercentage = (50 / hitpointsBeginWave) * hitpoints;
         }
+
         rect(x, y - hitpointsGap, hitpointsPercentage, 5);
     }
 
@@ -270,7 +280,7 @@ class Enemy
 
     class Style
     {
-        color enemyColor = color(255, 20, 20);
-        color frozenColor = color(186, 242, 239,125);
+        color defaultColor = color(255, 255, 255, 255);
+        color frozenColor = color(162, 210, 223, 255);
     }
 }
