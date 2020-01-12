@@ -37,7 +37,6 @@ class UI
         image(freezetowerhud,sizeX*3+137,0);
         image(bombtowerhud,sizeX*3+260,0);
         image(farmtowerhud,sizeX*3+380,0);
-
         image(goldcoin,sizeX*3+20,80);
         image(goldcoin,sizeX*3+137,80);
         image(goldcoin,sizeX*3+260,80);
@@ -51,6 +50,18 @@ class UI
         percentageLine = (waypoints.tileSize/2) + (wavePercentageBar*wave.enemiesRemoved);
         
         //Right top statistics
+        fill(255);
+        textSize(20);
+        text("laser",SIZE_X*0.8,SIZE_Y/15);
+        text("bomb",SIZE_X*0.86,SIZE_Y/15);
+        text("freeze",SIZE_X*0.92,SIZE_Y/15);
+        text("farm",SIZE_X*0.98,SIZE_Y/15);
+
+        rectMode(CORNER);
+        fill(style.black, style.highOpacity);
+        stroke(style.white);
+        strokeWeight(style.thickStrokeWeight);
+
         rect(0, 0, sizeX, sizeY);
         line(lineXY, lineXY, lineX, lineY);
         stroke(style.green);
