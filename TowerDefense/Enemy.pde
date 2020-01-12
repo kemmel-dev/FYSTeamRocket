@@ -9,6 +9,16 @@ class Enemy
     float msMultiplier = 1;
     boolean frozenEnemy = false;
     int hitpointsGap;
+    int frozen = 0;
+    boolean takingDamage = false;
+    
+    int particleAmount = 40;
+    float[] msParticleX = new float[particleAmount];
+    float[] msParticleY = new float[particleAmount];
+    float[] extraX = new float[particleAmount];
+    float[] extraY = new float[particleAmount];
+    float[] transparency = new float[particleAmount];
+    color[] rgb = new color[particleAmount];
 
     Style style;
 
@@ -24,6 +34,12 @@ class Enemy
 
     Enemy()
     {
+        for(int i = 0; i < particleAmount; i++)
+         {
+            msParticleX[i] = random(-3, 3);
+            msParticleY[i] = random(-3, 3);
+            transparency[i] = 255;
+        }
         //Every 4th enemy is a type 2 (slow with more hp)
         if(wave.spawns % 3 == 0 && wave.spawns != 0)
         {
@@ -95,7 +111,20 @@ class Enemy
         hitpoints -= damage;
         if (hitpoints < 0)
         {
+            for(int i = 0; i < particleAmount; i++)
+            {
+                extraX[i] = 0;
+                extraY[i] = 0;
+                transparency[i] = 255;
+                rgb[i] = color(255, 0, 0);
+            }
             return true;
+        }
+        for(int i = 0; i < particleAmount; i++)
+        {
+            extraX[i] += msParticleX[i];
+            extraY[i] += msParticleY[i];
+            transparency[i] -= 15;
         }
         return false;
     }
@@ -112,15 +141,19 @@ class Enemy
 
     void display()
     {
+        //If the enemy is FROZEN, it will turn a bit blue
         if(frozenEnemy)
         {
-            fill(style.frozenColor);
+            tint(style.frozenColor);
         }
         else
         {
-            fill(style.enemyColor);
+            tint(style.defaultColor);
         }
+
         imageMode(CENTER);
+
+        //If the DIRECTION of MOVEMENT changes, the enemy will turn
         if(moveDir == 3)
         {   
             if (enemyType == 1)
@@ -166,9 +199,12 @@ class Enemy
                 image(bluenemypic2, x, y, w, w);
             }
         }
+        tint(style.defaultColor);
         imageMode(CORNER);
         // rect(x, y, w, w);
         fill(20, 220, 20);
+
+        //The healthbar from different kind of enemies
         if(enemyType == 1)
         {
             hitpointsPercentage = (75 / hitpointsBeginWave) * hitpoints;
@@ -181,6 +217,7 @@ class Enemy
         {
             hitpointsPercentage = (50 / hitpointsBeginWave) * hitpoints;
         }
+
         rect(x, y - hitpointsGap, hitpointsPercentage, 5);
     }
 
@@ -270,7 +307,7 @@ class Enemy
 
     class Style
     {
-        color enemyColor = color(255, 20, 20);
-        color frozenColor = color(186, 242, 239,125);
+        color defaultColor = color(255, 255, 255, 255);
+        color frozenColor = color(162, 210, 223, 255);
     }
 }

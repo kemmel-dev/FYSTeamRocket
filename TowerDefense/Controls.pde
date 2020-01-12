@@ -177,7 +177,7 @@ class Controls {
             totalTowersSold++;
             return;
           case 4:
-            statistics.amount += (statistics.farmTowerCost/2.5) * currentTile.tower.towerLevel;
+            statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
             return;
@@ -208,7 +208,7 @@ class Controls {
             currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
             if(currentTile.tower.towerLevel <= 4)
             {
-              currentTile.tower.freezePower = 1 - (currentTile.tower.towerLevel * 0.2);
+              currentTile.tower.freezePower = 0.9 - (currentTile.tower.towerLevel * 0.1);
             }
           }
 

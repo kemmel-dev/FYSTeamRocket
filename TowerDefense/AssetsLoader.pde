@@ -5,6 +5,7 @@ class AssetsLoader
     SoundFile freezeSound;
     SoundFile backGround;
     SoundFile inGameBackground;
+    SoundFile bombSound;
 
     AssetsLoader()
     {
@@ -93,6 +94,7 @@ class AssetsLoader
         freezeSound = new SoundFile(TowerDefense.this, "FreezeSound.mp3");
         backGround = new SoundFile(TowerDefense.this, "BackgroundMusic.mp3");
         inGameBackground = new SoundFile(TowerDefense.this, "IngameBackgroundMusic.mp3");
+        bombSound = new SoundFile(TowerDefense.this, "bombSound.mp3");
     }
 
     void laserSoundEffect()
@@ -131,6 +133,12 @@ class AssetsLoader
                 inGameBackground.amp(0.1);
             }
         backGround.stop();
+    }
+
+    void bombSound()
+    {
+        bombSound.play();
+        bombSound.amp(0.1);
     }
 
 }
