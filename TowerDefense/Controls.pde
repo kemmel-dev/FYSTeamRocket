@@ -5,6 +5,8 @@ class Controls {
   // 3 = left
   // 4 = right
 
+  boolean upgrading = false;
+  int upgradeX, upgradeY;
   int selectionX, selectionY;
   PVector towerLocation = new PVector(0,0);
 
@@ -53,7 +55,6 @@ class Controls {
 
     grid.grid[selectionX][selectionY].selected = true;
   }
-
 
 
   // Called from TowerDefense's keyPressed function
@@ -185,13 +186,13 @@ class Controls {
       }
 
 
-      
-
         // Upgrade towers
         if(key == 'p')
         {
           Tile currentTile = grid.grid[selectionX][selectionY];
 
+          upgradeX = (selectionX * grid.grid[0][0].w) + grid.grid[0][0].w/2;
+          upgradeY = (selectionY * grid.grid[0][0].w) + grid.grid[0][0].w;
           //LaserTower upgrade
           if(currentTile.tower.towerType == 1 && statistics.amount >= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel)
           {
