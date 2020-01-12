@@ -1,11 +1,15 @@
+
+
 class SubmitBox extends Box
 {
 
     private static final String textToDisplay = "Submit";
+    private DatabaseManager databaseManager;
 
-    public SubmitBox(PVector position, int w, int h)
+    public SubmitBox(PVector position, int w, int h, DatabaseManager databaseManager)
     {
         super(position, w, h);
+        this.databaseManager = databaseManager;
     }
 
     public void display()
@@ -18,6 +22,6 @@ class SubmitBox extends Box
 
     public void submitName(String name)
     {
-        print(name);
+        databaseManager.submitName(name);
     }
 }
