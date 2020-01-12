@@ -179,6 +179,7 @@ void draw()
             statistics.reset();
             menus.startMenu1();
             assetsLoader.startMenuMusic();
+            wave.gameStarted = false;
             return;
         // Start Menu + Controls HIGHLIGHTED
         case 2:

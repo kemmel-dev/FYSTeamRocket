@@ -33,14 +33,14 @@ class UI
 
         rect(sizeX*3, 0, sizeX, sizeY);
         imageMode(CORNER);
-        image(lasertowerhud,sizeX*3+20,0);
-        image(freezetowerhud,sizeX*3+137,0);
-        image(bombtowerhud,sizeX*3+260,0);
-        image(farmtowerhud,sizeX*3+380,0);
-        image(goldcoin,sizeX*3+20,80);
-        image(goldcoin,sizeX*3+137,80);
-        image(goldcoin,sizeX*3+260,80);
-        image(goldcoin,sizeX*3+380,80);
+        image(lasertowerhud,sizeX*3+10,0);
+        image(freezetowerhud,sizeX*3+127,0);
+        image(bombtowerhud,sizeX*3+250,0);
+        image(farmtowerhud,sizeX*3+370,0);
+        image(goldcoin,sizeX*3+10,80);
+        image(goldcoin,sizeX*3+127,80);
+        image(goldcoin,sizeX*3+250,80);
+        image(goldcoin,sizeX*3+370,80);
         
         
         if(wave.enemiesRemoved == 0)
@@ -52,10 +52,10 @@ class UI
         //Right top statistics
         fill(255);
         textSize(20);
-        text("laser",SIZE_X*0.8,SIZE_Y/15);
-        text("bomb",SIZE_X*0.86,SIZE_Y/15);
+        text("laser",SIZE_X*0.79,SIZE_Y/15);
+        text("bomb",SIZE_X*0.855,SIZE_Y/15);
         text("freeze",SIZE_X*0.92,SIZE_Y/15);
-        text("farm",SIZE_X*0.98,SIZE_Y/15);
+        text("farm",SIZE_X*0.978,SIZE_Y/15);
 
         rectMode(CORNER);
         fill(style.black, style.highOpacity);
