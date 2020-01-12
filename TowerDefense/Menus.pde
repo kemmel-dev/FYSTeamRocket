@@ -582,7 +582,6 @@ class Menus
                 }
     }
 
-<<<<<<< HEAD
     void controlsMenuPause()
     {
         image(controlsimage,0,0,width,height);
@@ -609,9 +608,7 @@ class Menus
     }
 
     void leaderBoardsMenu()
-=======
     void leaderBoardsMenu(ArrayList<Pair<Integer,String>> scoreList)
->>>>>>> f525135e8e61314596dc56cabb15b4bc68f69cf1
     {
         image(altsmenu,0,0,width,height);
         rectMode(CENTER);
