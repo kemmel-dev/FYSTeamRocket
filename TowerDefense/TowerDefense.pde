@@ -5,6 +5,7 @@ import java.util.Iterator;
 import processing.sound.*;
 import de.bezier.data.sql.*;
 
+
 MySQL msql;
 
 
@@ -17,6 +18,7 @@ final static float MOVE_SPEED = (SIZE_X / 500) * 2;
 // Create our objects
 Grid grid = new Grid();
 Map map = new Map();
+ArrayList<Pair<Integer,String>> scoreList = new ArrayList<Pair<Integer,String>>();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 Menus menus = new Menus();
@@ -29,6 +31,8 @@ ConnectDB connectDB = new ConnectDB();
 ParticleSystem particleSystem = new ParticleSystem();
 DatabaseProcess databaseProcess = new DatabaseProcess();
 DatabaseSetup databaseSetup = new DatabaseSetup();
+NameSubmitScreen nameSubmitScreen = new NameSubmitScreen();
+
 
 PImage startmenu;
 PImage controlsimage;
@@ -112,6 +116,7 @@ void setup()
     // Initialize the grid and map and controls
     grid.initGrid();
     map.init();
+    nameSubmitScreen.init();
     controls.initControls();
     menus.setupGameOverMenu();
 
@@ -219,10 +224,9 @@ void draw()
             
             return;
         
-        // Game Over Menu from InGame Screen
+        // name submit screen from InGame Screen
         case 8:
-            menus.gameOverMenu();
-            statistics.reset();
+            nameSubmitScreen.draw();
             return;
         // Pause Menu from InGame Screen
         case 9:
@@ -231,14 +235,18 @@ void draw()
         // Controls from Menu Screen
         case 10:
             menus.controlsMenu();
-            return;
+            return; 
         // LeaderBoards Menu from Start Menu
         case 11:
-            menus.leaderBoardsMenu();
+            menus.leaderBoardsMenu(scoreList);
             return;
         // Credits Menu from Start Menu
         case 13:
             menus.creditsMenu();
+            return;
+        // Game Over Menu from InGame Screen  
+        case 14:
+            menus.gameOverMenu(scoreList);
             return;
     }
     
@@ -247,6 +255,7 @@ void draw()
 // Handles all actions for each tower each frame.
 void handleTowers()
 {
+    
     // Loop over all tiles
     for (int y = 0; y < 9; y++)
     {
@@ -256,7 +265,7 @@ void handleTowers()
         // Look at the tower on that tile
         Tower t = tile.tower;
         // if tower 'exists'
-        if (t.towerType != 0)
+        if (t.towerType != 0) 
         {
             // Show tower
             t.display();
@@ -278,11 +287,15 @@ void handleTowers()
 
       }
     }
+
 }
 
 // Called whenever a key is pressed
 void keyPressed() 
 {
+    if (stage == 8) {
+        nameSubmitScreen.keyPressed();
+    }
     if (gamePaused)
     {
         menus.keyPressed();
@@ -377,4 +390,21 @@ void databaseProcesses()
     databaseProcess.enemiesKilled();
     databaseProcess.towersPlaced();
     databaseProcess.towersSold();
+}
+
+// Sorts the scorelist in a descending order
+void sortScores(ArrayList<Pair<Integer, String>> list) {
+    Pair<Integer, String> max = new Pair<Integer, String>(Integer.MIN_VALUE, " ");
+    ArrayList<Pair<Integer, String>> sortedList = new ArrayList<Pair<Integer, String>>(); 
+    while(!list.isEmpty()) {
+        for (int i = 0; i < list.size(); ++i) {
+            if(list.get(i).getFirst() > max.getFirst()) {
+                max = list.get(i);
+            }
+        }
+        list.remove(max);
+        sortedList.add(max);
+        max = new Pair<Integer, String>(Integer.MIN_VALUE, "ZZZ");
+    }    
+    scoreList = sortedList;
 }

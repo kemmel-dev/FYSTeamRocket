@@ -14,6 +14,45 @@ class Controls {
   //Variable for the total amount of towers sold
   int totalTowersSold = 0;
 
+  //ArrayList containing the 'path' tiles
+  ArrayList<Tile> path = new ArrayList<Tile>() {
+    {
+      add(new Tile(60 + 120 * 0, 60 + 120 * 5, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 1, 60 + 120 * 5, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 2, 60 + 120 * 5, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 3, 60 + 120 * 5, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 3, 60 + 120 * 4, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 3, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 3, 60 + 120 * 2, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 4, 60 + 120 * 2, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 5, 60 + 120 * 2, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 6, 60 + 120 * 2, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 6, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 6, 60 + 120 * 4, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 6, 60 + 120 * 5, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 6, 60 + 120 * 6, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 6, 60 + 120 * 7, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 7, 60 + 120 * 7, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 8, 60 + 120 * 7, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 9, 60 + 120 * 7, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 10, 60 + 120 * 7, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 10, 60 + 120 * 6, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 10, 60 + 120 * 5, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 10, 60 + 120 * 4, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 10, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 11, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 12, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 13, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 14, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 15, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 15, 60 + 120 * 1, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 15, 60 + 120 * 2, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 15, 60 + 120 * 3, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 15, 60 + 120 * 4, int(SIZE_X/16)));
+      add(new Tile(60 + 120 * 15, 60 + 120 * 5, int(SIZE_X/16)));
+    }  
+  };
+
   // Sets the grid selector at 7th tile from at the x and the 4th tile of the y
   void initControls()
   {
@@ -21,6 +60,17 @@ class Controls {
       selectionX = 7;
       selectionY = 4;
       grid.grid[controls.selectionX][controls.selectionY].selected = true;
+  }
+
+  // Compares current tile to the path tile list tiles
+  boolean pathCheck(Tile curr){
+
+    for( Tile tile : path) {
+      if (tile.x == curr.x && tile.y == curr.y) {
+        return false;
+      }
+    }
+    return true;
   }
 
 
@@ -81,7 +131,7 @@ class Controls {
         
         if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
         
-        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost)
+        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost && pathCheck(currentTile))
           {
           //Variables from the currentTile converted to the variable values from Tower
           int x = currentTile.x;
@@ -102,7 +152,7 @@ class Controls {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
 
       // The tile must be empty (towerType = 0) and the player must atleast have 50 gold  
-      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.laserTowerCost)
+      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.laserTowerCost && pathCheck(currentTile))
       {
         // Variable x & y get the same values as the x & y of the selected tile
 
@@ -122,7 +172,7 @@ class Controls {
     {
       Tile currentTile = grid.grid[selectionX][selectionY]; 
         
-      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.farmTowerCost)
+      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.farmTowerCost && pathCheck(currentTile))
       {
         int x = currentTile.x;
         int y = currentTile.y;
@@ -138,7 +188,7 @@ class Controls {
         {
         Tile currentTile = grid.grid[selectionX][selectionY]; 
          
-        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.bombTowerCost)
+        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.bombTowerCost && pathCheck(currentTile))
           {
           int x = currentTile.x;
           int y = currentTile.y;
