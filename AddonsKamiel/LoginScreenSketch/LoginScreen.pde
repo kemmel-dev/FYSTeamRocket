@@ -26,15 +26,24 @@ class LoginScreen
         registerScreen = new RegisterScreen(this);
     }
 
-    public String getUserID()
+    public String[] getUserID()
     {
+        String[] result = new String[2];
+
         StringBuilder buffer = new StringBuilder();
-        for (CharacterBox characterBox : characterBoxes)
+        for (int i = 0; i < NUM_LETTERBOXES; i++)
         {
-            buffer.append(characterBox.getChar());
+            buffer.append(characterBoxes[i].getChar());
         }
-        buffer.insert(NUM_LETTERBOXES, "#");
-        return buffer.toString();
+        result[0] = buffer.toString();
+
+        buffer = new StringBuilder();
+        for (int i = NUM_LETTERBOXES; i < NUM_CHARACTERBOXES; i++)
+        {
+            buffer.append(characterBoxes[i].getChar());
+        }
+        result[1] = buffer.toString();
+        return result;
     }
 
     // Draws the login screen
@@ -46,6 +55,13 @@ class LoginScreen
             return;
         }
         displayLoginScreen();
+        
+        // TODO hier mooier laten zien dat je ingelogd bent
+        if (databaseManager.isLoggedIn())
+        {
+            fill(color(255,0,0));
+            text("LOGGED IN", width / 2, height / 2);
+        }
     }
 
     // Shows the login screen objects
@@ -160,8 +176,7 @@ class LoginScreen
         {
             if (box instanceof LoginBox)
             {
-                // TODO log in
-                print(getUserID());
+                databaseManager.login(getUserID()); 
             }
             else if (box instanceof RegisterBox)
             {
