@@ -129,7 +129,7 @@ class NameSubmitScreen
                     buffer.append(letterBox.getChar());
                 }
                 box.submitName(buffer.toString());
-                stage = 14;
+                stage = 17;
                 keyPressed = false;
             }
             else if (boxes[boxSelected] instanceof LetterBox)

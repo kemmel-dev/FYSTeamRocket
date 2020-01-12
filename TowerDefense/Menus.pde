@@ -607,7 +607,11 @@ class Menus
                 }
     }
 
+<<<<<<< HEAD
     void leaderBoardsMenu()
+=======
+    
+>>>>>>> 94b46d1b39faa2064ef2ed482641004cd50e189d
     void leaderBoardsMenu(ArrayList<Pair<Integer,String>> scoreList)
     {
         image(altsmenu,0,0,width,height);
