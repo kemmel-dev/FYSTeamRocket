@@ -250,7 +250,6 @@ void draw()
         case 13:
             menus.creditsMenu();
             return;
-<<<<<<< HEAD
         case 14:
             menus.displayPauseMenu2();
             return;
@@ -259,11 +258,9 @@ void draw()
             return;
         case 16:
             menus.controlsMenuPause();
-=======
         // Game Over Menu from InGame Screen  
-        case 14:
+        case 17:
             menus.gameOverMenu(scoreList);
->>>>>>> f525135e8e61314596dc56cabb15b4bc68f69cf1
             return;
     }
 
