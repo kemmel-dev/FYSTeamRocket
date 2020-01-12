@@ -533,6 +533,11 @@ class Menus
 
     void gameOverMenu(ArrayList<Pair<Integer,String>> scoreList)
     {   
+        String name = " ";
+        if(!scoreList.isEmpty())
+        {
+            name = scoreList.get(0).getSecond();
+        }
         image(gameoverscreen,0,0);
         rectMode(CENTER);
         fill(50);
@@ -543,7 +548,7 @@ class Menus
         textAlign(CENTER);
         text("GAME OVER",width/2, 115);
         text("Press Start For Main Menu",width/2,400);
-        text("score:   " + statistics.scorePoints +"     " + scoreList.get(0).getSecond(), width/2,600);
+        text("score:   " + statistics.scorePoints +"     " + name, width/2,600);
         noFill();
         if (keyPressed)
                 {   
