@@ -36,7 +36,7 @@ class Tower
   int rangeD;
 
   int timer = 0;
-  int goldPerFarm = 500;
+  int goldPerFarm = 25;
   
 
   Style style;
