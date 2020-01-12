@@ -15,6 +15,8 @@ class Wave
 
   boolean finished;
 
+  boolean gameStarted = false;
+
   Wave()
   {
     time = millis() + 1000;
@@ -26,26 +28,40 @@ class Wave
 
   void spawn()
   { 
-    //Limit of enemies per wave can't go higher than 100
-    //So late game waves won't have more than 100 enemies
-    if(limit >= 100)
+    //First wave starts when j is pressed (start button on controller)
+    if(keyPressed && key == 'j')
     {
-      limit = 100;
-    }
-  
-    //When all enemies for the wave have spawned, this boolean becomes true
-    if (spawns == limit)
-    {
-      allEnemiesSpawned = true;
+      gameStarted = true;
     }
 
-    //Enemies spawn 1,5 seconds after each other, every wave this will get 0,1 seconds faster
-    if(millis() > time && spawns < limit)
+    if (gameStarted)
     {
-      statistics.gereset = false;
-      enemies.add(new Enemy());
-      spawns++;
-      time = millis() + timerLimit;
+      //Limit of enemies per wave can't go higher than 100
+      //So late game waves won't have more than 100 enemies
+      if(limit >= 100)
+      {
+        limit = 100;
+      }
+    
+      //When all enemies for the wave have spawned, this boolean becomes true
+      if (spawns == limit)
+      {
+        allEnemiesSpawned = true;
+      }
+
+      //Enemies spawn 1,5 seconds after each other, every wave this will get 0,1 seconds faster
+      if(millis() > time && spawns < limit)
+      {
+        statistics.gereset = false;
+        enemies.add(new Enemy());
+        spawns++;
+        time = millis() + timerLimit;
+      }
+    }
+    else {
+      textAlign(CENTER);
+      text("Press start when you are ready", SIZE_X/2, SIZE_Y/2);
+      textAlign(CORNER);
     }
   }
 
