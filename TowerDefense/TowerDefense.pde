@@ -69,6 +69,8 @@ PImage explosion;
 
 PFont font;
 
+//Boolean for screenshake
+boolean shake = false;
 
 // The game stages >> stage 1 = Start Menu, stage 2 = The Game itself, stage 3 = Game Over Screen.
 int stage;
@@ -195,6 +197,9 @@ void draw()
             // Set currently selected tile
             selectedTile = GetCurrentTile();
 
+            // Screenshake
+            screenShake();
+
             // Draw the background
             drawBackground();
             handleEnemies();
@@ -242,7 +247,7 @@ void draw()
             menus.creditsMenu();
             return;
     }
-    
+
 }
 
 // Handles all actions for each tower each frame.
@@ -339,6 +344,8 @@ void handleDeadEnemies()
             statistics.lives--;
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
+            //Screenshake
+            shake = true;
         }
         if(statistics.gereset)
         {
@@ -381,4 +388,15 @@ void databaseProcesses()
     databaseProcess.enemiesKilled();
     databaseProcess.towersPlaced();
     databaseProcess.towersSold();
+}
+
+void screenShake()
+{
+    if(shake)
+    {
+        float shakeX = random (-10, 10);
+        float shakeY = random (-10, 10);
+        translate(shakeX, shakeY);
+        shake = false;
+    }
 }
