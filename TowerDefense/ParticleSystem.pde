@@ -14,7 +14,7 @@ class ParticleSystem
 
     void keyPressed()
     {
-        if(key == 'p' && timerSwitch = false)
+        if(key == 'p' && !timerSwitch)
         {
             timer++;
             timerSwitch = true;
@@ -54,7 +54,7 @@ class ParticleSystem
 
     void upgradeTower()
     {
-        if(timer > 0)
+        if(timerSwitch)
         {
             particles.add(new Particles(controls.upgradeX, controls.upgradeY, 2));
             for(int i = particles.size() - 1; i >= 0; i--)
