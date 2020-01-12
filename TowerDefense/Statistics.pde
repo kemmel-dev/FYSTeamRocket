@@ -17,7 +17,7 @@ class Statistics
         laserTowerCost = 50;
         freezeTowerCost = 100;
         bombTowerCost = 150;
-        farmTowerCost = 250;
+        farmTowerCost = 200;
 
         lives = 5;
 
@@ -25,7 +25,7 @@ class Statistics
 
     void reset()
     { 
-            lives = 5;
+            lives = 10;
             amount = 65;
             wave.waveNumber = 1;
             wave.limit = 10;
