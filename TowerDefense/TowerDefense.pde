@@ -369,8 +369,8 @@ void drawBase()
 
 void drawParticles()
 {
-    particleSystem.enemyTakingDamage();
-    particleSystem.resetParticle();
+    //particleSystem.enemyTakingDamage();
+    //particleSystem.resetParticle();
 }
 
 void databaseProcesses()
