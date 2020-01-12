@@ -179,6 +179,7 @@ void draw()
             statistics.reset();
             menus.startMenu1();
             assetsLoader.startMenuMusic();
+            wave.gameStarted = false;
             return;
         // Start Menu + Controls HIGHLIGHTED
         case 2:
@@ -397,10 +398,10 @@ void drawBase()
 
 void drawParticles()
 {
-    particleSystem.enemyTakingDamage();
     particleSystem.upgradeTower();
     particleSystem.keyPressed();
     particleSystem.checkTimer();
+    particleSystem.enemyTakingDamage();
 }
 
 void databaseProcesses()
