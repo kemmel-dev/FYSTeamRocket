@@ -369,12 +369,10 @@ void drawBase()
 
 void drawParticles()
 {
-    for(Particles p : particles)
-    {
-        p.display();
-    }
     particleSystem.enemyTakingDamage();
-    //particleSystem.resetParticle();
+    particleSystem.upgradeTower();
+    particleSystem.keyPressed();
+    particleSystem.checkTimer();
 }
 
 void databaseProcesses()
