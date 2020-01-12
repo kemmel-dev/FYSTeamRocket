@@ -61,7 +61,7 @@ class Wave
     else {
       textAlign(CENTER);
       fill(255);
-      text("Press start when you are ready", SIZE_X/2, SIZE_Y/2);
+      text("Press START when you are ready", SIZE_X/2, SIZE_Y/2);
       textAlign(CORNER);
     }
   }
