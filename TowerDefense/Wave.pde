@@ -60,6 +60,7 @@ class Wave
     }
     else {
       textAlign(CENTER);
+      fill(255);
       text("Press start when you are ready", SIZE_X/2, SIZE_Y/2);
       textAlign(CORNER);
     }
@@ -71,6 +72,7 @@ class Wave
     if(enemiesLeft == 0)
     {
       textAlign(CENTER);
+      fill(255);
       text("Press START to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }
