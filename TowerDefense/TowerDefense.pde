@@ -225,6 +225,7 @@ void draw()
             wave.end();
             menus.display();
 
+            controls.upgradeText();
         
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();

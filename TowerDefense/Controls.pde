@@ -16,6 +16,11 @@ class Controls {
   //Variable for the total amount of towers sold
   int totalTowersSold = 0;
 
+  int laserUpgradeCost;
+  int freezeUpgradeCost;
+  int bombUpgradeCost;
+  int farmUpgradeCost;
+
   //ArrayList containing the 'path' tiles
   ArrayList<Tile> path = new ArrayList<Tile>() {
     {
@@ -235,7 +240,6 @@ class Controls {
         }
       }
 
-
         // Upgrade towers
         if(key == 'p')
         {
@@ -302,5 +306,48 @@ class Controls {
       }
     }
    }
+  }
+
+  void upgradeText()
+  {
+    Tile currentTile = grid.grid[selectionX][selectionY];
+
+        laserUpgradeCost = (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel;
+        freezeUpgradeCost = (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
+        bombUpgradeCost = statistics.bombTowerCost * currentTile.tower.towerLevel;
+        farmUpgradeCost = statistics.farmTowerCost * currentTile.tower.towerLevel;
+
+        if(currentTile.selected && currentTile.tower.towerType == 1)
+      {
+        fill(255);
+        textAlign(CENTER);
+        text(laserUpgradeCost, currentTile.x, currentTile.y - 50);
+        textAlign(CORNER);
+      }
+
+              if(currentTile.selected && currentTile.tower.towerType == 2)
+      {
+        fill(255);
+        textAlign(CENTER);
+        text(freezeUpgradeCost, currentTile.x, currentTile.y - 50);
+        textAlign(CORNER);
+      }
+
+              if(currentTile.selected && currentTile.tower.towerType == 3)
+      {
+        fill(255);
+        textAlign(CENTER);
+        text(bombUpgradeCost, currentTile.x, currentTile.y - 50);
+        textAlign(CORNER);
+      }
+
+              if(currentTile.selected && currentTile.tower.towerType == 4)
+      {
+        fill(255);
+        textAlign(CENTER);
+        text(farmUpgradeCost, currentTile.x, currentTile.y - 50);
+        textAlign(CORNER);
+      }
+
   }
 }
