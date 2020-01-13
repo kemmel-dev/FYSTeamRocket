@@ -31,6 +31,7 @@ class Statistics
             wave.limit = 10;
             wave.spawns = 0;
             wave.enemiesRemoved = 0;
+            wave.timerLimit = 1500;
             scorePoints = 0;
             gereset = true;
             wave.enemiesLeft = wave.limit;
