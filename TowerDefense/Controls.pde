@@ -323,33 +323,40 @@ class Controls {
 
         if(currentTile.selected && currentTile.tower.towerType == 1)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
-        text("Upgrade cost: " + laserUpgradeCost, SIZE_X/2, 75);
+                image(goldcoin, currentTile.x - 50, currentTile.y - 64);
+
+        text(laserUpgradeCost, currentTile.x, currentTile.y - 40);
         textAlign(CORNER);
       }
 
               if(currentTile.selected && currentTile.tower.towerType == 2)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
-        text("Upgrade cost: " + freezeUpgradeCost, SIZE_X/2, 75);
+        image(goldcoin, currentTile.x - 50, currentTile.y - 64);
+        text(freezeUpgradeCost, currentTile.x, currentTile.y - 40);
         textAlign(CORNER);
       }
 
               if(currentTile.selected && currentTile.tower.towerType == 3)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
-        text("Upgrade cost: " + bombUpgradeCost, SIZE_X/2, 75);
+                image(goldcoin, currentTile.x - 50, currentTile.y - 64);
+
+        text(bombUpgradeCost, currentTile.x, currentTile.y - 40);
         textAlign(CORNER);
       }
 
               if(currentTile.selected && currentTile.tower.towerType == 4)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
-        text("Upgrade cost: " + farmUpgradeCost, SIZE_X/2, 75);
+                image(goldcoin, currentTile.x - 50, currentTile.y - 64);
+
+        text(farmUpgradeCost, currentTile.x, currentTile.y - 40);
         textAlign(CORNER);
       }
 
