@@ -649,6 +649,8 @@ class Menus
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
+        textAlign(CENTER);
+        fill(50);
 
         int len = min(10, scoreList.size());
         for (int i = 0; i < len; ++i) {
