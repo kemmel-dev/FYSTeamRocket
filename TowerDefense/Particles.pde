@@ -53,6 +53,7 @@ class Particles
         circle(x, y, size);
         transparency -= 10;
         r += 5;
+        stroke(0, 0, 0);
     }
 
     void upgradeTower()
@@ -62,6 +63,7 @@ class Particles
         circle(x, y, size);
         transparency -= 10;
         r += 10;
+        stroke(0, 0, 0);
     }
 
     void moveParticle()

@@ -26,7 +26,11 @@ class ParticleSystem
         if(timer >= 180)
         {
             timerSwitch = false;
-            text("timer ree", 500, 500);
+            fill(0, 0, 0, 255);
+            text("timer checked", 900, 500);
+        }
+        if(timerSwitch = false)
+        {
             timer = 0;
         }
     }
@@ -54,7 +58,7 @@ class ParticleSystem
 
     void upgradeTower()
     {
-        if(timerSwitch)
+        if(timer > 0)
         {
             particles.add(new Particles(controls.upgradeX, controls.upgradeY, 2));
             for(int i = particles.size() - 1; i >= 0; i--)

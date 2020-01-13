@@ -174,8 +174,6 @@ class Enemy
         }
         tint(style.defaultColor);
         imageMode(CORNER);
-        // rect(x, y, w, w);
-        fill(20, 220, 20);
 
         //The healthbar from different kind of enemies
         if(enemyType == 1)
@@ -190,7 +188,7 @@ class Enemy
         {
             hitpointsPercentage = (50 / hitpointsBeginWave) * hitpoints;
         }
-
+        fill(20, 220, 20);
         rect(x, y - hitpointsGap, hitpointsPercentage, 5);
     }
 
