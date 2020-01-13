@@ -36,7 +36,7 @@ class Tower
   int rangeD;
 
   int timer = 0;
-  int goldPerFarm = 500;
+  int goldPerFarm = 25;
   
 
   Style style;
@@ -276,6 +276,7 @@ class Tower
           //Without this if statement the sound would run twice because the bomb runs for 2 frames
             if(frameCount % 30 < 1)
             {
+              assetsLoader.bombSound.stop();
               assetsLoader.bombSound();
             }
         }

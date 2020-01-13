@@ -13,11 +13,11 @@ class Statistics
 
     Statistics()
     {
-        amount = 8000;
+        amount = 65;
         laserTowerCost = 50;
         freezeTowerCost = 100;
         bombTowerCost = 150;
-        farmTowerCost = 250;
+        farmTowerCost = 200;
 
         lives = 5;
 
@@ -25,8 +25,8 @@ class Statistics
 
     void reset()
     { 
-            lives = 5;
-            amount = 800;
+            lives = 10;
+            amount = 65;
             wave.waveNumber = 1;
             wave.limit = 10;
             wave.spawns = 0;

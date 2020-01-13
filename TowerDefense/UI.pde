@@ -21,6 +21,7 @@ class UI
         lineXY = waypoints.tileSize/2;
         lineX = (waypoints.tileSize/2)*7;
         lineY = waypoints.tileSize/2;
+        
     }
 
     void drawTextBox()
@@ -32,15 +33,14 @@ class UI
 
         rect(sizeX*3, 0, sizeX, sizeY);
         imageMode(CORNER);
-        image(lasertowerhud,sizeX*3+20,0);
-        image(freezetowerhud,sizeX*3+137,0);
-        image(bombtowerhud,sizeX*3+260,0);
-        image(farmtowerhud,sizeX*3+380,0);
-
-        image(goldcoin,sizeX*3+20,80);
-        image(goldcoin,sizeX*3+137,80);
-        image(goldcoin,sizeX*3+260,80);
-        image(goldcoin,sizeX*3+380,80);
+        image(lasertowerhud,sizeX*3+10,0);
+        image(freezetowerhud,sizeX*3+127,0);
+        image(bombtowerhud,sizeX*3+250,0);
+        image(farmtowerhud,sizeX*3+370,0);
+        image(goldcoin,sizeX*3+10,80);
+        image(goldcoin,sizeX*3+127,80);
+        image(goldcoin,sizeX*3+250,80);
+        image(goldcoin,sizeX*3+370,80);
         
         
         if(wave.enemiesRemoved == 0)
@@ -48,8 +48,12 @@ class UI
             wavePercentageBar = (waypoints.tileSize*3)/wave.enemiesLeft;
         }
         percentageLine = (waypoints.tileSize/2) + (wavePercentageBar*wave.enemiesRemoved);
-        
-        //Right top statistics
+
+        rectMode(CORNER);
+        fill(style.black, style.highOpacity);
+        stroke(style.white);
+        strokeWeight(style.thickStrokeWeight);
+
         rect(0, 0, sizeX, sizeY);
         line(lineXY, lineXY, lineX, lineY);
         stroke(style.green);

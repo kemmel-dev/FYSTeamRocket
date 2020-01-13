@@ -14,24 +14,24 @@ class ParticleSystem
 
     void keyPressed()
     {
-        if(key == 'p' && !timerSwitch)
+        if(key == 'p')
         {
-            timer++;
             timerSwitch = true;
         }
     }
 
     void checkTimer()
     {
-        if(timer >= 180)
+        if (timerSwitch)
+        {
+            timer++;
+        }
+        else {
+            timer = 0;
+        }
+        if(timer >= 60)
         {
             timerSwitch = false;
-            fill(0, 0, 0, 255);
-            text("timer checked", 900, 500);
-        }
-        if(timerSwitch = false)
-        {
-            timer = 0;
         }
     }
 
@@ -60,7 +60,10 @@ class ParticleSystem
     {
         if(timer > 0)
         {
+            if(timer <= 35)
+            {
             particles.add(new Particles(controls.upgradeX, controls.upgradeY, 2));
+            }
             for(int i = particles.size() - 1; i >= 0; i--)
             {
                 Particles p = particles.get(i);

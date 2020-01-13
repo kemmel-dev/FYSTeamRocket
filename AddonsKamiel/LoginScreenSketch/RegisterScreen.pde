@@ -15,6 +15,9 @@ class RegisterScreen
 
     private LoginScreen loginScreen;
 
+    private boolean registeredName = false;
+    private String userID;
+
     public String getName()
     {
         StringBuilder buffer = new StringBuilder();
@@ -36,6 +39,12 @@ class RegisterScreen
         for (Box box : boxes)
         {
             box.display();
+        }
+        if (registeredName)
+        {
+            // TODO hier mooier laten zien dat je bent ingelogd
+            fill(color(255,0,0));
+            text(String.format("Registered with userID:\n%s#%s", getName(), userID), width / 2, height / 2);
         }
     }
 
@@ -73,6 +82,8 @@ class RegisterScreen
     // Handles the input on the register screen
     public void keyPressed()
     {
+        //TODO goede keycodes invullen
+
         if (key == 'a')
         {
             moveSelectionLeft();
@@ -101,7 +112,11 @@ class RegisterScreen
         {
             if (boxes[boxSelected] instanceof RegisterBox)
             {
-                databaseManager.registerName(getName());
+                userID = databaseManager.registerName(getName());
+                if (userID != "")
+                {
+                    registeredName = true;
+                }
             }
             else if (boxes[boxSelected] instanceof BackBox)
             {

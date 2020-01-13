@@ -17,10 +17,9 @@ class Base
 
     void baseStructure()
     {
-        fill(style.black, style.highOpacity);
-        stroke(style.white);
-        strokeWeight(10);
-        ellipse(x, y, dX, dY);
+        imageMode(CENTER);
+        image(tower,x, y, 175, 175);
+        imageMode(CORNER);
         strokeWeight(1);
         stroke(style.black);
     }
