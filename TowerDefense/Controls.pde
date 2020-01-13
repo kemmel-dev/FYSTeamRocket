@@ -323,7 +323,7 @@ class Controls {
 
         if(currentTile.selected && currentTile.tower.towerType == 1)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
                 image(goldcoin, currentTile.x - 50, currentTile.y - 64);
 
@@ -333,7 +333,7 @@ class Controls {
 
               if(currentTile.selected && currentTile.tower.towerType == 2)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
         image(goldcoin, currentTile.x - 50, currentTile.y - 64);
         text(freezeUpgradeCost, currentTile.x, currentTile.y - 40);
@@ -342,7 +342,7 @@ class Controls {
 
               if(currentTile.selected && currentTile.tower.towerType == 3)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
                 image(goldcoin, currentTile.x - 50, currentTile.y - 64);
 
@@ -352,7 +352,7 @@ class Controls {
 
               if(currentTile.selected && currentTile.tower.towerType == 4)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
                 image(goldcoin, currentTile.x - 50, currentTile.y - 64);
 
