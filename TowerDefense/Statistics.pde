@@ -13,7 +13,7 @@ class Statistics
 
     Statistics()
     {
-        amount = 65;
+        amount = 80;
         laserTowerCost = 50;
         freezeTowerCost = 100;
         bombTowerCost = 150;
@@ -26,7 +26,7 @@ class Statistics
     void reset()
     { 
             lives = 10;
-            amount = 65;
+            amount = 80;
             wave.waveNumber = 1;
             wave.limit = 10;
             wave.spawns = 0;

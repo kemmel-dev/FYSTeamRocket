@@ -72,11 +72,7 @@ class Wave
     if(enemiesLeft == 0)
     {
       textAlign(CENTER);
-<<<<<<< HEAD
-      fill(255, 255, 255, 255);
-=======
       fill(255);
->>>>>>> 00840d954f2ef49bca5318da7cb212a0b0216ae8
       text("Press START to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }

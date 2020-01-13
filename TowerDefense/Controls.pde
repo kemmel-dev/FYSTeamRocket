@@ -250,6 +250,7 @@ class Controls {
           //LaserTower upgrade
           if(currentTile.tower.towerType == 1 && statistics.amount >= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel)
           {
+            upgrading = true;
             statistics.amount -= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
             currentTile.tower.laserDamage = currentTile.tower.towerLevel;
@@ -258,6 +259,7 @@ class Controls {
           //FreezeTower upgrade
           else if(currentTile.tower.towerType == 2 && statistics.amount >= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel)
           {
+            upgrading = true;
             statistics.amount -= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
             currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
@@ -270,6 +272,7 @@ class Controls {
           //FarmTower upgrade
           if(currentTile.tower.towerType == 4 && statistics.amount >= statistics.farmTowerCost * currentTile.tower.towerLevel)
           {
+            upgrading = true;
             statistics.amount -= statistics.farmTowerCost * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
             currentTile.tower.goldPerFarm += 50;
@@ -278,6 +281,7 @@ class Controls {
           //Bombtower upgrade
           if (currentTile.tower.towerType == 3 && statistics.amount >= statistics.bombTowerCost * currentTile.tower.towerLevel)
           {
+            upgrading = true;
             statistics.amount -= statistics.bombTowerCost * currentTile.tower.towerLevel;
             currentTile.tower.towerLevel += 1;
             currentTile.tower.bombDamage *= currentTile.tower.towerLevel;

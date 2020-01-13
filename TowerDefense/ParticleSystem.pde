@@ -14,7 +14,7 @@ class ParticleSystem
 
     void keyPressed()
     {
-        if(key == 'p')
+        if(key == 'p' && controls.upgrading)
         {
             timerSwitch = true;
         }
@@ -32,6 +32,7 @@ class ParticleSystem
         if(timer >= 60)
         {
             timerSwitch = false;
+            controls.upgrading = false;
         }
     }
 
@@ -72,6 +73,27 @@ class ParticleSystem
                 if(p.resetParticle())
                 {
                     particles.remove(i);
+                }
+            }
+        }
+    }
+
+    void enemyIsFreezing()
+    {
+        for(Enemy e : enemies)
+        {
+            if(e.frozenEnemy)
+            {
+                particles.add(new Particles(e.x, e.y, 3));
+                for(int i = particles.size() - 1; i >= 0; i--)
+                {
+                    Particles p = particles.get(i);
+                    p.display();
+                    
+                    if(p.resetParticle())
+                    {
+                        particles.remove(i);
+                    }
                 }
             }
         }

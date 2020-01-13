@@ -30,6 +30,12 @@ class Particles
             Tile currentTile = grid.grid[controls.selectionX][controls.selectionY];
             x += random(-40, 40);
         }
+        else if(particleType == 3)
+        {
+            msX = random(-2, 2);
+            msY = random(-2, 2);
+            size = 8;
+        }
     }
 
     void display()
@@ -39,9 +45,14 @@ class Particles
             bleedingEnemy();
             moveParticle();
         }
-        if(particleType == 2)
+        else if(particleType == 2)
         {
             upgradeTower();
+            moveParticle();
+        }
+        else if(particleType == 3)
+        {
+            freezingEnemy();
             moveParticle();
         }
     }
@@ -63,6 +74,16 @@ class Particles
         circle(x, y, size);
         transparency -= 10;
         r += 10;
+        stroke(0, 0, 0);
+    }
+
+    void freezingEnemy()
+    {
+        fill(186 - r, 242 - r, 239 - r, transparency);
+        noStroke();
+        circle(x, y, size);
+        transparency -= 10;
+        r += 5;
         stroke(0, 0, 0);
     }
 
