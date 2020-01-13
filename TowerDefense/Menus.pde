@@ -652,6 +652,7 @@ class Menus
 
         int len = min(10, scoreList.size());
         for (int i = 0; i < len; ++i) {
+            fill(50);
             text((i + 1) + ": " + scoreList.get(i).getSecond() + "   " + scoreList.get(i).getFirst(), width/2, height/10 + i * 100);
         }
 
