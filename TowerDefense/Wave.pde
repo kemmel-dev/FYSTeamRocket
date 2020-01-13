@@ -60,7 +60,7 @@ class Wave
     }
     else {
       textAlign(CENTER);
-      fill(255);
+      fill(50);
       text("Press START when you are ready", SIZE_X/2, SIZE_Y/2);
       textAlign(CORNER);
     }
@@ -71,8 +71,11 @@ class Wave
     //When all enemies are gone, this text will be displayed on screen.
     if(enemiesLeft == 0)
     {
+      assetsLoader.laserSound.stop();
+      assetsLoader.freezeSound.stop();
+      assetsLoader.bombSound.stop();
       textAlign(CENTER);
-      fill(255);
+      fill(50);
       text("Press START to start next wave", SIZE_X / 2, SIZE_Y / 5);
       textAlign(CORNER);
     }

@@ -323,7 +323,7 @@ class Controls {
 
         if(currentTile.selected && currentTile.tower.towerType == 1)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
         text(laserUpgradeCost, currentTile.x, currentTile.y - 50);
         textAlign(CORNER);
@@ -331,7 +331,7 @@ class Controls {
 
               if(currentTile.selected && currentTile.tower.towerType == 2)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
         text(freezeUpgradeCost, currentTile.x, currentTile.y - 50);
         textAlign(CORNER);
@@ -339,7 +339,7 @@ class Controls {
 
               if(currentTile.selected && currentTile.tower.towerType == 3)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
         text(bombUpgradeCost, currentTile.x, currentTile.y - 50);
         textAlign(CORNER);
@@ -347,7 +347,7 @@ class Controls {
 
               if(currentTile.selected && currentTile.tower.towerType == 4)
       {
-        fill(255);
+        fill(50);
         textAlign(CENTER);
         text(farmUpgradeCost, currentTile.x, currentTile.y - 50);
         textAlign(CORNER);
