@@ -325,7 +325,7 @@ class Controls {
       {
         fill(50);
         textAlign(CENTER);
-        text(laserUpgradeCost, currentTile.x, currentTile.y - 50);
+        text("Upgrade cost: " + laserUpgradeCost, SIZE_X/2, 75);
         textAlign(CORNER);
       }
 
@@ -333,7 +333,7 @@ class Controls {
       {
         fill(50);
         textAlign(CENTER);
-        text(freezeUpgradeCost, currentTile.x, currentTile.y - 50);
+        text("Upgrade cost: " + freezeUpgradeCost, SIZE_X/2, 75);
         textAlign(CORNER);
       }
 
@@ -341,7 +341,7 @@ class Controls {
       {
         fill(50);
         textAlign(CENTER);
-        text(bombUpgradeCost, currentTile.x, currentTile.y - 50);
+        text("Upgrade cost: " + bombUpgradeCost, SIZE_X/2, 75);
         textAlign(CORNER);
       }
 
@@ -349,7 +349,7 @@ class Controls {
       {
         fill(50);
         textAlign(CENTER);
-        text(farmUpgradeCost, currentTile.x, currentTile.y - 50);
+        text("Upgrade cost: " + farmUpgradeCost, SIZE_X/2, 75);
         textAlign(CORNER);
       }
 
