@@ -117,7 +117,7 @@ class NameSubmitScreen
             }
         }
         
-        if (key == ' ')
+        if (key == 'j')
         {
             if (boxes[boxSelected] instanceof SubmitBox)
             {
