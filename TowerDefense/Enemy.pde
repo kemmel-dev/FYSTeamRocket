@@ -67,9 +67,9 @@ class Enemy
         //Type 2 enemy size, speed and hp
         if(enemyType == 2)
         {
-            msMultiplier = 0.7;
+            msMultiplier = 0.75;
             w = int(t.w - 40);
-            hitpoints = 70 + (wave.waveNumber * 35);
+            hitpoints = 70 + (wave.waveNumber * 30);
             hitpointsGap = 50;
             if(!wave.allEnemiesSpawned)
             {
@@ -83,7 +83,7 @@ class Enemy
         {
             msMultiplier = 1.6;
             w = int(t.w / 3);
-            hitpoints = 10 + (wave.waveNumber * 15);
+            hitpoints = 10 + (wave.waveNumber * 10);
             hitpointsGap = 30;
             if(!wave.allEnemiesSpawned)
             {
