@@ -216,7 +216,8 @@ class Controls {
         int d = grid.grid[0][0].w / 2;
         sellingX = x;
         sellingY = y;
-        //A different case for each tower. If it's located on the currentTile get some money back,removes tower.
+        
+        //A different case for each tower. If it's located on the currentTile get some money back, removes tower.
         switch(currentTile.tower.towerType)
         { 
           case 1:
@@ -254,6 +255,7 @@ class Controls {
           upgradeX = (selectionX * grid.grid[0][0].w) + grid.grid[0][0].w/2;
           upgradeY = (selectionY * grid.grid[0][0].w) + grid.grid[0][0].w;
           //LaserTower upgrade
+          //If the tile is the right towerType and you got enough gold, upgrade
           if(currentTile.tower.towerType == 1 && statistics.amount >= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel)
           {
             upgrading = true;
@@ -263,6 +265,7 @@ class Controls {
           }
 
           //FreezeTower upgrade
+          //If the tile is the right towerType and you got enough gold, upgrade
           else if(currentTile.tower.towerType == 2 && statistics.amount >= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel)
           {
             upgrading = true;
@@ -276,6 +279,7 @@ class Controls {
           }
 
           //FarmTower upgrade
+          //If the tile is the right towerType and you got enough gold, upgrade
           if(currentTile.tower.towerType == 4 && statistics.amount >= statistics.farmTowerCost * currentTile.tower.towerLevel)
           {
             upgrading = true;
@@ -285,6 +289,7 @@ class Controls {
           }
 
           //Bombtower upgrade
+          //If the tile is the right towerType and you got enough gold, upgrade
           if (currentTile.tower.towerType == 3 && statistics.amount >= statistics.bombTowerCost * currentTile.tower.towerLevel)
           {
             upgrading = true;

@@ -195,14 +195,21 @@ class Tower
 
   void freezeEnemies()
   {
+    //Every enemy gets a "i", like in an array
     Iterator<Enemy> i = enemies.iterator();
+
+    //Looping through all existing enemies
     while (i.hasNext())
     {
       float distances[] = new float[wave.enemiesLeft];
+
+      //One enemy is i.next
       Enemy e = i.next();
       for(int j = 0; j < wave.enemiesLeft; j++)
       {
         distances[j] = dist(x, y, e.x, e.y);
+
+        //If the enemy gets into the range of the freeze tower, freeze that enemy
         if(distances[j] < rangeFreezeTower)
         {
           if(e.msMultiplier > freezePower)
@@ -211,6 +218,8 @@ class Tower
           }
           e.frozenEnemy = true;
         }
+
+        //If the enemy is outside of the range, reset their speeds to normal
         else 
         {
           if(e.enemyType == 1)
@@ -231,15 +240,7 @@ class Tower
     }
   }
 
-
-// void goldPopUp()
-// {
   
-//     textSize(30);
-//     fill(250,0,0);
-//     text(goldPerFarm, tower.x,  tower.y);
-
-// }
   void farmGold()
     {   
       timer++;
