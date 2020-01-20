@@ -1,3 +1,7 @@
+/**
+ * Stores and handles player input
+ * @author Kamiel de Visser | 500838438
+ */
 class Controls {
 
   // 1 = up
@@ -60,12 +64,15 @@ class Controls {
     }  
   };
 
-  // Sets the grid selector at 7th tile from at the x and the 4th tile of the y
+  /**
+    * Initializes the controls object by setting the grid selector at 
+    * the middle of the grid, and selecting that tile.
+    * @author Kamiel de Visser | 500838438
+    */
   void initControls()
   {
-      // Set selected tile to the approximate middle of the grid
-      selectionX = 7;
-      selectionY = 4;
+      selectionX = int(grid.grid.length / 2);
+      selectionY = int(grid.grid[0].length / 2);
       grid.grid[controls.selectionX][controls.selectionY].selected = true;
   }
 
@@ -80,40 +87,39 @@ class Controls {
     return true;
   }
 
-
-
-  // Moves the selected tile towards moveType
-  void Move(int moveType) 
+  /**
+    * Undos tile selection, moves the selection towards moveDir, and then selects the new tile
+    * @param moveType <p>the direction to move to (1 = up, 2 = down, 3 = left, 4 = right)</p>
+    * @author Kamiel de Visser | 500838438
+    */
+  void move(int moveDir) 
   {
     grid.grid[selectionX][selectionY].selected = false;
-
-    
-    if (moveType == 1) 
+    if (moveDir == 1) 
      {
       selectionY = constrain(selectionY - 1, 0, 8);
     }
-    if (moveType == 2) 
+    if (moveDir == 2) 
     {
       selectionY = constrain(selectionY + 1, 0, 8);
     }
-    if (moveType == 3) 
+    if (moveDir == 3) 
     {
        selectionX = constrain(selectionX - 1, 0, 15);
     }
-    if (moveType == 4) 
+    if (moveDir == 4) 
     {
       selectionX = constrain(selectionX + 1, 0, 15);
     }
     grid.grid[selectionX][selectionY].selected = true;
-
-
-
-    grid.grid[selectionX][selectionY].selected = true;
   }
 
 
-  // Called from TowerDefense's keyPressed function
-  // Handles key press events
+  /**
+    * Called from TowerDefense's keyPressed function
+    * Handles key press events
+    * @author Kamiel de Visser | 500838438
+    */
   void keyPressed()
   {
 
@@ -121,90 +127,91 @@ class Controls {
     if (stage == 7)
     {
 
-    
-    if (key == 'f')
-      {
-        stage = 9;
-      }
 
-
-    // Placing the Freeze tower
-    if (key == 's')
-        {
-        // Gets the data where the currentTile is
-        Tile currentTile = grid.grid[selectionX][selectionY]; 
-         
-        
-        if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
-        
-        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost && pathCheck(currentTile))
+        if (key == 'f')
           {
-          //Variables from the currentTile converted to the variable values from Tower
-          int x = currentTile.x;
-          int y = currentTile.y;
-          int d = grid.grid[0][0].w / 2;
-          currentTile.tower = new Tower(x, y, d, 2, 1);
-          //Substracts an amount of gold
-          statistics.amount -= statistics.freezeTowerCost;
-          totalTowersPlaced++;
-         }
+            stage = 9;
+          }
+
+
+        // Placing the Freeze tower
+        if (key == 's')
+            {
+            // Gets the data where the currentTile is
+            Tile currentTile = grid.grid[selectionX][selectionY]; 
+            
+            
+            if (currentTile.tower.towerType == 0 && statistics.amount >= 100)
+            
+            if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.freezeTowerCost && pathCheck(currentTile))
+              {
+              //Variables from the currentTile converted to the variable values from Tower
+              int x = currentTile.x;
+              int y = currentTile.y;
+              int d = grid.grid[0][0].w / 2;
+              currentTile.tower = new Tower(x, y, d, 2, 1);
+              //Substracts an amount of gold
+              statistics.amount -= statistics.freezeTowerCost;
+              totalTowersPlaced++;
+            }
+            }
+
+
+        // Placing a Laser tower
+        if (key == 'a')
+        {
+          // Getting the information of the current x & y from your selected tile
+          Tile currentTile = grid.grid[selectionX][selectionY]; 
+
+          // The tile must be empty (towerType = 0) and the player must atleast have 50 gold  
+          if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.laserTowerCost && pathCheck(currentTile))
+          {
+            // Variable x & y get the same values as the x & y of the selected tile
+
+            int x = currentTile.x;
+            int y = currentTile.y;
+
+            // Variable d gets the values of the height & width of one tile divided by 2
+
+            int d = grid.grid[0][0].w / 2;
+            currentTile.tower = new Tower(x, y, d, 1, 1);
+            statistics.amount -= statistics.laserTowerCost;
+            totalTowersPlaced++;
+          }                 
         }
 
-
-    // Placing a Laser tower
-    if (key == 'a')
-    {
-      // Getting the information of the current x & y from your selected tile
-      Tile currentTile = grid.grid[selectionX][selectionY]; 
-
-      // The tile must be empty (towerType = 0) and the player must atleast have 50 gold  
-      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.laserTowerCost && pathCheck(currentTile))
-      {
-        // Variable x & y get the same values as the x & y of the selected tile
-
-        int x = currentTile.x;
-        int y = currentTile.y;
-
-        // Variable d gets the values of the height & width of one tile divided by 2
-
-        int d = grid.grid[0][0].w / 2;
-        currentTile.tower = new Tower(x, y, d, 1, 1);
-        statistics.amount -= statistics.laserTowerCost;
-        totalTowersPlaced++;
-      }                 
-    }
-// controls for placing a farm tower
- if (key == 'z')
-    {
-      Tile currentTile = grid.grid[selectionX][selectionY]; 
         
-      if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.farmTowerCost && pathCheck(currentTile))
-      {
-        int x = currentTile.x;
-        int y = currentTile.y;
-        int d = grid.grid[0][0].w / 2;
-        currentTile.tower = new Tower(x, y, d, 4, 1);
-        statistics.amount -= statistics.farmTowerCost;
-        totalTowersPlaced++;
-      }                 
-    }
-
-    //Controls for placing the bomb tower
-        if (key == 'x')
+        // controls for placing a farm tower
+        if (key == 'z')
         {
-        Tile currentTile = grid.grid[selectionX][selectionY]; 
-         
-        if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.bombTowerCost && pathCheck(currentTile))
+          Tile currentTile = grid.grid[selectionX][selectionY]; 
+            
+          if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.farmTowerCost && pathCheck(currentTile))
           {
-          int x = currentTile.x;
-          int y = currentTile.y;
-          int d = grid.grid[0][0].w / 2;
-          currentTile.tower = new Tower(x, y, d, 3, 1);
-          statistics.amount -= statistics.bombTowerCost;
-          totalTowersPlaced++;
-         }
+            int x = currentTile.x;
+            int y = currentTile.y;
+            int d = grid.grid[0][0].w / 2;
+            currentTile.tower = new Tower(x, y, d, 4, 1);
+            statistics.amount -= statistics.farmTowerCost;
+            totalTowersPlaced++;
+          }                 
         }
 
+        //Controls for placing the bomb tower
+            if (key == 'x')
+            {
+              Tile currentTile = grid.grid[selectionX][selectionY]; 
+              
+              if (currentTile.tower.towerType == 0 && statistics.amount >= statistics.bombTowerCost && pathCheck(currentTile))
+                {
+                int x = currentTile.x;
+                int y = currentTile.y;
+                int d = grid.grid[0][0].w / 2;
+                currentTile.tower = new Tower(x, y, d, 3, 1);
+                statistics.amount -= statistics.bombTowerCost;
+                totalTowersPlaced++;
+              }
+            }
 
       //Controls for selling a tower
       if(key == 'q')
@@ -247,80 +254,86 @@ class Controls {
         }
       }
 
-        // Upgrade towers
-        if(key == 'p')
-        {
-          Tile currentTile = grid.grid[selectionX][selectionY];
-
-          upgradeX = (selectionX * grid.grid[0][0].w) + grid.grid[0][0].w/2;
-          upgradeY = (selectionY * grid.grid[0][0].w) + grid.grid[0][0].w;
-          //LaserTower upgrade
-          //If the tile is the right towerType and you got enough gold, upgrade
-          if(currentTile.tower.towerType == 1 && statistics.amount >= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel)
-          {
-            upgrading = true;
-            statistics.amount -= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel;
-            currentTile.tower.towerLevel += 1;
-            currentTile.tower.laserDamage = currentTile.tower.towerLevel;
-          }
-
-          //FreezeTower upgrade
-          //If the tile is the right towerType and you got enough gold, upgrade
-          else if(currentTile.tower.towerType == 2 && statistics.amount >= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel)
-          {
-            upgrading = true;
-            statistics.amount -= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
-            currentTile.tower.towerLevel += 1;
-            currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
-            if(currentTile.tower.towerLevel <= 4)
+            // Upgrade towers
+            if(key == 'p')
             {
-              currentTile.tower.freezePower = 0.9 - (currentTile.tower.towerLevel * 0.1);
+              Tile currentTile = grid.grid[selectionX][selectionY];
+
+              upgradeX = (selectionX * grid.grid[0][0].w) + grid.grid[0][0].w/2;
+              upgradeY = (selectionY * grid.grid[0][0].w) + grid.grid[0][0].w;
+              //LaserTower upgrade
+              //If you got enough gold and the towerType = 1
+              if(currentTile.tower.towerType == 1 && statistics.amount >= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel)
+              {
+                upgrading = true;
+                statistics.amount -= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel;
+                currentTile.tower.towerLevel += 1;
+                currentTile.tower.laserDamage = currentTile.tower.towerLevel;
+              }
+
+              //FreezeTower upgrade
+              //If you got enough gold and the towerType = 1
+              else if(currentTile.tower.towerType == 2 && statistics.amount >= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel)
+              {
+                upgrading = true;
+                statistics.amount -= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
+                currentTile.tower.towerLevel += 1;
+                currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
+                if(currentTile.tower.towerLevel <= 4)
+                {
+                  currentTile.tower.freezePower = 0.9 - (currentTile.tower.towerLevel * 0.1);
+                }
+              }
+
+              //FarmTower upgrade
+              //If you got enough gold and the towerType = 1
+              if(currentTile.tower.towerType == 4 && statistics.amount >= statistics.farmTowerCost * currentTile.tower.towerLevel)
+              {
+                upgrading = true;
+                statistics.amount -= statistics.farmTowerCost * currentTile.tower.towerLevel;
+                currentTile.tower.towerLevel += 1;
+                currentTile.tower.goldPerFarm += 50;
+              }
+
+              //Bombtower upgrade
+              //If you got enough gold and the towerType = 1
+              if (currentTile.tower.towerType == 3 && statistics.amount >= statistics.bombTowerCost * currentTile.tower.towerLevel)
+              {
+                upgrading = true;
+                statistics.amount -= statistics.bombTowerCost * currentTile.tower.towerLevel;
+                currentTile.tower.towerLevel += 1;
+                currentTile.tower.bombDamage *= currentTile.tower.towerLevel;
+              }
             }
+        
+        
+        
+        /**
+        * Handles key press events
+        * @author Kamiel de Visser | 500838438
+        */
+        if (key == CODED)
+        {
+          if (keyCode == UP) 
+          {
+            move(1);
+          } 
+          else if (keyCode == DOWN) 
+          {
+            move(2);
           }
 
-          //FarmTower upgrade
-          //If the tile is the right towerType and you got enough gold, upgrade
-          if(currentTile.tower.towerType == 4 && statistics.amount >= statistics.farmTowerCost * currentTile.tower.towerLevel)
+          if (keyCode == LEFT) 
           {
-            upgrading = true;
-            statistics.amount -= statistics.farmTowerCost * currentTile.tower.towerLevel;
-            currentTile.tower.towerLevel += 1;
-            currentTile.tower.goldPerFarm += 50;
-          }
+            move(3);
+          } 
 
-          //Bombtower upgrade
-          //If the tile is the right towerType and you got enough gold, upgrade
-          if (currentTile.tower.towerType == 3 && statistics.amount >= statistics.bombTowerCost * currentTile.tower.towerLevel)
+          else if (keyCode == RIGHT) 
           {
-            upgrading = true;
-            statistics.amount -= statistics.bombTowerCost * currentTile.tower.towerLevel;
-            currentTile.tower.towerLevel += 1;
-            currentTile.tower.bombDamage *= currentTile.tower.towerLevel;
+            move(4);
           }
         }
-
-
-    // Movement through the grid
-    if (key == CODED)
-    {
-      if (keyCode == UP) 
-      {
-        Move(1);
-      } 
-      else if (keyCode == DOWN) 
-      {
-        Move(2);
-      }
-      if (keyCode == LEFT) 
-      {
-        Move(3);
-      } 
-      else if (keyCode == RIGHT) 
-      {
-        Move(4);
-      }
     }
-   }
   }
 
   void upgradeText()

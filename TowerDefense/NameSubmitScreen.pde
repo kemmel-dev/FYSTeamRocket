@@ -1,13 +1,15 @@
 
 
+/**
+ * A screen that has a few boxes to select and submit a new name.
+ * This object can be handled as it's own sketch.
+ * @author Kamiel de Visser | 500838438
+ */
 class NameSubmitScreen
 {
     private final static int NUM_LETTERBOXES = 3;
     private LetterBox[] letterBoxes = new LetterBox[NUM_LETTERBOXES];
     private SubmitBox submitBox;
-
-    public final int LETTERS_IN_ALPHABET = 26;
-    public char[] alphabet = new char[LETTERS_IN_ALPHABET];
 
     private final static int NUM_BOXES = 4;
     private Box[] boxes = new Box[NUM_BOXES];
@@ -15,19 +17,10 @@ class NameSubmitScreen
     public Colors COLORS = new Colors();
 
     private int boxSelected = 0;
-
-    // Load the alphabet in an array
-    private void initAlphabet()
-    {
-        int valueForCapitalA = 65;
-        int charCodeDecimal = valueForCapitalA;
-        for (int i = 0; i < LETTERS_IN_ALPHABET; i++)
-        {
-            alphabet[i] = char(charCodeDecimal + i);
-        }
-    }
-
-    // Initialize the boxes that allow player to choose it's name
+    
+    /**
+     * Initialize the boxes that allow player to choose it's name
+     */
     private void initLetterBoxes()
     {
         int xPos = width / 2 - width / 4;
@@ -43,13 +36,17 @@ class NameSubmitScreen
         }
     }
 
-    // Initializes the screen
+    /**
+     * Initializes this screen
+     */
     public void init()
     {
-        initAlphabet();
         initBoxes();
     }
 
+    /**
+     * Initializes all boxes used on this screen
+     */
     private void initBoxes()
     {
         initLetterBoxes();
@@ -60,6 +57,10 @@ class NameSubmitScreen
         boxes[3] = submitBox;
     }
 
+    /**
+     * Call this function in the draw function of another sketch
+     * to handle and show this screen.
+     */
     public void draw()
     {
         boxes[boxSelected].setSelected(true);
@@ -67,14 +68,18 @@ class NameSubmitScreen
         boxes[boxSelected].setSelected(false);
     }
 
-    // Draws the sketch
+    /**
+     * Shows this screen.
+     */
     private void display()
     {
         image(gameoverscreen,0,0);
         drawBoxes();
     }
 
-    // Draws the boxes that allow a player to choose it's name.
+    /**
+     * Draws the boxes on this screen.
+     */
     private void drawBoxes()
     {
         for (int index = 0; index < boxes.length; index++)
@@ -84,6 +89,9 @@ class NameSubmitScreen
         }
     }
 
+    /**
+     * Handles the keyPressed events for this screen.
+     */
     public void keyPressed()
     {
         if (key == CODED) {
@@ -99,6 +107,7 @@ class NameSubmitScreen
             }
             if (keyCode == UP)
             {
+                // if selected box is a letterbox, move character selection up
                 if (boxes[boxSelected] instanceof LetterBox)
                 {
                     LetterBox box = (LetterBox) boxes[boxSelected];
@@ -108,6 +117,7 @@ class NameSubmitScreen
             }
             if (keyCode == DOWN)
             {
+                // if selected box is a letterbox, move character selection down
                 if (boxes[boxSelected] instanceof LetterBox)
                 {
                     LetterBox box = (LetterBox) boxes[boxSelected];
@@ -119,19 +129,15 @@ class NameSubmitScreen
         
         if (key == 'j')
         {
+            // if selected box is a submitbox, submit the name selected
             if (boxes[boxSelected] instanceof SubmitBox)
             {
                 SubmitBox box = (SubmitBox) boxes[boxSelected];
-
-                StringBuilder buffer = new StringBuilder();
-                for (LetterBox letterBox : letterBoxes)
-                {
-                    buffer.append(letterBox.getChar());
-                }
-                box.submitName(buffer.toString());
+                box.submitName(getNameFromLetterBoxes());
                 stage = 17;
                 keyPressed = false;
             }
+            // else if selectedbox is a letterbox, move the selection right
             else if (boxes[boxSelected] instanceof LetterBox)
             {
                 moveSelectionRight();
@@ -140,6 +146,23 @@ class NameSubmitScreen
         }
     }
 
+    /**
+     * Gets the name from the letterboxes on this screen.
+     * @return the name from the letterboxes on this screen.
+     */
+    private String getNameFromLetterBoxes()
+    {
+        StringBuilder buffer = new StringBuilder();
+        for (LetterBox letterBox : letterBoxes)
+        {
+            buffer.append(letterBox.getChar());
+        }
+        return buffer.toString();
+    }
+
+    /**
+     * Moves the selection left or overflows to the right
+     */
     private void moveSelectionLeft()
     {
         if (boxSelected != 0)
@@ -151,6 +174,9 @@ class NameSubmitScreen
         }
     }
 
+    /**
+     * Moves the selection right or overflows to the left
+     */
     private void moveSelectionRight()
     {
         if (boxSelected != NUM_BOXES - 1)

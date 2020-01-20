@@ -1,3 +1,7 @@
+/**
+ * Describes the enemies in the game.
+ * @author Kamiel de Visser | 500838438
+ */
 class Enemy
 {
     int x;
@@ -20,10 +24,12 @@ class Enemy
     //type 3 = enemy with less hp, but is faster
     int enemyType = 1;
 
-    // This array stores whether we've passed
-    // checkpoint
+    // This array stores whether an enemy has passed each checkpoint.
     Boolean[] waypointsPassed = new Boolean[6];
 
+    /**
+    * Constructor function for an Enemy
+    */
     Enemy()
     {
         //Every 4th enemy is a type 2 (slow with more hp)
@@ -55,7 +61,7 @@ class Enemy
         if(enemyType == 1)
         {
             w = int(t.w / 2);
-            hitpoints = 15 + (wave.waveNumber * 15);
+            hitpoints = 15 + (wave.waveNumber * 20);
             hitpointsGap = 40;
             if(!wave.allEnemiesSpawned)
             {
@@ -69,7 +75,7 @@ class Enemy
         {
             msMultiplier = 0.75;
             w = int(t.w - 40);
-            hitpoints = 70 + (wave.waveNumber * 20);
+            hitpoints = 70 + (wave.waveNumber * 30);
             hitpointsGap = 50;
             if(!wave.allEnemiesSpawned)
             {
@@ -92,6 +98,12 @@ class Enemy
         }
     }
 
+    /**
+    * Lets the enemy take damage to their hitpoints
+    * @param damage the damage taken
+    * @return whether this enemy has died as a result of taking damage
+    * @author Kamiel de Visser | 500838438
+    */
     Boolean takeDamage(float damage)
     {
         hitpoints -= damage;
@@ -102,8 +114,11 @@ class Enemy
         return false;
     }
 
-    // Initialises the wayPointspassed by setting
-    // all bools to false
+    /**
+    * Initialises the wayPointspassed by setting
+    * them all to false
+    * @author Kamiel de Visser | 500838438
+    */
     void initWaypoints()
     {
         for (int i = 0; i < waypointsPassed.length; i++)
@@ -112,6 +127,10 @@ class Enemy
         }
     }
 
+    /**
+    * Displays the enemy at it's position
+    * @author Kamiel de Visser | 500838438
+    */
     void display()
     {
         //If the enemy is FROZEN, it will turn a bit blue
@@ -192,10 +211,12 @@ class Enemy
         rect(x, y - hitpointsGap, hitpointsPercentage, 5);
     }
 
-    // Check which waypoints have been passed,
-    // then determine whether we have to change
-    // move directions, then move
-    // in that direction.
+    /**
+    * Check which waypoints have been passed, then set the moveDir
+    * to the direction the enemy should go, and move in that direction.
+    * @see Enemy.move()
+    * @author Kamiel de Visser | 500838438
+    */
     void followPath()
     {
         if (! waypointsPassed[0])
@@ -249,14 +270,17 @@ class Enemy
         move();
     }
 
-    // Moves towards moveDir
+    /**
+    * Moves the enemy in moveDir with a certain velocity
+    * 1 = up
+    * 2 = down
+    * 3 = right
+    * 4 = left
+    * @author Kamiel de Visser | 500838438
+    */
     void move()
     {
-        // moveDir means:
-        // 1 = up
-        // 2 = down
-        // 3 = right
-        // 4 = left
+
         switch(moveDir)
         {
             case 1:
@@ -276,6 +300,10 @@ class Enemy
         }
     }
 
+    /**
+    * Holds styling options for Enemy type objects
+    * @author Kamiel de Visser | 500838438
+    */
     class Style
     {
         color defaultColor = color(255, 255, 255, 255);
