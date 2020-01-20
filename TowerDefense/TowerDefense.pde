@@ -1,3 +1,9 @@
+/**
+ * A poor implementation of a Tower Defense type game in Processing.
+ * This project was made for Corendon under HvA's Fasten Your Seatbelts project.
+ * @author Kamiel de Visser | 500838438
+ */
+
 // import the Iterator method to remove enemies from our
 // import the sounds method
 // arraylist in realtime.
@@ -90,15 +96,20 @@ Boolean gamePaused = false;
 // Holds the currently selected tile
 Tile selectedTile;
 
-// Ran as the very first method.
-// Sets up the screen size.
+/** 
+ * Ran before setup()
+ * Sets up the screen size.
+ * @author Kamiel de Visser | 500838438
+ */
 void settings()
 {
     size(SIZE_X, SIZE_Y);
 }
 
-// Runs after settings()
-// Initialize a bunch of other settings and objects.
+/** 
+ * Sets up the sketch by initializing all required objects.
+ * @author Kamiel de Visser | 500838438
+ */
 void setup()
 {   
     // Connect Database to the game
@@ -160,13 +171,21 @@ void setup()
     goldcoinhud.resize(20,20);
 }
 
-// Gets the currently selected tile
-Tile GetCurrentTile()
+/**
+ * Gets the currently selected tile from the grid
+ * @return the tile object that is currently selected
+ * @author Kamiel de Visser | 500838438
+ */
+public Tile GetCurrentTile()
 {
     return grid.grid[controls.selectionX][controls.selectionY];
 }
 
-// Main method. Draws every frame of our game
+/**
+ * Main method. Draws every frame of our game. This loops at a rate
+ * of FRAME_RATE frames per second.
+ * @author Kamiel de Visser | 500838438
+ */
 void draw()
 {
     textFont(font);
@@ -269,14 +288,16 @@ void draw()
 
 }
 
-// Handles all actions for each tower each frame.
+/**
+ * Handles all actions for each tower.
+ * @author Kamiel de Visser | 500838438
+ */
 void handleTowers()
 {
-    
     // Loop over all tiles
-    for (int y = 0; y < 9; y++)
+    for (int y = 0; y < grid.NUM_TILES_Y; y++)
     {
-      for (int x = 0; x < 16; x++)
+      for (int x = 0; x < grid.NUM_TILES_X; x++)
       {
         Tile tile = grid.grid[x][y];
         // Look at the tower on that tile
@@ -307,7 +328,12 @@ void handleTowers()
 
 }
 
-// Called whenever a key is pressed
+/**
+ * Called whenever a key is pressed.
+ * This method sends the keypress events to the objects
+ * that handle the keypresses.
+ * @author Kamiel de Visser | 500838438
+ */
 void keyPressed() 
 {
     if (stage == 8) {
@@ -323,7 +349,10 @@ void keyPressed()
     }
 }
 
-// Draws our scene
+/**
+ * Draws the background of our game.
+ * @author Kamiel de Visser | 500838438
+ */
 void drawBackground()
 {
     map.display();
@@ -331,7 +360,10 @@ void drawBackground()
     grid.display();
 }
 
-// Performs all actions for each enemy each frame
+/**
+ * Performs all actions for each enemy each frame
+ * @author Kamiel de Visser | 500838438
+ */
 void handleEnemies()
 {
     handleDeadEnemies();
@@ -346,7 +378,10 @@ void handleEnemies()
     }
 }
 
-// Removes dead enemies from our list and give gold.
+/**
+ * Cleans up the list of enemies by removing the dead enemies
+ * @author Kamiel de Visser | 500838438
+ */
 void handleDeadEnemies()
 {
     Iterator<Enemy> i = enemies.iterator();
@@ -405,6 +440,7 @@ void drawParticles()
     particleSystem.checkTimer();
     particleSystem.enemyTakingDamage();
     particleSystem.enemyIsFreezing();
+    particleSystem.sellingTower();
 }
 
 void databaseProcesses()

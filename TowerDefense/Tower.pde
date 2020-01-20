@@ -1,4 +1,7 @@
-// Defines what a Tower is and can do.
+/**
+  * Towers can be placed on Tiles and can be used i.e. to shoot enemies
+  * @author Kamiel de Visser | 500838438
+  */
 class Tower 
 { 
   // Has an x and y position
@@ -41,7 +44,15 @@ class Tower
 
   Style style;
 
-  // Constructor function for a tower
+  /**
+    * Constructor function for a tower
+    * @param _x the x position of this tower
+    * @param _y the y position of this tower
+    * @param _d the diameter of this tower
+    * @param _towerType the type of this tower
+    * @param _towerLevel the level of this tower
+    * @author Kamiel de Visser | 500838438
+    */
   Tower(int _x, int _y, int _d, int _towerType, int _towerLevel)
   {
     x = _x;
@@ -64,7 +75,10 @@ class Tower
 
 
 
-  // Show this tower
+  /**
+    * Displays the tower.
+    * @author Kamiel de Visser | 500838438
+    */
   void display()
   {
     // if type is not non-existent
@@ -109,23 +123,33 @@ class Tower
       text(towerLevel,x+ wTile/3,y+ wTile/4);
    }
   }
-  // Look for enemies in range of this tower
-  Boolean checkForEnemies()
+
+  /**
+    * Looks for enemies in range of this tower
+    * @return true if an enemy has been found
+    * @author Kamiel de Visser | 500838438
+    */
+  public Boolean checkForEnemies()
   {
     for (Enemy e : enemies)
     {
       if (ifEnemyIsInRange(e))
       {
-        // Enemy found and assigned to enemy
+        // Here: Enemy found and assigned to enemy
         return true;
       }
     }
     return false;
   }
 
-  // Checks whether a specific enemy is in range of the tower.
-  // Returns true and assigns enemy to the enemy if the enemy is in range.
-  Boolean ifEnemyIsInRange(Enemy e)
+  /**
+    * Checks whether a specific enemy is in range of the tower.
+    * Returns true and assigns enemy to this tower's target enemy field 
+    * if the enemy is in range.
+    * @author Kamiel de Visser | 500838438
+    * @return true if the enemy is in range, false otherwise.
+    */
+  public Boolean ifEnemyIsInRange(Enemy e)
   {
     // distance from the tower to the enemy
     float distance = dist(x, y, e.x, e.y);
@@ -141,8 +165,11 @@ class Tower
     return false;
   }
 
-  // Shoot an enemy
-  void shootEnemy()
+  /**
+    * Shoots an enemy
+    * @author Kamiel de Visser | 500838438
+    */
+  private void shootEnemy()
   {
     switch(towerType)
     {
@@ -157,11 +184,14 @@ class Tower
         return;
       default:
         return;
-      
     }
   }
 
-  void shootLaser()
+  /**
+    * Shoots the enemy with a laser
+    * @author Kamiel de Visser | 500838438
+    */
+  private void shootLaser()
   {
     // if target is still in range
     if (ifEnemyIsInRange(enemy))
@@ -169,14 +199,14 @@ class Tower
       // Let target take damage
       if (enemy.takeDamage(laserDamage))
       {
-        assetsLoader.laserSound.stop();
         // if enemy died because of this damage, stop shooting
+        assetsLoader.laserSound.stop();
         shooting = false;
        
       }
       enemy.takingDamage = true;
-
-      
+        
+      // shoot the laser
       assetsLoader.laserSoundEffect();
       stroke(style.laserColor);
       strokeWeight(style.laserStrokeWeight);
@@ -195,14 +225,21 @@ class Tower
 
   void freezeEnemies()
   {
+    //Every enemy gets a "i", like in an array
     Iterator<Enemy> i = enemies.iterator();
+
+    //Looping through all existing enemies
     while (i.hasNext())
     {
       float distances[] = new float[wave.enemiesLeft];
+
+      //One enemy is i.next
       Enemy e = i.next();
       for(int j = 0; j < wave.enemiesLeft; j++)
       {
         distances[j] = dist(x, y, e.x, e.y);
+
+        //If the enemy gets into the range of the freeze tower, freeze that enemy
         if(distances[j] < rangeFreezeTower)
         {
           if(e.msMultiplier > freezePower)
@@ -211,6 +248,8 @@ class Tower
           }
           e.frozenEnemy = true;
         }
+
+        //If the enemy is outside of the range, reset their speeds to normal
         else 
         {
           if(e.enemyType == 1)
@@ -231,15 +270,7 @@ class Tower
     }
   }
 
-
-// void goldPopUp()
-// {
   
-//     textSize(30);
-//     fill(250,0,0);
-//     text(goldPerFarm, tower.x,  tower.y);
-
-// }
   void farmGold()
     {   
       timer++;
@@ -333,7 +364,10 @@ class Tower
       return enemiesInBombtowerRange;
   }
 
-  // holds styling options for tower-related options
+  /**
+    * holds styling options for a Tower object
+    * @author Kamiel de Visser | 500838438
+    */
   class Style 
   {
     color fillColor = color(100, 100, 100);

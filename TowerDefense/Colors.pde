@@ -1,3 +1,7 @@
+/**
+ * Stores types of frequently used colors as constants
+ * @author Kamiel de Visser | 500838438
+ */
 class Colors
 {
     final public color WHITE = 255;
