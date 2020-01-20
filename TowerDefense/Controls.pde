@@ -5,8 +5,8 @@ class Controls {
   // 3 = left
   // 4 = right
 
-  boolean upgrading = false;
-  int upgradeX, upgradeY;
+  boolean upgrading = false, selling = false;
+  int upgradeX, upgradeY, sellingX, sellingY;
   int selectionX, selectionY;
   PVector towerLocation = new PVector(0,0);
 
@@ -209,33 +209,39 @@ class Controls {
       //Controls for selling a tower
       if(key == 'q')
       {
-        //selects your currentTile
-      Tile currentTile = grid.grid[selectionX][selectionY];
+        //Selects your currentTile
+        Tile currentTile = grid.grid[selectionX][selectionY];
         int x = currentTile.x;
         int y = currentTile.y;
         int d = grid.grid[0][0].w / 2;
-        // a different case for each tower. If it's located on the currentTile get some money back,removes tower.
+        sellingX = x;
+        sellingY = y;
+        //A different case for each tower. If it's located on the currentTile get some money back,removes tower.
         switch(currentTile.tower.towerType)
         { 
           case 1:
             statistics.amount += (statistics.laserTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
+            selling = true;
             return;
           case 2:
             statistics.amount += (statistics.freezeTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
+            selling = true;
             return;
           case 3:
             statistics.amount += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
+            selling = true;
             return;
           case 4:
             statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
+            selling = true;
             return;
         }
       }

@@ -405,6 +405,7 @@ void drawParticles()
     particleSystem.checkTimer();
     particleSystem.enemyTakingDamage();
     particleSystem.enemyIsFreezing();
+    particleSystem.sellingTower();
 }
 
 void databaseProcesses()
