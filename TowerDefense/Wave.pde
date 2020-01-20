@@ -58,6 +58,8 @@ class Wave
         time = millis() + timerLimit;
       }
     }
+
+    //Before the player starts first wave, this text is displayed
     else {
       textAlign(CENTER);
       fill(50);
@@ -80,7 +82,7 @@ class Wave
       textAlign(CORNER);
     }
     
-    //When all enemies are gone, and one of these keys is pressed, the next wave will start
+    //When all enemies are gone, and 'j' is pressed, the next wave will start
     if (enemiesLeft == 0 && keyPressed && key == 'j')
     {
       waveNumber++;

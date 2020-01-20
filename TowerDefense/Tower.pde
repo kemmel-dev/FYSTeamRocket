@@ -259,22 +259,22 @@ class Tower
       {
         //Creating the coordinates for the bomb
         PVector bomb;
-        bomb = new PVector(x, y);
+        bomb = new PVector();
 
         //This will run for 2 frames every 30 frames(1 second).
-        if (frameCount % 30 < 2)
+        if (frameCount % FRAME_RATE < 2)
         {
           //Placing the bomb on the enemy
           bomb.x = enemy.x;
           bomb.y = enemy.y;
 
           //Display the bomb
-          fill(style.bombColor, 75);
           image(explosion, bomb.x, bomb.y);
 
           //This will play the bombsound once per explosion
-          //Without this if statement the sound would run twice because the bomb runs for 2 frames
-            if(frameCount % 30 < 1)
+          //With this if statement, the sound will only be played one at a time
+          //Without this, the sound will glitch out when there are more than 1 bomb towers
+            if(frameCount % FRAME_RATE < 1)
             {
               assetsLoader.bombSound.stop();
               assetsLoader.bombSound();
@@ -284,7 +284,7 @@ class Tower
         //ArrayList for all enemies that are in range of the bombtower
         ArrayList<Enemy> target = enemiesInBombtowerRange();
 
-        //For every target (enemy in range of bombtower)
+        //For loop for every target(enemy in range of bombtower)
         for (Enemy enemy : target)
         {
           //Calculates the distance between the center of the bomb and the center of the enemy
@@ -304,13 +304,15 @@ class Tower
           shooting = false;
         }
       }
+
+      //When there are no more enemies in range, stop shooting.
       else
       {
         shooting = false;
       }
   }
 
-  //ArrayList for enemies that are in range of the bombradius
+  //ArrayList function for enemies that are in range of the explosionradius
   ArrayList<Enemy> enemiesInBombtowerRange()
   {
     ArrayList<Enemy> enemiesInBombtowerRange = new ArrayList<Enemy>();
