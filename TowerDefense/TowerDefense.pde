@@ -171,9 +171,9 @@ void draw()
 {
     textFont(font);
 
-    // if paused display the pause menu
     switch(stage)
     {
+        // Stage 1 is what you will first see when you start up the game.
         // Start Menu + New Game HIGHLIGHTED
         case 1:
             statistics.reset();
@@ -232,7 +232,7 @@ void draw()
             
             return;
         
-        // name submit screen from InGame Screen
+        // Name submit screen from InGame Screen
         case 8:
             nameSubmitScreen.draw();
             return;
@@ -240,7 +240,7 @@ void draw()
         case 9:
             menus.displayPauseMenu();
             return;
-        // Controls from Menu Screen
+        // Controls from Start Menu
         case 10:
             menus.controlsMenu();
             return; 
@@ -253,12 +253,15 @@ void draw()
             menus.creditsMenu();
             return;
         case 14:
+        // Pause Menu from InGame Screen
             menus.displayPauseMenu2();
             return;
         case 15:
+        // Pause Menu from InGame Screen
             menus.displayPauseMenu3();
             return;
         case 16:
+        // Controls Menu from InGame Pause Menu
             menus.controlsMenuPause();
             return;
         // Game Over Menu from InGame Screen  

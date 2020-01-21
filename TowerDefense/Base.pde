@@ -15,6 +15,7 @@ class Base
         dY = waypoints.tileSize*4;
     }
 
+    // Display Base
     void baseStructure()
     {
         imageMode(CENTER);
