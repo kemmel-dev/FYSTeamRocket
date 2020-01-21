@@ -11,7 +11,7 @@ static class ParticleSys
      * Creates a new explosion at a given position and adds it to the tileExplosions list
      * @param x the x-coördinate to center this explosion at
      * @param y the y-coördinate to center this explosion at
-     * @color fragmentsColor the color the explosion particles will have
+     * @param fragmentsColor the color the explosion particles will have
      */
     static public void createExplosionAt(int x, int y, color fragmentsColor)
     {

@@ -1,3 +1,5 @@
+//@tobias class for paring the string from name selector and the integer from score.
+
 public class Pair<F, S> {
     private F first; //first member of pair
     private S second; //second member of pair
