@@ -316,7 +316,8 @@ void handleTowers()
             {
                 t.checkForEnemies();
             }
-        }
+        }   
+            //@tobias if tower is farmtower and there are still enemies on screen, farmgold.
             if (t.towerType == 4 && wave.enemiesLeft != 0)
             {
                 t.farmGold();
@@ -462,7 +463,7 @@ void screenShake()
     }
 }
 
-// Sorts the scorelist in a descending order
+// Sorts the scorelist in a descending order @tobias
 void sortScores(ArrayList<Pair<Integer, String>> list) {
     Pair<Integer, String> max = new Pair<Integer, String>(Integer.MIN_VALUE, " ");
     ArrayList<Pair<Integer, String>> sortedList = new ArrayList<Pair<Integer, String>>(); 

@@ -25,7 +25,7 @@ class Controls {
   int bombUpgradeCost;
   int farmUpgradeCost;
 
-  //ArrayList containing the 'path' tiles
+  //ArrayList containing the 'path' tiles @tobias
   ArrayList<Tile> path = new ArrayList<Tile>() 
   {
     {
@@ -77,7 +77,7 @@ class Controls {
     grid.grid[controls.selectionX][controls.selectionY].selected = true;
   }
 
-  // Compares current tile to the path tile list tiles
+  // Compares current tile to the path tile list tiles @tobias
   boolean pathCheck(Tile curr)
   {
     for( Tile tile : path) 

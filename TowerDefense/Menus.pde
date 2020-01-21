@@ -530,7 +530,7 @@ class Menus
             yPos[i] += buttonGap;
         }
     }
-
+    //@tobias checks if highscore is higher than first ones
     void gameOverMenu(ArrayList<Pair<Integer,String>> scoreList)
     {   
         String name = " ";
@@ -631,10 +631,8 @@ class Menus
                 }
     }
 
-    void leaderBoardsMenu()
-    {
-
-    }
+   
+    //@tobias
     void leaderBoardsMenu(ArrayList<Pair<Integer,String>> scoreList)
     {
         image(altsmenu,0,0,width,height);
@@ -649,15 +647,10 @@ class Menus
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
-        textAlign(CENTER);
-        fill(50);
-
+        //@tobias sorts highscore and places them underneah each other
         int len = min(10, scoreList.size());
         for (int i = 0; i < len; ++i) {
-            fill(50);
-            textAlign(CENTER);
             text((i + 1) + ": " + scoreList.get(i).getSecond() + "   " + scoreList.get(i).getFirst(), width/2, height/10 + i * 100);
-            textAlign(CORNER);
         }
 
 
