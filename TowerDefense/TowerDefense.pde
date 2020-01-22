@@ -283,6 +283,7 @@ void draw()
         // Game Over Menu from InGame Screen  
         case 17:
             menus.gameOverMenu(scoreList);
+            databaseProcess.databaseStats();
             return;
     }
 
@@ -392,6 +393,7 @@ void handleDeadEnemies()
         {
             i.remove();
             statistics.amount += 2;
+            statistics.totalGoldEarned += 2;
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
             statistics.scorePoints += 10;
@@ -446,9 +448,7 @@ void drawParticles()
 void databaseProcesses()
 {
     databaseProcess.hi();
-    databaseProcess.enemiesKilled();
-    databaseProcess.towersPlaced();
-    databaseProcess.towersSold();
+    databaseProcess.databaseStats();
 }
 
 void screenShake()
