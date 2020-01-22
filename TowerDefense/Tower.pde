@@ -270,7 +270,7 @@ class Tower
     }
   }
 
-  
+  //functionaliteit farmtower @tobias (elke 10 sec farmt ""goldPerFarm")
   void farmGold()
     {   
       timer++;
@@ -280,8 +280,6 @@ class Tower
             statistics.amount+= goldPerFarm;
             statistics.totalGoldEarned += goldPerFarm;
             timer = 0;
-            text(goldPerFarm,x,y);
-            // goldPopUp();
         }
     }
 

@@ -190,9 +190,9 @@ void draw()
 {
     textFont(font);
 
-    // if paused display the pause menu
     switch(stage)
     {
+        // Stage 1 is what you will first see when you start up the game.
         // Start Menu + New Game HIGHLIGHTED
         case 1:
             statistics.reset();
@@ -251,7 +251,7 @@ void draw()
             
             return;
         
-        // name submit screen from InGame Screen
+        // Name submit screen from InGame Screen
         case 8:
             nameSubmitScreen.draw();
             return;
@@ -259,7 +259,7 @@ void draw()
         case 9:
             menus.displayPauseMenu();
             return;
-        // Controls from Menu Screen
+        // Controls from Start Menu
         case 10:
             menus.controlsMenu();
             return; 
@@ -272,12 +272,15 @@ void draw()
             menus.creditsMenu();
             return;
         case 14:
+        // Pause Menu from InGame Screen
             menus.displayPauseMenu2();
             return;
         case 15:
+        // Pause Menu from InGame Screen
             menus.displayPauseMenu3();
             return;
         case 16:
+        // Controls Menu from InGame Pause Menu
             menus.controlsMenuPause();
             return;
         // Game Over Menu from InGame Screen  
@@ -317,7 +320,8 @@ void handleTowers()
             {
                 t.checkForEnemies();
             }
-        }
+        }   
+            //@tobias if tower is farmtower and there are still enemies on screen, farmgold.
             if (t.towerType == 4 && wave.enemiesLeft != 0)
             {
                 t.farmGold();
@@ -462,7 +466,7 @@ void screenShake()
     }
 }
 
-// Sorts the scorelist in a descending order
+// Sorts the scorelist in a descending order @tobias
 void sortScores(ArrayList<Pair<Integer, String>> list) {
     Pair<Integer, String> max = new Pair<Integer, String>(Integer.MIN_VALUE, " ");
     ArrayList<Pair<Integer, String>> sortedList = new ArrayList<Pair<Integer, String>>(); 
