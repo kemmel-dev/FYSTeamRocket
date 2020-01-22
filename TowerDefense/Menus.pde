@@ -769,15 +769,12 @@ class Menus
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
-<<<<<<< HEAD
         textAlign(CENTER);
         fill(50);
 
         //Lists the Scores and the Names that are linked to the Scores + created by the player
         //Lists every 100 pixels
-=======
         //@tobias sorts highscore and places them underneah each other
->>>>>>> a3ba0dae68170e5a569915ba9476aea0106db829
         int len = min(10, scoreList.size());
         for (int i = 0; i < len; ++i) {
             text((i + 1) + ": " + scoreList.get(i).getSecond() + "   " + scoreList.get(i).getFirst(), width/2, height/10 + i * 100);
