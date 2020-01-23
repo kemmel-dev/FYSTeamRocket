@@ -2,6 +2,8 @@ class Statistics
 {
 
     int amount;
+    int totalGoldEarned;
+    int totalGoldSpent;
     int laserTowerCost, freezeTowerCost, bombTowerCost, farmTowerCost;
     
     int lives;
@@ -35,6 +37,13 @@ class Statistics
             scorePoints = 0;
             gereset = true;
             wave.enemiesLeft = wave.limit;
+
+            //database statistics reset:
+            wave.enemiesKilledTotal = 0;
+            controls.totalTowersPlaced = 0;
+            controls.totalTowersSold = 0;
+            totalGoldEarned = 0;
+            totalGoldSpent = 0;
 
             // Every tower will be reset on all tiles of the grid
             for (int x = 0; x < 16; x++)

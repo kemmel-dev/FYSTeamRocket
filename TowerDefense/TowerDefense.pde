@@ -190,9 +190,9 @@ void draw()
 {
     textFont(font);
 
-    // if paused display the pause menu
     switch(stage)
     {
+        // Stage 1 is what you will first see when you start up the game.
         // Start Menu + New Game HIGHLIGHTED
         case 1:
             statistics.reset();
@@ -251,7 +251,7 @@ void draw()
             
             return;
         
-        // name submit screen from InGame Screen
+        // Name submit screen from InGame Screen
         case 8:
             // loginScreenSketch.draw();
             return;
@@ -259,7 +259,7 @@ void draw()
         case 9:
             menus.displayPauseMenu();
             return;
-        // Controls from Menu Screen
+        // Controls from Start Menu
         case 10:
             menus.controlsMenu();
             return; 
@@ -273,18 +273,23 @@ void draw()
             menus.creditsMenu();
             return;
         case 14:
+        // Pause Menu from InGame Screen
             menus.displayPauseMenu2();
             return;
         case 15:
+        // Pause Menu from InGame Screen
             menus.displayPauseMenu3();
             return;
         case 16:
+        // Controls Menu from InGame Pause Menu
             menus.controlsMenuPause();
             return;
         // Game Over Menu from InGame Screen  
         case 17:
         
             menus.gameOverMenu();
+            
+            databaseProcess.databaseStats();
             return;
     }
 
@@ -395,6 +400,7 @@ void handleDeadEnemies()
         {
             i.remove();
             statistics.amount += 2;
+            statistics.totalGoldEarned += 2;
             wave.enemiesLeft--;
             wave.enemiesRemoved++;
             statistics.scorePoints += 10;
@@ -449,9 +455,7 @@ void drawParticles()
 void databaseProcesses()
 {
     databaseProcess.hi();
-    databaseProcess.enemiesKilled();
-    databaseProcess.towersPlaced();
-    databaseProcess.towersSold();
+    databaseProcess.databaseStats();
 }
 
 void screenShake()

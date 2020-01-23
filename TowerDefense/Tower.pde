@@ -278,6 +278,7 @@ class Tower
         if (timer == FRAME_RATE * 10)
         {
             statistics.amount+= goldPerFarm;
+            statistics.totalGoldEarned += goldPerFarm;
             timer = 0;
         }
     }

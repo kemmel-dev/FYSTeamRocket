@@ -149,6 +149,7 @@ class Controls {
           currentTile.tower = new Tower(x, y, d, 2, 1);
           //Substracts an amount of gold
           statistics.amount -= statistics.freezeTowerCost;
+          statistics.totalGoldSpent += statistics.freezeTowerCost;
           totalTowersPlaced++;
         }
       }
@@ -173,6 +174,7 @@ class Controls {
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 1, 1);
           statistics.amount -= statistics.laserTowerCost;
+          statistics.totalGoldSpent += statistics.laserTowerCost;
           totalTowersPlaced++;
         }                 
       }
@@ -190,6 +192,7 @@ class Controls {
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 4, 1);
           statistics.amount -= statistics.farmTowerCost;
+          statistics.totalGoldSpent += statistics.farmTowerCost;
           totalTowersPlaced++;
         }                 
       }
@@ -206,6 +209,7 @@ class Controls {
           int d = grid.grid[0][0].w / 2;
           currentTile.tower = new Tower(x, y, d, 3, 1);
           statistics.amount -= statistics.bombTowerCost;
+          statistics.totalGoldSpent += statistics.bombTowerCost;
           totalTowersPlaced++;
         }
       }
@@ -226,24 +230,28 @@ class Controls {
         { 
           case 1:
             statistics.amount += (statistics.laserTowerCost/2) * currentTile.tower.towerLevel;
+            statistics.totalGoldEarned += (statistics.laserTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
             selling = true;
             return;
           case 2:
             statistics.amount += (statistics.freezeTowerCost/2) * currentTile.tower.towerLevel;
+            statistics.totalGoldEarned += (statistics.freezeTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
             selling = true;
             return;
           case 3:
             statistics.amount += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
+            statistics.totalGoldEarned += (statistics.bombTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
             selling = true;
             return;
           case 4:
             statistics.amount += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
+            statistics.totalGoldEarned += (statistics.farmTowerCost/2) * currentTile.tower.towerLevel;
             currentTile.tower = new Tower(x, y, d, 0, 1);
             totalTowersSold++;
             selling = true;
@@ -266,6 +274,7 @@ class Controls {
         {
           upgrading = true;
           statistics.amount -= (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel;
+          statistics.totalGoldSpent += (statistics.laserTowerCost + (statistics.laserTowerCost/2)) * currentTile.tower.towerLevel;
           currentTile.tower.towerLevel += 1;
           currentTile.tower.laserDamage = currentTile.tower.towerLevel;
         }
@@ -276,6 +285,7 @@ class Controls {
         {
           upgrading = true;
           statistics.amount -= (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
+          statistics.totalGoldSpent += (statistics.freezeTowerCost + (statistics.freezeTowerCost/2)) * currentTile.tower.towerLevel;
           currentTile.tower.towerLevel += 1;
           currentTile.tower.freezeDamage = currentTile.tower.towerLevel * 0.01;
           if(currentTile.tower.towerLevel <= 4)
@@ -290,6 +300,7 @@ class Controls {
         {
           upgrading = true;
           statistics.amount -= statistics.farmTowerCost * currentTile.tower.towerLevel;
+          statistics.totalGoldSpent += statistics.farmTowerCost * currentTile.tower.towerLevel;
           currentTile.tower.towerLevel += 1;
           currentTile.tower.goldPerFarm += 50;
         }
@@ -300,6 +311,7 @@ class Controls {
         {
           upgrading = true;
           statistics.amount -= statistics.bombTowerCost * currentTile.tower.towerLevel;
+          statistics.totalGoldSpent += statistics.bombTowerCost * currentTile.tower.towerLevel;
           currentTile.tower.towerLevel += 1;
           currentTile.tower.bombDamage *= currentTile.tower.towerLevel;
         }

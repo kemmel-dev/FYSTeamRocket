@@ -1,10 +1,10 @@
 class DatabaseProcess
 {
-
+    boolean submitted;
 
     DatabaseProcess()
     {
-
+        submitted = false;
     }
     void hi()
     {
@@ -76,19 +76,20 @@ class DatabaseProcess
             msql.query("INSERT INTO UserToAchievement VALUES ("+ databaseSetup.userID +", 13)");
         }
     }
-    void enemiesKilled()
-    {
-        msql.query("UPDATE Statistics (EnemiesKilled) VALUES ("+ wave.enemiesKilledTotal +")");
-    }
 
-    void towersPlaced()
+    void databaseStats()
     {
-        msql.query("UPDATE Statistics (TowersBought) VALUES ("+ controls.totalTowersPlaced +")");
-    }
+        if(submitted == false)
+        {
+        msql.query("INSERT INTO Statistics VALUES ("+ databaseSetup.userID +","+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", "+ statistics.totalGoldEarned +", "+ statistics.totalGoldSpent +", "+ wave.waveNumber +")");
+        submitted = true;
+        }
 
-    void towersSold()
-    {
-        msql.query("UPDATE Statistics (TowersSold) VALUES ("+ controls.totalTowersSold +")");
+
+        //msql.query("UPDATE Statistics (EnemiesKilled) VALUES ("+ wave.enemiesKilledTotal +")");
+        //msql.query("UPDATE Statistics (EnemiesKilled) VALUES ("+ wave.enemiesKilledTotal +")");
+        //msql.query("INSERT INTO Statistics VALUES ("+ databaseSetup.userID +", "+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", 1000, 900, 12)");
+
     }
 
 
