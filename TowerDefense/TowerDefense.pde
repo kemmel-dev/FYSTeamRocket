@@ -24,7 +24,6 @@ final static float MOVE_SPEED = (SIZE_X / 500) * 2;
 // Create our objects
 Grid grid = new Grid();
 Map map = new Map();
-ArrayList<Pair<Integer,String>> scoreList = new ArrayList<Pair<Integer,String>>();
 Controls controls = new Controls();
 Waypoints waypoints = new Waypoints();
 Menus menus = new Menus();
@@ -37,7 +36,7 @@ ConnectDB connectDB = new ConnectDB();
 ParticleSystem particleSystem = new ParticleSystem();
 DatabaseProcess databaseProcess = new DatabaseProcess();
 DatabaseSetup databaseSetup = new DatabaseSetup();
-NameSubmitScreen nameSubmitScreen = new NameSubmitScreen();
+// LoginScreenSketch loginScreenSketch = new LoginScreenSketch();
 
 
 PImage startmenu;
@@ -114,6 +113,7 @@ void setup()
 {   
     // Connect Database to the game
     connectDB.createDatabaseConnection();
+    
 
     databaseProcess.hi();
     // Stage 1 = Start Menu
@@ -130,7 +130,7 @@ void setup()
     // Initialize the grid and map and controls
     grid.initGrid();
     map.init();
-    nameSubmitScreen.init();
+    // loginScreenSketch.init();
     controls.initControls();
     menus.setupGameOverMenu();
 
@@ -253,7 +253,7 @@ void draw()
         
         // name submit screen from InGame Screen
         case 8:
-            nameSubmitScreen.draw();
+            // loginScreenSketch.draw();
             return;
         // Pause Menu from InGame Screen
         case 9:
@@ -265,7 +265,8 @@ void draw()
             return; 
         // LeaderBoards Menu from Start Menu
         case 11:
-            menus.leaderBoardsMenu(scoreList);
+        
+            menus.leaderBoardsMenu();
             return;
         // Credits Menu from Start Menu
         case 13:
@@ -282,7 +283,8 @@ void draw()
             return;
         // Game Over Menu from InGame Screen  
         case 17:
-            menus.gameOverMenu(scoreList);
+        
+            menus.gameOverMenu();
             return;
     }
 
@@ -337,9 +339,9 @@ void handleTowers()
  */
 void keyPressed() 
 {
-    if (stage == 8) {
-        nameSubmitScreen.keyPressed();
-    }
+    // if (stage == 8) {
+    //     loginScreen.keyPressed();
+    // }
     if (gamePaused)
     {
         menus.keyPressed();
@@ -463,19 +465,3 @@ void screenShake()
     }
 }
 
-// Sorts the scorelist in a descending order @tobias
-void sortScores(ArrayList<Pair<Integer, String>> list) {
-    Pair<Integer, String> max = new Pair<Integer, String>(Integer.MIN_VALUE, " ");
-    ArrayList<Pair<Integer, String>> sortedList = new ArrayList<Pair<Integer, String>>(); 
-    while(!list.isEmpty()) {
-        for (int i = 0; i < list.size(); ++i) {
-            if(list.get(i).getFirst() > max.getFirst()) {
-                max = list.get(i);
-            }
-        }
-        list.remove(max);
-        sortedList.add(max);
-        max = new Pair<Integer, String>(Integer.MIN_VALUE, "ZZZ");
-    }    
-    scoreList = sortedList;
-}

@@ -530,14 +530,10 @@ class Menus
             yPos[i] += buttonGap;
         }
     }
-    //@tobias checks if highscore is higher than first ones
-    void gameOverMenu(ArrayList<Pair<Integer,String>> scoreList)
+   
+    void gameOverMenu()
     {   
-        String name = " ";
-        if(!scoreList.isEmpty())
-        {
-            name = scoreList.get(0).getSecond();
-        }
+       
         image(gameoverscreen,0,0);
         rectMode(CENTER);
         fill(50);
@@ -557,7 +553,8 @@ class Menus
         fill(220);
         textAlign(CENTER);
         text("Play Again!",width/2,500);
-        text("Your Score:   " + statistics.scorePoints +"     " + scoreList.get(0).getSecond(), width/2,400);
+        
+        text("Your Score:   " + statistics.scorePoints, width/2,400);
         noFill();
         if (keyPressed)
                 {   
@@ -565,7 +562,7 @@ class Menus
                     {
                         stage = 1;
                         statistics.reset();
-                        sortScores(scoreList);
+                        
                         keyPressed = false;
                     }
                 }
@@ -632,8 +629,8 @@ class Menus
     }
 
    
-    //@tobias
-    void leaderBoardsMenu(ArrayList<Pair<Integer,String>> scoreList)
+    
+    void leaderBoardsMenu()
     {
         image(altsmenu,0,0,width,height);
         rectMode(CENTER);
@@ -647,11 +644,7 @@ class Menus
         textAlign(CORNER);
         text("L Bump  =  Go Back",width/1.3,940);
         text("R Bump  =  Select",width/1.3,990);
-        //@tobias sorts highscore and places them underneah each other
-        int len = min(10, scoreList.size());
-        for (int i = 0; i < len; ++i) {
-            text((i + 1) + ": " + scoreList.get(i).getSecond() + "   " + scoreList.get(i).getFirst(), width/2, height/10 + i * 100);
-        }
+        
 
 
         if (keyPressed)

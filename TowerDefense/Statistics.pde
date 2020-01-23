@@ -25,7 +25,7 @@ class Statistics
 
     void reset()
     { 
-            lives = 10;
+            lives = 1;
             amount = 70;
             wave.waveNumber = 1;
             wave.limit = 10;
@@ -51,7 +51,7 @@ class Statistics
     {
         if(lives <= 0)
         {
-            stage = 8;
+            stage = 17;
             lives = 0;
         }
     }

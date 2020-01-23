@@ -90,4 +90,27 @@ class DatabaseProcess
     {
         msql.query("UPDATE Statistics (TowersSold) VALUES ("+ controls.totalTowersSold +")");
     }
+
+
+// void makeAttempt()
+// {
+//     attempt = msql.getInt("SELECT MAX AttemptID FROM Attempt");
+//     attempt++;
+// }
+
+//     void setHighscores()
+//     {
+//                     msql.query("INSERT INTO Attempt.Score VALUES ("+ statistics.scorePoints +")");
+
+//     }
+
+//     void getHighscores()
+//     {
+//             msql.getInt("SELECT TOP 1 * FROM Attempt.Score") ;
+//     }
+
+
+
+
+
 }
