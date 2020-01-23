@@ -14,6 +14,9 @@ import de.bezier.data.sql.*;
 
 MySQL msql;
 
+public  LoginScreen loginScreen;
+
+public DatabaseManager databaseManager;
 
 // Constants
 final static int SIZE_X = 1920;
@@ -113,11 +116,15 @@ void setup()
 {   
     // Connect Database to the game
     connectDB.createDatabaseConnection();
+
+    //  loginScreenSketch.setupLoginScreen();
     
 
-    databaseProcess.hi();
+      
+
+    // databaseProcess.hi();
     // Stage 1 = Start Menu
-    stage = 1;
+    stage = 8;
     // Load all Pictures
     assetsLoader.createImages();
     // Load all sounds
@@ -130,7 +137,7 @@ void setup()
     // Initialize the grid and map and controls
     grid.initGrid();
     map.init();
-    // loginScreenSketch.init();
+    initLoginScreen();
     controls.initControls();
     menus.setupGameOverMenu();
 
@@ -253,7 +260,8 @@ void draw()
         
         // Name submit screen from InGame Screen
         case 8:
-            // loginScreenSketch.draw();
+        background(0);
+        loginScreen.draw();
             return;
         // Pause Menu from InGame Screen
         case 9:
@@ -286,19 +294,43 @@ void draw()
             return;
         // Game Over Menu from InGame Screen  
         case 17:
-        
             menus.gameOverMenu();
-            
             databaseProcess.databaseStats();
             return;
     }
 
 }
 
+public int getScore()
+{
+  return statistics.getScorePoints();
+}
+
 /**
  * Handles all actions for each tower.
  * @author Kamiel de Visser | 500838438
  */
+
+
+void initLoginScreen()
+{
+   
+
+    // NameSubmitScreen is drawn with the following settings in mind
+    rectMode(CENTER);
+    textAlign(CENTER, CENTER);
+
+    databaseManager = new DatabaseManager(this);
+    if (!databaseManager.init())
+    {
+        print("Can't establish a connection to the database :(\nQuitting game...\n");
+       
+    }
+    loginScreen = new LoginScreen();
+}
+
+
+
 void handleTowers()
 {
     // Loop over all tiles
@@ -344,9 +376,9 @@ void handleTowers()
  */
 void keyPressed() 
 {
-    // if (stage == 8) {
-    //     loginScreen.keyPressed();
-    // }
+    if (stage == 8) {
+        loginScreen.keyPressed();
+    }
     if (gamePaused)
     {
         menus.keyPressed();

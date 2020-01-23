@@ -12,6 +12,10 @@ class Statistics
 
     boolean gereset;
    
+   public int getScorePoints()
+   {
+       return scorePoints;
+   }
 
     Statistics()
     {

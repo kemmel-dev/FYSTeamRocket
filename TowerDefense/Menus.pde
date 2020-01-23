@@ -666,8 +666,10 @@ class Menus
                     //Goes back all the way to the Start Menu and puts the score in the Leaderboards Menu
                     if (key == 'p')
                     {
+                        databaseManager.submitScore(getScore());
                         stage = 1;
                         statistics.reset();
+                        
                         
                         keyPressed = false;
                     }
