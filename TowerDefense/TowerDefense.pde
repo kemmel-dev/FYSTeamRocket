@@ -37,6 +37,7 @@ Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
 // ConnectDB connectDB = new ConnectDB();
 ParticleSystem particleSystem = new ParticleSystem();
+DatabaseProcess databaseProcess = new DatabaseProcess();
 DatabaseSetup databaseSetup = new DatabaseSetup();
 Achievements achievements = new Achievements();
 // LoginScreenSketch loginScreenSketch = new LoginScreenSketch();
