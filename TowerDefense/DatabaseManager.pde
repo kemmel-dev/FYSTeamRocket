@@ -91,7 +91,8 @@ class DatabaseManager
                 database.query("INSERT INTO User_has_Achievements(User_UserID, Achievements_AchievementID) VALUES ("+ userIdentity +", "+ achievements.achievementID +");");
                 achievements.achieved = false;
                 achievements.achievementID = 0;
-                println("Achievement get");
+                
+                text("Achievement get", 500, 500);
                 return true;
             }
         }

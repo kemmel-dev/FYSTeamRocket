@@ -238,7 +238,7 @@ void draw()
             handleTowers();
 
             //Inserts statistics data into the database
-            databaseProcess.databaseStats();
+            //databaseProcess.databaseStats();
 
             // Draw the UI
             drawUI();
@@ -310,6 +310,7 @@ void draw()
             return;
     }
 
+    //Process the data from the Achievements and Database
     processData();
 }
 
@@ -497,8 +498,8 @@ void drawParticles()
 
 void processData()
 {
-    achievements.wavesReachedAchievement();
-    achievements.goldEarnedAchievement();
+    achievements.wavesReachedAchievements();
+    achievements.goldEarnedAchievements();
     achievements.killsAchievements();
     databaseManager.getAchievement();
 }
