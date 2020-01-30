@@ -236,6 +236,9 @@ void draw()
             handleEnemies();
             handleTowers();
 
+            //Inserts statistics data into the database
+            databaseProcess.databaseStats();
+
             // Draw the UI
             drawUI();
 
@@ -295,6 +298,15 @@ void draw()
         case 17:
             menus.gameOverMenu();
             return;
+        //Pause menu where statistics is highlighted
+        case 18:
+            menus.displayPauseMenu4();
+            return;
+        //Statistics screen, stats get updated every time you look at them
+        case 19:
+            databaseProcess.updateStats();
+            menus.statisticsMenu();
+            return;
     }
 
     processData();
@@ -327,7 +339,6 @@ void initLoginScreen()
     }
     loginScreen = new LoginScreen();
 }
-
 
 
 void handleTowers()

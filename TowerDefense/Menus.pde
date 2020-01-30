@@ -405,6 +405,7 @@ class Menus
         rect(width/2,485,300,50);
         rect(width/2,585,300,50);
         rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
 
         //Boxes for displaying Current Score & Game Paused
         rect(width/2,135,300,50);
@@ -429,6 +430,7 @@ class Menus
         text("Resume",width/2,500);
         text("Controls",width/2,600);
         text("Leave",width/2,700);
+        text("Statistics",width/2,800);
 
         //The Text at the top of the pause screen
         text("Game Paused",width/2,150);
@@ -477,6 +479,7 @@ class Menus
         rect(width/2,485,300,50);
         rect(width/2,585,300,50);
         rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
 
         //Boxes for displaying Current Score & Game Paused
         rect(width/2,135,300,50);
@@ -501,6 +504,7 @@ class Menus
         text("Resume",width/2,500);
         text("Controls",width/2,600);
         text("Leave",width/2,700);
+        text("Statistics",width/2,800);
 
         //The Text at the top of the pause screen
         text("Game Paused",width/2,150);
@@ -554,6 +558,7 @@ class Menus
         rect(width/2,485,300,50);
         rect(width/2,585,300,50);
         rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
 
         //Boxes for displaying Current Score & Game Paused
         rect(width/2,135,300,50);
@@ -578,6 +583,88 @@ class Menus
         text("Resume",width/2,500);
         text("Controls",width/2,600);
         text("Leave",width/2,700);
+        text("Statistics",width/2,800);
+
+        //The Text at the top of the pause screen
+        text("Game Paused",width/2,150);
+        text("Current Score: " + statistics.scorePoints,width/2,220);
+
+       //Text in the box for the controls in the current screen
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+        noFill();
+        
+        //Available Inputs
+        if (keyPressed)
+        {
+            if (key == CODED)
+            {
+                if (keyCode == DOWN)
+                {
+                    //Goes to displayPauseMenu4
+                    stage = 18;
+                    keyPressed = false;
+                }
+                if (keyCode == UP)
+                {
+                    //Goes to displayPauseMenu2
+                    stage = 14;
+                    keyPressed = false;
+                }
+            }
+            if (key == 'p')
+            {
+                //Goes all the way back to the Start Menu
+                stage = 1;
+                keyPressed = false;
+            }
+        }
+    }
+
+    //Pause menu where statistics is highlighted
+    void displayPauseMenu4()
+    {
+        //Fading away effect as a Background in the Pause Screen.
+        fill(0,100);
+        rect(0,0,width*2,height*2);
+
+        rectMode(CENTER);
+        textAlign(CENTER);
+        fill(50);
+        stroke(180);
+        strokeWeight(10);
+        
+        //Boxes for the Selecting options
+        rect(width/2,485,300,50);
+        rect(width/2,585,300,50);
+        rect(width/2,685,300,50);
+        rect(width/2,785,300,50);
+
+        //Boxes for displaying Current Score & Game Paused
+        rect(width/2,135,300,50);
+        rect(width/2,205,400,50);
+
+       //Text in the box for the controls in the current screen
+        rect(width/1.2,950,360,120);
+
+        //Current HIGHLIGHTED Box
+        stroke(255,255,0);
+        strokeWeight(5);
+        rect(width/2,785,300,50);
+
+        //The Image of a Tower next to the HIGHLIGHTED Box
+        imageMode(CENTER);
+        image(tower, width/2.5, 785, 100, 100);
+        imageMode(CORNER);
+
+        //The Text in the Boxes
+        noStroke();
+        fill(220);
+        text("Resume",width/2,500);
+        text("Controls",width/2,600);
+        text("Leave",width/2,700);
+        text("Statistics",width/2,800);
 
         //The Text at the top of the pause screen
         text("Game Paused",width/2,150);
@@ -596,15 +683,15 @@ class Menus
             {
                 if (keyCode == UP)
                 {
-                    //Goes to displayPauseMenu2
-                    stage = 14;
+                    //Goes to displayPauseMenu3
+                    stage = 15;
                     keyPressed = false;
                 }
             }
             if (key == 'p')
             {
-                //Goes all the way back to the Start Menu
-                stage = 1;
+                //Goes to statistics screen.
+                stage = 19;
                 keyPressed = false;
             }
         }
@@ -661,6 +748,16 @@ class Menus
         
         text("Your Score:   " + statistics.scorePoints, width/2,400);
         noFill();
+
+        databaseProcess.updateStats();
+
+        text("Your statistics are:", width/4, 150);
+        text(wave.enemiesKilledTotal + " Enemies killed", width/4, 300);
+        text(controls.totalTowersPlaced + " Towers placed", width/4, 400);
+        text(controls.totalTowersSold + " Towers sold", width/4, 500);
+        text(statistics.totalGoldEarned + " Gold earned", width/4, 600);
+        text(statistics.totalGoldSpent + " Gold spent", width/4, 700);
+        text(wave.waveNumber + " Wave reached", width/4, 800);
         if (keyPressed)
                 {   
                     //Goes back all the way to the Start Menu and puts the score in the Leaderboards Menu
@@ -830,6 +927,47 @@ class Menus
                     }
                 }
     }
+
+        void statisticsMenu()
+    {
+        //Background Image
+        image(altsmenu,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        //Text for the controls in the current screen
+        noStroke();
+        fill(220);
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+        
+        textAlign(CENTER);
+        fill(0);
+        text("Your statistics are:", width/2, 150);
+        text(wave.enemiesKilledTotal + " Enemies killed", width/2, 300);
+        text(controls.totalTowersPlaced + " Towers placed", width/2, 400);
+        text(controls.totalTowersSold + " Towers sold", width/2, 500);
+        text(statistics.totalGoldEarned + " Gold earned", width/2, 600);
+        text(statistics.totalGoldSpent + " Gold spent", width/2, 700);
+        text(wave.waveNumber + " Wave reached", width/2, 800);
+
+        fill(220);
+        textAlign(CORNER);
+
+        if (keyPressed)
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 18;
+                        keyPressed = false;
+                        databaseProcess.updated = false;
+                    }
+                }
+    } 
 }
 
    
