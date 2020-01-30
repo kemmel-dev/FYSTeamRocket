@@ -258,6 +258,9 @@ void draw()
         
             //Ingame music starts playing and loops
             assetsLoader.inGameMusic();
+
+            //Process the data from the Achievements and Database
+            processData();
             
             return;
         
@@ -309,9 +312,6 @@ void draw()
             menus.statisticsMenu();
             return;
     }
-
-    //Process the data from the Achievements and Database
-    processData();
 }
 
 public int getScore()
@@ -501,6 +501,7 @@ void processData()
     achievements.wavesReachedAchievements();
     achievements.goldEarnedAchievements();
     achievements.killsAchievements();
+    databaseManager.achievementSend();
     databaseManager.getAchievement();
 }
 

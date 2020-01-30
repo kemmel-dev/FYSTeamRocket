@@ -2,46 +2,46 @@ class Achievements
 {
     int achievementID = 0;
     boolean achieved = false;
+    int killsAchievements = 0;
+    int goldEarnedAchievements = 0;
+    int wavesReachedAchievements = 0;
+    int achievementY, sizeX, sizeY;
+    String achievementName;
+    int timer;
+    boolean timerSwitch = false;
 
     Achievements()
     {
-
+        achievementY = -200;
+        sizeX = 500;
+        sizeY = 300;
+        timer = 0;
     }
-
-
-    // boolean achievementUpdate()
-    // {
-    //     return false;
-    // }
 
 
     void killsAchievements()
     {
-        println("hello");
-        textSize(50);
-        fill(255, 0, 0);
-        text("TEST TEST TEST", SIZE_X/2, 150);
         if(achievementID == 0)
         {
-            if(wave.enemiesKilledTotal >= 50 && wave.enemiesKilledTotal < 250)
+            if(wave.enemiesKilledTotal >= 50 && killsAchievements == 0)
             {
                 achievementID = 1;
                 achieved = true;
             }
 
-            if(wave.enemiesKilledTotal >= 250 && wave.enemiesKilledTotal < 500)
+            if(wave.enemiesKilledTotal >= 250 && killsAchievements == 1)
             {
                 achievementID = 2;
                 achieved = true;
             }
 
-            if(wave.enemiesKilledTotal >= 500 && wave.enemiesKilledTotal < 1000)
+            if(wave.enemiesKilledTotal >= 500 && killsAchievements == 2)
             {
                 achievementID = 3;
                 achieved = true;
             }
 
-            if(wave.enemiesKilledTotal >= 1000)
+            if(wave.enemiesKilledTotal >= 1000 && killsAchievements == 3)
             {
                 achievementID = 4;
                 achieved = true;
@@ -51,28 +51,27 @@ class Achievements
 
     void goldEarnedAchievements()
     {
-        println("world");
         if(achievementID == 0)
         {
-            if(statistics.totalGoldEarned >= 500 && statistics.totalGoldEarned < 2500)
+            if(statistics.totalGoldEarned >= 500 && goldEarnedAchievements == 0)
             {
                 achievementID = 5;
                 achieved = true;
             }
 
-            if(statistics.totalGoldEarned >= 2500 && statistics.totalGoldEarned < 5000)
+            if(statistics.totalGoldEarned >= 2500 && goldEarnedAchievements == 1)
             {
                 achievementID = 6;
                 achieved = true;
             }
 
-            if(statistics.totalGoldEarned >= 5000 && statistics.totalGoldEarned < 10000)
+            if(statistics.totalGoldEarned >= 5000 && goldEarnedAchievements == 2)
             {
                 achievementID = 7;
                 achieved = true;
             }
 
-            if(statistics.totalGoldEarned >= 10000)
+            if(statistics.totalGoldEarned >= 10000 && goldEarnedAchievements == 3)
             {
                 achievementID = 8;
                 achieved = true;
@@ -84,29 +83,69 @@ class Achievements
     {
         if(achievementID == 0)
         {
-            if(wave.waveNumber >= 2 && wave.waveNumber < 11)
+            if(wave.waveNumber >= 2 && wavesReachedAchievements == 0)
             {
                 achievementID = 9;
                 achieved = true;
             }
 
-            if(wave.waveNumber >= 11 && wave.waveNumber < 26)
+            if(wave.waveNumber >= 11 && wavesReachedAchievements == 1)
             {
                 achievementID = 10;
                 achieved = true;
             }
 
-            if(wave.waveNumber >= 26 && wave.waveNumber < 51)
+            if(wave.waveNumber >= 26 && wavesReachedAchievements == 2)
             {
                 achievementID = 11;
                 achieved = true;
             }
 
-            if(wave.waveNumber >= 51)
+            if(wave.waveNumber >= 51 && wavesReachedAchievements == 3)
             {
                 achievementID = 12;
                 achieved = true;
             }
+        }
+    }
+
+    void notifyPlayer()
+    {
+        fill(255);
+        text("Achievement unlocked: " + achievementName,SIZE_X/2, achievementY);
+        fill(0, 0, 0, 50);
+        rect(SIZE_X/2, achievementY, sizeX, sizeY);
+        if(databaseManager.getAchievement() && achieved && !timerSwitch)
+        {
+            timerSwitch = true;
+        }
+
+        if(timer >= 300)
+        {
+            timerSwitch = false;
+        }
+
+        if(timerSwitch)
+        {
+            timer++;
+        }
+        else 
+        {
+            timer = 0;
+        }
+
+        if(timer > 0)
+        {
+            achievementY += 15;
+        }
+        else 
+        {
+            achievementY = -200;
+        }
+
+        if(achievementY >= 150)
+        {
+            achievementY = 150;
         }
     }
 }

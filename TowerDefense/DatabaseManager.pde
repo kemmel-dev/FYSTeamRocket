@@ -8,7 +8,6 @@ class DatabaseManager
 
     private String username;
     private String userID;
-    private int userIdentity;
 
     public boolean isLoggedIn()
     {
@@ -67,7 +66,6 @@ class DatabaseManager
         if (database.next())
         {
             int userID = database.getInt("UserID");
-            userIdentity = userID;
             return String.format("%04d", userID);
         }
         return "";
@@ -79,25 +77,60 @@ class DatabaseManager
         println(username + userID);
     }
 
+    public void achievementSend()
+    {
+        if(getAchievement() && achievements.achieved)
+        {
+            database.query("SELECT AchievementName FROM Achievements WHERE AchievementID = "+ achievements.achievementID +";");
+            achievements.achievementName = database.getString("AchievementName");
+            database.query("INSERT INTO User_has_Achievements(User_UserID, Achievements_AchievementID) VALUES ("+ userID +", "+ achievements.achievementID +");");
+            achievements.achieved = false;
+            if(achievements.achievementID < 5)
+            {
+                achievements.killsAchievements++;
+            }
+            else if(achievements.achievementID < 9 && achievements.achievementID > 4)
+            {
+                achievements.goldEarnedAchievements++;
+            }
+            else 
+            {
+                achievements.wavesReachedAchievements++;
+            }
+            achievements.achievementID = 0;
+        }
+    }
+
     public boolean getAchievement()
     {
-        if(achievements.achieved && init())
+        if(achievements.achieved && achievements.achievementID != 0)
         {
-            database.query("SELECT * FROM User_has_Achievements WHERE User_UserID = "+ userIdentity +" AND Achievements_AchievementID"+ achievements.achievementID +";");
+            database.query("SELECT * FROM User_has_Achievements WHERE User_UserID = "+ userID +" AND Achievements_AchievementID = "+ achievements.achievementID +";");
             int achievementIDDB = database.getInt("Achievements_AchievementID");
-            println(achievementIDDB);
             if(achievementIDDB != achievements.achievementID)
             {
-                database.query("INSERT INTO User_has_Achievements(User_UserID, Achievements_AchievementID) VALUES ("+ userIdentity +", "+ achievements.achievementID +");");
-                achievements.achieved = false;
-                achievements.achievementID = 0;
-                
-                text("Achievement get", 500, 500);
                 return true;
+            }
+            else 
+            {
+                if(achievements.achievementID < 5)
+                {
+                    achievements.killsAchievements++;
+                }
+                else if(achievements.achievementID < 9 && achievements.achievementID > 4)
+                {
+                    achievements.goldEarnedAchievements++;
+                }
+                else 
+                {
+                    achievements.wavesReachedAchievements++;
+                }
             }
         }
         return false;
     }
+
+    
 
     // public void submitStats()
     // {
