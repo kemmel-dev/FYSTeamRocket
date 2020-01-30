@@ -749,15 +749,15 @@ class Menus
         text("Your Score:   " + statistics.scorePoints, width/2,400);
         noFill();
 
-        databaseProcess.updateStats();
+        databaseManager.updateStats();
 
-        text("Your statistics are:", width/4, 150);
-        text(wave.enemiesKilledTotal + " Enemies killed", width/4, 300);
-        text(controls.totalTowersPlaced + " Towers placed", width/4, 400);
-        text(controls.totalTowersSold + " Towers sold", width/4, 500);
-        text(statistics.totalGoldEarned + " Gold earned", width/4, 600);
-        text(statistics.totalGoldSpent + " Gold spent", width/4, 700);
-        text(wave.waveNumber + " Wave reached", width/4, 800);
+        //text("Your statistics are:", width/2, 450);
+        text(wave.enemiesKilledTotal + " Enemies killed", width/4, 500);
+        text(controls.totalTowersPlaced + " Towers placed", width/4, 600);
+        text(controls.totalTowersSold + " Towers sold", width/4, 700);
+        text(statistics.totalGoldEarned + " Gold earned", width/2 + width/4, 500);
+        text(statistics.totalGoldSpent + " Gold spent", width/2 + width/4, 600);
+        text(wave.waveNumber + " Wave reached", width/2 + width/4, 700);
         if (keyPressed)
                 {   
                     //Goes back all the way to the Start Menu and puts the score in the Leaderboards Menu
@@ -964,7 +964,7 @@ class Menus
                     {
                         stage = 18;
                         keyPressed = false;
-                        databaseProcess.updated = false;
+                        databaseManager.statsUpdated = false;
                     }
                 }
     } 
