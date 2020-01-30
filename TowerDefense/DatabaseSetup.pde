@@ -14,6 +14,8 @@ class DatabaseSetup
     {
         msql.query("SELECT MAX(UserID) FROM User WHERE Username = "+ userName +" ;");
         msql.query("SELECT UserID, AchievementID FROM UserToAchievement WHERE UserID = "+ userID +";");
+
+        msql.query("SELECT * FROM Statistics");
         
         userID = msql.getInt("UserID");
         hasAchievementKilled = msql.getInt("AchievementID") - 1;
