@@ -8,6 +8,7 @@ class DatabaseManager
 
     private String username;
     private String userID;
+    private int userIdentity;
 
     public boolean isLoggedIn()
     {
@@ -66,6 +67,7 @@ class DatabaseManager
         if (database.next())
         {
             int userID = database.getInt("UserID");
+            userIdentity = userID;
             return String.format("%04d", userID);
         }
         return "";
@@ -73,7 +75,26 @@ class DatabaseManager
 
     public void submitScore( int scorePoints)
     {
-        println(scorePoints+ "piemels");
+        println(scorePoints);
         println(username + userID);
+    }
+
+    public boolean getAchievement()
+    {
+        if(achievements.achieved)
+        {
+            database.query("SELECT * FROM User_has_Achievements WHERE User_UserID = "+ userIdentity +" AND Achievements_AchievementID"+ achievements.achievementID +";");
+            int achievementIDDB = database.getInt("Achievements_AchievementID");
+            println(achievementIDDB);
+            if(achievementIDDB != achievements.achievementID)
+            {
+                database.query("INSERT INTO User_has_Achievements(User_UserID, Achievements_AchievementID) VALUES ("+ userIdentity +", "+ achievements.achievementID +");");
+                achievements.achieved = false;
+                achievements.achievementID = 0;
+                println("Achievement get");
+                return true;
+            }
+        }
+        return false;
     }
 } 

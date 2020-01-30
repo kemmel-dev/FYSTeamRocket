@@ -3,8 +3,9 @@ class Particles
     int x, y;
     //ParticleTypes:
     // 1 = bleeding effect
-    // 2 = smoke effect
+    // 2 = smoke effect - Upgrade
     // 3 = freezing effect
+    // 4 = smoke effect - Sell
     int particleType;
     int size;
     int r = 0, g = 0, b = 0;

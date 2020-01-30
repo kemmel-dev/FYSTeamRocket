@@ -214,6 +214,7 @@ class Controls {
         }
       }
 
+      //Jorrit
       //Controls for selling a tower
       if(key == 'q')
       {
@@ -259,6 +260,7 @@ class Controls {
         }
       }
 
+      //Jorrit
       // Upgrade towers
       if(key == 'p')
       {

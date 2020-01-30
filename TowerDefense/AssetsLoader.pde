@@ -90,6 +90,8 @@ class AssetsLoader
 
     }
 
+
+    //Jorrit
     public void loadSounds()
     {
         laserSound = new SoundFile(TowerDefense.this, "LaserSound.mp3");

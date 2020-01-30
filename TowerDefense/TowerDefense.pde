@@ -35,10 +35,10 @@ UI ui = new UI();
 Base base = new Base();
 Wave wave = new Wave();
 AssetsLoader assetsLoader = new AssetsLoader();
-ConnectDB connectDB = new ConnectDB();
+// ConnectDB connectDB = new ConnectDB();
 ParticleSystem particleSystem = new ParticleSystem();
-DatabaseProcess databaseProcess = new DatabaseProcess();
 DatabaseSetup databaseSetup = new DatabaseSetup();
+Achievements achievements = new Achievements();
 // LoginScreenSketch loginScreenSketch = new LoginScreenSketch();
 
 
@@ -115,7 +115,7 @@ void settings()
 void setup()
 {   
     // Connect Database to the game
-    connectDB.createDatabaseConnection();
+    // connectDB.createDatabaseConnection();
 
     //  loginScreenSketch.setupLoginScreen();
     
@@ -196,7 +196,6 @@ public Tile GetCurrentTile()
 void draw()
 {
     textFont(font);
-
     switch(stage)
     {
         // Stage 1 is what you will first see when you start up the game.
@@ -260,8 +259,8 @@ void draw()
         
         // Name submit screen from InGame Screen
         case 8:
-        background(0);
-        loginScreen.draw();
+            background(0);
+            loginScreen.draw();
             return;
         // Pause Menu from InGame Screen
         case 9:
@@ -295,10 +294,10 @@ void draw()
         // Game Over Menu from InGame Screen  
         case 17:
             menus.gameOverMenu();
-            databaseProcess.databaseStats();
             return;
     }
 
+    processData();
 }
 
 public int getScore()
@@ -484,10 +483,12 @@ void drawParticles()
     particleSystem.sellingTower();
 }
 
-void databaseProcesses()
+void processData()
 {
-    databaseProcess.hi();
-    databaseProcess.databaseStats();
+    achievements.wavesReachedAchievement();
+    achievements.goldEarnedAchievement();
+    achievements.killsAchievements();
+    databaseManager.getAchievement();
 }
 
 void screenShake()

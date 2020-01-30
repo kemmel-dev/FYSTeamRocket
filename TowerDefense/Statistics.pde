@@ -31,7 +31,8 @@ class Statistics
 
     void reset()
     { 
-            lives = 1;
+        //Chris en Jorrit
+            lives = 10;
             amount = 70;
             wave.waveNumber = 1;
             wave.limit = 10;
@@ -50,6 +51,7 @@ class Statistics
             totalGoldSpent = 0;
 
             // Every tower will be reset on all tiles of the grid
+            //Jorrit
             for (int x = 0; x < 16; x++)
             {
                 for (int y = 0; y < 9; y++)

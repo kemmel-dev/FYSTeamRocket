@@ -223,6 +223,7 @@ class Tower
     }
   }
 
+  //Jorrit
   void freezeEnemies()
   {
     //Every enemy gets a "i", like in an array
@@ -237,6 +238,8 @@ class Tower
       Enemy e = i.next();
       for(int j = 0; j < wave.enemiesLeft; j++)
       {
+
+        
         distances[j] = dist(x, y, e.x, e.y);
 
         //If the enemy gets into the range of the freeze tower, freeze that enemy
