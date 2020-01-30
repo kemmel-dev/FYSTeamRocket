@@ -76,4 +76,14 @@ class DatabaseManager
         println(scorePoints+ "piemels");
         println(username + userID);
     }
+
+    // public void submitStats()
+    // {
+    //     database.connect();
+    //     msql.query("INSERT INTO Attempt VALUES ("+ userID +","+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", "+ statistics.totalGoldEarned +", "+ statistics.totalGoldSpent +", "+ wave.waveNumber +", 0, 0)");
+    // }
+
+    // public boolean submitStats(int enemiesKilledTotal, int totalTowersPlaced, int totalTowersSold, int totalGoldEarned, int totalGoldSpent, int waveNumber)
+    // {
+    // }
 } 

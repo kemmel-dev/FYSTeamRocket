@@ -237,6 +237,9 @@ void draw()
             handleEnemies();
             handleTowers();
 
+            //Inserts statistics data into the database
+            databaseProcess.databaseStats();
+
             // Draw the UI
             drawUI();
 
@@ -295,7 +298,15 @@ void draw()
         // Game Over Menu from InGame Screen  
         case 17:
             menus.gameOverMenu();
-            databaseProcess.databaseStats();
+            return;
+        //Pause menu where statistics is highlighted
+        case 18:
+            menus.displayPauseMenu4();
+            return;
+        //Statistics screen, stats get updated every time you look at them
+        case 19:
+            databaseProcess.updateStats();
+            menus.statisticsMenu();
             return;
     }
 
@@ -328,7 +339,6 @@ void initLoginScreen()
     }
     loginScreen = new LoginScreen();
 }
-
 
 
 void handleTowers()
@@ -487,7 +497,6 @@ void drawParticles()
 void databaseProcesses()
 {
     databaseProcess.hi();
-    databaseProcess.databaseStats();
 }
 
 void screenShake()

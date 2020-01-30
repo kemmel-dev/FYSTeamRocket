@@ -48,6 +48,8 @@ class Statistics
             controls.totalTowersSold = 0;
             totalGoldEarned = 0;
             totalGoldSpent = 0;
+            databaseProcess.submitted = false;
+            databaseProcess.updated = false;
 
             // Every tower will be reset on all tiles of the grid
             for (int x = 0; x < 16; x++)

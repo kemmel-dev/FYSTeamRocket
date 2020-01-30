@@ -1,10 +1,11 @@
 class DatabaseProcess
 {
-    boolean submitted;
+boolean submitted = false;
+boolean updated = false;
 
     DatabaseProcess()
     {
-        submitted = false;
+
     }
     void hi()
     {
@@ -81,17 +82,26 @@ class DatabaseProcess
     {
         if(submitted == false)
         {
-        msql.query("INSERT INTO Statistics VALUES ("+ databaseSetup.userID +","+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", "+ statistics.totalGoldEarned +", "+ statistics.totalGoldSpent +", "+ wave.waveNumber +")");
+        msql.connect();
+        msql.query("INSERT INTO Attempt VALUES ("+ databaseManager.userID +", "+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", "+ statistics.totalGoldEarned +", "+ statistics.totalGoldSpent +", "+ wave.waveNumber +", 1, 1)");
         submitted = true;
         }
-
-
-        //msql.query("UPDATE Statistics (EnemiesKilled) VALUES ("+ wave.enemiesKilledTotal +")");
-        //msql.query("UPDATE Statistics (EnemiesKilled) VALUES ("+ wave.enemiesKilledTotal +")");
-        //msql.query("INSERT INTO Statistics VALUES ("+ databaseSetup.userID +", "+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", 1000, 900, 12)");
-
     }
-
+    
+    void updateStats()
+    {
+        if(updated == false)
+        {
+            msql.connect();
+            msql.query("UPDATE Attempt SET EnemiesKilled = "+ wave.enemiesKilledTotal +" WHERE UserID = "+ databaseManager.userID +"");
+            msql.query("UPDATE Attempt SET TowersBought = "+ controls.totalTowersPlaced +" WHERE UserID = "+ databaseManager.userID +"");
+            msql.query("UPDATE Attempt SET TowersSold = "+ controls.totalTowersSold +" WHERE UserID = "+ databaseManager.userID +"");
+            msql.query("UPDATE Attempt SET GoldEarned = "+ statistics.totalGoldEarned +" WHERE UserID = "+ databaseManager.userID +"");
+            msql.query("UPDATE Attempt SET GoldSpent = "+ statistics.totalGoldSpent +" WHERE UserID = "+ databaseManager.userID +"");
+            msql.query("UPDATE Attempt SET WaveReached = "+ wave.waveNumber +" WHERE UserID = "+ databaseManager.userID +"");
+            updated = true;
+        }
+    }
 
 // void makeAttempt()
 // {
