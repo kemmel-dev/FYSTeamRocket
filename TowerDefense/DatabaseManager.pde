@@ -10,6 +10,9 @@ class DatabaseManager
     private String userID;
     int achievementIDDB;
 
+    boolean statsSubmitted = false;
+    boolean statsUpdated = false;
+
     public boolean isLoggedIn()
     {
         return loggedIn;
@@ -131,13 +134,28 @@ class DatabaseManager
         return false;
     }
 
-    
+    public void submitStats()
+    {
+        if(statsSubmitted == false)
+        {
+        database.query("INSERT INTO Statistics VALUES ("+ userID +","+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", "+ statistics.totalGoldEarned +", "+ statistics.totalGoldSpent +", "+ wave.waveNumber +")");
+        statsSubmitted = true;
+        }
+    }
 
-    // public void submitStats()
-    // {
-    //     database.connect();
-    //     msql.query("INSERT INTO Attempt VALUES ("+ userID +","+ wave.enemiesKilledTotal +", "+ controls.totalTowersPlaced +", "+ controls.totalTowersSold +", "+ statistics.totalGoldEarned +", "+ statistics.totalGoldSpent +", "+ wave.waveNumber +", 0, 0)");
-    // }
+    public void updateStats()
+    {
+        if(statsUpdated == false)
+        {
+            database.query("UPDATE Statistics SET EnemiesKilled = "+ wave.enemiesKilledTotal +" WHERE UserID = "+ databaseManager.userID +"");
+            database.query("UPDATE Statistics SET TowersBought = "+ controls.totalTowersPlaced +" WHERE UserID = "+ databaseManager.userID +"");
+            database.query("UPDATE Statistics SET TowersSold = "+ controls.totalTowersSold +" WHERE UserID = "+ databaseManager.userID +"");
+            database.query("UPDATE Statistics SET GoldEarned = "+ statistics.totalGoldEarned +" WHERE UserID = "+ databaseManager.userID +"");
+            database.query("UPDATE Statistics SET GoldSpent = "+ statistics.totalGoldSpent +" WHERE UserID = "+ databaseManager.userID +"");
+            database.query("UPDATE Statistics SET WaveReached = "+ wave.waveNumber +" WHERE UserID = "+ databaseManager.userID +"");
+            statsUpdated = true;
+        }
+    }
 
     // public boolean submitStats(int enemiesKilledTotal, int totalTowersPlaced, int totalTowersSold, int totalGoldEarned, int totalGoldSpent, int waveNumber)
     // {

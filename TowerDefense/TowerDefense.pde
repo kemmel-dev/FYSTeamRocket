@@ -238,7 +238,7 @@ void draw()
             handleTowers();
 
             //Inserts statistics data into the database
-            //databaseProcess.databaseStats();
+            databaseManager.submitStats();
 
             // Draw the UI
             drawUI();
@@ -308,7 +308,7 @@ void draw()
             return;
         //Statistics screen, stats get updated every time you look at them
         case 19:
-            databaseProcess.updateStats();
+            databaseManager.updateStats();
             menus.statisticsMenu();
             return;
     }
