@@ -8,6 +8,7 @@ class DatabaseManager
 
     private String username;
     private String userID;
+    int achievementIDDB;
 
     public boolean isLoggedIn()
     {
@@ -81,8 +82,6 @@ class DatabaseManager
     {
         if(getAchievement() && achievements.achieved)
         {
-            database.query("SELECT AchievementName FROM Achievements WHERE AchievementID = "+ achievements.achievementID +";");
-            achievements.achievementName = database.getString("AchievementName");
             database.query("INSERT INTO User_has_Achievements(User_UserID, Achievements_AchievementID) VALUES ("+ userID +", "+ achievements.achievementID +");");
             achievements.achieved = false;
             if(achievements.achievementID < 5)
@@ -106,7 +105,9 @@ class DatabaseManager
         if(achievements.achieved && achievements.achievementID != 0)
         {
             database.query("SELECT * FROM User_has_Achievements WHERE User_UserID = "+ userID +" AND Achievements_AchievementID = "+ achievements.achievementID +";");
-            int achievementIDDB = database.getInt("Achievements_AchievementID");
+            achievementIDDB = database.getInt("Achievements_AchievementID");
+            database.query("SELECT * FROM Achievements WHERE AchievementID = "+ achievementIDDB +";");
+            achievements.achievementName = database.getString("AchievementName");
             if(achievementIDDB != achievements.achievementID)
             {
                 return true;
@@ -121,7 +122,7 @@ class DatabaseManager
                 {
                     achievements.goldEarnedAchievements++;
                 }
-                else 
+                else if(achievements.achievementID > 8)
                 {
                     achievements.wavesReachedAchievements++;
                 }

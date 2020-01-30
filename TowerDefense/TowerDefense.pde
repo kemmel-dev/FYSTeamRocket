@@ -501,8 +501,9 @@ void processData()
     achievements.wavesReachedAchievements();
     achievements.goldEarnedAchievements();
     achievements.killsAchievements();
-    databaseManager.achievementSend();
     databaseManager.getAchievement();
+    achievements.notifyPlayer();
+    databaseManager.achievementSend();
 }
 
 void screenShake()
