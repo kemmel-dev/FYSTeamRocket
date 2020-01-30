@@ -81,7 +81,7 @@ class DatabaseManager
 
     public boolean getAchievement()
     {
-        if(achievements.achieved)
+        if(achievements.achieved && init())
         {
             database.query("SELECT * FROM User_has_Achievements WHERE User_UserID = "+ userIdentity +" AND Achievements_AchievementID"+ achievements.achievementID +";");
             int achievementIDDB = database.getInt("Achievements_AchievementID");
