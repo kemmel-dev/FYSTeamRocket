@@ -11,6 +11,13 @@ class DatabaseManager
 
     boolean statsSubmitted = false;
     boolean statsUpdated = false;
+    boolean statsSelected = false;
+    int totalKills;
+    int totalTowersPlaced;
+    int totalTowersSold;
+    int totalGoldEarned;
+    int totalGoldSpent;
+    int waveReached;
 
     public boolean isLoggedIn()
     {
@@ -154,6 +161,33 @@ class DatabaseManager
             database.query("UPDATE Statistics SET WaveReached = "+ wave.waveNumber +" WHERE UserID = "+ databaseManager.userID +"");
             statsUpdated = true;
         }
+    }
+
+    public void selectStats()
+    {
+            database.query("SELECT * FROM Statistics Where UserID = "+ userID +";");
+            if(database.next())
+            {
+            totalKills = database.getInt("EnemiesKilled");
+            totalTowersPlaced = database.getInt("TowersBought");
+            totalTowersSold = database.getInt("TowersSold");
+            totalGoldEarned = database.getInt("GoldEarned");
+            totalGoldSpent = database.getInt("GoldSpent");
+            waveReached = database.getInt("WaveReached");
+            }
+            
+            textAlign(CENTER);
+            fill(0);
+            text("Your statistics are:", width/2, 150);
+            text(totalKills + " Enemies killed", width/2, 300);
+            text(totalTowersPlaced + " Towers placed", width/2, 400);
+            text(totalTowersSold + " Towers sold", width/2, 500);
+            text(totalGoldEarned + " Gold earned", width/2, 600);
+            text(totalGoldSpent + " Gold spent", width/2, 700);
+            text(waveReached + " Wave reached", width/2, 800);
+
+            fill(220);
+            textAlign(CORNER);
     }
 
     // public boolean submitStats(int enemiesKilledTotal, int totalTowersPlaced, int totalTowersSold, int totalGoldEarned, int totalGoldSpent, int waveNumber)

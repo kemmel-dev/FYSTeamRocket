@@ -316,6 +316,11 @@ class Menus
                     stage = 13;
                     keyPressed = false;
                 }
+                if (key == 's')
+                {
+                    stage = 20;
+                    keyPressed = false;
+                }
         }
     }
     // Exit Game HIGHLIGHTED
@@ -968,6 +973,34 @@ class Menus
                     }
                 }
     } 
+
+    void mainstats()
+    {
+         //Background Image
+        image(altsmenu,0,0,width,height);
+        rectMode(CENTER);
+        fill(30);
+        stroke(0);
+        strokeWeight(10);
+        rect(width/1.2,950,360,120);
+
+        //Text for the controls in the current screen
+        noStroke();
+        fill(220);
+        textAlign(CORNER);
+        text("L Bump  =  Go Back",width/1.3,940);
+        text("R Bump  =  Select",width/1.3,990);
+
+        if (keyPressed)
+                {   
+                    if (key == 'q')
+                    {
+                        stage = 4;
+                        keyPressed = false;
+                        databaseManager.statsUpdated = false;
+                    }
+                }
+    }
 }
 
    

@@ -311,6 +311,10 @@ void draw()
             databaseManager.updateStats();
             menus.statisticsMenu();
             return;
+        case 20:
+            menus.mainstats();
+            databaseManager.selectStats();
+            return;
     }
 }
 
