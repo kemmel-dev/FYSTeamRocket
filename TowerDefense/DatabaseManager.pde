@@ -8,6 +8,7 @@ class DatabaseManager
 
     private String username;
     private String userID;
+    int achievementIDDB;
 
     boolean statsSubmitted = false;
     boolean statsUpdated = false;
@@ -91,8 +92,6 @@ class DatabaseManager
     {
         if(getAchievement() && achievements.achieved)
         {
-            database.query("SELECT AchievementName FROM Achievements WHERE AchievementID = "+ achievements.achievementID +";");
-            achievements.achievementName = database.getString("AchievementName");
             database.query("INSERT INTO User_has_Achievements(User_UserID, Achievements_AchievementID) VALUES ("+ userID +", "+ achievements.achievementID +");");
             achievements.achieved = false;
             if(achievements.achievementID < 5)
@@ -115,8 +114,16 @@ class DatabaseManager
     {
         if(achievements.achieved && achievements.achievementID != 0)
         {
+            database.query("SELECT * FROM Achievements WHERE AchievementID = "+ achievements.achievementID +";");
+            if(database.next())
+            {
+              achievements.achievementName = database.getString("AchievementName");  
+            }
             database.query("SELECT * FROM User_has_Achievements WHERE User_UserID = "+ userID +" AND Achievements_AchievementID = "+ achievements.achievementID +";");
-            int achievementIDDB = database.getInt("Achievements_AchievementID");
+            if(database.next())
+            {
+                achievementIDDB = database.getInt("Achievements_AchievementID"); 
+            }
             if(achievementIDDB != achievements.achievementID)
             {
                 return true;
@@ -125,15 +132,15 @@ class DatabaseManager
             {
                 if(achievements.achievementID < 5)
                 {
-                    achievements.killsAchievements++;
+                    achievements.killsAchievements = 0 + achievements.achievementID;
                 }
                 else if(achievements.achievementID < 9 && achievements.achievementID > 4)
                 {
-                    achievements.goldEarnedAchievements++;
+                    achievements.goldEarnedAchievements = -4 + achievements.achievementID;
                 }
-                else 
+                else if(achievements.achievementID > 8)
                 {
-                    achievements.wavesReachedAchievements++;
+                    achievements.wavesReachedAchievements = -8 + achievements.achievementID;
                 }
             }
         }

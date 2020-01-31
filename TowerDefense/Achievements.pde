@@ -12,9 +12,9 @@ class Achievements
 
     Achievements()
     {
-        achievementY = -200;
-        sizeX = 500;
-        sizeY = 300;
+        achievementY = -150;
+        sizeX = 700;
+        sizeY = 100;
         timer = 0;
     }
 
@@ -111,11 +111,17 @@ class Achievements
 
     void notifyPlayer()
     {
-        fill(255);
-        text("Achievement unlocked: " + achievementName,SIZE_X/2, achievementY);
-        fill(0, 0, 0, 50);
+        fill(0, 0, 0, 200);
+        strokeWeight(5);
+        stroke(255);
         rect(SIZE_X/2, achievementY, sizeX, sizeY);
-        if(databaseManager.getAchievement() && achieved && !timerSwitch)
+        strokeWeight(1);
+        stroke(0);
+        fill(255);
+        textAlign(CENTER);
+        text("Achievement unlocked: " + achievementName, SIZE_X/2, achievementY);
+        textAlign(CORNER);
+        if(databaseManager.getAchievement() && achieved)
         {
             timerSwitch = true;
         }
@@ -123,6 +129,7 @@ class Achievements
         if(timer >= 300)
         {
             timerSwitch = false;
+            achievementY = -150;
         }
 
         if(timerSwitch)
@@ -134,18 +141,18 @@ class Achievements
             timer = 0;
         }
 
-        if(timer > 0)
+        if(timer > 0 && timer < 230)
         {
-            achievementY += 15;
+            achievementY += 10;
         }
-        else 
+        else if(timer > 250)
         {
-            achievementY = -200;
+            achievementY -= 10;
         }
 
-        if(achievementY >= 150)
+        if(achievementY > 100)
         {
-            achievementY = 150;
+            achievementY = 100;
         }
     }
 }
