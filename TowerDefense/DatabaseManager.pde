@@ -107,10 +107,16 @@ class DatabaseManager
     {
         if(achievements.achieved && achievements.achievementID != 0)
         {
+            database.query("SELECT * FROM Achievements WHERE AchievementID = "+ achievements.achievementID +";");
+            if(database.next())
+            {
+              achievements.achievementName = database.getString("AchievementName");  
+            }
             database.query("SELECT * FROM User_has_Achievements WHERE User_UserID = "+ userID +" AND Achievements_AchievementID = "+ achievements.achievementID +";");
-            achievementIDDB = database.getInt("Achievements_AchievementID");
-            database.query("SELECT * FROM Achievements WHERE AchievementID = "+ achievementIDDB +";");
-            achievements.achievementName = database.getString("AchievementName");
+            if(database.next())
+            {
+                achievementIDDB = database.getInt("Achievements_AchievementID"); 
+            }
             if(achievementIDDB != achievements.achievementID)
             {
                 return true;
@@ -119,15 +125,15 @@ class DatabaseManager
             {
                 if(achievements.achievementID < 5)
                 {
-                    achievements.killsAchievements++;
+                    achievements.killsAchievements = 0 + achievements.achievementID;
                 }
                 else if(achievements.achievementID < 9 && achievements.achievementID > 4)
                 {
-                    achievements.goldEarnedAchievements++;
+                    achievements.goldEarnedAchievements = -4 + achievements.achievementID;
                 }
                 else if(achievements.achievementID > 8)
                 {
-                    achievements.wavesReachedAchievements++;
+                    achievements.wavesReachedAchievements = -8 + achievements.achievementID;
                 }
             }
         }
